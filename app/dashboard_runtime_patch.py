@@ -100,6 +100,95 @@ def patched_dashboard_source() -> str:
     )
     source = source.replace('"Math Playbook"', '"Math Appendix"')
     source = source.replace('st.subheader("Top 100 Research Batch")', 'st.subheader("Top 250 Research Batch")', 1)
+    source = source.replace(
+        'watchlist_tab, mobile_tab, ticker_tab, data_tab, appendix_tab = st.tabs(\n'
+        '    ["Big Board", "Mobile Lite", "Scout Card", "Data Room", "Math Appendix"]\n'
+        ')',
+        'watchlist_tab, ticker_tab, data_tab, appendix_tab = st.tabs(\n'
+        '    ["Big Board", "Scout Card", "Data Room", "Math Appendix"]\n'
+        ')',
+        1,
+    )
+
+    mobile_start = source.find("\nwith mobile_tab:\n")
+    ticker_start = source.find("\nwith ticker_tab:\n")
+    if mobile_start != -1 and ticker_start != -1 and mobile_start < ticker_start:
+        source = source[:mobile_start] + source[ticker_start:]
+
+    source = source.replace(
+        '    .scout-subtitle {\n'
+        '        color: #64748b;\n'
+        '        margin-bottom: .65rem;\n'
+        '    }',
+        '    .scout-subtitle {\n'
+        '        color: #64748b;\n'
+        '        margin-bottom: .65rem;\n'
+        '    }\n'
+        '    .scout-picker {\n'
+        '        border: 1px solid #c8d9ff;\n'
+        '        background: linear-gradient(135deg, #eff6ff, #ffffff);\n'
+        '        border-radius: 8px;\n'
+        '        padding: 1rem;\n'
+        '        margin-bottom: 1rem;\n'
+        '        box-shadow: 0 12px 28px rgba(20,31,56,0.07);\n'
+        '    }\n'
+        '    .scout-picker-title {\n'
+        '        color: #0f172a;\n'
+        '        font-size: 1.45rem;\n'
+        '        font-weight: 950;\n'
+        '        margin-bottom: .15rem;\n'
+        '    }\n'
+        '    .scout-picker-note {\n'
+        '        color: #475569;\n'
+        '        font-size: .95rem;\n'
+        '    }\n'
+        '    .scout-card {\n'
+        '        border: 1px solid #cbd5e1;\n'
+        '        background: linear-gradient(180deg, #ffffff, #f8fbff);\n'
+        '        border-radius: 8px;\n'
+        '        padding: 1.15rem;\n'
+        '        box-shadow: 0 16px 34px rgba(20,31,56,0.10);\n'
+        '        margin-top: .75rem;\n'
+        '    }',
+        1,
+    )
+
+    source = source.replace(
+        'with ticker_tab:\n'
+        '    ticker_source = filtered if not filtered.empty else display_scores\n'
+        '    if ticker_source.empty:\n'
+        '        st.info("No scored tickers available yet.")\n'
+        '    else:\n'
+        '        tickers = ticker_source["ticker"].astype(str).tolist()\n'
+        '        selected = st.selectbox("Ticker lens", tickers)\n'
+        '        score_row = theory_scores[theory_scores["ticker"].astype(str) == selected].iloc[0]',
+        'with ticker_tab:\n'
+        '    ticker_source = display_scores\n'
+        '    if ticker_source.empty:\n'
+        '        st.info("No scored tickers available yet.")\n'
+        '    else:\n'
+        '        tickers = sorted(ticker_source["ticker"].dropna().astype(str).str.upper().unique().tolist())\n'
+        '        st.markdown(\n'
+        '            """\n'
+        '            <div class="scout-picker">\n'
+        '                <div class="scout-picker-title">Scout Card</div>\n'
+        '                <div class="scout-picker-note">Type a ticker or pick one from the board. This is the clean single-stock readout.</div>\n'
+        '            </div>\n'
+        '            """,\n'
+        '            unsafe_allow_html=True,\n'
+        '        )\n'
+        '        search_col, pick_col = st.columns([1, 2])\n'
+        '        with search_col:\n'
+        '            scout_query = st.text_input("Enter ticker", placeholder="Example: ORGN", key="scout_ticker_search").strip().upper()\n'
+        '        matching_tickers = [ticker for ticker in tickers if not scout_query or ticker.startswith(scout_query)]\n'
+        '        if not matching_tickers:\n'
+        '            st.warning("No scored ticker matched that search.")\n'
+        '            st.stop()\n'
+        '        with pick_col:\n'
+        '            selected = st.selectbox("Choose ticker", matching_tickers[:250], key="scout_ticker_picker")\n'
+        '        score_row = theory_scores[theory_scores["ticker"].astype(str).str.upper() == selected].iloc[0]',
+        1,
+    )
     return source
 
 
