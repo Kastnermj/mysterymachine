@@ -224,16 +224,8 @@ def patched_dashboard_source() -> str:
         '    else:\n'
         '        tickers = sorted(ticker_source["ticker"].dropna().astype(str).str.upper().unique().tolist())\n'
         '        st.subheader("Scout Card")\n'
-        '        st.caption("Type a ticker or pick one from the board. This is the clean single-stock readout.")\n'
-        '        search_col, pick_col = st.columns([1, 2])\n'
-        '        with search_col:\n'
-        '            scout_query = st.text_input("Enter ticker", placeholder="Example: ORGN", key="scout_ticker_search").strip().upper()\n'
-        '        matching_tickers = [ticker for ticker in tickers if not scout_query or ticker.startswith(scout_query)]\n'
-        '        if not matching_tickers:\n'
-        '            st.warning("No scored ticker matched that search.")\n'
-        '            st.stop()\n'
-        '        with pick_col:\n'
-        '            selected = st.selectbox("Choose ticker", matching_tickers[:250], key="scout_ticker_picker")\n'
+        '        st.caption("Start typing in the box, then pick the ticker from the same control.")\n'
+        '        selected = st.selectbox("Choose or enter ticker", tickers, key="scout_ticker_picker")\n'
         '        score_row = theory_scores[theory_scores["ticker"].astype(str).str.upper() == selected].iloc[0]',
         1,
     )
