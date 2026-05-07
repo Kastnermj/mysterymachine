@@ -1,8 +1,8 @@
 """Runtime patch layer for the hosted Mystery Machine dashboard.
 
-This keeps the hosted app resilient when Streamlit hides the native sidebar.
-The real dashboard remains app/dashboard.py; this file applies tiny UI fixes at
-startup without changing the model math or the data files.
+This keeps the hosted app readable without moving the working controls out of
+the sidebar. The real dashboard remains app/dashboard.py; this file applies
+small hosted UI fixes at startup without changing the model math or data files.
 """
 
 from __future__ import annotations
@@ -27,6 +27,14 @@ section.main,
 header[data-testid="stHeader"] {
     background: #f5f7fb !important;
     background-image: none !important;
+}
+section[data-testid="stSidebar"] {
+    background: #f7f9fd !important;
+    border-right: 1px solid #d7deea !important;
+}
+section[data-testid="stSidebar"] * {
+    color: #0f172a !important;
+    text-shadow: none !important;
 }
 div[data-testid="stTabs"] div[role="tablist"] {
     position: sticky !important;
@@ -62,16 +70,6 @@ div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
 div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
     color: #ffffff !important;
 }
-div[data-testid="stExpander"] details {
-    background: #ffffff;
-    border: 1px solid #d7deea;
-    border-radius: 14px;
-    box-shadow: 0 14px 32px rgba(15, 23, 42, .07);
-}
-div[data-testid="stExpander"] summary p {
-    color: #111827 !important;
-    font-weight: 900 !important;
-}
 .block-container p,
 .block-container li,
 .block-container label,
@@ -89,19 +87,8 @@ def patched_dashboard_source() -> str:
 
     source = source.replace(
         'st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide")',
-        'st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide")\n'
+        'st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide", initial_sidebar_state="expanded")\n'
         'st.markdown(EXTRA_CSS, unsafe_allow_html=True)',
-        1,
-    )
-    source = source.replace(
-        'with st.sidebar:\n    st.subheader("Front Office")',
-        'with st.sidebar:\n'
-        '    st.subheader("Mystery Machine")\n'
-        '    st.caption("Filters now live in the main page under Filters & Lenses so they stay visible on hosted Streamlit.")\n'
-        '    st.link_button("Refresh Data", GITHUB_ACTIONS_URL)\n\n'
-        'with st.expander("Filters & Lenses", expanded=True):\n'
-        '    st.subheader("Front Office")\n'
-        '    st.caption("Choose the lens, sorting, and risk checks for the board. These controls no longer depend on the left sidebar.")',
         1,
     )
     source = source.replace(
@@ -112,7 +99,7 @@ def patched_dashboard_source() -> str:
     source = source.replace('"Math Playbook"', '"Math Appendix"')
     source = source.replace(
         'st.caption("Cleaner by default. Turn on Advanced columns in the sidebar when you want the full model guts.")',
-        'st.caption("Cleaner by default. Turn on Advanced columns in Filters & Lenses when you want the full model guts.")',
+        'st.caption("Cleaner by default. Turn on Advanced columns in the sidebar when you want the full model guts.")',
         1,
     )
     source = source.replace('st.subheader("Top 100 Research Batch")', 'st.subheader("Top 250 Research Batch")', 1)
