@@ -174,6 +174,8 @@ section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
 .verdict-pill *,
 .mini-score,
 .mini-score *,
+.draft-grade,
+.draft-grade *,
 .grade-pill,
 .grade-pill *,
 .metric-card,
@@ -183,6 +185,29 @@ section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
 .toolbar-note,
 .toolbar-note * {
     text-shadow: none !important;
+}
+.draft-grade,
+.draft-grade * {
+    color: #ffffff !important;
+}
+.draft-grade {
+    min-width: 2.35rem !important;
+    min-height: 1.45rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
+.scout-mini,
+.scout-mini * {
+    text-shadow: none !important;
+}
+.scout-mini-title {
+    color: #0f172a !important;
+}
+.scout-mini-subtitle {
+    color: #475569 !important;
 }
 .verdict-scooby,
 .verdict-scooby * { color: #14532d !important; }
@@ -246,6 +271,51 @@ def patched_dashboard_source() -> str:
     source = source.replace(
         'top_n = st.slider("Rows to show", 10, 500, 100, 10)',
         'top_n = st.slider("Rows to show", 10, 500, 250, 10)',
+        1,
+    )
+    source = source.replace(
+        '        """,\n'
+        '        unsafe_allow_html=True,\n'
+        '    )\n\n\n'
+        'def scout_note(row: pd.Series) -> str:',
+        '        """,\n'
+        '        unsafe_allow_html=True,\n'
+        '    )\n'
+        '    with st.popover(f"Open {ticker} scout card", use_container_width=True):\n'
+        '        compact_scout_card(row)\n\n\n'
+        'def scout_note(row: pd.Series) -> str:',
+        1,
+    )
+    source = source.replace(
+        '    return " ".join(bits) or "No scout note available yet."\n\n\n'
+        'BOARD_LABELS = {',
+        '    return " ".join(bits) or "No scout note available yet."\n\n\n'
+        'def compact_scout_card(row: pd.Series) -> None:\n'
+        '    """Render a condensed ticker scout view for front-office popovers."""\n'
+        '    ticker = clean_text(row.get("ticker"), "???")\n'
+        '    company = clean_text(row.get("company_name"), "Unknown company")\n'
+        '    st.markdown(\n'
+        '        f"""\n'
+        '        <div class="scout-mini" style="border:1px solid #c8d9ff;background:linear-gradient(180deg,#ffffff,#f8fbff);border-radius:8px;padding:.95rem;margin-bottom:.75rem;">\n'
+        '            <div class="scout-mini-title" style="color:#0f172a;font-size:1.1rem;font-weight:950;margin-bottom:.25rem;">{ticker} - {company}</div>\n'
+        '            <div class="scout-mini-subtitle" style="color:#475569;font-size:.88rem;margin-bottom:.55rem;">\n'
+        '                {clean_text(row.get("sector"), "Unknown sector")} | Price {money(row.get("price"))} | Market cap {money(row.get("market_cap"))}\n'
+        '            </div>\n'
+        '            <div>{verdict_badge(row.get("what_i_think"))}</div>\n'
+        '            <p>{scout_note(row)}</p>\n'
+        '        </div>\n'
+        '        """,\n'
+        '        unsafe_allow_html=True,\n'
+        '    )\n'
+        '    cols = st.columns(3)\n'
+        '    with cols[0]:\n'
+        '        metric_panel("Grade", clean_text(row.get("movement_grade"), "n/a"), f"{safe_number(row.get(\'movement_score\')):.1f} move")\n'
+        '    with cols[1]:\n'
+        '        metric_panel("Flow", f"{safe_number(row.get(\'hume_flow_potential_score\')):.1f}", clean_text(row.get("flow_state"), "flow read"))\n'
+        '    with cols[2]:\n'
+        '        metric_panel("Risk", clean_text(row.get("risk_posture"), "n/a"), clean_text(row.get("event_callouts"), "No event callout"))\n'
+        '    st.info(clean_text(row.get("ranking_note"), "Use the Scout Card tab for the full factor stack and research notes."))\n\n\n'
+        'BOARD_LABELS = {',
         1,
     )
     source = source.replace('table_width = max(1900, 520 + len(board.columns) * 112)', 'table_width = max(1680, 460 + len(board.columns) * 96)', 1)
