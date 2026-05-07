@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import html
-import os
 from pathlib import Path
 from typing import Any
 
@@ -29,30 +28,6 @@ st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide")
 
 
 GITHUB_ACTIONS_URL = "https://github.com/Kastnermj/mysterymachine/actions/workflows/refresh-data.yml"
-
-
-def configured_password() -> str:
-    """Return the app password from secrets/env, with the user's fallback."""
-    try:
-        secret_password = st.secrets.get("APP_PASSWORD", "")
-    except Exception:
-        secret_password = ""
-    return str(secret_password or os.environ.get("APP_PASSWORD") or "cheesecake")
-
-
-def require_password() -> None:
-    """Stop the dashboard until the user enters the app password."""
-    if st.session_state.get("authenticated"):
-        return
-    st.title("Mystery Machine")
-    st.caption("Private research dashboard")
-    password = st.text_input("Password", type="password")
-    if password:
-        if password == configured_password():
-            st.session_state["authenticated"] = True
-            st.rerun()
-        st.error("Wrong password.")
-    st.stop()
 
 
 @st.cache_data(show_spinner=False)
@@ -949,6 +924,29 @@ st.markdown(
         border-radius: 8px;
         overflow: hidden;
     }
+    div[data-testid="stTabs"] button {
+        color: #0f172a !important;
+        font-weight: 850;
+    }
+    div[data-testid="stTabs"] button[aria-selected="true"] {
+        color: #ffffff !important;
+        background: #111827 !important;
+        border-radius: 8px 8px 0 0;
+    }
+    div[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
+        background-color: #16a34a !important;
+    }
+    div[data-testid="stMarkdownContainer"],
+    div[data-testid="stCaptionContainer"],
+    label,
+    p {
+        color: #0f172a;
+    }
+    .cfe-hero div,
+    .cfe-hero h1,
+    .cfe-hero p {
+        color: inherit;
+    }
     section[data-testid="stSidebar"] {
         background: #f7f9fd;
     }
@@ -956,8 +954,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
-require_password()
 
 st.markdown(
     """
