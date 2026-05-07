@@ -144,6 +144,32 @@ div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
 div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
     color: #ffffff !important;
 }
+section[data-testid="stSidebar"] button,
+section[data-testid="stSidebar"] [role="button"] {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: none !important;
+}
+section[data-testid="stSidebar"] button *,
+section[data-testid="stSidebar"] [role="button"] * {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+section[data-testid="stSidebar"] button[aria-pressed="true"],
+section[data-testid="stSidebar"] button[aria-selected="true"],
+section[data-testid="stSidebar"] [role="button"][aria-pressed="true"],
+section[data-testid="stSidebar"] [role="button"][aria-selected="true"] {
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
+    border-color: #1d4ed8 !important;
+}
+section[data-testid="stSidebar"] button[aria-pressed="true"] *,
+section[data-testid="stSidebar"] button[aria-selected="true"] *,
+section[data-testid="stSidebar"] [role="button"][aria-pressed="true"] *,
+section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
+    color: #ffffff !important;
+}
 .verdict-pill,
 .verdict-pill *,
 .mini-score,
