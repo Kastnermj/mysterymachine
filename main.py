@@ -22,6 +22,7 @@ def run_pipeline(config_path: str = "config.yaml", quick: bool = False) -> None:
     config = load_config(config_path)
     ensure_project_dirs(config)
     logger = configure_logging(config["paths"].get("log_file"))
+    batch_size = int(config.get("research_batch", {}).get("size", 100))
     logger.info("Starting Contrarian Flow Engine pipeline")
     show_progress(5, "Starting research engine")
 
@@ -45,7 +46,7 @@ def run_pipeline(config_path: str = "config.yaml", quick: bool = False) -> None:
     show_progress(30, f"Universe built: {len(universe)} candidates")
 
     try:
-        show_progress(32, "Pre-screening Top 100 10-bagger research batch")
+        show_progress(32, f"Pre-screening Top {batch_size} 10-bagger research batch")
         research_batch = build_research_batch(config, logger, universe)
         record_source_status(config, "research_batch", "prescreen", "ok", rows=len(research_batch))
         show_progress(34, f"Research batch ready: {len(research_batch)} candidates")
@@ -55,7 +56,7 @@ def run_pipeline(config_path: str = "config.yaml", quick: bool = False) -> None:
         show_progress(34, "Research batch pre-screen skipped; using broad universe")
 
     try:
-        show_progress(35, "Refreshing price and volume history for Top 100 batch")
+        show_progress(35, f"Refreshing price and volume history for Top {batch_size} batch")
         price_features = build_price_history_features(config, logger, research_batch)
         ok_count = int((price_features.get("price_history_status", "") == "ok").sum()) if not price_features.empty else 0
         status = "ok" if ok_count else "degraded"
@@ -67,7 +68,7 @@ def run_pipeline(config_path: str = "config.yaml", quick: bool = False) -> None:
         show_progress(55, "Price-history stage skipped; continuing with available data")
 
     try:
-        show_progress(60, "Checking SEC filing metadata and signals for Top 100 batch")
+        show_progress(60, f"Checking SEC filing metadata and signals for Top {batch_size} batch")
         sec_filings, sec_flags = build_sec_filings(config, logger, research_batch)
         record_source_status(config, "sec", "sec_submissions", "ok" if len(sec_flags) else "degraded", rows=len(sec_flags))
         logger.info("SEC metadata stage complete with %s filings and %s ticker flags", len(sec_filings), len(sec_flags))
@@ -77,7 +78,7 @@ def run_pipeline(config_path: str = "config.yaml", quick: bool = False) -> None:
         show_progress(78, "SEC metadata stage skipped; continuing with available data")
 
     try:
-        show_progress(80, "Scanning event-shock risk for Top 100 batch")
+        show_progress(80, f"Scanning event-shock risk for Top {batch_size} batch")
         event_shocks = build_event_shocks(config, logger, research_batch)
         record_source_status(config, "event_shocks", "sec_8k_text_or_metadata", "ok" if len(event_shocks) else "degraded", rows=len(event_shocks))
         logger.info("Event shock stage complete with %s rows", len(event_shocks))
