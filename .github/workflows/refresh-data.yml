@@ -2,8 +2,13 @@ name: Refresh Research Data
 
 on:
   workflow_dispatch:
+    inputs:
+      refresh_note:
+        description: "Optional note for this manual refresh"
+        required: false
+        default: "manual refresh"
   schedule:
-    # Weekdays at 10:30 UTC. This is morning US market time for most of the year.
+    # Weekdays at 10:30 UTC. This is pre-market / morning US time for most of the year.
     - cron: "30 10 * * 1-5"
 
 permissions:
@@ -12,10 +17,14 @@ permissions:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+concurrency:
+  group: refresh-research-data
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
 
     steps:
       - name: Check out repository
@@ -32,17 +41,17 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Refresh data
+      - name: Refresh Top 250 research data
         run: python main.py
 
       - name: Commit refreshed outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/processed outputs/watchlists
+          git add data/processed outputs/watchlists outputs/reports
           if git diff --cached --quiet; then
             echo "No refreshed data changes to commit."
           else
-            git commit -m "Refresh research data"
+            git commit -m "Refresh Top 250 research data"
             git push
           fi
