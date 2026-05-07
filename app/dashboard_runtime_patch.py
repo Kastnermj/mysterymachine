@@ -199,18 +199,40 @@ section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
     line-height: 1 !important;
     white-space: nowrap !important;
 }
-.draft-card + div[data-testid="stButton"] button,
-.draft-card ~ div[data-testid="stButton"] button {
-    margin-top: .45rem !important;
+.native-grade {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+.draft-native-head {
+    color: #111827 !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+}
+.draft-native-head,
+.draft-native-head * {
+    color: #111827 !important;
+    text-shadow: none !important;
+}
+.draft-card-body {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top: 0 !important;
+    margin-top: -.35rem !important;
+    min-height: 9.8rem !important;
+}
+div[data-testid="stButton"] button {
     border-radius: 8px !important;
     border: 1px solid #2563eb !important;
     background: #eff6ff !important;
     color: #1e3a8a !important;
     font-weight: 900 !important;
+    min-height: 2.15rem !important;
 }
-.draft-card + div[data-testid="stButton"] button *,
-.draft-card ~ div[data-testid="stButton"] button * {
+div[data-testid="stButton"] button *,
+div[data-testid="stButton"] button p,
+div[data-testid="stButton"] button span {
     color: #1e3a8a !important;
+    font-weight: 900 !important;
 }
 .scout-mini,
 .scout-mini * {
@@ -287,15 +309,39 @@ def patched_dashboard_source() -> str:
         1,
     )
     source = source.replace(
+        '    st.markdown(\n'
+        '        f"""\n'
+        '        <div class="draft-card">\n'
+        '            <div class="draft-topline">\n'
+        '                <span class="draft-rank">#{rank}</span>\n'
+        '                <span class="draft-ticker">{ticker}</span>\n'
+        '                <span class="draft-grade">{grade}</span>\n'
+        '            </div>',
+        '    head_left, head_mid, head_right = st.columns([1.45, 1, .8], vertical_alignment="center")\n'
+        '    with head_left:\n'
+        '        st.markdown(\n'
+        '            f\'<div class="draft-native-head"><span class="draft-rank">#{rank}</span> \'\n'
+        '            f\'<span class="draft-ticker">{ticker}</span></div>\',\n'
+        '            unsafe_allow_html=True,\n'
+        '        )\n'
+        '    with head_mid:\n'
+        '        if st.button("Scout", key=f"front_office_{rank}_{ticker}", use_container_width=True):\n'
+        '            front_office_scout_dialog(row.to_dict())\n'
+        '    with head_right:\n'
+        '        st.markdown(f\'<div class="draft-grade native-grade">{grade}</div>\', unsafe_allow_html=True)\n'
+        '    st.markdown(\n'
+        '        f"""\n'
+        '        <div class="draft-card draft-card-body">',
+        1,
+    )
+    source = source.replace(
         '        """,\n'
         '        unsafe_allow_html=True,\n'
         '    )\n\n\n'
         'def scout_note(row: pd.Series) -> str:',
         '        """,\n'
         '        unsafe_allow_html=True,\n'
-        '    )\n'
-        '    if st.button(f"Open {ticker} scout card", key=f"front_office_{rank}_{ticker}", use_container_width=True):\n'
-        '        front_office_scout_dialog(row.to_dict())\n\n\n'
+        '    )\n\n\n'
         'def scout_note(row: pd.Series) -> str:',
         1,
     )
