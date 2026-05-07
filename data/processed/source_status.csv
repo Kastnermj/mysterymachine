@@ -1,13 +1,13 @@
 timestamp_utc,stage,provider,status,rows,fallback_used,detail
-2026-05-07T15:55:44+00:00,startup,pipeline,started,,False,Full refresh started.
-2026-05-07T15:55:54+00:00,universe,seed_nasdaq_sec_quote_sources,ok,3466,True,Universe rows=3466; missing price rows=11.
-2026-05-07T15:55:54+00:00,universe,multi_source_universe,ok,3466,False,
-2026-05-07T15:55:54+00:00,research_batch,prescreen,ok,250,False,
-2026-05-07T15:56:24+00:00,prices,history_provider_mix,ok,250,False,yahoo_chart=250
-2026-05-07T15:56:24+00:00,prices,history_providers,ok,250,False,250/250 tickers with usable history.
-2026-05-07T15:57:00+00:00,sec,sec_submissions,ok,250,False,19486 filing metadata rows; 250 ticker flags.
-2026-05-07T15:57:00+00:00,sec,sec_submissions,ok,250,False,
-2026-05-07T15:57:17+00:00,event_shocks,sec_8k_text_with_metadata_fallback,ok,250,True,"8k_text=103, metadata_none=17, metadata_only=130"
-2026-05-07T15:57:17+00:00,event_shocks,sec_8k_text_or_metadata,ok,250,False,
-2026-05-07T15:58:38+00:00,fundamentals,sec_companyfacts,ok,250,True,"companyfacts_ok=230, companyfacts_sparse=18, companyfacts_unavailable=2"
-2026-05-07T15:58:38+00:00,fundamentals,sec_companyfacts,ok,250,False,
+2026-05-07T17:16:23+00:00,startup,pipeline,started,,False,Full refresh started.
+2026-05-07T17:16:30+00:00,universe,seed_nasdaq_sec_quote_sources,ok,3495,True,Universe rows=3495; missing price rows=11.
+2026-05-07T17:16:30+00:00,universe,multi_source_universe,ok,3495,False,
+2026-05-07T17:16:31+00:00,research_batch,prescreen,ok,250,False,
+2026-05-07T17:16:59+00:00,prices,history_provider_mix,ok,250,False,yahoo_chart=250
+2026-05-07T17:16:59+00:00,prices,history_providers,ok,250,False,250/250 tickers with usable history.
+2026-05-07T17:17:50+00:00,sec,sec_submissions,ok,250,False,19486 filing metadata rows; 250 ticker flags.
+2026-05-07T17:17:50+00:00,sec,sec_submissions,ok,250,False,
+2026-05-07T17:18:02+00:00,event_shocks,sec_8k_text_with_metadata_fallback,ok,250,True,"8k_text=34, metadata_none=18, metadata_only=198"
+2026-05-07T17:18:02+00:00,event_shocks,sec_8k_text_or_metadata,ok,250,False,
+2026-05-07T17:19:41+00:00,fundamentals,sec_companyfacts,ok,250,True,"companyfacts_ok=230, companyfacts_sparse=18, companyfacts_unavailable=2"
+2026-05-07T17:19:41+00:00,fundamentals,sec_companyfacts,ok,250,False,
