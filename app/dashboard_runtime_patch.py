@@ -213,12 +213,15 @@ section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
     color: #111827 !important;
     text-shadow: none !important;
 }
-.draft-card-body {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-top: 0 !important;
-    margin-top: -.35rem !important;
-    min-height: 9.8rem !important;
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: #ffffff !important;
+    border: 1px solid #d7e0ee !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, .06) !important;
+    padding: .75rem .85rem .85rem .85rem !important;
+}
+.draft-card-content {
+    margin-top: .35rem !important;
 }
 div[data-testid="stButton"] button {
     border-radius: 8px !important;
@@ -308,43 +311,51 @@ def patched_dashboard_source() -> str:
         'top_n = st.slider("Rows to show", 10, 500, 250, 10)',
         1,
     )
-    source = source.replace(
-        '    st.markdown(\n'
-        '        f"""\n'
-        '        <div class="draft-card">\n'
-        '            <div class="draft-topline">\n'
-        '                <span class="draft-rank">#{rank}</span>\n'
-        '                <span class="draft-ticker">{ticker}</span>\n'
-        '                <span class="draft-grade">{grade}</span>\n'
-        '            </div>',
-        '    head_left, head_mid, head_right = st.columns([1.45, 1, .8], vertical_alignment="center")\n'
-        '    with head_left:\n'
-        '        st.markdown(\n'
-        '            f\'<div class="draft-native-head"><span class="draft-rank">#{rank}</span> \'\n'
-        '            f\'<span class="draft-ticker">{ticker}</span></div>\',\n'
-        '            unsafe_allow_html=True,\n'
-        '        )\n'
-        '    with head_mid:\n'
-        '        if st.button("Scout", key=f"front_office_{rank}_{ticker}", use_container_width=True):\n'
-        '            front_office_scout_dialog(row.to_dict())\n'
-        '    with head_right:\n'
-        '        st.markdown(f\'<div class="draft-grade native-grade">{grade}</div>\', unsafe_allow_html=True)\n'
-        '    st.markdown(\n'
-        '        f"""\n'
-        '        <div class="draft-card draft-card-body">',
-        1,
-    )
-    source = source.replace(
-        '        """,\n'
-        '        unsafe_allow_html=True,\n'
-        '    )\n\n\n'
-        'def scout_note(row: pd.Series) -> str:',
-        '        """,\n'
-        '        unsafe_allow_html=True,\n'
-        '    )\n\n\n'
-        'def scout_note(row: pd.Series) -> str:',
-        1,
-    )
+    ticker_start = source.find("\ndef ticker_card(row: pd.Series, rank: int) -> None:")
+    scout_start = source.find("\ndef scout_note(row: pd.Series) -> str:", ticker_start)
+    if ticker_start != -1 and scout_start != -1:
+        source = (
+            source[:ticker_start]
+            + "\n"
+            + '''def ticker_card(row: pd.Series, rank: int) -> None:
+    """Render one compact front-office card."""
+    ticker = clean_text(row.get("ticker"), "???")
+    name = clean_text(row.get("company_name"), "Unknown company")
+    if len(name) > 46:
+        name = name[:43] + "..."
+    move = safe_number(row.get("movement_score"))
+    grade = clean_text(row.get("movement_grade"), "n/a")
+    risk = clean_text(row.get("risk_posture"), "No risk posture")
+    flow = clean_text(row.get("flow_state"), "No flow read")
+    with st.container(border=True):
+        head_left, head_mid, head_right = st.columns([1.35, .8, .75], vertical_alignment="center")
+        with head_left:
+            st.markdown(
+                f'<div class="draft-native-head"><span class="draft-rank">#{rank}</span> '
+                f'<span class="draft-ticker">{ticker}</span></div>',
+                unsafe_allow_html=True,
+            )
+        with head_mid:
+            if st.button("Scout", key=f"front_office_{rank}_{ticker}", use_container_width=True):
+                front_office_scout_dialog(row.to_dict())
+        with head_right:
+            st.markdown(f'<div class="draft-grade native-grade">{grade}</div>', unsafe_allow_html=True)
+        st.markdown(
+            f"""
+            <div class="draft-card-content">
+                <div class="draft-name">{name}</div>
+                <div class="draft-scorebar"><div style="width:{max(0, min(100, move)):.0f}%"></div></div>
+                <div class="draft-meta">Move {move:.1f} | Hume {safe_number(row.get("hume_flow_potential_score")):.0f} | Keynes {safe_number(row.get("keynes_repricing_potential_score")):.0f}</div>
+                <div class="draft-badge">{verdict_badge(row.get("what_i_think"))}</div>
+                <div class="draft-note">{risk} | {flow}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+'''
+            + source[scout_start:]
+        )
     source = source.replace(
         '    return " ".join(bits) or "No scout note available yet."\n\n\n'
         'BOARD_LABELS = {',
