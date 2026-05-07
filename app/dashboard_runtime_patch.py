@@ -199,6 +199,19 @@ section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
     line-height: 1 !important;
     white-space: nowrap !important;
 }
+.draft-card + div[data-testid="stButton"] button,
+.draft-card ~ div[data-testid="stButton"] button {
+    margin-top: .45rem !important;
+    border-radius: 8px !important;
+    border: 1px solid #2563eb !important;
+    background: #eff6ff !important;
+    color: #1e3a8a !important;
+    font-weight: 900 !important;
+}
+.draft-card + div[data-testid="stButton"] button *,
+.draft-card ~ div[data-testid="stButton"] button * {
+    color: #1e3a8a !important;
+}
 .scout-mini,
 .scout-mini * {
     text-shadow: none !important;
@@ -281,8 +294,8 @@ def patched_dashboard_source() -> str:
         '        """,\n'
         '        unsafe_allow_html=True,\n'
         '    )\n'
-        '    with st.popover(f"Open {ticker} scout card", use_container_width=True):\n'
-        '        compact_scout_card(row)\n\n\n'
+        '    if st.button(f"Open {ticker} scout card", key=f"front_office_{rank}_{ticker}", use_container_width=True):\n'
+        '        front_office_scout_dialog(row.to_dict())\n\n\n'
         'def scout_note(row: pd.Series) -> str:',
         1,
     )
@@ -315,6 +328,12 @@ def patched_dashboard_source() -> str:
         '    with cols[2]:\n'
         '        metric_panel("Risk", clean_text(row.get("risk_posture"), "n/a"), clean_text(row.get("event_callouts"), "No event callout"))\n'
         '    st.info(clean_text(row.get("ranking_note"), "Use the Scout Card tab for the full factor stack and research notes."))\n\n\n'
+        '@st.dialog("Front Office Scout Card", width="large")\n'
+        'def front_office_scout_dialog(row_data: dict[str, Any]) -> None:\n'
+        '    """Show a compact scout-card popout from a front-office tile."""\n'
+        '    row = pd.Series(row_data)\n'
+        '    compact_scout_card(row)\n'
+        '    st.caption("Use the Scout Card tab when you want the full 250-name research board and factor stack.")\n\n\n'
         'BOARD_LABELS = {',
         1,
     )
