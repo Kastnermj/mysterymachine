@@ -1,8 +1,9 @@
 """Small hosted-entry patch for Mystery Machine.
 
 Keep this intentionally boring. Streamlit's native sidebar worked well before,
-so this file must not override sidebar width or mobile layout. It only applies
-small structural changes plus safe visual contrast fixes for the hosted app.
+so this file must not override sidebar width, mobile layout, or global text
+colors. It only applies the small structural changes that are not yet committed
+directly into the hosted dashboard file.
 """
 
 from __future__ import annotations
@@ -29,8 +30,6 @@ header[data-testid="stHeader"] {
 #MainMenu,
 footer,
 [data-testid="stDecoration"],
-[data-testid="stStatusWidget"],
-[data-testid="stToolbar"],
 [data-testid="manage-app-button"],
 a[href*="streamlit.io/cloud"],
 a[href*="share.streamlit.io"] {
@@ -145,6 +144,44 @@ div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
 div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
     color: #ffffff !important;
 }
+.verdict-pill,
+.verdict-pill *,
+.mini-score,
+.mini-score *,
+.grade-pill,
+.grade-pill *,
+.metric-card,
+.metric-card *,
+.scout-card,
+.scout-card *,
+.toolbar-note,
+.toolbar-note * {
+    text-shadow: none !important;
+}
+.verdict-scooby,
+.verdict-scooby * { color: #14532d !important; }
+.verdict-watch,
+.verdict-watch * { color: #1e3a8a !important; }
+.verdict-mid,
+.verdict-mid * { color: #334155 !important; }
+.verdict-risk,
+.verdict-risk * { color: #92400e !important; }
+.verdict-garbage,
+.verdict-garbage * { color: #991b1b !important; }
+.mini-score,
+.mini-score *,
+.big-board-table td,
+.big-board-table td * {
+    color: #172033 !important;
+}
+.big-board-table th,
+.big-board-table th *,
+.cfe-hero,
+.cfe-hero *,
+div[data-testid="stTabs"] button[role="tab"][aria-selected="true"],
+div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
+    color: #ffffff !important;
+}
 @media (max-width: 900px) {
     header[data-testid="stHeader"] {
         min-height: 64px !important;
@@ -185,6 +222,97 @@ def patched_dashboard_source() -> str:
         'top_n = st.slider("Rows to show", 10, 500, 250, 10)',
         1,
     )
+    source = source.replace('table_width = max(1900, 520 + len(board.columns) * 112)', 'table_width = max(1680, 460 + len(board.columns) * 96)', 1)
+    source = source.replace('height: 18px;\n            margin-bottom: 6px;', 'height: 20px;\n            margin-bottom: 8px;', 1)
+    source = source.replace(
+        'background: #f8fbff;\n        }}\n        .top-scroll-inner {{',
+        'background: #f8fbff;\n            position: sticky;\n            top: 0;\n            z-index: 20;\n        }}\n'
+        '        .bottom-scroll {{\n'
+        '            width: 100%;\n'
+        '            overflow-x: auto;\n'
+        '            overflow-y: hidden;\n'
+        '            height: 20px;\n'
+        '            margin-top: 8px;\n'
+        '            border: 1px solid #ccd6e6;\n'
+        '            border-radius: 8px;\n'
+        '            background: #f8fbff;\n'
+        '            position: sticky;\n'
+        '            bottom: 0;\n'
+        '            z-index: 20;\n'
+        '        }}\n'
+        '        .scroll-inner {{',
+        1,
+    )
+    source = source.replace('font-size: 13px;', 'font-size: 12.5px;', 1)
+    source = source.replace('padding: 10px 11px;', 'padding: 9px 10px;', 1)
+    source = source.replace('padding: 9px 11px;', 'padding: 8px 10px;', 1)
+    source = source.replace('width: 86px;\n            min-width: 86px;', 'width: 80px;\n            min-width: 80px;', 1)
+    source = source.replace('max-width: 260px;\n            min-width: 180px;', 'max-width: 235px;\n            min-width: 165px;', 1)
+    source = source.replace('min-width: 92px;', 'min-width: 86px;', 1)
+    source = source.replace('min-width: 43px;', 'min-width: 39px;', 1)
+    source = source.replace('width: 45px;', 'width: 40px;', 1)
+    source = source.replace(
+        '<div class="top-scroll" id="topScroll"><div class="top-scroll-inner" id="topScrollInner"></div></div>',
+        '<div class="top-scroll synced-scroll" id="topScroll"><div class="scroll-inner" id="topScrollInner"></div></div>',
+        1,
+    )
+    source = source.replace(
+        '        </div>\n        <div class="cell-detail" id="cellDetail">',
+        '        </div>\n'
+        '        <div class="bottom-scroll synced-scroll" id="bottomScroll"><div class="scroll-inner" id="bottomScrollInner"></div></div>\n'
+        '        <div class="cell-detail" id="cellDetail">',
+        1,
+    )
+    source = source.replace(
+        'const topScrollInner = document.getElementById("topScrollInner");\n'
+        '        const boardScroll = document.getElementById("boardScroll");',
+        'const topScrollInner = document.getElementById("topScrollInner");\n'
+        '        const bottomScroll = document.getElementById("bottomScroll");\n'
+        '        const bottomScrollInner = document.getElementById("bottomScrollInner");\n'
+        '        const boardScroll = document.getElementById("boardScroll");',
+        1,
+    )
+    source = source.replace(
+        'topScrollInner.style.width = `${{width}}px`;\n'
+        '        }}\n'
+        '        syncTopScrollbarWidth();\n'
+        '        window.addEventListener("resize", syncTopScrollbarWidth);',
+        'topScrollInner.style.width = `${{width}}px`;\n'
+        '            bottomScrollInner.style.width = `${{width}}px`;\n'
+        '        }}\n'
+        '        function syncScrollLeft(source, targetA, targetB) {{\n'
+        '            targetA.scrollLeft = source.scrollLeft;\n'
+        '            targetB.scrollLeft = source.scrollLeft;\n'
+        '        }}\n'
+        '        syncTopScrollbarWidth();\n'
+        '        requestAnimationFrame(syncTopScrollbarWidth);\n'
+        '        setTimeout(syncTopScrollbarWidth, 250);\n'
+        '        setTimeout(syncTopScrollbarWidth, 1000);\n'
+        '        if (window.ResizeObserver) {{\n'
+        '            new ResizeObserver(syncTopScrollbarWidth).observe(table);\n'
+        '            new ResizeObserver(syncTopScrollbarWidth).observe(boardScroll);\n'
+        '        }}\n'
+        '        window.addEventListener("resize", syncTopScrollbarWidth);',
+        1,
+    )
+    source = source.replace(
+        'boardScroll.scrollLeft = topScroll.scrollLeft;\n'
+        '            syncingBoard = false;\n'
+        '        }});\n'
+        '        boardScroll.addEventListener("scroll", () => {{',
+        'syncScrollLeft(topScroll, boardScroll, bottomScroll);\n'
+        '            syncingBoard = false;\n'
+        '        }});\n'
+        '        bottomScroll.addEventListener("scroll", () => {{\n'
+        '            if (syncingTop) return;\n'
+        '            syncingBoard = true;\n'
+        '            syncScrollLeft(bottomScroll, boardScroll, topScroll);\n'
+        '            syncingBoard = false;\n'
+        '        }});\n'
+        '        boardScroll.addEventListener("scroll", () => {{',
+        1,
+    )
+    source = source.replace('topScroll.scrollLeft = boardScroll.scrollLeft;', 'syncScrollLeft(boardScroll, topScroll, bottomScroll);', 1)
     source = source.replace('"Math Playbook"', '"Math Appendix"')
     source = source.replace('st.subheader("Top 100 Research Batch")', 'st.subheader("Top 250 Research Batch")', 1)
     source = source.replace(
