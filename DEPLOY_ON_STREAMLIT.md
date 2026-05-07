@@ -71,7 +71,18 @@ Streamlit then redeploys or reruns from the updated repository data.
 
 ## Privacy
 
+The app has a simple password gate. Default password:
+
+`cheesecake`
+
+For a better setup, put this in Streamlit secrets:
+
+```toml
+APP_PASSWORD = "your-password-here"
+```
+
+Then the app will use the secret instead of the fallback password.
+
 Start private. Invite viewers through Streamlit if needed.
 
 This app is a research watchlist engine, not investment advice.
-

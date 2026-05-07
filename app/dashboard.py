@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import os
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +26,33 @@ MATH_APPENDIX_PATH = ROOT / "docs" / "math_appendix.md"
 
 
 st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide")
+
+
+GITHUB_ACTIONS_URL = "https://github.com/Kastnermj/mysterymachine/actions/workflows/refresh-data.yml"
+
+
+def configured_password() -> str:
+    """Return the app password from secrets/env, with the user's fallback."""
+    try:
+        secret_password = st.secrets.get("APP_PASSWORD", "")
+    except Exception:
+        secret_password = ""
+    return str(secret_password or os.environ.get("APP_PASSWORD") or "cheesecake")
+
+
+def require_password() -> None:
+    """Stop the dashboard until the user enters the app password."""
+    if st.session_state.get("authenticated"):
+        return
+    st.title("Mystery Machine")
+    st.caption("Private research dashboard")
+    password = st.text_input("Password", type="password")
+    if password:
+        if password == configured_password():
+            st.session_state["authenticated"] = True
+            st.rerun()
+        st.error("Wrong password.")
+    st.stop()
 
 
 @st.cache_data(show_spinner=False)
@@ -94,6 +122,24 @@ def health_label(status_frame: pd.DataFrame) -> tuple[str, str]:
     if statuses.str.contains("degraded|reused_cache|skipped").any():
         return "Mixed", "Some data came from fallback/cache or was incomplete"
     return "Healthy", "All recorded stages reported usable data"
+
+
+def refresh_label(status_frame: pd.DataFrame) -> tuple[str, str]:
+    """Summarize the latest refresh timestamp."""
+    if status_frame.empty or "timestamp_utc" not in status_frame.columns:
+        return "Unknown", "No refresh timestamp found"
+    timestamps = pd.to_datetime(status_frame["timestamp_utc"], errors="coerce", utc=True).dropna()
+    if timestamps.empty:
+        return "Unknown", "No usable refresh timestamp found"
+    latest = timestamps.max()
+    age_hours = max(0.0, (pd.Timestamp.now(tz="UTC") - latest).total_seconds() / 3600)
+    if age_hours < 1:
+        age = f"{age_hours * 60:.0f} minutes ago"
+    elif age_hours < 48:
+        age = f"{age_hours:.1f} hours ago"
+    else:
+        age = f"{age_hours / 24:.1f} days ago"
+    return latest.strftime("%Y-%m-%d %H:%M UTC"), age
 
 
 def metric_panel(label: str, value: Any, note: str = "") -> None:
@@ -282,7 +328,7 @@ def board_cell(column: str, value: Any) -> str:
 
 
 def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
-    """Render a scrollable table with frozen ticker/company/verdict columns."""
+    """Render a scrollable table with a frozen ticker column."""
     board = frame[available_columns(frame, columns)].copy()
     if board.empty:
         st.info("No rows match the current board filters.")
@@ -292,7 +338,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
     for index, column in enumerate(board.columns):
         label = BOARD_LABELS.get(column, column.replace("_", " ").title())
         classes = ["col-" + column]
-        if column in {"ticker", "company_name", "what_i_think"}:
+        if column == "ticker":
             classes.append("sticky-" + column)
         sort_type = "number" if column in BOARD_NUMERIC_COLUMNS else "text"
         headers.append(
@@ -305,7 +351,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
         cells = []
         for column in board.columns:
             classes = ["col-" + column]
-            if column in {"ticker", "company_name", "what_i_think"}:
+            if column == "ticker":
                 classes.append("sticky-" + column)
             label = BOARD_LABELS.get(column, column.replace("_", " ").title())
             sort_value = html.escape(board_sort_value(column, row.get(column)), quote=True)
@@ -400,25 +446,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             color: #0f172a;
             box-shadow: 1px 0 0 #d7deea;
         }}
-        .big-board-table .sticky-company_name {{
-            position: sticky;
-            left: 86px;
-            z-index: 6;
-            width: 220px;
-            min-width: 220px;
-            box-shadow: 1px 0 0 #d7deea;
-        }}
-        .big-board-table .sticky-what_i_think {{
-            position: sticky;
-            left: 306px;
-            z-index: 6;
-            width: 185px;
-            min-width: 185px;
-            box-shadow: 1px 0 0 #d7deea;
-        }}
-        .big-board-table th.sticky-ticker,
-        .big-board-table th.sticky-company_name,
-        .big-board-table th.sticky-what_i_think {{
+        .big-board-table th.sticky-ticker {{
             z-index: 8;
             background: #0b1220;
         }}
@@ -882,25 +910,7 @@ st.markdown(
         color: #0f172a;
         box-shadow: 1px 0 0 #d7deea;
     }
-    .big-board-table .sticky-company_name {
-        position: sticky;
-        left: 86px;
-        z-index: 6;
-        width: 220px;
-        min-width: 220px;
-        box-shadow: 1px 0 0 #d7deea;
-    }
-    .big-board-table .sticky-what_i_think {
-        position: sticky;
-        left: 306px;
-        z-index: 6;
-        width: 185px;
-        min-width: 185px;
-        box-shadow: 1px 0 0 #d7deea;
-    }
-    .big-board-table th.sticky-ticker,
-    .big-board-table th.sticky-company_name,
-    .big-board-table th.sticky-what_i_think {
+    .big-board-table th.sticky-ticker {
         z-index: 8;
         background: #0b1220;
     }
@@ -946,6 +956,8 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+require_password()
 
 st.markdown(
     """
@@ -1136,14 +1148,15 @@ if not filtered.empty:
         filtered = filtered.sort_values(sort_by, ascending=(sort_direction == "Low to high"), na_position="last")
     filtered = filtered.head(top_n)
 
-watchlist_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
-    ["Big Board", "Scout Card", "Data Room", "Math Playbook"]
+watchlist_tab, mobile_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
+    ["Big Board", "Mobile Lite", "Scout Card", "Data Room", "Math Playbook"]
 )
 
 with watchlist_tab:
     if display_scores.empty:
         st.info("No theory scores found yet. Run the refresh launcher to build the watchlist.")
     else:
+        refreshed_at, refreshed_age = refresh_label(source_status)
         col1, col2, col3, col4, col5, col6 = st.columns(6)
         with col1:
             metric_panel("Research Batch", len(display_scores), "Top candidates currently scored")
@@ -1166,7 +1179,7 @@ with watchlist_tab:
                 metric_panel("History Coverage", "n/a", "No price-history file")
 
         health, health_note = health_label(source_status)
-        h1, h2, h3 = st.columns([1, 1, 2])
+        h1, h2, h3, h4 = st.columns([1, 1, 1.4, 1.2])
         with h1:
             metric_panel("Data Health", health, health_note)
         with h2:
@@ -1180,6 +1193,13 @@ with watchlist_tab:
                 latest = source_status.tail(1).iloc[0]
                 latest_detail = f"{latest.get('stage', '')} / {latest.get('provider', '')}: {latest.get('status', '')}"
             metric_panel("Latest Source Note", clean_text(latest_detail), "Most recent refresh event")
+        with h4:
+            metric_panel("Last Refreshed", refreshed_at, refreshed_age)
+
+        with st.expander("Refresh The Hosted App"):
+            st.write("Use GitHub Actions to refresh the data behind the hosted Streamlit app.")
+            st.link_button("Open Refresh Workflow", GITHUB_ACTIONS_URL)
+            st.caption("On GitHub, choose Run workflow. When it finishes, Streamlit will use the refreshed files from the repo.")
 
         st.markdown(
             f"""
@@ -1249,7 +1269,7 @@ with watchlist_tab:
             "factor_stack_note",
         ]
         table_columns = core_columns + advanced_columns if advanced_mode else core_columns
-        st.caption("Ticker, company, and your verdict stay frozen while the rest of the board scrolls.")
+        st.caption("Ticker stays frozen while the rest of the board scrolls.")
         render_big_board(filtered, table_columns)
 
         with st.expander("Classic Streamlit table backup"):
@@ -1264,6 +1284,46 @@ with watchlist_tab:
             st.subheader("Personality Label Mix")
             label_counts = display_scores["what_i_think"].value_counts().rename_axis("label").reset_index(name="count")
             st.bar_chart(label_counts.set_index("label"))
+
+with mobile_tab:
+    st.subheader("Mobile Lite")
+    st.caption("A card-first view for phones and narrow screens. Same data, less table wrestling.")
+    mobile_source = filtered if not filtered.empty else display_scores
+    if mobile_source.empty:
+        st.info("No scored tickers available yet.")
+    else:
+        mobile_limit = st.slider("Cards to show", 5, 100, min(25, len(mobile_source)), 5, key="mobile_limit")
+        for rank, (_, row) in enumerate(mobile_source.head(mobile_limit).iterrows(), start=1):
+            ticker = clean_text(row.get("ticker"), "???")
+            company = clean_text(row.get("company_name"), "Unknown company")
+            with st.container(border=True):
+                top_left, top_right = st.columns([2, 1])
+                with top_left:
+                    st.markdown(f"### #{rank} {ticker}")
+                    st.caption(company)
+                    st.markdown(verdict_badge(row.get("what_i_think")), unsafe_allow_html=True)
+                with top_right:
+                    st.metric(clean_text(row.get("movement_grade"), "n/a"), f"{safe_number(row.get('movement_score')):.1f}")
+                    st.caption(f"Price {money(row.get('price'))}")
+
+                score_cols = st.columns(4)
+                with score_cols[0]:
+                    st.metric("Hume", f"{safe_number(row.get('hume_flow_potential_score')):.1f}")
+                with score_cols[1]:
+                    st.metric("Keynes", f"{safe_number(row.get('keynes_repricing_potential_score')):.1f}")
+                with score_cols[2]:
+                    st.metric("Austrian", f"{safe_number(row.get('austrian_mispricing_score')):.1f}")
+                with score_cols[3]:
+                    st.metric("Data", f"{safe_number(row.get('data_confidence_score')):.1f}")
+
+                st.write(clean_text(row.get("ranking_note"), "No ranking note."))
+                with st.expander("More details"):
+                    st.write(f"**Risk:** {clean_text(row.get('risk_posture'), 'n/a')}")
+                    st.write(f"**Flow:** {clean_text(row.get('flow_state'), 'n/a')}")
+                    st.write(f"**Setup:** {clean_text(row.get('setup_type'), 'n/a')}")
+                    st.write(f"**Event:** {clean_text(row.get('event_callouts'), 'No major event callout')}")
+                    st.write(f"**Long-term:** {clean_text(row.get('long_term_investment_label'), 'n/a')} ({safe_number(row.get('long_term_investment_score')):.1f})")
+                    st.write(clean_text(row.get("final_rank_interpretation"), "No final rank interpretation."))
 
 with ticker_tab:
     ticker_source = filtered if not filtered.empty else display_scores
