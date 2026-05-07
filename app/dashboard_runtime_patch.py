@@ -215,10 +215,10 @@ section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
 }
 div[data-testid="stVerticalBlockBorderWrapper"] {
     background: #ffffff !important;
-    border: 1px solid #d7e0ee !important;
+    border: 2px solid #c7d4e8 !important;
     border-radius: 8px !important;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, .06) !important;
-    padding: .75rem .85rem .85rem .85rem !important;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, .10) !important;
+    padding: .78rem .9rem .9rem .9rem !important;
 }
 .draft-card-content {
     margin-top: .35rem !important;
@@ -229,7 +229,10 @@ div[data-testid="stButton"] button {
     background: #eff6ff !important;
     color: #1e3a8a !important;
     font-weight: 900 !important;
-    min-height: 2.15rem !important;
+    min-height: 2.05rem !important;
+    padding-left: .85rem !important;
+    padding-right: .85rem !important;
+    width: 100% !important;
 }
 div[data-testid="stButton"] button *,
 div[data-testid="stButton"] button p,
@@ -328,7 +331,7 @@ def patched_dashboard_source() -> str:
     risk = clean_text(row.get("risk_posture"), "No risk posture")
     flow = clean_text(row.get("flow_state"), "No flow read")
     with st.container(border=True):
-        head_left, head_mid, head_right = st.columns([1.35, .8, .75], vertical_alignment="center")
+        head_left, head_mid, head_right = st.columns([1.02, 1.25, .58], vertical_alignment="center")
         with head_left:
             st.markdown(
                 f'<div class="draft-native-head"><span class="draft-rank">#{rank}</span> '
