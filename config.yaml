@@ -1,0 +1,399 @@
+project:
+  app_name: "Contrarian 10-Bagger Engine"
+
+paths:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  cache_dir: "data/cache"
+  watchlists_dir: "outputs/watchlists"
+  reports_dir: "outputs/reports"
+  log_file: "outputs/reports/engine.log"
+  universe_output: "data/processed/universe.csv"
+  sec_filings_output: "data/processed/sec_filings.csv"
+  sec_flags_output: "data/processed/sec_filing_flags.csv"
+  sec_signals_output: "data/processed/sec_filing_signals.csv"
+  event_shocks_output: "data/processed/event_shocks.csv"
+  fundamentals_output: "data/processed/fundamentals_stub.csv"
+  price_history_features_output: "data/processed/price_history_features.csv"
+  research_batch_output: "data/processed/research_batch.csv"
+  source_status_output: "data/processed/source_status.csv"
+  theory_scores_output: "data/processed/theory_scores.csv"
+  ranked_watchlist_output: "outputs/watchlists/repricing_sequence_watchlist.csv"
+
+universe:
+  source_priority:
+    - "seed_csv"
+    - "nasdaq_screener"
+    - "sec_company_names"
+    - "yahoo_quote"
+    - "stooq_daily"
+  seed_csv: "data/raw/seed_universe.csv"
+  use_nasdaq_screener: true
+  nasdaq_screener_url: "https://api.nasdaq.com/api/screener/stocks"
+  nasdaq_exchanges:
+    - "nasdaq"
+    - "nyse"
+    - "amex"
+  metadata_csv: "data/raw/ticker_metadata.csv"
+  tickers:
+    - JOB
+    - RAVE
+    - ELTK
+    - USEG
+    - LCTX
+    - OPTT
+    - WATT
+    - HYSR
+    - AQMS
+    - CLIR
+    - ABEV
+    - ADTX
+    - AGRI
+    - AMTX
+    - AREB
+    - ASRT
+    - ATOS
+    - AULT
+    - BBAI
+    - BNGO
+    - BTBT
+    - CENN
+    - CGTX
+    - CLNE
+    - CRKN
+    - CTMX
+    - EOSE
+    - FCEL
+    - FFIE
+    - FUBO
+    - GERN
+    - GOSS
+    - GRAB
+    - HIVE
+    - HITI
+    - HUMA
+    - IDEX
+    - INDI
+    - INVZ
+    - KULR
+    - LAZR
+    - LIDR
+    - LUMN
+    - MESA
+    - MVIS
+    - NKLA
+    - NNDM
+    - OPEN
+    - ORGN
+    - PLUG
+    - POWW
+    - PSNY
+    - REKR
+    - RGTI
+    - RKLB
+    - SENS
+    - SOUN
+    - SPCE
+    - TELL
+    - TLRY
+    - TRVG
+    - VUZI
+    - WULF
+    - XELA
+    - ZOM
+  filters:
+    max_price: 20.0
+    min_avg_volume: 100000
+    min_dollar_volume: 50000
+    max_market_cap: 1000000000
+    include_otc: false
+  illiquidity:
+    flag_below_avg_volume: 100000
+    flag_below_dollar_volume: 50000
+    keep_illiquid: true
+  quote_batch_size: 80
+  use_yahoo_quotes: true
+  max_stooq_fallback_tickers: 0
+  stooq_fallback_timeout_seconds: 6
+
+refresh:
+  use_network: true
+  request_timeout_seconds: 20
+  retry_count: 2
+  cache_ttl_hours: 6
+
+research_batch:
+  size: 100
+  focus: "10_bagger_candidates"
+  require_core_data_when_possible: true
+  price_band_minimums:
+    under_1: 35
+    between_1_and_5: 25
+    between_5_and_20: 20
+
+prices:
+  enabled: true
+  provider: "yahoo_chart"
+  fallback_providers:
+    - "stooq"
+  history_days: 260
+  fetch_max_history: true
+  yahoo_history_range: "max"
+  max_tickers_per_run: 100
+  history_timeout_seconds: 6
+  selection_strategy: "prioritized"
+  min_rows_for_features: 30
+
+sec:
+  enabled: true
+  user_agent_env: "SEC_USER_AGENT"
+  default_user_agent: "ContrarianFlowEngine research@example.com"
+  company_tickers_url: "https://www.sec.gov/files/company_tickers.json"
+  submissions_url: "https://data.sec.gov/submissions/CIK{cik}.json"
+  companyfacts_url: "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json"
+  max_recent_filings_per_ticker: 80
+  max_tickers_per_run: 100
+  high_signal_forms:
+    - "10-K"
+    - "10-Q"
+    - "8-K"
+    - "S-1"
+    - "F-1"
+    - "F-1/A"
+    - "S-3"
+    - "F-3"
+    - "F-3/A"
+    - "424B"
+    - "424B1"
+    - "424B2"
+    - "424B3"
+    - "424B4"
+    - "424B5"
+  recent_activity_days: 45
+  activity_spike_days: 14
+  financing_lookback_days: 365
+  never_block_pipeline: true
+
+event_shocks:
+  enabled: true
+  max_detail_tickers: 100
+  max_8k_documents_per_ticker: 1
+  detail_timeout_seconds: 4
+  inspect_suspicious_outside_batch: false
+  cache_ttl_hours: 24
+  metadata_only_penalty: 0
+  routine_detail_penalty: 0
+  callout_only_detail_labels:
+    - "major_financing_or_warrants"
+    - "restructuring_or_workforce"
+    - "asset_sale_or_impairment"
+
+fundamentals:
+  enabled: true
+  provider: "sec_companyfacts"
+  max_tickers_per_run: 100
+
+scoring:
+  enabled: true
+  zombie_decay:
+    enabled: true
+    age_start_years: 3
+    age_full_years: 10
+    max_penalty: 18
+    dynamism_offset_strength: 0.12
+    high_dynamism_threshold: 65
+  event_overrides:
+    CLGN:
+      event_shock_penalty: 28
+      thesis_break_risk_score: 85
+      catalyst_probability_adjustment: -15
+      note: "AbbVie/Allergan terminated the development agreement effective June 8, 2026; CollPlant announced roughly 50% workforce reduction and runway extension into Q4 2026. Treat as partner-loss reset, not ordinary filing activity."
+  sequence_thresholds:
+    austrian_high: 70
+    hume_high: 55
+    keynes_high: 70
+  thresholds:
+    high_score: 70
+    low_price: 1.0
+    very_low_market_cap: 50000000
+    small_market_cap: 300000000
+    ten_bagger_market_cap_ceiling: 1000000000
+    high_dollar_volume: 1000000
+    low_dollar_volume: 50000
+    relative_mispricing_high: 65
+    asymmetry_high: 65
+  narrative_sectors:
+    - "Technology"
+    - "Healthcare"
+    - "Health Care"
+    - "Energy"
+    - "Industrials"
+    - "Communication Services"
+  narrative_terms:
+    - "AI"
+    - "biotech"
+    - "hydrogen"
+    - "battery"
+    - "quantum"
+    - "space"
+    - "EV"
+    - "crypto"
+    - "defense"
+    - "cannabis"
+    - "renewable"
+  animal_spirits_terms:
+    - "AI"
+    - "artificial intelligence"
+    - "quantum"
+    - "space"
+    - "defense"
+    - "biotech"
+    - "oncology"
+    - "weight loss"
+    - "GLP"
+    - "robotics"
+    - "automation"
+    - "battery"
+    - "uranium"
+    - "nuclear"
+    - "data center"
+    - "crypto"
+    - "bitcoin"
+    - "EV"
+    - "hydrogen"
+    - "renewable"
+    - "cannabis"
+    - "psychedelic"
+  narrative_evolution_terms:
+    efficiency_cost_cutting:
+      - "autonomous operations"
+      - "workflow automation"
+      - "process optimization"
+      - "digital workforce"
+      - "operational intelligence"
+      - "cost reduction"
+      - "cost savings"
+      - "efficiency gains"
+      - "margin expansion"
+      - "operating leverage"
+    physical_automation:
+      - "robotic"
+      - "robotics"
+      - "warehouse automation"
+      - "autonomous logistics"
+      - "last-mile"
+      - "service automation"
+      - "fulfillment automation"
+      - "robotics-as-a-service"
+      - "commercial automation"
+    defense_dual_use:
+      - "autonomous defense"
+      - "unmanned"
+      - "drone"
+      - "ISR"
+      - "surveillance"
+      - "electronic warfare"
+      - "defense systems"
+      - "dual-use"
+      - "border security"
+    power_infrastructure:
+      - "grid modernization"
+      - "distributed energy"
+      - "microgrid"
+      - "power resilience"
+      - "energy density"
+      - "data center power"
+      - "transformer"
+      - "interconnection"
+      - "power generation"
+      - "liquid cooling"
+      - "small modular reactor"
+    data_infrastructure:
+      - "data pipeline"
+      - "data infrastructure"
+      - "edge computing"
+      - "inference"
+      - "latency"
+      - "cloud infrastructure"
+      - "data center"
+      - "compute infrastructure"
+    resource_constraints:
+      - "water efficiency"
+      - "desalination"
+      - "industrial recycling"
+      - "resource optimization"
+      - "waste-to-value"
+      - "water reuse"
+      - "water treatment"
+      - "critical minerals"
+    supply_chain_resilience:
+      - "nearshoring"
+      - "onshoring"
+      - "domestic manufacturing"
+      - "supply chain resilience"
+      - "strategic sourcing"
+      - "reshoring"
+      - "supply chain sovereignty"
+    compliance_security:
+      - "regtech"
+      - "cyber resilience"
+      - "identity security"
+      - "compliance automation"
+      - "cybersecurity"
+    human_replacement:
+      - "augmented workforce"
+      - "digital assistant"
+      - "agent-based"
+      - "customer automation"
+    space_frontier:
+      - "satellite infrastructure"
+      - "space-based sensing"
+      - "orbital logistics"
+    healthspan_maintenance:
+      - "healthspan"
+      - "longevity"
+      - "GLP-1"
+      - "muscle preservation"
+      - "biomarker"
+      - "diagnostics"
+      - "early detection"
+      - "microbiome"
+    materials_science:
+      - "advanced materials"
+      - "composite"
+      - "battery chemistry"
+      - "lightweight materials"
+      - "materials science"
+  useful_industries:
+    - "Electrical"
+    - "Semiconductor"
+    - "Aerospace"
+    - "Defense"
+    - "Oil & Gas"
+    - "Medical"
+    - "Diagnostics"
+    - "Industrial"
+    - "Infrastructure"
+    - "Software"
+  constraint_terms:
+    - "energy"
+    - "oil"
+    - "gas"
+    - "uranium"
+    - "mining"
+    - "agriculture"
+    - "food"
+    - "water"
+    - "housing"
+    - "materials"
+  weights:
+    death_overpriced: 1.25
+    survival_plausibility: 1.10
+    dilution_risk_inverse: 0.90
+    liquidation_asymmetry: 1.00
+    catalyst_optionality: 1.05
+    macro_cycle_fit: 0.95
+    flow_reversal: 0.75
+    narrative_reflexivity: 0.85
+    policy_optionality: 0.70
+    relative_mispricing: 1.00

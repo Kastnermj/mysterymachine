@@ -1,0 +1,21 @@
+WINDOWS USERS
+=============
+
+1. Unzip the whole penny_mispricing_engine folder.
+2. Open the folder.
+3. Double-click:
+
+   Open Contrarian Flow Engine.cmd
+
+   This opens the dashboard.
+
+4. To rebuild the research data, double-click:
+
+   Refresh Contrarian Flow Engine Data.cmd
+
+The launcher creates and uses a local .venv folder automatically.
+If Python is missing, install Python 3 from:
+https://www.python.org/downloads/windows/
+
+This is research software only. It does not create buy/sell recommendations.
+

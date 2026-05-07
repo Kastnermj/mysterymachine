@@ -1,0 +1,6 @@
+ticker,company_name,price,market_cap,volume,avg_volume,dollar_volume,exchange,sector,industry,float,universe_reason
+JOB,GEE Group Inc.,0.30,40000000,350000,300000,105000,NYSE American,Industrials,Staffing & Employment Services,,Sub-dollar staffing microcap with cyclical recovery sensitivity.
+RAVE,Rave Restaurant Group Inc.,2.00,30000000,120000,140000,240000,NASDAQ,Consumer Cyclical,Restaurants,,Small franchisor with consumer-cycle and brand optionality.
+ELTK,Eltek Ltd.,4.80,70000000,90000,110000,432000,NASDAQ,Technology,Electronic Components,,Small component maker tied to industrial and defense narratives.
+USEG,U.S. Energy Corp.,1.50,40000000,200000,180000,300000,NASDAQ,Energy,Oil & Gas E&P,,Tiny energy producer with commodity-cycle optionality.
+LCTX,Lineage Cell Therapeutics Inc.,1.00,180000000,600000,650000,600000,NYSE American,Healthcare,Biotechnology,,Biotech optionality with financing and catalyst risk.

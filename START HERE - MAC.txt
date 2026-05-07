@@ -1,0 +1,48 @@
+MAC USERS
+=========
+
+1. EASIEST / RECOMMENDED
+
+   Open:
+
+   MAC EASY RUN - COPY PASTE.txt
+
+   Follow the numbered steps in that file.
+
+   This avoids Apple's unsigned-app warning by running the app from Terminal with copy/paste text.
+   It still runs internally on your Mac and uses a local .venv folder.
+
+2. TO REBUILD THE DATA
+
+   Open:
+
+   MAC EASY REFRESH - COPY PASTE.txt
+
+   Follow the numbered steps in that file.
+
+
+CLICKABLE OPTION:
+
+1. Unzip the whole penny_mispricing_engine folder.
+2. Open the folder.
+3. Double-click:
+
+   Open Contrarian 10-Bagger Engine.command
+
+   This opens the dashboard.
+
+4. To rebuild the research data, double-click:
+
+   Refresh Contrarian 10-Bagger Engine Data.command
+
+The launcher creates and uses a local .venv folder automatically.
+If Python is missing, install Python 3 from:
+https://www.python.org/downloads/macos/
+
+If macOS says the launcher is not allowed or is not executable, open Terminal in this folder and run:
+
+chmod +x *.command
+
+Then double-click the launcher again.
+
+This is research software only. It does not create buy/sell recommendations.

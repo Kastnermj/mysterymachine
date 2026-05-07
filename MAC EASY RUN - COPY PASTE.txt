@@ -1,0 +1,48 @@
+MAC EASY RUN - COPY / PASTE
+===========================
+
+Use this to open the dashboard on a Mac.
+This runs internally on the Mac. It does not use the blocked .command launcher.
+
+1. Unzip the package.
+
+2. Open Terminal.
+
+3. Type this into Terminal, including the space after cd:
+
+   cd 
+
+4. Drag the unzipped penny_mispricing_engine folder into Terminal.
+
+5. Press Enter.
+
+6. Copy and paste this whole block into Terminal.
+
+   xattr -dr com.apple.quarantine . 2>/dev/null || true
+   PROJECT_DIR=""
+   if [ -f requirements.txt ] && [ -f main.py ] && [ -f app/dashboard.py ]; then
+     PROJECT_DIR="."
+   else
+     PROJECT_DIR="$(find . -maxdepth 5 -type f -path "*/app/dashboard.py" -exec sh -c 'd="$(dirname "$(dirname "$1")")"; [ -f "$d/requirements.txt" ] && [ -f "$d/main.py" ] && printf "%s\n" "$d"' sh {} \; | head -n 1)"
+     if [ -z "$PROJECT_DIR" ]; then
+       echo "Could not find the app folder."
+       echo "You need the unzipped folder that contains main.py, requirements.txt, and app/dashboard.py."
+       echo "Try dragging the penny_mispricing_engine folder into Terminal after typing cd."
+       exit 1
+     fi
+   fi
+   cd "$PROJECT_DIR"
+   echo "Using app folder: $(pwd)"
+   python3 -m venv .venv
+   .venv/bin/python -m pip install --disable-pip-version-check --upgrade pip -q
+   .venv/bin/python -m pip install --disable-pip-version-check -q -r requirements.txt
+   .venv/bin/python main.py --quick
+   .venv/bin/python -m streamlit run app/dashboard.py
+
+7. Press Enter.
+
+8. Keep the Terminal window open while using the dashboard.
+
+If the Mac says python3 was not found, install Python 3:
+https://www.python.org/downloads/macos/
+
