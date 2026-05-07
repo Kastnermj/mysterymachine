@@ -31,34 +31,10 @@ header[data-testid="stHeader"] {
 section[data-testid="stSidebar"] {
     background: #f7f9fd !important;
     border-right: 1px solid #d7deea !important;
-    min-width: 18rem !important;
-    max-width: 22rem !important;
 }
 section[data-testid="stSidebar"] * {
     color: #0f172a !important;
     text-shadow: none !important;
-}
-[data-testid="stSidebarCollapsedControl"] {
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 100000 !important;
-}
-[data-testid="stSidebarCollapsedControl"] button,
-button[aria-label*="sidebar" i],
-button[title*="sidebar" i] {
-    background: #111827 !important;
-    color: #ffffff !important;
-    border: 1px solid #334155 !important;
-    border-radius: 999px !important;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, .25) !important;
-    opacity: 1 !important;
-}
-[data-testid="stSidebarCollapsedControl"] svg,
-button[aria-label*="sidebar" i] svg,
-button[title*="sidebar" i] svg {
-    color: #ffffff !important;
-    fill: #ffffff !important;
-    stroke: #ffffff !important;
 }
 div[data-testid="stTabs"] div[role="tablist"] {
     position: sticky !important;
@@ -108,10 +84,23 @@ div[data-testid="stExpander"] summary p {
 .block-container p,
 .block-container li,
 .block-container label,
-.block-container span,
-.block-container div[data-testid="stMarkdownContainer"] {
+.block-container div[data-testid="stMarkdownContainer"],
+[data-testid="stMetric"],
+[data-testid="stMetric"] *,
+[data-testid="stCaptionContainer"],
+[data-testid="stCaptionContainer"] *,
+[data-testid="stWidgetLabel"],
+[data-testid="stWidgetLabel"] *,
+[data-baseweb="select"] *,
+input,
+textarea {
     color: #0f172a !important;
     text-shadow: none !important;
+}
+[data-baseweb="select"] > div,
+input,
+textarea {
+    background: #ffffff !important;
 }
 .cfe-hero,
 .cfe-hero h1,
@@ -123,15 +112,6 @@ div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
     color: #ffffff !important;
 }
 @media (max-width: 900px) {
-    section[data-testid="stSidebar"] {
-        min-width: 16rem !important;
-        max-width: 86vw !important;
-    }
-    [data-testid="stSidebarCollapsedControl"] {
-        position: fixed !important;
-        top: .65rem !important;
-        left: .65rem !important;
-    }
     .block-container {
         padding-left: .85rem !important;
         padding-right: .85rem !important;
