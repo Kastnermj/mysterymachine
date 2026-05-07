@@ -31,6 +31,8 @@ header[data-testid="stHeader"] {
 section[data-testid="stSidebar"] {
     background: #f7f9fd !important;
     border-right: 1px solid #d7deea !important;
+    min-width: 18rem !important;
+    max-width: 22rem !important;
 }
 section[data-testid="stSidebar"] * {
     color: #0f172a !important;
@@ -97,11 +99,6 @@ def patched_dashboard_source() -> str:
         1,
     )
     source = source.replace('"Math Playbook"', '"Math Appendix"')
-    source = source.replace(
-        'st.caption("Cleaner by default. Turn on Advanced columns in the sidebar when you want the full model guts.")',
-        'st.caption("Cleaner by default. Turn on Advanced columns in the sidebar when you want the full model guts.")',
-        1,
-    )
     source = source.replace('st.subheader("Top 100 Research Batch")', 'st.subheader("Top 250 Research Batch")', 1)
     return source
 
