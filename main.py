@@ -8,7 +8,7 @@ from modules.fundamentals import build_fundamentals_stub
 from modules.event_shocks import build_event_shocks
 from modules.prices import build_price_history_features
 from modules.research_batch import build_research_batch
-from modules.scoring import build_theory_scores
+from modules.scoring_batch import build_theory_scores
 from modules.sec_filings import build_sec_filings
 from modules.universe import build_universe
 from utils.logging_config import configure_logging
@@ -98,7 +98,7 @@ def run_pipeline(config_path: str = "config.yaml", quick: bool = False) -> None:
         show_progress(88, "Fundamentals skipped; continuing")
 
     try:
-        show_progress(92, "Scoring Austrian, Hume, Keynes, relative mispricing, and asymmetry")
+        show_progress(92, f"Scoring final Top {batch_size} post-prescreen research board")
         theory_scores = build_theory_scores(config, logger)
         record_source_status(config, "scoring", "local_model", "ok" if len(theory_scores) else "degraded", rows=len(theory_scores))
         logger.info("Theory scoring stage complete with %s rows", len(theory_scores))
