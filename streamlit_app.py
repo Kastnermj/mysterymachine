@@ -56,88 +56,87 @@ def _render_full_universe_scout() -> None:
     scores = _load_csv(str(THEORY_SCORES_PATH))
 
     with st.sidebar:
-        st.markdown("### 🔎 Full Universe Scout")
-        st.caption("Searches the broad universe first. Full scores appear when the ticker is in the current research batch.")
+        with st.expander("🔎 Full Universe Scout", expanded=False):
+            st.caption("Searches the broad universe first. Full scores appear when the ticker is in the current research batch.")
 
-        if universe.empty or "ticker" not in universe.columns:
-            st.info("Universe file not loaded yet.")
-            return
+            if universe.empty or "ticker" not in universe.columns:
+                st.info("Universe file not loaded yet.")
+                return
 
-        tickers = sorted(universe["ticker"].dropna().astype(str).str.upper().unique().tolist())
-        query = st.text_input(
-            "Ticker search",
-            placeholder="Try HUBC, UGRO, AMS...",
-            key="full_universe_sidebar_ticker_search",
-        ).strip().upper()
+            tickers = sorted(universe["ticker"].dropna().astype(str).str.upper().unique().tolist())
+            query = st.text_input(
+                "Ticker search",
+                placeholder="Try HUBC, UGRO, AMS...",
+                key="full_universe_sidebar_ticker_search",
+            ).strip().upper()
 
-        if not query:
-            st.caption(f"Universe available: {len(tickers):,} tickers")
-            st.caption(f"Research batch available: {len(research):,} rows")
-            return
+            if not query:
+                st.caption(f"Universe available: {len(tickers):,} tickers")
+                st.caption(f"Research batch available: {len(research):,} rows")
+                return
 
-        matches = [ticker for ticker in tickers if ticker.startswith(query)]
-        if not matches:
-            st.warning("No matching ticker found in universe.csv")
-            return
+            matches = [ticker for ticker in tickers if ticker.startswith(query)]
+            if not matches:
+                st.warning("No matching ticker found in universe.csv")
+                return
 
-        selected = st.selectbox(
-            "Match",
-            matches[:50],
-            key="full_universe_sidebar_ticker_match",
-        )
+            selected = st.selectbox(
+                "Match",
+                matches[:50],
+                key="full_universe_sidebar_ticker_match",
+            )
 
-        universe_row = universe[universe["ticker"].astype(str).str.upper() == selected].head(1)
-        research_row = pd.DataFrame()
-        score_row = pd.DataFrame()
-        if not research.empty and "ticker" in research.columns:
-            research_row = research[research["ticker"].astype(str).str.upper() == selected].head(1)
-        if not scores.empty and "ticker" in scores.columns:
-            score_row = scores[scores["ticker"].astype(str).str.upper() == selected].head(1)
+            universe_row = universe[universe["ticker"].astype(str).str.upper() == selected].head(1)
+            research_row = pd.DataFrame()
+            score_row = pd.DataFrame()
+            if not research.empty and "ticker" in research.columns:
+                research_row = research[research["ticker"].astype(str).str.upper() == selected].head(1)
+            if not scores.empty and "ticker" in scores.columns:
+                score_row = scores[scores["ticker"].astype(str).str.upper() == selected].head(1)
 
-        source_row = universe_row.iloc[0]
-        company = _clean(source_row.get("company_name"), "Unknown company")
-        st.markdown(f"#### {selected}")
-        st.write(company)
+            source_row = universe_row.iloc[0]
+            company = _clean(source_row.get("company_name"), "Unknown company")
+            st.markdown(f"#### {selected}")
+            st.write(company)
 
-        c1, c2 = st.columns(2)
-        c1.metric("Price", _clean(source_row.get("price"), "n/a"))
-        c2.metric("Market Cap", _money(source_row.get("market_cap")))
+            c1, c2 = st.columns(2)
+            c1.metric("Price", _clean(source_row.get("price"), "n/a"))
+            c2.metric("Market Cap", _money(source_row.get("market_cap")))
 
-        st.write(f"**Sector:** {_clean(source_row.get('sector'), 'n/a')}")
-        st.write(f"**Industry:** {_clean(source_row.get('industry'), 'n/a')}")
-        st.write(f"**Dollar Volume:** {_money(source_row.get('dollar_volume'))}")
+            st.write(f"**Sector:** {_clean(source_row.get('sector'), 'n/a')}")
+            st.write(f"**Industry:** {_clean(source_row.get('industry'), 'n/a')}")
+            st.write(f"**Dollar Volume:** {_money(source_row.get('dollar_volume'))}")
 
-        if not research_row.empty:
-            r = research_row.iloc[0]
-            st.success("In current research batch")
-            if "ten_bagger_prescreen_score" in r.index:
-                st.metric("Prescreen", f"{float(r.get('ten_bagger_prescreen_score', 0)):.1f}")
-            reason = _clean(r.get("prescreen_reason"))
-            if reason:
-                st.write("**Prescreen reason:**")
-                st.caption(reason)
-        else:
-            st.info("In full universe, not in the current deep-research batch.")
+            if not research_row.empty:
+                r = research_row.iloc[0]
+                st.success("In current research batch")
+                if "ten_bagger_prescreen_score" in r.index:
+                    st.metric("Prescreen", f"{float(r.get('ten_bagger_prescreen_score', 0)):.1f}")
+                reason = _clean(r.get("prescreen_reason"))
+                if reason:
+                    st.write("**Prescreen reason:**")
+                    st.caption(reason)
+            else:
+                st.info("In full universe, not in the current deep-research batch.")
 
-        if not score_row.empty:
-            s = score_row.iloc[0]
-            for label, col in [
-                ("Movement", "movement_score"),
-                ("Austrian", "austrian_mispricing_score"),
-                ("Hume", "hume_flow_potential_score"),
-                ("Keynes", "keynes_repricing_potential_score"),
-                ("Long-Term", "long_term_investment_score"),
-            ]:
-                if col in s.index:
-                    try:
-                        st.metric(label, f"{float(s.get(col)):.1f}")
-                    except Exception:
-                        pass
+            if not score_row.empty:
+                s = score_row.iloc[0]
+                for label, col in [
+                    ("Movement", "movement_score"),
+                    ("Austrian", "austrian_mispricing_score"),
+                    ("Hume", "hume_flow_potential_score"),
+                    ("Keynes", "keynes_repricing_potential_score"),
+                    ("Long-Term", "long_term_investment_score"),
+                ]:
+                    if col in s.index:
+                        try:
+                            st.metric(label, f"{float(s.get(col)):.1f}")
+                        except Exception:
+                            pass
 
 
 UI_OVERRIDES = """
 <style>
-/* Flat page background: removes the old traveling color band. */
 .stApp,
 section.main,
 [data-testid="stAppViewContainer"],
@@ -153,7 +152,6 @@ header[data-testid="stHeader"] {
     background-image: none !important;
 }
 
-/* Restore the main title/hero contrast. */
 .cfe-hero {
     background: linear-gradient(135deg, #0f172a, #1e293b) !important;
     color: #f8fafc !important;
@@ -177,7 +175,6 @@ header[data-testid="stHeader"] {
     text-shadow: none !important;
 }
 
-/* High-contrast Streamlit tabs. */
 div[data-testid="stTabs"] div[role="tablist"] {
     position: sticky !important;
     top: 0 !important;
@@ -217,12 +214,10 @@ div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
     color: #ffffff !important;
 }
 
-/* Hide Mobile Lite tab. */
 div[data-testid="stTabs"] button[role="tab"]:nth-of-type(2) {
     display: none !important;
 }
 
-/* Rename old Math Playbook visible tab label to Math Appendix. */
 div[data-testid="stTabs"] button[role="tab"]:nth-of-type(5) p,
 div[data-testid="stTabs"] button[role="tab"]:nth-of-type(5) span {
     font-size: 0 !important;
@@ -235,7 +230,6 @@ div[data-testid="stTabs"] button[role="tab"]:nth-of-type(5) span::after {
     font-weight: 900 !important;
 }
 
-/* Make Scout Card ticker entry obvious and inviting. */
 div[data-testid="stTextInput"] label,
 div[data-testid="stTextInput"] label p,
 div[data-testid="stTextInput"] label span {
@@ -273,6 +267,6 @@ div[data-testid="stTextInput"] input:focus {
 """
 
 st.markdown(UI_OVERRIDES, unsafe_allow_html=True)
-_render_full_universe_scout()
 runpy.run_path(str(ROOT / "app" / "dashboard.py"), run_name="__main__")
+_render_full_universe_scout()
 st.markdown(UI_OVERRIDES, unsafe_allow_html=True)
