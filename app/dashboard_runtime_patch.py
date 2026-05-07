@@ -23,8 +23,75 @@ SAFE_HOSTED_CSS = """
     background-image: none !important;
 }
 header[data-testid="stHeader"] {
-    background: #f5f7fb !important;
+    background: rgba(245, 247, 251, .96) !important;
     background-image: none !important;
+}
+#MainMenu,
+footer,
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"],
+[data-testid="stToolbar"],
+[data-testid="manage-app-button"],
+a[href*="streamlit.io/cloud"],
+a[href*="share.streamlit.io"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+header[data-testid="stHeader"] button,
+button[aria-label*="sidebar" i],
+button[title*="sidebar" i],
+button[aria-label*="menu" i],
+button[title*="menu" i],
+[data-testid="stSidebarCollapsedControl"] button {
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 999px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    width: 46px !important;
+    height: 46px !important;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, .35) !important;
+}
+header[data-testid="stHeader"] button svg,
+button[aria-label*="sidebar" i] svg,
+button[title*="sidebar" i] svg,
+button[aria-label*="menu" i] svg,
+button[title*="menu" i] svg,
+[data-testid="stSidebarCollapsedControl"] svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    width: 25px !important;
+    height: 25px !important;
+}
+section[data-testid="stSidebar"],
+section[data-testid="stSidebar"] > div {
+    background: #f7f9fd !important;
+}
+section[data-testid="stSidebar"],
+section[data-testid="stSidebar"] *,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] div,
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"],
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] *,
+section[data-testid="stSidebar"] [data-testid="stWidgetLabel"],
+section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] *,
+section[data-testid="stSidebar"] [data-testid="stCaptionContainer"],
+section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] * {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+section[data-testid="stSidebar"] input,
+section[data-testid="stSidebar"] textarea,
+section[data-testid="stSidebar"] [data-baseweb="select"] > div,
+section[data-testid="stSidebar"] [data-baseweb="slider"] {
+    background: #ffffff !important;
+    color: #0f172a !important;
 }
 .cfe-hero {
     background: linear-gradient(135deg, #0f172a, #1e293b) !important;
@@ -40,13 +107,15 @@ header[data-testid="stHeader"] {
     text-shadow: none !important;
 }
 [data-testid="stMarkdownContainer"],
-[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] *,
 [data-testid="stCaptionContainer"],
 [data-testid="stCaptionContainer"] *,
 [data-testid="stMetric"],
 [data-testid="stMetric"] *,
 [data-testid="stWidgetLabel"],
 [data-testid="stWidgetLabel"] *,
+[data-testid="stAlert"],
+[data-testid="stAlert"] *,
 label,
 input,
 textarea,
@@ -76,23 +145,21 @@ div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
 div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
     color: #ffffff !important;
 }
-[data-testid="stSidebarCollapsedControl"] {
-    position: fixed !important;
-    top: 50vh !important;
-    left: .55rem !important;
-    transform: translateY(-50%) !important;
-    z-index: 100000 !important;
-}
-[data-testid="stSidebarCollapsedControl"] button {
-    background: #111827 !important;
-    border: 1px solid #334155 !important;
-    border-radius: 999px !important;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, .22) !important;
-}
-[data-testid="stSidebarCollapsedControl"] svg {
-    color: #ffffff !important;
-    fill: #ffffff !important;
-    stroke: #ffffff !important;
+@media (max-width: 900px) {
+    header[data-testid="stHeader"] {
+        min-height: 64px !important;
+    }
+    header[data-testid="stHeader"] button,
+    button[aria-label*="sidebar" i],
+    button[title*="sidebar" i],
+    button[aria-label*="menu" i],
+    button[title*="menu" i],
+    [data-testid="stSidebarCollapsedControl"] button {
+        min-width: 54px !important;
+        min-height: 54px !important;
+        width: 54px !important;
+        height: 54px !important;
+    }
 }
 </style>
 """
@@ -120,6 +187,11 @@ def patched_dashboard_source() -> str:
     )
     source = source.replace('"Math Playbook"', '"Math Appendix"')
     source = source.replace('st.subheader("Top 100 Research Batch")', 'st.subheader("Top 250 Research Batch")', 1)
+    source = source.replace(
+        'st.caption("Cleaner by default. Turn on Advanced columns in the sidebar when you want the full model guts.")',
+        'st.caption("Cleaner by default. Turn on Advanced columns in the sidebar when you want the full model guts.")',
+        1,
+    )
 
     source = source.replace(
         'watchlist_tab, mobile_tab, ticker_tab, data_tab, appendix_tab = st.tabs(\n'
