@@ -97,6 +97,21 @@ st.markdown(
     [data-testid="stSidebarCollapsedControl"] button {
         opacity: 1 !important;
         visibility: visible !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border: 2px solid #2563eb !important;
+        box-shadow: 0 10px 28px rgba(37, 99, 235, .28) !important;
+        z-index: 999999 !important;
+    }
+    header[data-testid="stHeader"] button *,
+    button[aria-label*="sidebar" i] *,
+    button[title*="sidebar" i] *,
+    button[aria-label*="menu" i] *,
+    button[title*="menu" i] *,
+    [data-testid="stSidebarCollapsedControl"] button * {
+        color: #0f172a !important;
+        fill: #0f172a !important;
+        stroke: #0f172a !important;
     }
     </style>
     """,
@@ -1776,6 +1791,48 @@ st.markdown(
     div[data-testid="stLinkButton"] button {
         background: #eff6ff !important;
         border: 1px solid #2563eb !important;
+    }
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="stSidebarCollapsedControl"] *,
+    header[data-testid="stHeader"] button[aria-label*="sidebar" i],
+    header[data-testid="stHeader"] button[aria-label*="sidebar" i] *,
+    button[aria-label*="sidebar" i],
+    button[aria-label*="sidebar" i] *,
+    button[title*="sidebar" i],
+    button[title*="sidebar" i] * {
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: #0f172a !important;
+        fill: #0f172a !important;
+        stroke: #0f172a !important;
+        text-shadow: none !important;
+    }
+    [data-testid="stSidebarCollapsedControl"] button,
+    header[data-testid="stHeader"] button[aria-label*="sidebar" i],
+    button[aria-label*="sidebar" i],
+    button[title*="sidebar" i] {
+        background: #ffffff !important;
+        border: 2px solid #2563eb !important;
+        border-radius: 999px !important;
+        box-shadow: 0 10px 28px rgba(37, 99, 235, .30), 0 0 0 4px rgba(219, 234, 254, .9) !important;
+        min-width: 2.6rem !important;
+        min-height: 2.6rem !important;
+        z-index: 999999 !important;
+    }
+    @media (max-width: 900px) {
+        [data-testid="stSidebarCollapsedControl"] {
+            position: fixed !important;
+            top: 44vh !important;
+            left: .55rem !important;
+            z-index: 999999 !important;
+        }
+        [data-testid="stSidebarCollapsedControl"] button,
+        header[data-testid="stHeader"] button[aria-label*="sidebar" i],
+        button[aria-label*="sidebar" i],
+        button[title*="sidebar" i] {
+            min-width: 3rem !important;
+            min-height: 3rem !important;
+        }
     }
     [data-baseweb="tag"] {
         background: #dbeafe !important;
