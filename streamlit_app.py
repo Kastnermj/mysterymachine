@@ -10,53 +10,33 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parent
 runpy.run_path(str(ROOT / "app" / "dashboard_runtime_patch.py"), run_name="__main__")
 
-# Late-loading contrast guard for Streamlit mobile markdown/expander/code blocks.
+# Narrow, late-loading fix for the Math Appendix only. The previous broad guard
+# repainted unrelated mobile controls, so keep this scoped to the final tab panel.
 st.markdown(
     """
     <style>
-    div[data-testid="stExpander"],
-    div[data-testid="stExpander"] *,
-    div[data-testid="stCode"],
-    div[data-testid="stCode"] *,
-    [data-testid="stMarkdownContainer"] pre,
-    [data-testid="stMarkdownContainer"] pre *,
-    [data-testid="stMarkdownContainer"] code,
-    [data-testid="stMarkdownContainer"] table,
-    [data-testid="stMarkdownContainer"] table *,
-    [data-testid="stMarkdownContainer"] blockquote,
-    [data-testid="stMarkdownContainer"] blockquote * {
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] pre,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] code,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] blockquote,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] table {
+        background: linear-gradient(135deg, #fffbea, #f0fdf4) !important;
+        border: 1px solid #bbf7d0 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 0 0 1px rgba(187, 247, 208, .45), 0 10px 26px rgba(132, 204, 22, .10) !important;
+    }
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] pre,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] pre *,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] code,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] blockquote,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] blockquote *,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] table,
+    div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] table * {
         color: #0f172a !important;
         text-shadow: none !important;
     }
-    div[data-testid="stExpander"],
-    div[data-testid="stExpander"] details,
-    div[data-testid="stExpander"] summary,
-    div[data-testid="stCode"],
-    [data-testid="stMarkdownContainer"] pre,
-    [data-testid="stMarkdownContainer"] table,
-    [data-testid="stMarkdownContainer"] blockquote {
-        background: #ffffff !important;
-        border-color: #cbd5e1 !important;
-    }
-    [data-testid="stMarkdownContainer"] code,
-    div[data-testid="stExpander"] code {
-        background: #eef4ff !important;
-        border: 1px solid #c8d9ff !important;
-        border-radius: 6px !important;
-        padding: .08rem .28rem !important;
-    }
     @media (max-width: 900px) {
-        [data-testid="stMarkdownContainer"],
-        [data-testid="stMarkdownContainer"] *,
-        div[data-testid="stExpander"],
-        div[data-testid="stExpander"] * {
-            color: #0f172a !important;
-            text-shadow: none !important;
-        }
-        [data-testid="stMarkdownContainer"] pre,
-        [data-testid="stMarkdownContainer"] code,
-        div[data-testid="stExpander"] pre,
-        div[data-testid="stExpander"] code {
+        div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] pre,
+        div[data-testid="stTabs"] div[role="tabpanel"]:last-child [data-testid="stMarkdownContainer"] code {
             white-space: pre-wrap !important;
             word-break: break-word !important;
         }
