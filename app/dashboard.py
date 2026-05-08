@@ -386,8 +386,10 @@ def scout_console_html(row: pd.Series, compact: bool = False) -> str:
             ]
         )
 
+    console_class = "scout-console scout-console-compact" if compact else "scout-console"
+
     return f"""
-    <div class="scout-console">
+    <div class="{console_class}">
         <div class="scout-console-hero">
             <div>
                 <div class="scout-kicker">Mystery Machine Scout Console</div>
@@ -1440,6 +1442,20 @@ st.markdown(
         color: #475569 !important;
         font-size: .88rem;
     }
+    .board-command-row {
+        border: 1px solid #bfd1eb;
+        background: linear-gradient(135deg, #ffffff, #f4f8ff);
+        border-radius: 8px;
+        padding: .85rem;
+        margin: .25rem 0 1rem 0;
+        box-shadow: 0 12px 28px rgba(37, 99, 235, .10);
+    }
+    .board-command-row [data-testid="stWidgetLabel"] *,
+    .board-command-row label,
+    .board-command-row p {
+        color: #0f172a !important;
+        font-weight: 850 !important;
+    }
     .board-wrap {
         width: 100%;
         max-height: 680px;
@@ -1638,6 +1654,25 @@ st.markdown(
         .block-container {
             padding-left: .85rem !important;
             padding-right: .85rem !important;
+        }
+        div[data-testid="stTabs"] div[role="tablist"] {
+            display: grid !important;
+            grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            gap: .18rem !important;
+            padding: .28rem !important;
+            overflow: visible !important;
+        }
+        div[data-testid="stTabs"] button[role="tab"] {
+            min-width: 0 !important;
+            min-height: 2.45rem !important;
+            padding: .3rem .08rem !important;
+            border-width: 1px !important;
+        }
+        div[data-testid="stTabs"] button[role="tab"] p {
+            font-size: .68rem !important;
+            line-height: .82rem !important;
+            white-space: normal !important;
+            text-align: center !important;
         }
         .scout-console {
             padding: .8rem;
@@ -1888,6 +1923,66 @@ st.markdown(
     .power-hex-card * {
         text-shadow: none !important;
     }
+    div[role="dialog"] .scout-console-compact {
+        border: 1px solid rgba(147, 197, 253, .55) !important;
+        background:
+            radial-gradient(circle at 88% 8%, rgba(37, 99, 235, .36), transparent 30%),
+            radial-gradient(circle at 10% 12%, rgba(22, 163, 74, .22), transparent 24%),
+            linear-gradient(145deg, #07111f, #111827 55%, #0b1220) !important;
+        box-shadow: 0 24px 70px rgba(2, 6, 23, .34) !important;
+    }
+    div[role="dialog"] .scout-console-compact,
+    div[role="dialog"] .scout-console-compact * {
+        color: #e5eefc !important;
+        text-shadow: none !important;
+    }
+    div[role="dialog"] .scout-console-compact .scout-console-hero {
+        border-bottom-color: rgba(191, 219, 254, .24) !important;
+    }
+    div[role="dialog"] .scout-console-compact .scout-kicker {
+        color: #93c5fd !important;
+    }
+    div[role="dialog"] .scout-console-compact .scout-console-title,
+    div[role="dialog"] .scout-console-compact .scout-console-title span {
+        color: #f8fafc !important;
+    }
+    div[role="dialog"] .scout-console-compact .scout-console-subtitle,
+    div[role="dialog"] .scout-console-compact .story-body,
+    div[role="dialog"] .scout-console-compact .power-bar-row span {
+        color: #cbd5e1 !important;
+    }
+    div[role="dialog"] .scout-console-compact .power-hex-card,
+    div[role="dialog"] .scout-console-compact .power-bars,
+    div[role="dialog"] .scout-console-compact .story-tile {
+        background: rgba(15, 23, 42, .82) !important;
+        border-color: rgba(148, 163, 184, .35) !important;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.08) !important;
+    }
+    div[role="dialog"] .scout-console-compact .power-heading,
+    div[role="dialog"] .scout-console-compact .story-title,
+    div[role="dialog"] .scout-console-compact .power-bar-row strong,
+    div[role="dialog"] .scout-console-compact .power-bar-row b {
+        color: #bfdbfe !important;
+    }
+    div[role="dialog"] .scout-console-compact .power-label {
+        fill: #dbeafe !important;
+    }
+    div[role="dialog"] .scout-console-compact .power-ring {
+        stroke: #334155 !important;
+    }
+    div[role="dialog"] .scout-console-compact .power-spoke {
+        stroke: #475569 !important;
+    }
+    div[role="dialog"] .scout-console-compact .verdict-scooby,
+    div[role="dialog"] .scout-console-compact .verdict-scooby * { color: #14532d !important; }
+    div[role="dialog"] .scout-console-compact .verdict-watch,
+    div[role="dialog"] .scout-console-compact .verdict-watch * { color: #1e3a8a !important; }
+    div[role="dialog"] .scout-console-compact .verdict-mid,
+    div[role="dialog"] .scout-console-compact .verdict-mid * { color: #334155 !important; }
+    div[role="dialog"] .scout-console-compact .verdict-risk,
+    div[role="dialog"] .scout-console-compact .verdict-risk * { color: #92400e !important; }
+    div[role="dialog"] .scout-console-compact .verdict-garbage,
+    div[role="dialog"] .scout-console-compact .verdict-garbage * { color: #991b1b !important; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -1939,31 +2034,24 @@ if not display_scores.empty:
         if score_column in display_scores.columns:
             display_scores[score_column] = pd.to_numeric(display_scores[score_column], errors="coerce")
 
+PRESET_OPTIONS = ["Full Batch", "Clean Research", "Best Overall", "Long-Term Hunt", "Garbage Lab", "Danger Zone"]
+LENS_OPTIONS = [
+    "Overall Big Board",
+    "Hume Flow",
+    "Keynes Story",
+    "Austrian Pricing Gap",
+    "Relative Value",
+    "Asymmetry",
+    "Long-Term Quality",
+    "Pre-Flow Sleeper",
+    "Data Confidence",
+    "Danger Review",
+]
+view_mode = st.session_state.get("big_board_preset", "Full Batch")
+research_lens = st.session_state.get("big_board_lens", "Overall Big Board")
+
 with st.sidebar:
-    st.subheader("Front Office")
-    view_mode = st.segmented_control(
-        "Board preset",
-        ["Full Batch", "Clean Research", "Best Overall", "Long-Term Hunt", "Garbage Lab", "Danger Zone"],
-        default="Full Batch",
-        help="Full Batch keeps the garbage rows in view. Clean Research only hides them temporarily.",
-    )
-    research_lens = st.selectbox(
-        "Scouting lens",
-        [
-            "Overall Big Board",
-            "Hume Flow",
-            "Keynes Story",
-            "Austrian Pricing Gap",
-            "Relative Value",
-            "Asymmetry",
-            "Long-Term Quality",
-            "Pre-Flow Sleeper",
-            "Data Confidence",
-            "Danger Review",
-        ],
-        index=0,
-        help="Tilt the board toward one part of your model without changing the underlying scores.",
-    )
+    st.subheader("Filters")
     sort_options = {
         f"Lens default ({BOARD_LABELS.get(lens_sort_column(research_lens), lens_sort_column(research_lens))})": lens_sort_column(research_lens),
         "Movement score": "movement_score",
@@ -2024,63 +2112,69 @@ with st.sidebar:
     selected_data_labels = st.multiselect("Data confidence", data_options)
     query_text = st.text_input("Search ticker/company")
 
-filtered = display_scores.copy()
-if not filtered.empty:
-    filtered = apply_watchlist_mode(filtered, view_mode or "Full Batch")
-    filtered = apply_lens(filtered, research_lens or "Overall Big Board")
-    if hide_garbage_check and "what_i_think" in filtered.columns:
-        filtered = filtered[filtered["what_i_think"].astype(str) != "This is Garbage"]
+def build_visible_scores(active_view_mode: str, active_research_lens: str, active_sort_by: str) -> pd.DataFrame:
+    """Apply the current board controls and sidebar filters."""
+    visible = display_scores.copy()
+    if visible.empty:
+        return visible
+    visible = apply_watchlist_mode(visible, active_view_mode or "Full Batch")
+    visible = apply_lens(visible, active_research_lens or "Overall Big Board")
+    if hide_garbage_check and "what_i_think" in visible.columns:
+        visible = visible[visible["what_i_think"].astype(str) != "This is Garbage"]
     if require_good_data_check:
-        filtered = filtered[numeric_series(filtered, "data_confidence_score") >= 75]
+        visible = visible[numeric_series(visible, "data_confidence_score") >= 75]
     if event_flags_check:
-        filtered = filtered[
-            (numeric_series(filtered, "event_shock_penalty") >= 10)
-            | filtered.get("event_callouts", pd.Series("", index=filtered.index)).astype(str).str.contains(
+        visible = visible[
+            (numeric_series(visible, "event_shock_penalty") >= 10)
+            | visible.get("event_callouts", pd.Series("", index=visible.index)).astype(str).str.contains(
                 "liquidation|bankruptcy|thesis|resignation|delisting|offering|warrant|going concern",
                 case=False,
                 na=False,
             )
         ]
     if low_flow_sleepers_check:
-        filtered = filtered[
-            (numeric_series(filtered, "hume_flow_potential_score") <= 45)
+        visible = visible[
+            (numeric_series(visible, "hume_flow_potential_score") <= 45)
             & (
-                (numeric_series(filtered, "austrian_mispricing_score") >= 45)
-                | (numeric_series(filtered, "keynes_repricing_potential_score") >= 45)
-                | (numeric_series(filtered, "pre_flow_opportunity_score") >= 45)
+                (numeric_series(visible, "austrian_mispricing_score") >= 45)
+                | (numeric_series(visible, "keynes_repricing_potential_score") >= 45)
+                | (numeric_series(visible, "pre_flow_opportunity_score") >= 45)
             )
         ]
     if high_dilution_check:
-        filtered = filtered[numeric_series(filtered, "dilution_pressure_score") >= 70]
-    filtered = filtered[numeric_series(filtered, "movement_score") >= min_move]
-    filtered = filtered[numeric_series(filtered, "long_term_investment_score") >= min_long_term]
-    filtered = filtered[numeric_series(filtered, "data_confidence_score") >= min_data]
-    filtered = filtered[numeric_series(filtered, "pre_flow_opportunity_score") >= min_pre_flow]
-    filtered = filtered[numeric_series(filtered, "dilution_pressure_score") <= max_dilution]
-    filtered = filtered[numeric_series(filtered, "survival_risk_score") <= max_survival]
-    filtered = filtered[numeric_series(filtered, "zombie_decay_penalty") <= max_zombie]
-    filtered = filtered[numeric_series(filtered, "event_shock_penalty") <= max_event]
+        visible = visible[numeric_series(visible, "dilution_pressure_score") >= 70]
+    visible = visible[numeric_series(visible, "movement_score") >= min_move]
+    visible = visible[numeric_series(visible, "long_term_investment_score") >= min_long_term]
+    visible = visible[numeric_series(visible, "data_confidence_score") >= min_data]
+    visible = visible[numeric_series(visible, "pre_flow_opportunity_score") >= min_pre_flow]
+    visible = visible[numeric_series(visible, "dilution_pressure_score") <= max_dilution]
+    visible = visible[numeric_series(visible, "survival_risk_score") <= max_survival]
+    visible = visible[numeric_series(visible, "zombie_decay_penalty") <= max_zombie]
+    visible = visible[numeric_series(visible, "event_shock_penalty") <= max_event]
     if selected_sectors:
-        filtered = filtered[filtered["sector"].astype(str).isin(selected_sectors)]
+        visible = visible[visible["sector"].astype(str).isin(selected_sectors)]
     if selected_labels:
-        filtered = filtered[filtered["what_i_think"].astype(str).isin(selected_labels)]
+        visible = visible[visible["what_i_think"].astype(str).isin(selected_labels)]
     if selected_risks:
-        filtered = filtered[filtered["risk_posture"].astype(str).isin(selected_risks)]
+        visible = visible[visible["risk_posture"].astype(str).isin(selected_risks)]
     if selected_long_terms:
-        filtered = filtered[filtered["long_term_investment_label"].astype(str).isin(selected_long_terms)]
+        visible = visible[visible["long_term_investment_label"].astype(str).isin(selected_long_terms)]
     if selected_data_labels:
-        filtered = filtered[filtered["data_confidence_label"].astype(str).isin(selected_data_labels)]
+        visible = visible[visible["data_confidence_label"].astype(str).isin(selected_data_labels)]
     if query_text:
         query = query_text.strip().lower()
         haystack = (
-            filtered.get("ticker", pd.Series("", index=filtered.index)).astype(str)
+            visible.get("ticker", pd.Series("", index=visible.index)).astype(str)
             + " "
-            + filtered.get("company_name", pd.Series("", index=filtered.index)).astype(str)
+            + visible.get("company_name", pd.Series("", index=visible.index)).astype(str)
         ).str.lower()
-        filtered = filtered[haystack.str.contains(query, na=False)]
-    if sort_by in filtered.columns:
-        filtered = filtered.sort_values(sort_by, ascending=(sort_direction == "Low to high"), na_position="last")
-    filtered = filtered.head(top_n)
+        visible = visible[haystack.str.contains(query, na=False)]
+    if active_sort_by in visible.columns:
+        visible = visible.sort_values(active_sort_by, ascending=(sort_direction == "Low to high"), na_position="last")
+    return visible.head(top_n)
+
+
+filtered = build_visible_scores(view_mode, research_lens, sort_by)
 
 watchlist_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
     ["Big Board", "Scout Card", "Data Room", "Math Appendix"]
@@ -2091,40 +2185,39 @@ with watchlist_tab:
         st.info("No theory scores found yet. Run the refresh launcher to build the watchlist.")
     else:
         refreshed_at, refreshed_age = refresh_label(source_status)
-        st.markdown(
-            """
-            <div class="quick-scout-shell">
-                <div class="quick-scout-title">Quick Scout Launcher</div>
-                <div class="quick-scout-note">Type or pick a ticker, then pop open the same compact scout card used on the front-office board.</div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        quick_tickers = sorted(display_scores["ticker"].dropna().astype(str).str.upper().unique().tolist())
-        quick_left, quick_right = st.columns([3, 1], vertical_alignment="bottom")
-        with quick_left:
-            quick_selected = st.selectbox(
-                "Choose or enter ticker from the current research batch",
-                quick_tickers,
-                key="big_board_quick_scout",
-            )
-        with quick_right:
-            if st.button("Open Scout Card", key="big_board_quick_scout_open", use_container_width=True):
-                quick_rows = theory_scores[theory_scores["ticker"].astype(str).str.upper() == quick_selected]
-                if quick_rows.empty:
-                    st.warning(f"No scout card found for {quick_selected}.")
-                else:
-                    front_office_scout_dialog(quick_rows.iloc[0].to_dict())
+        with st.container():
+            preset_col, lens_col, scout_col, scout_button_col = st.columns([1.15, 1.25, 1.25, .75], vertical_alignment="bottom")
+            with preset_col:
+                view_mode = st.selectbox(
+                    "Preset",
+                    PRESET_OPTIONS,
+                    index=PRESET_OPTIONS.index(view_mode) if view_mode in PRESET_OPTIONS else 0,
+                    key="big_board_preset",
+                )
+            with lens_col:
+                research_lens = st.selectbox(
+                    "Scouting lens",
+                    LENS_OPTIONS,
+                    index=LENS_OPTIONS.index(research_lens) if research_lens in LENS_OPTIONS else 0,
+                    key="big_board_lens",
+                )
+            active_sort_by = lens_sort_column(research_lens) if sort_label.startswith("Lens default") else sort_by
+            filtered = build_visible_scores(view_mode, research_lens, active_sort_by)
+            quick_tickers = sorted(display_scores["ticker"].dropna().astype(str).str.upper().unique().tolist())
+            with scout_col:
+                quick_selected = st.selectbox(
+                    "Quick scout",
+                    quick_tickers,
+                    key="big_board_quick_scout",
+                )
+            with scout_button_col:
+                if st.button("Open", key="big_board_quick_scout_open", use_container_width=True):
+                    quick_rows = theory_scores[theory_scores["ticker"].astype(str).str.upper() == quick_selected]
+                    if quick_rows.empty:
+                        st.warning(f"No scout card found for {quick_selected}.")
+                    else:
+                        front_office_scout_dialog(quick_rows.iloc[0].to_dict())
 
-        st.markdown(
-            f"""
-            <div class="toolbar-note">
-                <strong>{clean_text(research_lens, 'Overall Big Board')} lens:</strong>
-                the cards below are the current front-office board after your filters. Use the full table when you want the stats-room version.
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
         card_frame = filtered.head(6)
         if not card_frame.empty:
             st.subheader("Front Office Board")
