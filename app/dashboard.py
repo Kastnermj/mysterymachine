@@ -975,13 +975,15 @@ st.markdown(
         padding-top: 1.5rem;
     }
     .cfe-hero {
-        border: 1px solid rgba(255,255,255,0.18);
-        background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+        border: 1px solid rgba(147, 197, 253, 0.45);
+        background:
+            radial-gradient(circle at 92% 8%, rgba(34, 197, 94, .24), transparent 28%),
+            linear-gradient(135deg, #0f172a, #1d4ed8);
         color: #f9fafb;
         padding: 1.25rem 1.45rem;
         border-radius: 8px;
         margin-bottom: 1rem;
-        box-shadow: 0 18px 60px rgba(5,10,25,0.24);
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.22);
     }
     .cfe-hero h1 {
         margin: 0 0 .35rem 0;
@@ -990,11 +992,11 @@ st.markdown(
     }
     .cfe-hero p {
         margin: 0;
-        color: #d7dde8;
+        color: #dbeafe;
         font-size: 1rem;
     }
     .hero-kicker {
-        color: #9fb3d9;
+        color: #bfdbfe;
         text-transform: uppercase;
         font-size: .74rem;
         font-weight: 800;
@@ -1650,6 +1652,184 @@ st.markdown(
     div[data-testid="stExpander"] summary p {
         color: #111827 !important;
         font-weight: 900 !important;
+    }
+    /*
+    Contrast guardrail:
+    Keep Streamlit/BaseWeb controls readable across desktop, mobile, and
+    Streamlit Cloud theme changes without repainting the custom dark hero,
+    selected tabs, table headers, or Scout grade orb.
+    */
+    .block-container h1:not(.cfe-hero h1),
+    .block-container h2,
+    .block-container h3,
+    .block-container h4,
+    .block-container h5,
+    .block-container h6,
+    .block-container p:not(.cfe-hero p),
+    .block-container li,
+    .block-container label,
+    .block-container span:not(.verdict-pill):not(.draft-grade):not(.scout-grade-orb span),
+    .block-container small:not(.scout-grade-orb small),
+    .block-container div[data-testid="stMarkdownContainer"]:not(.cfe-hero):not(.scout-grade-orb),
+    .block-container [data-testid="stCaptionContainer"],
+    .block-container [data-testid="stCaptionContainer"] *,
+    .block-container [data-testid="stWidgetLabel"],
+    .block-container [data-testid="stWidgetLabel"] *,
+    .block-container [data-testid="stMetric"],
+    .block-container [data-testid="stMetric"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] *,
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] small,
+    section[data-testid="stSidebar"] div[data-testid="stMarkdownContainer"],
+    section[data-testid="stSidebar"] [data-testid="stWidgetLabel"],
+    section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    [data-baseweb="select"] > div,
+    [data-baseweb="input"] > div,
+    [data-baseweb="textarea"] > div,
+    input,
+    textarea {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+        text-shadow: none !important;
+    }
+    [data-baseweb="select"] *,
+    [data-baseweb="input"] *,
+    [data-baseweb="textarea"] *,
+    [data-baseweb="popover"] *,
+    [role="listbox"] *,
+    [role="option"] *,
+    input::placeholder,
+    textarea::placeholder {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    [data-baseweb="popover"],
+    [data-baseweb="popover"] > div,
+    [role="listbox"],
+    [role="option"] {
+        background: #ffffff !important;
+    }
+    div[data-testid="stRadio"] label,
+    div[data-testid="stRadio"] label *,
+    div[data-testid="stCheckbox"] label,
+    div[data-testid="stCheckbox"] label *,
+    div[data-testid="stSlider"] label,
+    div[data-testid="stSlider"] label *,
+    div[data-testid="stSlider"] [data-testid="stTickBar"],
+    div[data-testid="stSlider"] [data-testid="stTickBar"] *,
+    div[data-testid="stSlider"] [role="slider"] + div,
+    div[data-testid="stSlider"] [role="slider"] + div *,
+    div[data-testid="stNumberInput"] *,
+    div[data-testid="stTextInput"] *,
+    div[data-testid="stSelectbox"] *,
+    div[data-testid="stMultiSelect"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    div[data-testid="stCheckbox"] [data-testid="stMarkdownContainer"] p,
+    div[data-testid="stRadio"] [data-testid="stMarkdownContainer"] p {
+        color: #0f172a !important;
+    }
+    div[data-testid="stCheckbox"] span,
+    div[data-testid="stRadio"] span {
+        color: #0f172a !important;
+    }
+    div[data-testid="stSlider"] [role="slider"] {
+        background: #1d4ed8 !important;
+        border-color: #ffffff !important;
+        box-shadow: 0 0 0 2px rgba(29, 78, 216, .18) !important;
+    }
+    div[data-testid="stSlider"] [data-baseweb="slider"] div {
+        color: #0f172a !important;
+    }
+    div[data-testid="stDataFrame"],
+    div[data-testid="stDataFrame"] *,
+    div[data-testid="stTable"],
+    div[data-testid="stTable"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    div[data-testid="stDataFrame"] [role="columnheader"],
+    div[data-testid="stDataFrame"] [role="columnheader"] *,
+    div[data-testid="stTable"] th,
+    div[data-testid="stTable"] th * {
+        color: #ffffff !important;
+        background: #111827 !important;
+    }
+    a,
+    a *,
+    div[data-testid="stLinkButton"] button,
+    div[data-testid="stLinkButton"] button * {
+        color: #1e3a8a !important;
+        text-shadow: none !important;
+    }
+    div[data-testid="stLinkButton"] button {
+        background: #eff6ff !important;
+        border: 1px solid #2563eb !important;
+    }
+    [data-baseweb="tag"] {
+        background: #dbeafe !important;
+        border: 1px solid #93c5fd !important;
+    }
+    [data-baseweb="tag"],
+    [data-baseweb="tag"] * {
+        color: #1e3a8a !important;
+    }
+    [data-testid="stAlert"],
+    [data-testid="stAlert"] *,
+    [data-testid="stNotification"],
+    [data-testid="stNotification"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    div[data-testid="stDialog"],
+    div[data-testid="stDialog"] *,
+    div[role="dialog"],
+    div[role="dialog"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    div[data-testid="stDialog"],
+    div[role="dialog"] {
+        background: #ffffff !important;
+    }
+    .cfe-hero,
+    .cfe-hero *,
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"],
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] *,
+    .big-board-table th,
+    .big-board-table th *,
+    .draft-grade,
+    .draft-grade *,
+    .scout-grade-orb,
+    .scout-grade-orb * {
+        color: #ffffff !important;
+    }
+    .toolbar-note,
+    .toolbar-note *,
+    .quick-scout-shell,
+    .quick-scout-shell *,
+    .cfe-panel,
+    .cfe-panel *,
+    .score-panel,
+    .score-panel *,
+    .story-tile,
+    .story-tile *,
+    .power-bars,
+    .power-bars *,
+    .power-hex-card,
+    .power-hex-card * {
+        text-shadow: none !important;
     }
     </style>
     """,
