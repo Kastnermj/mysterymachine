@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import math
 from pathlib import Path
 from typing import Any
 
@@ -24,7 +25,83 @@ SOURCE_STATUS_PATH = ROOT / "data" / "processed" / "source_status.csv"
 MATH_APPENDIX_PATH = ROOT / "docs" / "math_appendix.md"
 
 
-st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide")
+st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide", initial_sidebar_state="expanded")
+
+st.markdown(
+    """
+    <style>
+    #MainMenu,
+    footer,
+    [data-testid="stDecoration"],
+    [data-testid="manage-app-button"],
+    a[href*="streamlit.io/cloud"],
+    a[href*="share.streamlit.io"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stMain"],
+    [data-testid="stMainBlockContainer"] {
+        background: #f5f7fb !important;
+        background-image: none !important;
+    }
+    header[data-testid="stHeader"] {
+        background: rgba(245, 247, 251, .96) !important;
+        background-image: none !important;
+    }
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] > div {
+        background: #f7f9fd !important;
+    }
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] *,
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] *,
+    section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    section[data-testid="stSidebar"] button,
+    section[data-testid="stSidebar"] [role="button"] {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: none !important;
+    }
+    section[data-testid="stSidebar"] button *,
+    section[data-testid="stSidebar"] [role="button"] * {
+        color: #0f172a !important;
+    }
+    section[data-testid="stSidebar"] button[aria-pressed="true"],
+    section[data-testid="stSidebar"] button[aria-selected="true"],
+    section[data-testid="stSidebar"] [role="button"][aria-pressed="true"],
+    section[data-testid="stSidebar"] [role="button"][aria-selected="true"] {
+        background: #1d4ed8 !important;
+        color: #ffffff !important;
+        border-color: #1d4ed8 !important;
+    }
+    section[data-testid="stSidebar"] button[aria-pressed="true"] *,
+    section[data-testid="stSidebar"] button[aria-selected="true"] *,
+    section[data-testid="stSidebar"] [role="button"][aria-pressed="true"] *,
+    section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
+        color: #ffffff !important;
+    }
+    header[data-testid="stHeader"] button,
+    button[aria-label*="sidebar" i],
+    button[title*="sidebar" i],
+    button[aria-label*="menu" i],
+    button[title*="menu" i],
+    [data-testid="stSidebarCollapsedControl"] button {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 GITHUB_ACTIONS_URL = "https://github.com/Kastnermj/mysterymachine/actions/workflows/refresh-data.yml"
@@ -166,6 +243,162 @@ def verdict_badge(label: Any) -> str:
     return f'<span class="verdict-pill {label_class(text)}">{text}</span>'
 
 
+def clamp_score(value: Any, floor: float = 0.0, ceiling: float = 100.0) -> float:
+    """Return a bounded score for visual elements."""
+    return max(floor, min(ceiling, safe_number(value)))
+
+
+def scout_dimensions(row: pd.Series) -> list[tuple[str, float, str]]:
+    """Return the six headline dimensions for the Scout power hexagon."""
+    return [
+        ("Austrian", clamp_score(row.get("austrian_mispricing_score")), "Pricing gap"),
+        ("Hume", clamp_score(row.get("hume_flow_potential_score")), "Money flow"),
+        ("Keynes", clamp_score(row.get("keynes_repricing_potential_score")), "Story power"),
+        ("Relative", clamp_score(row.get("relative_mispricing_score")), "Value context"),
+        ("Asymmetry", clamp_score(row.get("asymmetry_score")), "Upside shape"),
+        ("Data", clamp_score(row.get("data_confidence_score")), "Evidence"),
+    ]
+
+
+def scout_hexagon(row: pd.Series) -> str:
+    """Build an SVG radar chart for one ticker."""
+    dimensions = scout_dimensions(row)
+    center = 150
+    max_radius = 94
+    angles = [-90, -30, 30, 90, 150, 210]
+
+    def point(radius: float, angle: float) -> tuple[float, float]:
+        radians = math.radians(angle)
+        return center + radius * math.cos(radians), center + radius * math.sin(radians)
+
+    rings = []
+    for fraction in (0.33, 0.66, 1.0):
+        ring_points = " ".join(f"{x:.1f},{y:.1f}" for x, y in (point(max_radius * fraction, angle) for angle in angles))
+        rings.append(f'<polygon points="{ring_points}" class="power-ring" />')
+
+    spokes = []
+    labels = []
+    value_points = []
+    for (name, value, _note), angle in zip(dimensions, angles):
+        outer_x, outer_y = point(max_radius, angle)
+        label_x, label_y = point(max_radius + 30, angle)
+        value_x, value_y = point(max_radius * (value / 100), angle)
+        spokes.append(f'<line x1="{center}" y1="{center}" x2="{outer_x:.1f}" y2="{outer_y:.1f}" class="power-spoke" />')
+        labels.append(
+            f'<text x="{label_x:.1f}" y="{label_y:.1f}" class="power-label" text-anchor="middle">'
+            f'<tspan>{html.escape(name)}</tspan><tspan x="{label_x:.1f}" dy="13">{value:.0f}</tspan></text>'
+        )
+        value_points.append(f"{value_x:.1f},{value_y:.1f}")
+
+    return (
+        '<div class="power-hex-card">'
+        '<div class="power-heading">Power Hexagon</div>'
+        '<svg class="power-hex" viewBox="0 0 300 300" role="img" aria-label="Scout power hexagon">'
+        + "".join(rings)
+        + "".join(spokes)
+        + f'<polygon points="{" ".join(value_points)}" class="power-shape" />'
+        + "".join(labels)
+        + f'<circle cx="{center}" cy="{center}" r="3.8" class="power-core" />'
+        '</svg>'
+        '</div>'
+    )
+
+
+def power_bar(label: str, value: Any, note: str = "") -> str:
+    """Return one compact power bar."""
+    score = clamp_score(value)
+    return (
+        '<div class="power-bar-row">'
+        f'<div><strong>{html.escape(label)}</strong><span>{html.escape(note)}</span></div>'
+        f'<b>{score:.0f}</b>'
+        f'<div class="power-bar"><div style="width:{score:.0f}%"></div></div>'
+        '</div>'
+    )
+
+
+def story_tile(title: str, body: Any, tone: str = "blue") -> str:
+    """Return one compact Scout story tile."""
+    text = clean_text(body, "No signal available yet.")
+    return (
+        f'<div class="story-tile story-{tone}">'
+        f'<div class="story-title">{html.escape(title)}</div>'
+        f'<div class="story-body">{html.escape(text)}</div>'
+        '</div>'
+    )
+
+
+def scout_console_html(row: pd.Series, compact: bool = False) -> str:
+    """Return the futuristic Scout analytics console for one ticker."""
+    ticker = clean_text(row.get("ticker"), "???")
+    company = clean_text(row.get("company_name"), "Unknown company")
+    sector = clean_text(row.get("sector"), "Unknown sector")
+    grade = clean_text(row.get("movement_grade"), "n/a")
+    move = clamp_score(row.get("movement_score"))
+    risk_text = clean_text(row.get("risk_posture"), "No risk posture")
+    event_text = clean_text(row.get("event_callouts"), "No event callout")
+    if len(event_text) > 220:
+        event_text = event_text[:217] + "..."
+
+    bars = [
+        power_bar("Move", row.get("movement_score"), grade),
+        power_bar("Pre-Flow", row.get("pre_flow_opportunity_score"), clean_text(row.get("flow_state"), "flow read")),
+        power_bar("Catalyst", row.get("catalyst_probability_score"), clean_text(row.get("viability_window"), "viability")),
+        power_bar("Long-Term", row.get("long_term_investment_score"), clean_text(row.get("long_term_investment_label"), "business lens")),
+        power_bar("Data", row.get("data_confidence_score"), clean_text(row.get("data_confidence_label"), "confidence")),
+    ]
+    if not compact:
+        bars.extend(
+            [
+                power_bar("Dilution Risk", row.get("dilution_pressure_score"), "higher means more danger"),
+                power_bar("Survival Risk", row.get("survival_risk_score"), "higher means more danger"),
+            ]
+        )
+
+    tiles = [
+        story_tile("Why It Could Move", row.get("ranking_note"), "green"),
+        story_tile("Setup Read", row.get("setup_type"), "blue"),
+        story_tile("Flow State", row.get("flow_state"), "teal"),
+        story_tile("Risk Console", risk_text, "amber"),
+        story_tile("Event Shock", event_text, "red"),
+        story_tile("Next Research Question", row.get("final_rank_interpretation"), "purple"),
+    ]
+    if not compact:
+        tiles.extend(
+            [
+                story_tile("Long-Term Reality", row.get("long_term_investment_note"), "blue"),
+                story_tile("Thesis Integrity", row.get("thesis_integrity_note"), "amber"),
+                story_tile("DCF Plausibility", row.get("dcf_plausibility_note"), "green"),
+            ]
+        )
+
+    return f"""
+    <div class="scout-console">
+        <div class="scout-console-hero">
+            <div>
+                <div class="scout-kicker">Mystery Machine Scout Console</div>
+                <div class="scout-console-title">{html.escape(ticker)} <span>{html.escape(company)}</span></div>
+                <div class="scout-console-subtitle">{html.escape(sector)} | Price {money(row.get('price'))} | Market cap {money(row.get('market_cap'))}</div>
+                <div class="scout-console-badges">{verdict_badge(row.get('what_i_think'))}</div>
+            </div>
+            <div class="scout-grade-orb">
+                <span>{html.escape(grade)}</span>
+                <small>{move:.1f} move</small>
+            </div>
+        </div>
+        <div class="scout-console-grid">
+            {scout_hexagon(row)}
+            <div class="power-bars">{''.join(bars)}</div>
+        </div>
+        <div class="story-grid">{''.join(tiles)}</div>
+    </div>
+    """
+
+
+def render_scout_console(row: pd.Series, compact: bool = False) -> None:
+    """Render the Scout analytics console."""
+    st.markdown(scout_console_html(row, compact=compact), unsafe_allow_html=True)
+
+
 def ticker_card(row: pd.Series, rank: int) -> None:
     """Render one compact front-office card."""
     ticker = clean_text(row.get("ticker"), "???")
@@ -176,23 +409,31 @@ def ticker_card(row: pd.Series, rank: int) -> None:
     grade = clean_text(row.get("movement_grade"), "n/a")
     risk = clean_text(row.get("risk_posture"), "No risk posture")
     flow = clean_text(row.get("flow_state"), "No flow read")
-    st.markdown(
-        f"""
-        <div class="draft-card">
-            <div class="draft-topline">
-                <span class="draft-rank">#{rank}</span>
-                <span class="draft-ticker">{ticker}</span>
-                <span class="draft-grade">{grade}</span>
+    with st.container(border=True):
+        head_left, head_mid, head_right = st.columns([1.02, 1.25, .58], vertical_alignment="center")
+        with head_left:
+            st.markdown(
+                f'<div class="draft-native-head"><span class="draft-rank">#{rank}</span> '
+                f'<span class="draft-ticker">{ticker}</span></div>',
+                unsafe_allow_html=True,
+            )
+        with head_mid:
+            if st.button("Scout", key=f"front_office_{rank}_{ticker}", use_container_width=True):
+                front_office_scout_dialog(row.to_dict())
+        with head_right:
+            st.markdown(f'<div class="draft-grade native-grade">{grade}</div>', unsafe_allow_html=True)
+        st.markdown(
+            f"""
+            <div class="draft-card-content">
+                <div class="draft-name">{name}</div>
+                <div class="draft-scorebar"><div style="width:{max(0, min(100, move)):.0f}%"></div></div>
+                <div class="draft-meta">Move {move:.1f} | Hume {safe_number(row.get("hume_flow_potential_score")):.0f} | Keynes {safe_number(row.get("keynes_repricing_potential_score")):.0f}</div>
+                <div class="draft-badge">{verdict_badge(row.get("what_i_think"))}</div>
+                <div class="draft-note">{risk} | {flow}</div>
             </div>
-            <div class="draft-name">{name}</div>
-            <div class="draft-scorebar"><div style="width:{max(0, min(100, move)):.0f}%"></div></div>
-            <div class="draft-meta">Move {move:.1f} | Hume {safe_number(row.get("hume_flow_potential_score")):.0f} | Keynes {safe_number(row.get("keynes_repricing_potential_score")):.0f}</div>
-            <div class="draft-badge">{verdict_badge(row.get("what_i_think"))}</div>
-            <div class="draft-note">{risk} | {flow}</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 def scout_note(row: pd.Series) -> str:
@@ -211,6 +452,19 @@ def scout_note(row: pd.Series) -> str:
     if sequence:
         bits.append(f"Sequence: {sequence}.")
     return " ".join(bits) or "No scout note available yet."
+
+
+def compact_scout_card(row: pd.Series) -> None:
+    """Render a condensed ticker scout view for front-office popovers."""
+    render_scout_console(row, compact=True)
+
+
+@st.dialog("Front Office Scout Card", width="large")
+def front_office_scout_dialog(row_data: dict[str, Any]) -> None:
+    """Show a compact scout-card popout from a front-office tile."""
+    row = pd.Series(row_data)
+    compact_scout_card(row)
+    st.caption("Use the Scout Card tab when you want the full 250-name research board and factor stack.")
 
 
 BOARD_LABELS = {
@@ -338,7 +592,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             )
         rows.append("<tr>" + "".join(cells) + "</tr>")
 
-    table_width = max(1900, 520 + len(board.columns) * 112)
+    table_width = max(1680, 460 + len(board.columns) * 96)
     board_html = f"""
         <style>
         body {{
@@ -350,13 +604,29 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
-            height: 18px;
-            margin-bottom: 6px;
+            height: 20px;
+            margin-bottom: 8px;
             border: 1px solid #ccd6e6;
             border-radius: 8px;
             background: #f8fbff;
+            position: sticky;
+            top: 0;
+            z-index: 20;
         }}
-        .top-scroll-inner {{
+        .bottom-scroll {{
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            height: 20px;
+            margin-top: 8px;
+            border: 1px solid #ccd6e6;
+            border-radius: 8px;
+            background: #f8fbff;
+            position: sticky;
+            bottom: 0;
+            z-index: 20;
+        }}
+        .scroll-inner {{
             width: {table_width}px;
             height: 1px;
         }}
@@ -374,7 +644,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             border-spacing: 0;
             min-width: {table_width}px;
             width: max-content;
-            font-size: 13px;
+            font-size: 12.5px;
             color: #172033;
         }}
         .big-board-table th {{
@@ -384,7 +654,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             background: #111827;
             color: #f8fafc;
             text-align: left;
-            padding: 10px 11px;
+            padding: 9px 10px;
             border-bottom: 1px solid #334155;
             white-space: nowrap;
             cursor: pointer;
@@ -399,7 +669,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             margin-left: 4px;
         }}
         .big-board-table td {{
-            padding: 9px 11px;
+            padding: 8px 10px;
             border-bottom: 1px solid #e6ecf5;
             background: #ffffff;
             vertical-align: middle;
@@ -415,8 +685,8 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             position: sticky;
             left: 0;
             z-index: 6;
-            width: 86px;
-            min-width: 86px;
+            width: 80px;
+            min-width: 80px;
             font-weight: 900;
             color: #0f172a;
             box-shadow: 1px 0 0 #d7deea;
@@ -429,21 +699,21 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
         .big-board-table .col-event_callouts,
         .big-board-table .col-risk_posture,
         .big-board-table .col-flow_state {{
-            max-width: 260px;
-            min-width: 180px;
+            max-width: 235px;
+            min-width: 165px;
         }}
         .mini-score {{
-            min-width: 92px;
+            min-width: 86px;
         }}
         .mini-score span {{
             display: inline-block;
-            min-width: 43px;
+            min-width: 39px;
             font-weight: 800;
             color: #172033;
         }}
         .mini-bar {{
             display: inline-block;
-            width: 45px;
+            width: 40px;
             height: 6px;
             margin-left: 4px;
             background: #dbe4f0;
@@ -487,13 +757,14 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             margin-bottom: 5px;
         }}
         </style>
-        <div class="top-scroll" id="topScroll"><div class="top-scroll-inner" id="topScrollInner"></div></div>
+        <div class="top-scroll synced-scroll" id="topScroll"><div class="scroll-inner" id="topScrollInner"></div></div>
         <div class="board-wrap" id="boardScroll">
             <table class="big-board-table">
                 <thead><tr>{''.join(headers)}</tr></thead>
                 <tbody>{''.join(rows)}</tbody>
             </table>
         </div>
+        <div class="bottom-scroll synced-scroll" id="bottomScroll"><div class="scroll-inner" id="bottomScrollInner"></div></div>
         <div class="cell-detail" id="cellDetail">
             <div class="cell-detail-title" id="cellDetailTitle"></div>
             <div id="cellDetailText"></div>
@@ -501,6 +772,8 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
         <script>
         const topScroll = document.getElementById("topScroll");
         const topScrollInner = document.getElementById("topScrollInner");
+        const bottomScroll = document.getElementById("bottomScroll");
+        const bottomScrollInner = document.getElementById("bottomScrollInner");
         const boardScroll = document.getElementById("boardScroll");
         const table = document.querySelector(".big-board-table");
         const tbody = table.querySelector("tbody");
@@ -512,19 +785,37 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
         function syncTopScrollbarWidth() {{
             const width = Math.max(table.scrollWidth, boardScroll.scrollWidth, boardScroll.clientWidth);
             topScrollInner.style.width = `${{width}}px`;
+            bottomScrollInner.style.width = `${{width}}px`;
+        }}
+        function syncScrollLeft(source, targetA, targetB) {{
+            targetA.scrollLeft = source.scrollLeft;
+            targetB.scrollLeft = source.scrollLeft;
         }}
         syncTopScrollbarWidth();
+        requestAnimationFrame(syncTopScrollbarWidth);
+        setTimeout(syncTopScrollbarWidth, 250);
+        setTimeout(syncTopScrollbarWidth, 1000);
+        if (window.ResizeObserver) {{
+            new ResizeObserver(syncTopScrollbarWidth).observe(table);
+            new ResizeObserver(syncTopScrollbarWidth).observe(boardScroll);
+        }}
         window.addEventListener("resize", syncTopScrollbarWidth);
         topScroll.addEventListener("scroll", () => {{
             if (syncingTop) return;
             syncingBoard = true;
-            boardScroll.scrollLeft = topScroll.scrollLeft;
+            syncScrollLeft(topScroll, boardScroll, bottomScroll);
+            syncingBoard = false;
+        }});
+        bottomScroll.addEventListener("scroll", () => {{
+            if (syncingTop) return;
+            syncingBoard = true;
+            syncScrollLeft(bottomScroll, boardScroll, topScroll);
             syncingBoard = false;
         }});
         boardScroll.addEventListener("scroll", () => {{
             if (syncingBoard) return;
             syncingTop = true;
-            topScroll.scrollLeft = boardScroll.scrollLeft;
+            syncScrollLeft(boardScroll, topScroll, bottomScroll);
             syncingTop = false;
         }});
         table.querySelectorAll("th").forEach((header) => {{
@@ -738,13 +1029,20 @@ st.markdown(
     .score-panel.warm { border-left: 7px solid #2563eb; }
     .score-panel.mixed { border-left: 7px solid #d97706; }
     .score-panel.cold { border-left: 7px solid #6b7280; }
-    .draft-card {
-        border: 1px solid #dbe3f0;
-        background: linear-gradient(180deg, #ffffff, #f9fbff);
-        border-radius: 8px;
-        padding: .95rem;
-        min-height: 12.5rem;
-        box-shadow: 0 10px 28px rgba(20,31,56,0.08);
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background: #ffffff !important;
+        border: 2px solid #c7d4e8 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 12px 28px rgba(15, 23, 42, .10) !important;
+        padding: .78rem .9rem .9rem .9rem !important;
+    }
+    .draft-card-content {
+        margin-top: .35rem;
+    }
+    .draft-native-head {
+        color: #111827;
+        line-height: 1.2;
+        white-space: nowrap;
     }
     .draft-topline {
         display: flex;
@@ -765,12 +1063,24 @@ st.markdown(
     .draft-grade {
         margin-left: auto;
         background: #101827;
-        color: #f8fafc;
+        color: #ffffff !important;
         border-radius: 6px;
-        padding: .15rem .45rem;
+        padding: .2rem .5rem;
         font-weight: 900;
-        font-size: .78rem;
+        font-size: .8rem;
+        line-height: 1;
+        min-width: 2.35rem;
+        min-height: 1.45rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
     }
+    .native-grade {
+        margin-left: 0;
+        width: 100%;
+    }
+    .draft-grade * { color: #ffffff !important; }
     .draft-name {
         color: #475569;
         min-height: 2.4rem;
@@ -795,6 +1105,23 @@ st.markdown(
     .draft-badge {
         margin: .55rem 0 .3rem 0;
     }
+    div[data-testid="stButton"] button {
+        border-radius: 8px !important;
+        border: 1px solid #2563eb !important;
+        background: #eff6ff !important;
+        color: #1e3a8a !important;
+        font-weight: 900 !important;
+        min-height: 2.05rem !important;
+        padding-left: .85rem !important;
+        padding-right: .85rem !important;
+        width: 100% !important;
+    }
+    div[data-testid="stButton"] button *,
+    div[data-testid="stButton"] button p,
+    div[data-testid="stButton"] button span {
+        color: #1e3a8a !important;
+        font-weight: 900 !important;
+    }
     .verdict-pill {
         display: inline-flex;
         align-items: center;
@@ -810,15 +1137,256 @@ st.markdown(
     .verdict-mid { background: #f1f5f9; color: #334155; border-color: #cbd5e1; }
     .verdict-risk { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
     .verdict-garbage { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+    .verdict-scooby, .verdict-scooby * { color: #14532d !important; }
+    .verdict-watch, .verdict-watch * { color: #1e3a8a !important; }
+    .verdict-mid, .verdict-mid * { color: #334155 !important; }
+    .verdict-risk, .verdict-risk * { color: #92400e !important; }
+    .verdict-garbage, .verdict-garbage * { color: #991b1b !important; }
     .scout-card {
-        border: 1px solid #dbe3f0;
-        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        background: linear-gradient(180deg, #ffffff, #f8fbff);
+        border-radius: 8px;
+        padding: 1.15rem;
+        box-shadow: 0 16px 34px rgba(20,31,56,0.10);
+        margin-top: .75rem;
+    }
+    .scout-mini {
+        border: 1px solid #c8d9ff;
+        background: linear-gradient(180deg, #ffffff, #f8fbff);
+        border-radius: 8px;
+        padding: .95rem;
+        margin-bottom: .75rem;
+    }
+    .scout-mini-title {
+        color: #0f172a;
+        font-size: 1.1rem;
+        font-weight: 950;
+        margin-bottom: .25rem;
+    }
+    .scout-mini-subtitle {
+        color: #475569;
+        font-size: .88rem;
+        margin-bottom: .55rem;
+    }
+    .scout-mini,
+    .scout-mini * {
+        text-shadow: none !important;
+    }
+    .scout-console {
+        border: 1px solid #b9c8df;
+        background:
+            radial-gradient(circle at 88% 5%, rgba(37, 99, 235, .16), transparent 28%),
+            radial-gradient(circle at 8% 18%, rgba(22, 163, 74, .12), transparent 25%),
+            linear-gradient(180deg, #ffffff, #f7fbff);
         border-radius: 8px;
         padding: 1rem;
-        box-shadow: 0 10px 28px rgba(20,31,56,0.08);
+        box-shadow: 0 18px 42px rgba(15, 23, 42, .12);
+        margin: .75rem 0 1rem 0;
+    }
+    .scout-console,
+    .scout-console * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    .scout-console-hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        border-bottom: 1px solid #dbe6f5;
+        padding-bottom: .85rem;
+        margin-bottom: .9rem;
+    }
+    .scout-kicker {
+        color: #2563eb !important;
+        font-size: .76rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0;
+    }
+    .scout-console-title {
+        color: #0f172a !important;
+        font-size: 1.55rem;
+        line-height: 1.1;
+        font-weight: 950;
+        margin-top: .15rem;
+    }
+    .scout-console-title span {
+        color: #475569 !important;
+        font-size: .95rem;
+        font-weight: 750;
+        margin-left: .35rem;
+    }
+    .scout-console-subtitle {
+        color: #64748b !important;
+        font-size: .9rem;
+        margin: .3rem 0 .55rem 0;
+    }
+    .scout-grade-orb {
+        min-width: 5.7rem;
+        min-height: 5.7rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #0f172a, #1d4ed8);
+        border: 3px solid #bfdbfe;
+        box-shadow: 0 16px 32px rgba(29, 78, 216, .24);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .scout-grade-orb span,
+    .scout-grade-orb small {
+        color: #ffffff !important;
+    }
+    .scout-grade-orb span {
+        font-size: 1.5rem;
+        font-weight: 950;
+        line-height: 1;
+    }
+    .scout-grade-orb small {
+        font-size: .72rem;
+        margin-top: .25rem;
+        opacity: .9;
+    }
+    .scout-console-grid {
+        display: grid;
+        grid-template-columns: minmax(250px, 340px) minmax(260px, 1fr);
+        gap: 1rem;
+        align-items: stretch;
+    }
+    .power-hex-card,
+    .power-bars,
+    .story-tile {
+        border: 1px solid #d5e1f0;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .86);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+    }
+    .power-hex-card {
+        padding: .75rem .65rem .55rem .65rem;
+    }
+    .power-heading {
+        color: #1e3a8a !important;
+        font-weight: 950;
+        font-size: .9rem;
+        margin: 0 0 .2rem .2rem;
+    }
+    .power-hex {
+        width: 100%;
+        min-height: 250px;
+        display: block;
+    }
+    .power-ring {
+        fill: none;
+        stroke: #cbd5e1;
+        stroke-width: 1.1;
+    }
+    .power-spoke {
+        stroke: #d8e2ef;
+        stroke-width: 1;
+    }
+    .power-shape {
+        fill: rgba(37, 99, 235, .22);
+        stroke: #2563eb;
+        stroke-width: 3;
+    }
+    .power-core {
+        fill: #16a34a;
+    }
+    .power-label {
+        fill: #334155;
+        font-size: 10.5px;
+        font-weight: 850;
+    }
+    .power-bars {
+        padding: .85rem;
+    }
+    .power-bar-row {
+        display: grid;
+        grid-template-columns: minmax(96px, 1fr) 2.4rem;
+        gap: .55rem;
+        align-items: center;
+        margin-bottom: .72rem;
+    }
+    .power-bar-row strong {
+        display: block;
+        color: #0f172a !important;
+        font-size: .86rem;
+        font-weight: 950;
+    }
+    .power-bar-row span {
+        display: block;
+        color: #64748b !important;
+        font-size: .73rem;
+        line-height: 1.05rem;
+    }
+    .power-bar-row b {
+        color: #1d4ed8 !important;
+        font-size: .9rem;
+        text-align: right;
+    }
+    .power-bar {
+        grid-column: 1 / 3;
+        height: .5rem;
+        border-radius: 999px;
+        background: #e2eaf5;
+        overflow: hidden;
+    }
+    .power-bar div {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #2563eb, #16a34a);
+    }
+    .story-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: .7rem;
+        margin-top: .9rem;
+    }
+    .story-tile {
+        padding: .75rem;
+        min-height: 6.2rem;
+        border-left: 5px solid #2563eb;
+    }
+    .story-title {
+        color: #0f172a !important;
+        font-size: .8rem;
+        font-weight: 950;
+        text-transform: uppercase;
+        letter-spacing: 0;
+        margin-bottom: .35rem;
+    }
+    .story-body {
+        color: #475569 !important;
+        font-size: .86rem;
+        line-height: 1.25rem;
+    }
+    .story-green { border-left-color: #16a34a; }
+    .story-teal { border-left-color: #0891b2; }
+    .story-amber { border-left-color: #d97706; }
+    .story-red { border-left-color: #dc2626; }
+    .story-purple { border-left-color: #7c3aed; }
+    .scout-picker {
+        border: 1px solid #c8d9ff;
+        background: linear-gradient(135deg, #eff6ff, #ffffff);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 12px 28px rgba(20,31,56,0.07);
+    }
+    .scout-picker-title {
+        color: #0f172a;
+        font-size: 1.45rem;
+        font-weight: 950;
+        margin-bottom: .15rem;
+    }
+    .scout-picker-note {
+        color: #475569;
+        font-size: .95rem;
     }
     .scout-title {
-        font-size: 1.65rem;
+        font-size: 1.85rem;
         font-weight: 900;
         color: #0f172a;
         margin-bottom: .15rem;
@@ -835,6 +1403,26 @@ st.markdown(
         padding: .75rem .9rem;
         margin: .5rem 0 1rem 0;
     }
+    .quick-scout-shell {
+        border: 1px solid #bfdbfe;
+        background:
+            radial-gradient(circle at 96% 0%, rgba(37, 99, 235, .16), transparent 30%),
+            linear-gradient(135deg, #ffffff, #eff6ff);
+        border-radius: 8px;
+        padding: .9rem 1rem;
+        margin: .35rem 0 1rem 0;
+        box-shadow: 0 14px 32px rgba(37, 99, 235, .12);
+    }
+    .quick-scout-title {
+        color: #0f172a !important;
+        font-weight: 950;
+        font-size: 1.05rem;
+        margin-bottom: .15rem;
+    }
+    .quick-scout-note {
+        color: #475569 !important;
+        font-size: .88rem;
+    }
     .board-wrap {
         width: 100%;
         max-height: 680px;
@@ -847,9 +1435,9 @@ st.markdown(
     .big-board-table {
         border-collapse: separate;
         border-spacing: 0;
-        min-width: 2350px;
+        min-width: 1680px;
         width: max-content;
-        font-size: .84rem;
+        font-size: .8rem;
         color: #172033;
     }
     .big-board-table th {
@@ -859,12 +1447,12 @@ st.markdown(
         background: #111827;
         color: #f8fafc;
         text-align: left;
-        padding: .62rem .7rem;
+        padding: .55rem .62rem;
         border-bottom: 1px solid #334155;
         white-space: nowrap;
     }
     .big-board-table td {
-        padding: .58rem .7rem;
+        padding: .5rem .62rem;
         border-bottom: 1px solid #e6ecf5;
         background: #ffffff;
         vertical-align: middle;
@@ -879,8 +1467,8 @@ st.markdown(
         position: sticky;
         left: 0;
         z-index: 6;
-        width: 86px;
-        min-width: 86px;
+        width: 80px;
+        min-width: 80px;
         font-weight: 900;
         color: #0f172a;
         box-shadow: 1px 0 0 #d7deea;
@@ -888,6 +1476,16 @@ st.markdown(
     .big-board-table th.sticky-ticker {
         z-index: 8;
         background: #0b1220;
+    }
+    .big-board-table td,
+    .big-board-table td *,
+    .mini-score,
+    .mini-score * {
+        color: #172033 !important;
+    }
+    .big-board-table th,
+    .big-board-table th * {
+        color: #ffffff !important;
     }
     .big-board-table .col-ranking_note,
     .big-board-table .col-event_callouts,
@@ -924,31 +1522,134 @@ st.markdown(
         border-radius: 8px;
         overflow: hidden;
     }
-    div[data-testid="stTabs"] button {
-        color: #0f172a !important;
-        font-weight: 850;
+    div[data-testid="stTabs"] div[role="tablist"] {
+        background: linear-gradient(135deg, #ffffff, #eef6ff) !important;
+        border: 1px solid #bfdbfe !important;
+        border-radius: 10px !important;
+        padding: .45rem !important;
+        gap: .35rem !important;
+        box-shadow: 0 14px 34px rgba(37,99,235,0.14);
     }
-    div[data-testid="stTabs"] button[aria-selected="true"] {
+    div[data-testid="stTabs"] button[role="tab"] {
+        color: #0f172a !important;
+        background: linear-gradient(180deg, #ffffff, #eaf2ff) !important;
+        border: 2px solid #bfdbfe !important;
+        border-radius: 8px !important;
+        font-weight: 950 !important;
+        min-height: 3rem !important;
+        padding: .55rem 1rem !important;
+        box-shadow: 0 10px 22px rgba(37, 99, 235, .12) !important;
+    }
+    div[data-testid="stTabs"] button[role="tab"] p {
+        color: #0f172a !important;
+        font-size: 1rem !important;
+        font-weight: 950 !important;
+    }
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+        background: linear-gradient(135deg, #0f172a, #1d4ed8) !important;
+        border-color: #93c5fd !important;
         color: #ffffff !important;
-        background: #111827 !important;
-        border-radius: 8px 8px 0 0;
+        box-shadow: 0 16px 32px rgba(29, 78, 216, .28), 0 0 0 3px rgba(147, 197, 253, .35) !important;
+    }
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] p {
+        color: #ffffff !important;
+    }
+    section[data-testid="stSidebar"] button,
+    section[data-testid="stSidebar"] [role="button"] {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: none !important;
+    }
+    section[data-testid="stSidebar"] button *,
+    section[data-testid="stSidebar"] [role="button"] * {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    section[data-testid="stSidebar"] button[aria-pressed="true"],
+    section[data-testid="stSidebar"] button[aria-selected="true"],
+    section[data-testid="stSidebar"] [role="button"][aria-pressed="true"],
+    section[data-testid="stSidebar"] [role="button"][aria-selected="true"] {
+        background: #1d4ed8 !important;
+        color: #ffffff !important;
+        border-color: #1d4ed8 !important;
+    }
+    section[data-testid="stSidebar"] button[aria-pressed="true"] *,
+    section[data-testid="stSidebar"] button[aria-selected="true"] *,
+    section[data-testid="stSidebar"] [role="button"][aria-pressed="true"] *,
+    section[data-testid="stSidebar"] [role="button"][aria-selected="true"] * {
+        color: #ffffff !important;
     }
     div[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
-        background-color: #16a34a !important;
-    }
-    div[data-testid="stMarkdownContainer"],
-    div[data-testid="stCaptionContainer"],
-    label,
-    p {
-        color: #0f172a;
-    }
-    .cfe-hero div,
-    .cfe-hero h1,
-    .cfe-hero p {
-        color: inherit;
+        display: none !important;
     }
     section[data-testid="stSidebar"] {
         background: #f7f9fd;
+    }
+    .block-container,
+    .block-container p,
+    .block-container li,
+    .block-container label,
+    .block-container div[data-testid="stMarkdownContainer"],
+    [data-testid="stMetric"],
+    [data-testid="stMetric"] *,
+    [data-testid="stCaptionContainer"],
+    [data-testid="stCaptionContainer"] *,
+    [data-testid="stWidgetLabel"],
+    [data-testid="stWidgetLabel"] *,
+    [data-baseweb="select"] *,
+    input,
+    textarea {
+        color: #0f172a !important;
+        text-shadow: none !important;
+    }
+    [data-baseweb="select"] > div,
+    input,
+    textarea {
+        background: #ffffff !important;
+    }
+    .cfe-hero,
+    .cfe-hero h1,
+    .cfe-hero p,
+    .cfe-hero div,
+    .cfe-hero span,
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"],
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
+        color: #ffffff !important;
+    }
+    @media (max-width: 900px) {
+        .block-container {
+            padding-left: .85rem !important;
+            padding-right: .85rem !important;
+        }
+        .scout-console {
+            padding: .8rem;
+        }
+        .scout-console-hero,
+        .scout-console-grid {
+            display: block;
+        }
+        .scout-grade-orb {
+            margin-top: .7rem;
+            min-width: 4.8rem;
+            min-height: 4.8rem;
+        }
+        .story-grid {
+            grid-template-columns: 1fr;
+        }
+        .scout-console-title {
+            font-size: 1.25rem;
+        }
+    }
+    div[data-testid="stExpander"] details {
+        background: #ffffff;
+        border: 1px solid #d7deea;
+        border-radius: 14px;
+        box-shadow: 0 14px 32px rgba(15, 23, 42, .07);
+    }
+    div[data-testid="stExpander"] summary p {
+        color: #111827 !important;
+        font-weight: 900 !important;
     }
     </style>
     """,
@@ -1049,7 +1750,7 @@ with st.sidebar:
     )
     sort_by = sort_options[sort_label]
     sort_direction = st.radio("Sort direction", ["High to low", "Low to high"], horizontal=True)
-    top_n = st.slider("Rows to show", 10, 500, 100, 10)
+    top_n = st.slider("Rows to show", 10, 500, 250, 10)
     advanced_mode = st.toggle("Advanced columns", value=False)
 
     st.divider()
@@ -1144,8 +1845,8 @@ if not filtered.empty:
         filtered = filtered.sort_values(sort_by, ascending=(sort_direction == "Low to high"), na_position="last")
     filtered = filtered.head(top_n)
 
-watchlist_tab, mobile_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
-    ["Big Board", "Mobile Lite", "Scout Card", "Data Room", "Math Playbook"]
+watchlist_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
+    ["Big Board", "Scout Card", "Data Room", "Math Appendix"]
 )
 
 with watchlist_tab:
@@ -1153,49 +1854,30 @@ with watchlist_tab:
         st.info("No theory scores found yet. Run the refresh launcher to build the watchlist.")
     else:
         refreshed_at, refreshed_age = refresh_label(source_status)
-        col1, col2, col3, col4, col5, col6 = st.columns(6)
-        with col1:
-            metric_panel("Research Batch", len(display_scores), "Top candidates currently scored")
-        with col2:
-            metric_panel("Shown Now", len(filtered), f"{clean_text(view_mode, 'Full Batch')} / {clean_text(research_lens, 'Overall')}")
-        with col3:
-            scooby_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "SCOOBY DOOBY DOO!!").sum())
-            metric_panel("Scooby Count", scooby_count, "Rare by design")
-        with col4:
-            scrappy_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "Scrappy Doo").sum())
-            metric_panel("Scrappy Count", scrappy_count, "Fledgling with potential")
-        with col5:
-            garbage_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "This is Garbage").sum())
-            metric_panel("Garbage Lab", garbage_count, "Kept for learning and filtering")
-        with col6:
-            if not price_history.empty and "price_history_status" in price_history.columns:
-                coverage = (price_history["price_history_status"].astype(str) == "ok").mean() * 100
-                metric_panel("History Coverage", f"{coverage:.0f}%", "Drives Hume and zombie math")
-            else:
-                metric_panel("History Coverage", "n/a", "No price-history file")
-
-        health, health_note = health_label(source_status)
-        h1, h2, h3, h4 = st.columns([1, 1, 1.4, 1.2])
-        with h1:
-            metric_panel("Data Health", health, health_note)
-        with h2:
-            fallback_count = 0
-            if not source_status.empty and "fallback_used" in source_status.columns:
-                fallback_count = int(source_status["fallback_used"].astype(str).str.lower().isin(["true", "1"]).sum())
-            metric_panel("Fallback Uses", fallback_count, "Cache or backup source used")
-        with h3:
-            latest_detail = "No source-health detail recorded."
-            if not source_status.empty:
-                latest = source_status.tail(1).iloc[0]
-                latest_detail = f"{latest.get('stage', '')} / {latest.get('provider', '')}: {latest.get('status', '')}"
-            metric_panel("Latest Source Note", clean_text(latest_detail), "Most recent refresh event")
-        with h4:
-            metric_panel("Last Refreshed", refreshed_at, refreshed_age)
-
-        with st.expander("Refresh The Hosted App"):
-            st.write("Use GitHub Actions to refresh the data behind the hosted Streamlit app.")
-            st.link_button("Open Refresh Workflow", GITHUB_ACTIONS_URL)
-            st.caption("On GitHub, choose Run workflow. When it finishes, Streamlit will use the refreshed files from the repo.")
+        st.markdown(
+            """
+            <div class="quick-scout-shell">
+                <div class="quick-scout-title">Quick Scout Launcher</div>
+                <div class="quick-scout-note">Type or pick a ticker, then pop open the same compact scout card used on the front-office board.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        quick_tickers = sorted(display_scores["ticker"].dropna().astype(str).str.upper().unique().tolist())
+        quick_left, quick_right = st.columns([3, 1], vertical_alignment="bottom")
+        with quick_left:
+            quick_selected = st.selectbox(
+                "Choose or enter ticker from the current research batch",
+                quick_tickers,
+                key="big_board_quick_scout",
+            )
+        with quick_right:
+            if st.button("Open Scout Card", key="big_board_quick_scout_open", use_container_width=True):
+                quick_rows = theory_scores[theory_scores["ticker"].astype(str).str.upper() == quick_selected]
+                if quick_rows.empty:
+                    st.warning(f"No scout card found for {quick_selected}.")
+                else:
+                    front_office_scout_dialog(quick_rows.iloc[0].to_dict())
 
         st.markdown(
             f"""
@@ -1215,7 +1897,7 @@ with watchlist_tab:
                     ticker_card(card_row, card_index)
 
         st.subheader("Stats Table")
-        st.caption("Cleaner by default. Turn on Advanced columns in the sidebar when you want the full model guts.")
+        st.caption("Cleaner by default. Turn on Advanced columns in Filters & Lenses when you want the full model guts.")
         core_columns = [
             "ticker",
             "company_name",
@@ -1276,73 +1958,68 @@ with watchlist_tab:
                 height=520,
             )
 
+        st.subheader("Research Batch & Refresh Info")
+        col1, col2, col3, col4, col5, col6 = st.columns(6)
+        with col1:
+            metric_panel("Research Batch", len(display_scores), "Top candidates currently scored")
+        with col2:
+            metric_panel("Shown Now", len(filtered), f"{clean_text(view_mode, 'Full Batch')} / {clean_text(research_lens, 'Overall')}")
+        with col3:
+            scooby_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "SCOOBY DOOBY DOO!!").sum())
+            metric_panel("Scooby Count", scooby_count, "Rare by design")
+        with col4:
+            scrappy_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "Scrappy Doo").sum())
+            metric_panel("Scrappy Count", scrappy_count, "Fledgling with potential")
+        with col5:
+            garbage_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "This is Garbage").sum())
+            metric_panel("Garbage Lab", garbage_count, "Kept for learning and filtering")
+        with col6:
+            if not price_history.empty and "price_history_status" in price_history.columns:
+                coverage = (price_history["price_history_status"].astype(str) == "ok").mean() * 100
+                metric_panel("History Coverage", f"{coverage:.0f}%", "Drives Hume and zombie math")
+            else:
+                metric_panel("History Coverage", "n/a", "No price-history file")
+
+        health, health_note = health_label(source_status)
+        h1, h2, h3, h4 = st.columns([1, 1, 1.4, 1.2])
+        with h1:
+            metric_panel("Data Health", health, health_note)
+        with h2:
+            fallback_count = 0
+            if not source_status.empty and "fallback_used" in source_status.columns:
+                fallback_count = int(source_status["fallback_used"].astype(str).str.lower().isin(["true", "1"]).sum())
+            metric_panel("Fallback Uses", fallback_count, "Cache or backup source used")
+        with h3:
+            latest_detail = "No source-health detail recorded."
+            if not source_status.empty:
+                latest = source_status.tail(1).iloc[0]
+                latest_detail = f"{latest.get('stage', '')} / {latest.get('provider', '')}: {latest.get('status', '')}"
+            metric_panel("Latest Source Note", clean_text(latest_detail), "Most recent refresh event")
+        with h4:
+            metric_panel("Last Refreshed", refreshed_at, refreshed_age)
+
+        with st.expander("Refresh The Hosted App"):
+            st.write("Use GitHub Actions to refresh the data behind the hosted Streamlit app.")
+            st.link_button("Open Refresh Workflow", GITHUB_ACTIONS_URL)
+            st.caption("On GitHub, choose Run workflow. When it finishes, Streamlit will use the refreshed files from the repo.")
+
         if "what_i_think" in display_scores.columns:
             st.subheader("Personality Label Mix")
             label_counts = display_scores["what_i_think"].value_counts().rename_axis("label").reset_index(name="count")
             st.bar_chart(label_counts.set_index("label"))
 
-with mobile_tab:
-    st.subheader("Mobile Lite")
-    st.caption("A card-first view for phones and narrow screens. Same data, less table wrestling.")
-    mobile_source = filtered if not filtered.empty else display_scores
-    if mobile_source.empty:
-        st.info("No scored tickers available yet.")
-    else:
-        mobile_limit = st.slider("Cards to show", 5, 100, min(25, len(mobile_source)), 5, key="mobile_limit")
-        for rank, (_, row) in enumerate(mobile_source.head(mobile_limit).iterrows(), start=1):
-            ticker = clean_text(row.get("ticker"), "???")
-            company = clean_text(row.get("company_name"), "Unknown company")
-            with st.container(border=True):
-                top_left, top_right = st.columns([2, 1])
-                with top_left:
-                    st.markdown(f"### #{rank} {ticker}")
-                    st.caption(company)
-                    st.markdown(verdict_badge(row.get("what_i_think")), unsafe_allow_html=True)
-                with top_right:
-                    st.metric(clean_text(row.get("movement_grade"), "n/a"), f"{safe_number(row.get('movement_score')):.1f}")
-                    st.caption(f"Price {money(row.get('price'))}")
-
-                score_cols = st.columns(4)
-                with score_cols[0]:
-                    st.metric("Hume", f"{safe_number(row.get('hume_flow_potential_score')):.1f}")
-                with score_cols[1]:
-                    st.metric("Keynes", f"{safe_number(row.get('keynes_repricing_potential_score')):.1f}")
-                with score_cols[2]:
-                    st.metric("Austrian", f"{safe_number(row.get('austrian_mispricing_score')):.1f}")
-                with score_cols[3]:
-                    st.metric("Data", f"{safe_number(row.get('data_confidence_score')):.1f}")
-
-                st.write(clean_text(row.get("ranking_note"), "No ranking note."))
-                with st.expander("More details"):
-                    st.write(f"**Risk:** {clean_text(row.get('risk_posture'), 'n/a')}")
-                    st.write(f"**Flow:** {clean_text(row.get('flow_state'), 'n/a')}")
-                    st.write(f"**Setup:** {clean_text(row.get('setup_type'), 'n/a')}")
-                    st.write(f"**Event:** {clean_text(row.get('event_callouts'), 'No major event callout')}")
-                    st.write(f"**Long-term:** {clean_text(row.get('long_term_investment_label'), 'n/a')} ({safe_number(row.get('long_term_investment_score')):.1f})")
-                    st.write(clean_text(row.get("final_rank_interpretation"), "No final rank interpretation."))
-
 with ticker_tab:
-    ticker_source = filtered if not filtered.empty else display_scores
+    ticker_source = display_scores
     if ticker_source.empty:
         st.info("No scored tickers available yet.")
     else:
-        tickers = ticker_source["ticker"].astype(str).tolist()
-        selected = st.selectbox("Ticker lens", tickers)
-        score_row = theory_scores[theory_scores["ticker"].astype(str) == selected].iloc[0]
+        tickers = sorted(ticker_source["ticker"].dropna().astype(str).str.upper().unique().tolist())
+        st.subheader("Scout Card")
+        st.caption("Start typing in the box, then pick the ticker from the same control.")
+        selected = st.selectbox("Choose or enter ticker", tickers, key="scout_ticker_picker")
+        score_row = theory_scores[theory_scores["ticker"].astype(str).str.upper() == selected].iloc[0]
 
-        st.markdown(
-            f"""
-            <div class="scout-card">
-                <div class="scout-title">{selected} - {clean_text(score_row.get('company_name'), 'Unknown company')}</div>
-                <div class="scout-subtitle">
-                    {clean_text(score_row.get('sector'), 'Unknown sector')} | Price {money(score_row.get('price'))} | Market cap {money(score_row.get('market_cap'))}
-                </div>
-                <div>{verdict_badge(score_row.get('what_i_think'))}</div>
-                <p>{scout_note(score_row)}</p>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        render_scout_console(score_row)
 
         top_line = st.columns(5)
         with top_line[0]:
@@ -1428,7 +2105,7 @@ with ticker_tab:
             st.write(clean_text(score_row.get("asymmetry_explanation"), "No asymmetry explanation."))
 
 with data_tab:
-    st.subheader("Top 100 Research Batch")
+    st.subheader("Top 250 Research Batch")
     if research_batch.empty:
         st.info("No research batch file found.")
     else:

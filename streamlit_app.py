@@ -7,8 +7,9 @@ from pathlib import Path
 
 import streamlit as st
 
+
 ROOT = Path(__file__).resolve().parent
-runpy.run_path(str(ROOT / "app" / "dashboard_runtime_patch.py"), run_name="__main__")
+runpy.run_path(str(ROOT / "app" / "dashboard.py"), run_name="__main__")
 
 # Narrow, late-loading fix for the Math Appendix only. The previous broad guard
 # repainted unrelated mobile controls, so keep this scoped to the final tab panel.
