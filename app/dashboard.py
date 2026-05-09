@@ -2188,10 +2188,26 @@ with watchlist_tab:
         st.info("No theory scores found yet. Run the refresh launcher to build the watchlist.")
     else:
         refreshed_at, refreshed_age = refresh_label(source_status)
+        quick_tickers = sorted(display_scores["ticker"].dropna().astype(str).str.upper().unique().tolist())
+        quick_scout_col, quick_open_col = st.columns([3.4, .8], vertical_alignment="bottom")
+        with quick_scout_col:
+            quick_selected = st.selectbox(
+                "Quick scout",
+                quick_tickers,
+                key="big_board_quick_scout",
+            )
+        with quick_open_col:
+            if st.button("Open", key="big_board_quick_scout_open", use_container_width=True):
+                quick_rows = theory_scores[theory_scores["ticker"].astype(str).str.upper() == quick_selected]
+                if quick_rows.empty:
+                    st.warning(f"No scout card found for {quick_selected}.")
+                else:
+                    front_office_scout_dialog(quick_rows.iloc[0].to_dict())
+
         st.subheader("Front Office Board")
         with st.container():
-            preset_col, lens_col, verdict_col, scout_col, scout_button_col = st.columns(
-                [1.05, 1.1, 1.1, 1.1, .62],
+            preset_col, lens_col, verdict_col = st.columns(
+                [1.05, 1.1, 1.1],
                 vertical_alignment="bottom",
             )
             with preset_col:
@@ -2219,20 +2235,6 @@ with watchlist_tab:
                 )
             if board_verdict_filter != "All":
                 filtered = filtered[filtered["what_i_think"].astype(str) == board_verdict_filter]
-            quick_tickers = sorted(display_scores["ticker"].dropna().astype(str).str.upper().unique().tolist())
-            with scout_col:
-                quick_selected = st.selectbox(
-                    "Quick scout",
-                    quick_tickers,
-                    key="big_board_quick_scout",
-                )
-            with scout_button_col:
-                if st.button("Open", key="big_board_quick_scout_open", use_container_width=True):
-                    quick_rows = theory_scores[theory_scores["ticker"].astype(str).str.upper() == quick_selected]
-                    if quick_rows.empty:
-                        st.warning(f"No scout card found for {quick_selected}.")
-                    else:
-                        front_office_scout_dialog(quick_rows.iloc[0].to_dict())
 
         card_frame = filtered.head(6)
         if not card_frame.empty:
