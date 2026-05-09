@@ -271,7 +271,7 @@ def scout_dimensions(row: pd.Series) -> list[tuple[str, float, str]]:
         ("Keynes", clamp_score(row.get("keynes_repricing_potential_score")), "Story power"),
         ("Relative", clamp_score(row.get("relative_mispricing_score")), "Value context"),
         ("Asymmetry", clamp_score(row.get("asymmetry_score")), "Upside shape"),
-        ("Data", clamp_score(row.get("data_confidence_score")), "Evidence"),
+        ("Pre-Flow", clamp_score(row.get("pre_flow_opportunity_score")), "Latent setup"),
     ]
 
 
@@ -1894,6 +1894,9 @@ st.markdown(
     div[data-testid="stDialog"],
     div[role="dialog"] {
         background: #ffffff !important;
+        max-height: 88vh !important;
+        overflow-y: auto !important;
+        overscroll-behavior: contain !important;
     }
     .cfe-hero,
     .cfe-hero *,
@@ -2185,8 +2188,12 @@ with watchlist_tab:
         st.info("No theory scores found yet. Run the refresh launcher to build the watchlist.")
     else:
         refreshed_at, refreshed_age = refresh_label(source_status)
+        st.subheader("Front Office Board")
         with st.container():
-            preset_col, lens_col, scout_col, scout_button_col = st.columns([1.15, 1.25, 1.25, .75], vertical_alignment="bottom")
+            preset_col, lens_col, verdict_col, scout_col, scout_button_col = st.columns(
+                [1.05, 1.1, 1.1, 1.1, .62],
+                vertical_alignment="bottom",
+            )
             with preset_col:
                 view_mode = st.selectbox(
                     "Preset",
@@ -2203,6 +2210,15 @@ with watchlist_tab:
                 )
             active_sort_by = lens_sort_column(research_lens) if sort_label.startswith("Lens default") else sort_by
             filtered = build_visible_scores(view_mode, research_lens, active_sort_by)
+            verdict_filter_options = ["All"] + option_values(filtered, "what_i_think")
+            with verdict_col:
+                board_verdict_filter = st.selectbox(
+                    "What I think",
+                    verdict_filter_options,
+                    key="big_board_verdict_filter",
+                )
+            if board_verdict_filter != "All":
+                filtered = filtered[filtered["what_i_think"].astype(str) == board_verdict_filter]
             quick_tickers = sorted(display_scores["ticker"].dropna().astype(str).str.upper().unique().tolist())
             with scout_col:
                 quick_selected = st.selectbox(
@@ -2220,7 +2236,6 @@ with watchlist_tab:
 
         card_frame = filtered.head(6)
         if not card_frame.empty:
-            st.subheader("Front Office Board")
             card_cols = st.columns(3)
             for card_index, (_, card_row) in enumerate(card_frame.iterrows(), start=1):
                 with card_cols[(card_index - 1) % 3]:

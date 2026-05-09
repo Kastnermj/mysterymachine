@@ -491,6 +491,11 @@ def prepare_scoring_frame(frame: pd.DataFrame) -> pd.DataFrame:
         if column not in output.columns:
             output[column] = 0
         output[column] = pd.to_numeric(output[column], errors="coerce")
+    fallback_volume_to_float = output["volume_to_float"].isna() | (output["volume_to_float"] <= 0)
+    fallback_denominator = output["shares_outstanding"].where(output["shares_outstanding"] > 0)
+    output.loc[fallback_volume_to_float, "volume_to_float"] = (
+        output.loc[fallback_volume_to_float, "volume"] / fallback_denominator.loc[fallback_volume_to_float]
+    )
     output["is_illiquid"] = output.get("is_illiquid", False).fillna(False)
     return output
 
@@ -1578,6 +1583,10 @@ def score_movement_potential(
         score += 5
     if trading_setup >= 65 and catalyst_probability >= 55:
         score += 5
+    pre_flow_probe = score_pre_flow_opportunity(relative, asymmetry, data_confidence, factors, row, event_override)
+    pre_flow_gap = pre_flow_probe - hume
+    if pre_flow_gap >= 12 and hume < 60 and not is_hard_stop_event(row, event_override):
+        score += min(6, pre_flow_gap * 0.10)
     if austrian >= 70 and flow < 35 and story < 45:
         score -= 12
     score -= sec_penalty * 0.28
