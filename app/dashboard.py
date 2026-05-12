@@ -363,7 +363,9 @@ def scout_console_html(row: pd.Series, compact: bool = False) -> str:
         event_text = event_text[:217] + "..."
 
     bars = [
-        power_bar("Move", row.get("movement_score"), grade),
+        power_bar("Scooby Score", row.get("scooby_score"), "whole case"),
+        power_bar("Adjusted Movement", row.get("movement_score"), grade),
+        power_bar("Raw Movement", row.get("raw_movement_score"), "before haircut"),
         power_bar("Pre-Flow", row.get("pre_flow_opportunity_score"), clean_text(row.get("flow_state"), "flow read")),
         power_bar("Catalyst", row.get("catalyst_probability_score"), clean_text(row.get("viability_window"), "viability")),
         power_bar("Long-Term", row.get("long_term_investment_score"), clean_text(row.get("long_term_investment_label"), "business lens")),
@@ -500,7 +502,9 @@ BOARD_LABELS = {
     "ticker": "Ticker",
     "company_name": "Company",
     "movement_grade": "Grade",
-    "movement_score": "Move",
+    "raw_movement_score": "Raw Movement",
+    "movement_score": "Adjusted Movement",
+    "scooby_score": "Scooby Score",
     "what_i_think": "What I Think",
     "secondary_what_i_think": "Also Think",
     "risk_posture": "Risk Read",
@@ -527,7 +531,9 @@ BOARD_LABELS = {
 
 
 SCORE_COLUMNS = {
+    "raw_movement_score",
     "movement_score",
+    "scooby_score",
     "pre_flow_opportunity_score",
     "austrian_mispricing_score",
     "hume_flow_potential_score",
@@ -973,7 +979,7 @@ def apply_watchlist_mode(frame: pd.DataFrame, mode: str) -> pd.DataFrame:
 def lens_sort_column(lens: str) -> str:
     """Map a front-office lens to the score column it should emphasize."""
     lens_map = {
-        "Overall Big Board": "movement_score",
+        "Overall Big Board": "scooby_score",
         "Hume Flow": "hume_flow_potential_score",
         "Keynes Story": "keynes_repricing_potential_score",
         "Austrian Pricing Gap": "austrian_mispricing_score",
@@ -984,7 +990,7 @@ def lens_sort_column(lens: str) -> str:
         "Data Confidence": "data_confidence_score",
         "Danger Review": "event_shock_penalty",
     }
-    return lens_map.get(lens, "movement_score")
+    return lens_map.get(lens, "scooby_score")
 
 
 def apply_lens(frame: pd.DataFrame, lens: str) -> pd.DataFrame:
@@ -2095,7 +2101,9 @@ with st.sidebar:
     st.subheader("Filters")
     sort_options = {
         f"Lens default ({BOARD_LABELS.get(lens_sort_column(research_lens), lens_sort_column(research_lens))})": lens_sort_column(research_lens),
-        "Movement score": "movement_score",
+        "Scooby Score": "scooby_score",
+        "Adjusted Movement": "movement_score",
+        "Raw Movement": "raw_movement_score",
         "Long-term score": "long_term_investment_score",
         "Pre-flow sleeper score": "pre_flow_opportunity_score",
         "Data confidence": "data_confidence_score",
@@ -2287,7 +2295,9 @@ with watchlist_tab:
             "ticker",
             "company_name",
             "movement_grade",
+            "raw_movement_score",
             "movement_score",
+            "scooby_score",
             "what_i_think",
             "secondary_what_i_think",
             "risk_posture",
@@ -2314,7 +2324,6 @@ with watchlist_tab:
         advanced_columns = [
             "long_term_investment_label",
             "label_basis",
-            "raw_movement_score",
             "echo_penalty_total",
             "sec_risk_penalty",
             "event_shock_penalty",

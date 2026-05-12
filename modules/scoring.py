@@ -89,6 +89,7 @@ SCORE_COLUMNS = [
     "raw_movement_score",
     "movement_grade",
     "movement_score",
+    "scooby_score",
     "echo_penalty_total",
     "small_cap_echo_penalty",
     "low_price_echo_penalty",
@@ -259,6 +260,20 @@ def build_theory_scores(
         flow_confirmation_label, flow_confirmation_note = interpret_flow_confirmation(hume, factors, pre_flow_opportunity)
         final_rank_interpretation = interpret_final_rank(movement_score, pre_flow_opportunity, hume)
         sequence_interpretation = raw_setup_interpretation
+        scooby_score = compute_scooby_score(
+            movement_score,
+            austrian,
+            hume,
+            keynes,
+            relative,
+            asymmetry,
+            data_confidence,
+            pre_flow_opportunity,
+            row,
+            event_override,
+            zombie_decay,
+            long_term,
+        )
         personal_label = personal_signal_label(
             movement_score,
             austrian,
@@ -297,6 +312,7 @@ def build_theory_scores(
             zombie_decay,
             data_confidence,
             movement_score=movement_score,
+            austrian=austrian,
             hume=hume,
             keynes=keynes,
             relative=relative,
@@ -386,6 +402,7 @@ def build_theory_scores(
                 "raw_movement_score": raw_movement_score,
                 "movement_grade": movement_grade(movement_score),
                 "movement_score": movement_score,
+                "scooby_score": scooby_score,
                 "echo_penalty_total": echo["echo_penalty_total"],
                 "small_cap_echo_penalty": echo["small_cap_echo_penalty"],
                 "low_price_echo_penalty": echo["low_price_echo_penalty"],
@@ -1886,6 +1903,20 @@ def is_catastrophic_reset_cycle(row: pd.Series, event_override: dict[str, Any] |
     return False
 
 
+def is_sub_500k_spiral_risk(row: pd.Series, hume: float = 0, austrian: float = 0, keynes: float = 0) -> bool:
+    """Flag ultra-tiny market caps where movement may be death-spiral mechanics."""
+    market_cap = to_float(row.get("market_cap"))
+    if market_cap is None or market_cap <= 0 or market_cap >= 500_000:
+        return False
+    dilution = clean_float(row.get("dilution_pressure_score"))
+    survival = clean_float(row.get("survival_risk_score"))
+    volume_to_float = to_float(row.get("volume_to_float"))
+    missing_float_context = volume_to_float is None or volume_to_float <= 0
+    weak_story = keynes < 45
+    hot_or_distressed = hume >= 55 or austrian >= 65 or dilution >= 50 or survival >= 50
+    return bool(hot_or_distressed and (weak_story or missing_float_context or dilution >= 60 or survival >= 60))
+
+
 LIQUIDATION_TERMS = [
     "complete liquidation",
     "plan of liquidation",
@@ -2004,6 +2035,53 @@ def has_reset_catalyst(
     return bool(forward_language and (signal_support or plausible_path or long_term_support))
 
 
+def compute_scooby_score(
+    movement_score: float,
+    austrian: float,
+    hume: float,
+    keynes: float,
+    relative: float,
+    asymmetry: float,
+    data_confidence: float,
+    pre_flow_opportunity: float,
+    row: pd.Series,
+    event_override: dict[str, Any] | None,
+    zombie_decay: dict[str, Any] | None,
+    long_term: dict[str, Any] | None,
+) -> float:
+    """Return the whole-case score behind the personal verdict label."""
+    event_override = event_override or {}
+    zombie_decay = zombie_decay or {}
+    long_term = long_term or {}
+    dilution = clean_float(row.get("dilution_pressure_score"))
+    survival = clean_float(row.get("survival_risk_score"))
+    zombie_penalty = clean_float(zombie_decay.get("zombie_decay_penalty"))
+    event_penalty = clean_float(event_override.get("event_shock_penalty"))
+    long_term_score = clean_float(long_term.get("long_term_investment_score"))
+    catastrophic_reset = is_catastrophic_reset_cycle(row, event_override)
+    flag_haircut = min(
+        12,
+        dilution * 0.035
+        + survival * 0.030
+        + zombie_penalty * 0.20
+        + event_penalty * 0.16
+        + (6 if catastrophic_reset else 0),
+    )
+    score = (
+        movement_score * 0.30
+        + austrian * 0.13
+        + hume * 0.15
+        + keynes * 0.15
+        + relative * 0.10
+        + asymmetry * 0.10
+        + pre_flow_opportunity * 0.05
+        + data_confidence * 0.04
+        + long_term_score * 0.03
+        - flag_haircut
+    )
+    return round(max(0, min(100, score)), 1)
+
+
 def personal_signal_label(
     movement_score: float,
     austrian: float,
@@ -2037,6 +2115,7 @@ def personal_signal_label(
     serious_survival = survival >= 70
     stale_drag = zombie_penalty >= 8
     catastrophic_reset = is_catastrophic_reset_cycle(row, event_override)
+    sub_500k_spiral = is_sub_500k_spiral_risk(row, hume, austrian, keynes)
     reset_catalyst = has_reset_catalyst(
         row,
         event_override,
@@ -2049,25 +2128,19 @@ def personal_signal_label(
         long_term,
     )
 
-    flag_haircut = min(
-        12,
-        dilution * 0.035
-        + survival * 0.030
-        + zombie_penalty * 0.20
-        + event_penalty * 0.16
-        + (6 if catastrophic_reset else 0),
-    )
-    comprehensive_score = (
-        movement_score * 0.30
-        + austrian * 0.13
-        + hume * 0.15
-        + keynes * 0.15
-        + relative * 0.10
-        + asymmetry * 0.10
-        + pre_flow_opportunity * 0.05
-        + data_confidence * 0.04
-        + long_term_score * 0.03
-        - flag_haircut
+    comprehensive_score = compute_scooby_score(
+        movement_score,
+        austrian,
+        hume,
+        keynes,
+        relative,
+        asymmetry,
+        data_confidence,
+        pre_flow_opportunity,
+        row,
+        event_override,
+        zombie_decay,
+        long_term,
     )
 
     if is_hard_stop_event(row, event_override):
@@ -2089,6 +2162,8 @@ def personal_signal_label(
     if stale_drag and comprehensive_score < 38:
         return "This is Garbage"
     if catastrophic_reset and comprehensive_score >= 45:
+        return "High Signal, Red Flags"
+    if sub_500k_spiral and comprehensive_score >= 45:
         return "High Signal, Red Flags"
     if (serious_dilution or serious_survival) and comprehensive_score >= 45:
         return "High Signal, Red Flags"
@@ -2238,6 +2313,7 @@ def secondary_signal_label(
         or survival >= 70
         or event_penalty > 0
         or is_catastrophic_reset_cycle(row, event_override)
+        or is_sub_500k_spiral_risk(row, hume, austrian, keynes)
     ) and movement_score >= 45:
         labels.append("High Signal, Red Flags")
     if austrian >= 65 and pre_flow_opportunity >= 45 and relative >= 45 and keynes >= 45 and hume < 50:
@@ -2306,6 +2382,17 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
         | event_reason.str.contains(liquidation_terms_pattern, regex=True, na=False)
         | event_note.str.contains(liquidation_terms_pattern, regex=True, na=False)
     )
+    sub_500k_spiral = (number("market_cap") > 0) & (number("market_cap") < 500_000) & (
+        (hume >= 55)
+        | (number("austrian_mispricing_score") >= 65)
+        | (dilution >= 50)
+        | (survival >= 50)
+    ) & (
+        (keynes < 45)
+        | (number("volume_to_float") <= 0)
+        | (dilution >= 60)
+        | (survival >= 60)
+    )
     event_confidence = output.get("event_shock_confidence", pd.Series("", index=output.index)).astype(str).str.lower()
     hard_stop_event = liquidation_event | (
         reset_cycle
@@ -2349,6 +2436,7 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
         | (survival >= 80)
         | ((thesis_break >= 80) & ~reset_catalyst)
         | reset_cycle
+        | sub_500k_spiral
         | hard_stop_event
     )
     labels = output["what_i_think"].astype(str)
@@ -2414,6 +2502,7 @@ def classify_risk_posture(
     zombie_decay: dict[str, Any],
     data_confidence: float,
     movement_score: float = 0,
+    austrian: float = 0,
     hume: float = 0,
     keynes: float = 0,
     relative: float = 0,
@@ -2439,6 +2528,8 @@ def classify_risk_posture(
         return "Old thesis broken: needs reset catalyst"
     if is_catastrophic_reset_cycle(row, event_override):
         return "Catastrophic reset cycle"
+    if is_sub_500k_spiral_risk(row, hume, austrian, keynes):
+        return "Sub-500K spiral risk"
     if dilution >= 85:
         return "Extreme dilution watch"
     if dilution >= 70 and survival >= 70:
