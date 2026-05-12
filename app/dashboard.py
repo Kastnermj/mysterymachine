@@ -2081,7 +2081,6 @@ if not display_scores.empty:
         if score_column in display_scores.columns:
             display_scores[score_column] = pd.to_numeric(display_scores[score_column], errors="coerce")
 
-PRESET_OPTIONS = ["Full Batch", "Clean Research", "Best Overall", "Long-Term Hunt", "Garbage Lab", "Danger Zone"]
 LENS_OPTIONS = [
     "Overall Big Board",
     "Hume Flow",
@@ -2094,7 +2093,6 @@ LENS_OPTIONS = [
     "Data Confidence",
     "Danger Review",
 ]
-view_mode = st.session_state.get("big_board_preset", "Full Batch")
 research_lens = st.session_state.get("big_board_lens", "Overall Big Board")
 
 with st.sidebar:
@@ -2161,12 +2159,11 @@ with st.sidebar:
     selected_data_labels = st.multiselect("Data confidence", data_options)
     query_text = st.text_input("Search ticker/company")
 
-def build_visible_scores(active_view_mode: str, active_research_lens: str, active_sort_by: str) -> pd.DataFrame:
+def build_visible_scores(active_research_lens: str, active_sort_by: str) -> pd.DataFrame:
     """Apply the current board controls and sidebar filters."""
     visible = display_scores.copy()
     if visible.empty:
         return visible
-    visible = apply_watchlist_mode(visible, active_view_mode or "Full Batch")
     visible = apply_lens(visible, active_research_lens or "Overall Big Board")
     if hide_garbage_check and "what_i_think" in visible.columns:
         visible = visible[~visible["what_i_think"].astype(str).isin(["This is Garbage", "Needs More Clues"])]
@@ -2223,7 +2220,7 @@ def build_visible_scores(active_view_mode: str, active_research_lens: str, activ
     return visible.head(top_n)
 
 
-filtered = build_visible_scores(view_mode, research_lens, sort_by)
+filtered = build_visible_scores(research_lens, sort_by)
 
 watchlist_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
     ["Big Board", "Scout Card", "Data Room", "Math Appendix"]
@@ -2252,17 +2249,10 @@ with watchlist_tab:
 
         st.subheader("Front Office Board")
         with st.container():
-            preset_col, lens_col, verdict_col = st.columns(
-                [1.05, 1.1, 1.1],
+            lens_col, verdict_col = st.columns(
+                [1.1, 1.1],
                 vertical_alignment="bottom",
             )
-            with preset_col:
-                view_mode = st.selectbox(
-                    "Preset",
-                    PRESET_OPTIONS,
-                    index=PRESET_OPTIONS.index(view_mode) if view_mode in PRESET_OPTIONS else 0,
-                    key="big_board_preset",
-                )
             with lens_col:
                 research_lens = st.selectbox(
                     "Scouting lens",
@@ -2271,7 +2261,7 @@ with watchlist_tab:
                     key="big_board_lens",
                 )
             active_sort_by = lens_sort_column(research_lens) if sort_label.startswith("Lens default") else sort_by
-            filtered = build_visible_scores(view_mode, research_lens, active_sort_by)
+            filtered = build_visible_scores(research_lens, active_sort_by)
             verdict_filter_options = ["All"] + what_i_think_options(filtered)
             with verdict_col:
                 board_verdict_filter = st.selectbox(
@@ -2358,7 +2348,7 @@ with watchlist_tab:
         with col1:
             metric_panel("Research Batch", len(display_scores), "Top candidates currently scored")
         with col2:
-            metric_panel("Shown Now", len(filtered), f"{clean_text(view_mode, 'Full Batch')} / {clean_text(research_lens, 'Overall')}")
+            metric_panel("Shown Now", len(filtered), f"Full Batch / {clean_text(research_lens, 'Overall')}")
         with col3:
             scooby_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "SCOOBY DOOBY DOO!!").sum())
             metric_panel("Scooby Count", scooby_count, "Rare by design")
