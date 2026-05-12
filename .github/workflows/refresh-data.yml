@@ -8,8 +8,9 @@ on:
         required: false
         default: "manual refresh"
   schedule:
-    # Weekdays at 10:30 UTC. This is pre-market / morning US time for most of the year.
-    - cron: "30 10 * * 1-5"
+    # Daily at 06:00 UTC, which is 1:00 AM Eastern Standard Time.
+    # During daylight saving time this runs at 2:00 AM Eastern.
+    - cron: "0 6 * * *"
 
 permissions:
   contents: write
@@ -43,6 +44,15 @@ jobs:
 
       - name: Refresh Top 250 research data
         run: python main.py
+
+      - name: Force Streamlit redeploy marker
+        run: |
+          mkdir -p outputs/reports
+          {
+            echo "last_refresh_utc=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "github_run_id=${GITHUB_RUN_ID}"
+            echo "github_sha=${GITHUB_SHA}"
+          } > outputs/reports/streamlit_redeploy_marker.txt
 
       - name: Commit refreshed outputs
         run: |

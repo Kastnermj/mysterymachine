@@ -97,6 +97,7 @@ SCORE_COLUMNS = [
     "distress_echo_penalty",
     "echo_control_note",
     "what_i_think",
+    "secondary_what_i_think",
     "personal_signal_label",
     "label_basis",
     "setup_type",
@@ -273,6 +274,22 @@ def build_theory_scores(
             dcf,
             long_term,
         )
+        secondary_label = secondary_signal_label(
+            personal_label,
+            movement_score,
+            austrian,
+            hume,
+            keynes,
+            relative,
+            asymmetry,
+            data_confidence,
+            pre_flow_opportunity,
+            event_override,
+            row,
+            zombie_decay,
+            dcf,
+            long_term,
+        )
         setup_type = classify_setup_type(austrian, hume, keynes, movement_score, pre_flow_opportunity)
         risk_posture = classify_risk_posture(
             row,
@@ -377,6 +394,7 @@ def build_theory_scores(
                 "distress_echo_penalty": echo["distress_echo_penalty"],
                 "echo_control_note": echo["echo_control_note"],
                 "what_i_think": personal_label,
+                "secondary_what_i_think": secondary_label,
                 "personal_signal_label": personal_label,
                 "label_basis": "strict model label",
                 "setup_type": setup_type,
@@ -1067,63 +1085,97 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
     score = 0.0
     present = []
     missing = []
-    if pd.notna(row.get("price")):
-        score += 15
-        present.append("price")
-    else:
-        missing.append("price")
-    if pd.notna(row.get("market_cap")):
-        score += 15
-        present.append("market cap")
-    else:
-        missing.append("market cap")
-    if pd.notna(row.get("volume")):
-        score += 10
-        present.append("volume")
-    else:
-        missing.append("volume")
-    if pd.notna(row.get("avg_volume")):
-        score += 10
-        present.append("average volume")
-    else:
-        missing.append("average volume")
-    if pd.notna(row.get("dollar_volume")):
-        score += 10
-        present.append("dollar volume")
-    else:
-        missing.append("dollar volume")
-    if pd.notna(row.get("company_name")):
-        score += 8
-        present.append("company name")
-    else:
-        missing.append("company name")
-    if pd.notna(row.get("sector")):
-        score += 8
-        present.append("sector")
-    else:
-        missing.append("sector")
-    if pd.notna(row.get("industry")):
-        score += 8
-        present.append("industry")
-    else:
-        missing.append("industry")
-    if (to_float(row.get("filing_activity_score")) or 0) > 0 or (to_float(row.get("dilution_pressure_score")) or 0) > 0:
-        score += 8
-        present.append("SEC signal metadata")
-    else:
-        missing.append("SEC signal metadata")
+
+    def has_value(column: str) -> bool:
+        value = row.get(column)
+        if value is None or pd.isna(value):
+            return False
+        return str(value).strip() != ""
+
+    def add_check(column: str, label: str, points: float) -> None:
+        nonlocal score
+        if has_value(column):
+            score += points
+            present.append(label)
+        else:
+            missing.append(label)
+
+    add_check("price", "price", 7)
+    add_check("market_cap", "market cap", 7)
+    add_check("volume", "volume", 6)
+    add_check("avg_volume", "average volume", 5)
+    add_check("dollar_volume", "dollar volume", 6)
+    add_check("company_name", "company name", 5)
+    add_check("sector", "sector", 5)
+    add_check("industry", "industry", 4)
+
     if str(row.get("price_history_status") or "").lower() == "ok":
-        score += 8
+        score += 12
         present.append("price history")
     else:
         missing.append("price history")
 
+    has_sec_signal = any(
+        clean_float(row.get(column)) > 0
+        for column in [
+            "filing_activity_score",
+            "dilution_pressure_score",
+            "survival_risk_score",
+            "catalyst_signal_score",
+            "narrative_trigger_score",
+        ]
+    )
+    if has_sec_signal:
+        score += 13
+        present.append("SEC signal metadata")
+    else:
+        missing.append("SEC signal metadata")
+
+    accounting_columns = [
+        "cash",
+        "current_assets",
+        "current_liabilities",
+        "total_assets",
+        "total_liabilities",
+        "revenue",
+        "operating_cash_flow",
+        "net_income",
+        "shares_outstanding",
+    ]
+    accounting_count = sum(1 for column in accounting_columns if has_value(column))
+    if accounting_count:
+        score += min(14, 4 + accounting_count * 1.4)
+        present.append(f"accounting facts ({accounting_count})")
+    else:
+        missing.append("accounting facts")
+
+    has_event_scan = has_value("event_shock_label") or has_value("event_shock_score")
+    if has_event_scan:
+        score += 7
+        present.append("event-shock scan")
+    else:
+        missing.append("event-shock scan")
+
+    if has_value("volume_to_float"):
+        score += 5
+        present.append("volume-to-float")
+    else:
+        missing.append("volume-to-float")
+
+    if has_value("float") or has_value("shares_outstanding"):
+        score += 4
+        present.append("share count proxy")
+    else:
+        missing.append("share count proxy")
+
     score = round(min(100, score), 1)
-    if score >= 75:
+    if score >= 85:
+        label = "very high confidence"
+    elif score >= 70:
         label = "high confidence"
-    elif score >= 50:
+    elif score >= 55:
         label = "medium confidence"
-    elif score >= 25:
+    elif score >= 40:
         label = "low confidence"
     else:
         label = "data fragile"
@@ -2023,8 +2075,10 @@ def personal_signal_label(
         return "Scrappy Doo"
     if thesis_break >= 80:
         return "Old thesis broken, investigate"
-    if data_confidence < 45 or movement_score < 25:
-        return "This is Garbage"
+    if data_confidence < 40:
+        return "Needs More Clues"
+    if movement_score < 25:
+        return "This is Garbage" if data_confidence >= 60 else "Needs More Clues"
     if serious_dilution and comprehensive_score < 40:
         return "This is Garbage"
     if serious_survival and comprehensive_score < 40:
@@ -2055,10 +2109,21 @@ def personal_signal_label(
         return "Long-Term Clue, Slow Fuse"
     if movement_score >= 55 and long_term_score >= 55 and stale_drag:
         return "Comeback Candidate, Needs Proof"
+    if (
+        pre_flow_opportunity >= 50
+        and pre_flow_opportunity >= hume + 15
+        and movement_score >= 45
+        and data_confidence >= 50
+        and not serious_survival
+        and not is_hard_stop_event(row, event_override)
+    ):
+        return "Pre-Flow Sleeper"
+    if austrian >= 65 and pre_flow_opportunity >= 45 and relative >= 45 and keynes >= 45 and hume < 50:
+        return "Turnaround Clue, Needs Proof"
     if pre_flow_opportunity >= 55 and movement_score >= 45 and long_term_score >= 35 and hume < 45:
         return "Pricing Gap, Waiting on Volume"
     if movement_score < 42 and long_term_score < 55:
-        return "This is Garbage"
+        return "Needs More Clues" if data_confidence < 65 else "Cold Case"
     if movement_score < 42 and long_term_score >= 55 and not heavy_dilution and not serious_survival and zombie_penalty <= 3:
         return "Long-Term Clue, Slow Fuse"
 
@@ -2066,8 +2131,21 @@ def personal_signal_label(
         return "Hayek doesnt pick stocks"
     if keynes >= 75 and hume < 45 and relative < 35 and asymmetry < 35:
         return "Purely Animal Spirits"
+    if hume >= 60 and hume >= pre_flow_opportunity + 20 and movement_score >= 45:
+        return "Meme Supreme"
+    if (
+        hume >= 55
+        and pre_flow_opportunity >= 50
+        and abs(hume - pre_flow_opportunity) < 20
+        and movement_score >= 45
+        and (relative >= 45 or asymmetry >= 45)
+        and data_confidence >= 50
+    ):
+        return "Adam Smith might like this"
     if hume >= 55 and austrian < 55 and keynes < 65:
         return "Adam Smith might like this"
+    if hume >= 60 and movement_score >= 45 and pre_flow_opportunity < hume - 8:
+        return "The Crowd Found It. Still Juice?"
     if movement_score >= 82 and hume >= 50 and keynes >= 70 and (relative >= 45 or asymmetry >= 45):
         return "SCOOBY DOOBY DOO!!"
     if (
@@ -2096,6 +2174,90 @@ def personal_signal_label(
     if comprehensive_score >= 50:
         return "Eh this is Mid"
     return "This is Garbage"
+
+
+def secondary_signal_label(
+    primary_label: str,
+    movement_score: float,
+    austrian: float,
+    hume: float,
+    keynes: float,
+    relative: float,
+    asymmetry: float,
+    data_confidence: float,
+    pre_flow_opportunity: float = 0,
+    event_override: dict[str, Any] | None = None,
+    row: pd.Series | None = None,
+    zombie_decay: dict[str, Any] | None = None,
+    dcf: dict[str, Any] | None = None,
+    long_term: dict[str, Any] | None = None,
+) -> str:
+    """Return a second qualifying what_i_think label when another lens also fires."""
+    event_override = event_override or {}
+    row = row if row is not None else pd.Series(dtype=object)
+    zombie_decay = zombie_decay or {}
+    dcf = dcf or {}
+    long_term = long_term or {}
+    dilution = clean_float(row.get("dilution_pressure_score"))
+    survival = clean_float(row.get("survival_risk_score"))
+    zombie_penalty = clean_float(zombie_decay.get("zombie_decay_penalty"))
+    thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
+    event_penalty = clean_float(event_override.get("event_shock_penalty"))
+    long_term_score = clean_float(long_term.get("long_term_investment_score"))
+    dcf_plausibility = clean_float(dcf.get("dcf_plausibility_score"))
+    labels: list[str] = []
+
+    if primary_label in {"This is Garbage", "Needs More Clues"}:
+        return ""
+    if is_hard_stop_event(row, event_override) or data_confidence < 40:
+        return ""
+    if hume >= 60 and hume >= pre_flow_opportunity + 20 and movement_score >= 45:
+        labels.append("Meme Supreme")
+    if (
+        pre_flow_opportunity >= 50
+        and pre_flow_opportunity >= hume + 15
+        and movement_score >= 45
+        and data_confidence >= 50
+        and survival < 70
+    ):
+        labels.append("Pre-Flow Sleeper")
+    if (
+        hume >= 55
+        and pre_flow_opportunity >= 50
+        and abs(hume - pre_flow_opportunity) < 20
+        and movement_score >= 45
+        and (relative >= 45 or asymmetry >= 45)
+        and data_confidence >= 50
+    ):
+        labels.append("Adam Smith might like this")
+    if (
+        dilution >= 70
+        or survival >= 70
+        or event_penalty > 0
+        or is_catastrophic_reset_cycle(row, event_override)
+    ) and movement_score >= 45:
+        labels.append("High Signal, Red Flags")
+    if austrian >= 65 and pre_flow_opportunity >= 45 and relative >= 45 and keynes >= 45 and hume < 50:
+        labels.append("Turnaround Clue, Needs Proof")
+    if thesis_break >= 80:
+        labels.append("Old thesis broken, investigate")
+    if keynes >= 75 and hume < 45 and relative < 35 and asymmetry < 35:
+        labels.append("Purely Animal Spirits")
+    if hume >= 60 and movement_score >= 45 and pre_flow_opportunity < hume - 8:
+        labels.append("The Crowd Found It. Still Juice?")
+    if relative >= 55 and asymmetry < 35:
+        labels.append("Value Clue, Tiny Engine")
+    if asymmetry >= 55 and relative < 30:
+        labels.append("Rocket Shape, No Map")
+    if long_term_score >= 65 and movement_score < 55 and dilution < 70 and survival < 70 and zombie_penalty <= 3:
+        labels.append("Long-Term Clue, Slow Fuse")
+    if movement_score >= 68 and keynes >= 65 and dcf_plausibility >= 2 and dilution < 70 and survival < 70:
+        labels.append("Scrappy Doo")
+
+    for label in labels:
+        if label != primary_label:
+            return label
+    return ""
 
 
 def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
@@ -2192,7 +2354,10 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
         scooby_pool = output[~no_go & (movement >= 50) & (hume >= 40) & (keynes >= 45)]
         if not scooby_pool.empty:
             idx = scooby_pool["_best_fit_score"].idxmax()
+            old_label = str(output.loc[idx, "what_i_think"])
             output.loc[idx, "what_i_think"] = "SCOOBY DOOBY DOO!!"
+            if old_label and old_label != "SCOOBY DOOBY DOO!!":
+                output.loc[idx, "secondary_what_i_think"] = old_label
             output.loc[idx, "personal_signal_label"] = "SCOOBY DOOBY DOO!!"
             output.loc[idx, "label_basis"] = "best available candidate in this batch; still verify risks"
 
@@ -2205,7 +2370,10 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
         ]
         if not scrappy_pool.empty:
             idx = scrappy_pool["_best_fit_score"].idxmax()
+            old_label = str(output.loc[idx, "what_i_think"])
             output.loc[idx, "what_i_think"] = "Scrappy Doo"
+            if old_label and old_label != "Scrappy Doo":
+                output.loc[idx, "secondary_what_i_think"] = old_label
             output.loc[idx, "personal_signal_label"] = "Scrappy Doo"
             output.loc[idx, "label_basis"] = "best fledgling candidate in this batch; still verify risks"
 
@@ -2590,7 +2758,7 @@ def _save_scores(scores: pd.DataFrame, config: dict[str, Any], logger: logging.L
     scores.to_csv(watchlist_path, index=False)
     focused = scores
     if "what_i_think" in focused.columns:
-        focused = focused[focused["what_i_think"].astype(str) != "This is Garbage"]
+        focused = focused[~focused["what_i_think"].astype(str).isin(["This is Garbage", "Needs More Clues"])]
     focused.to_csv(focused_watchlist_path, index=False)
     logger.info("Theory scores saved to %s with %s rows", scores_path, len(scores))
     logger.info("Ranked repricing watchlist saved to %s", watchlist_path)

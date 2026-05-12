@@ -167,6 +167,14 @@ def money(value: Any) -> str:
     return f"${number:,.0f}"
 
 
+def price_money(value: Any) -> str:
+    """Format stock prices with visible cents in scout cards."""
+    number = safe_number(value, None)
+    if number is None:
+        return "n/a"
+    return f"${number:,.2f}"
+
+
 def score_band(score: Any) -> str:
     """Return a compact visual band for score cards."""
     value = safe_number(score)
@@ -387,6 +395,10 @@ def scout_console_html(row: pd.Series, compact: bool = False) -> str:
         )
 
     console_class = "scout-console scout-console-compact" if compact else "scout-console"
+    badges = verdict_badge(row.get("what_i_think"))
+    secondary_label = clean_text(row.get("secondary_what_i_think"))
+    if secondary_label:
+        badges += verdict_badge(secondary_label)
 
     return f"""
     <div class="{console_class}">
@@ -394,8 +406,8 @@ def scout_console_html(row: pd.Series, compact: bool = False) -> str:
             <div>
                 <div class="scout-kicker">Mystery Machine Scout Console</div>
                 <div class="scout-console-title">{html.escape(ticker)} <span>{html.escape(company)}</span></div>
-                <div class="scout-console-subtitle">{html.escape(sector)} | Price {money(row.get('price'))} | Market cap {money(row.get('market_cap'))}</div>
-                <div class="scout-console-badges">{verdict_badge(row.get('what_i_think'))}</div>
+                <div class="scout-console-subtitle">{html.escape(sector)} | Price {price_money(row.get('price'))} | Market cap {money(row.get('market_cap'))}</div>
+                <div class="scout-console-badges">{badges}</div>
             </div>
             <div class="scout-grade-orb">
                 <span>{html.escape(grade)}</span>
@@ -445,7 +457,7 @@ def ticker_card(row: pd.Series, rank: int) -> None:
                 <div class="draft-name">{name}</div>
                 <div class="draft-scorebar"><div style="width:{max(0, min(100, move)):.0f}%"></div></div>
                 <div class="draft-meta">Move {move:.1f} | Hume {safe_number(row.get("hume_flow_potential_score")):.0f} | Keynes {safe_number(row.get("keynes_repricing_potential_score")):.0f}</div>
-                <div class="draft-badge">{verdict_badge(row.get("what_i_think"))}</div>
+                <div class="draft-badge">{verdict_badge(row.get("what_i_think"))}{verdict_badge(row.get("secondary_what_i_think")) if clean_text(row.get("secondary_what_i_think")) else ""}</div>
                 <div class="draft-note">{risk} | {flow}</div>
             </div>
             """,
@@ -490,6 +502,7 @@ BOARD_LABELS = {
     "movement_grade": "Grade",
     "movement_score": "Move",
     "what_i_think": "What I Think",
+    "secondary_what_i_think": "Also Think",
     "risk_posture": "Risk Read",
     "price": "Price",
     "market_cap": "Mkt Cap",
@@ -901,6 +914,29 @@ def option_values(frame: pd.DataFrame, column: str) -> list[str]:
     return sorted(value for value in values if value)
 
 
+def what_i_think_options(frame: pd.DataFrame) -> list[str]:
+    """Return combined primary/secondary What I Think labels for one filter."""
+    values: set[str] = set()
+    for column in ["what_i_think", "secondary_what_i_think"]:
+        if column in frame.columns:
+            values.update(clean_text(value) for value in frame[column].dropna().unique())
+    return sorted(value for value in values if value)
+
+
+def filter_by_what_i_think(frame: pd.DataFrame, labels: list[str] | str) -> pd.DataFrame:
+    """Match labels against both What I Think columns."""
+    if frame.empty:
+        return frame
+    if isinstance(labels, str):
+        labels = [labels]
+    labels = [label for label in labels if label and label != "All"]
+    if not labels:
+        return frame
+    primary = frame.get("what_i_think", pd.Series("", index=frame.index)).astype(str)
+    secondary = frame.get("secondary_what_i_think", pd.Series("", index=frame.index)).astype(str)
+    return frame[primary.isin(labels) | secondary.isin(labels)]
+
+
 def apply_watchlist_mode(frame: pd.DataFrame, mode: str) -> pd.DataFrame:
     """Apply one high-level research view without deleting the underlying data."""
     if frame.empty:
@@ -910,13 +946,15 @@ def apply_watchlist_mode(frame: pd.DataFrame, mode: str) -> pd.DataFrame:
     risk = output.get("risk_posture", pd.Series("", index=output.index)).astype(str)
     long_term_label = output.get("long_term_investment_label", pd.Series("", index=output.index)).astype(str)
 
+    weak_labels = ["This is Garbage", "Needs More Clues"]
+
     if mode == "Clean Research":
-        return output[verdict != "This is Garbage"]
+        return output[~verdict.isin(weak_labels)]
     if mode == "Garbage Lab":
-        return output[verdict == "This is Garbage"]
+        return output[verdict.isin(weak_labels)]
     if mode == "Best Overall":
         return output[
-            (verdict != "This is Garbage")
+            ~verdict.isin(weak_labels)
             & ~risk.str.contains("Extreme dilution|Catastrophic|Old thesis broken", case=False, na=False)
             & (numeric_series(output, "data_confidence_score") >= 75)
         ]
@@ -926,7 +964,7 @@ def apply_watchlist_mode(frame: pd.DataFrame, mode: str) -> pd.DataFrame:
         ]
     if mode == "Danger Zone":
         return output[
-            (verdict == "This is Garbage")
+            verdict.isin(weak_labels)
             | risk.str.contains("Extreme dilution|Catastrophic|Survival|Old thesis broken|Dilution", case=False, na=False)
         ]
     return output
@@ -2105,7 +2143,7 @@ with st.sidebar:
     st.divider()
     sector_options = option_values(display_scores, "sector")
     selected_sectors = st.multiselect("Sector", sector_options)
-    verdict_options = option_values(display_scores, "what_i_think")
+    verdict_options = what_i_think_options(display_scores)
     selected_labels = st.multiselect("What I think", verdict_options)
     risk_options = option_values(display_scores, "risk_posture")
     selected_risks = st.multiselect("Risk posture", risk_options)
@@ -2123,7 +2161,7 @@ def build_visible_scores(active_view_mode: str, active_research_lens: str, activ
     visible = apply_watchlist_mode(visible, active_view_mode or "Full Batch")
     visible = apply_lens(visible, active_research_lens or "Overall Big Board")
     if hide_garbage_check and "what_i_think" in visible.columns:
-        visible = visible[visible["what_i_think"].astype(str) != "This is Garbage"]
+        visible = visible[~visible["what_i_think"].astype(str).isin(["This is Garbage", "Needs More Clues"])]
     if require_good_data_check:
         visible = visible[numeric_series(visible, "data_confidence_score") >= 75]
     if event_flags_check:
@@ -2157,7 +2195,7 @@ def build_visible_scores(active_view_mode: str, active_research_lens: str, activ
     if selected_sectors:
         visible = visible[visible["sector"].astype(str).isin(selected_sectors)]
     if selected_labels:
-        visible = visible[visible["what_i_think"].astype(str).isin(selected_labels)]
+        visible = filter_by_what_i_think(visible, selected_labels)
     if selected_risks:
         visible = visible[visible["risk_posture"].astype(str).isin(selected_risks)]
     if selected_long_terms:
@@ -2226,7 +2264,7 @@ with watchlist_tab:
                 )
             active_sort_by = lens_sort_column(research_lens) if sort_label.startswith("Lens default") else sort_by
             filtered = build_visible_scores(view_mode, research_lens, active_sort_by)
-            verdict_filter_options = ["All"] + option_values(filtered, "what_i_think")
+            verdict_filter_options = ["All"] + what_i_think_options(filtered)
             with verdict_col:
                 board_verdict_filter = st.selectbox(
                     "What I think",
@@ -2234,7 +2272,7 @@ with watchlist_tab:
                     key="big_board_verdict_filter",
                 )
             if board_verdict_filter != "All":
-                filtered = filtered[filtered["what_i_think"].astype(str) == board_verdict_filter]
+                filtered = filter_by_what_i_think(filtered, board_verdict_filter)
 
         card_frame = filtered.head(6)
         if not card_frame.empty:
@@ -2251,6 +2289,7 @@ with watchlist_tab:
             "movement_grade",
             "movement_score",
             "what_i_think",
+            "secondary_what_i_think",
             "risk_posture",
             "price",
             "market_cap",
@@ -2319,7 +2358,8 @@ with watchlist_tab:
             metric_panel("Scrappy Count", scrappy_count, "Fledgling with potential")
         with col5:
             garbage_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "This is Garbage").sum())
-            metric_panel("Garbage Lab", garbage_count, "Kept for learning and filtering")
+            clue_count = int((display_scores.get("what_i_think", pd.Series(dtype=str)) == "Needs More Clues").sum())
+            metric_panel("Garbage / Clues", f"{garbage_count} / {clue_count}", "Bad math separated from thin evidence")
         with col6:
             if not price_history.empty and "price_history_status" in price_history.columns:
                 coverage = (price_history["price_history_status"].astype(str) == "ok").mean() * 100
@@ -2351,9 +2391,32 @@ with watchlist_tab:
             st.caption("On GitHub, choose Run workflow. When it finishes, Streamlit will use the refreshed files from the repo.")
 
         if "what_i_think" in display_scores.columns:
-            st.subheader("Personality Label Mix")
-            label_counts = display_scores["what_i_think"].value_counts().rename_axis("label").reset_index(name="count")
-            st.bar_chart(label_counts.set_index("label"))
+            st.subheader("Label Dispersion")
+            label_counts = display_scores["what_i_think"].value_counts(dropna=False).rename_axis("label").reset_index(name="primary_count")
+            if "secondary_what_i_think" in display_scores.columns:
+                secondary_counts = (
+                    display_scores["secondary_what_i_think"]
+                    .replace("", pd.NA)
+                    .dropna()
+                    .value_counts()
+                    .rename_axis("label")
+                    .reset_index(name="secondary_count")
+                )
+                label_counts = label_counts.merge(secondary_counts, on="label", how="outer")
+            else:
+                label_counts["secondary_count"] = 0
+            label_counts["primary_count"] = pd.to_numeric(label_counts["primary_count"], errors="coerce").fillna(0).astype(int)
+            label_counts["secondary_count"] = pd.to_numeric(label_counts["secondary_count"], errors="coerce").fillna(0).astype(int)
+            total_labels = max(1, len(display_scores))
+            label_counts["primary_pct"] = (label_counts["primary_count"] / total_labels * 100).round(1)
+            label_counts["combined_count"] = label_counts["primary_count"] + label_counts["secondary_count"]
+            label_counts = label_counts.sort_values(["combined_count", "primary_count"], ascending=False)
+            st.dataframe(
+                label_counts[["label", "primary_count", "secondary_count", "combined_count", "primary_pct"]],
+                use_container_width=True,
+                hide_index=True,
+                height=320,
+            )
 
 with ticker_tab:
     ticker_source = display_scores
