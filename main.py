@@ -104,8 +104,8 @@ def run_pipeline(config_path: str = "config.yaml", quick: bool = False) -> None:
         logger.info("Theory scoring stage complete with %s rows", len(theory_scores))
         show_progress(100, f"Watchlist complete: {len(theory_scores)} scored candidates")
     except Exception as exc:
-        logger.warning("Theory scoring stage skipped after noncritical failure: %s", exc)
-        show_progress(100, "Pipeline finished, but scoring was skipped")
+        logger.exception("Theory scoring stage failed")
+        raise RuntimeError(f"Theory scoring stage failed: {exc}") from exc
 
     logger.info("Pipeline complete")
 

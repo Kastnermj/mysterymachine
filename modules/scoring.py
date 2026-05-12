@@ -514,7 +514,10 @@ def prepare_scoring_frame(frame: pd.DataFrame) -> pd.DataFrame:
     output.loc[fallback_volume_to_float, "volume_to_float"] = (
         output.loc[fallback_volume_to_float, "volume"] / fallback_denominator.loc[fallback_volume_to_float]
     )
-    output["is_illiquid"] = output.get("is_illiquid", False).fillna(False)
+    if "is_illiquid" in output.columns:
+        output["is_illiquid"] = output["is_illiquid"].fillna(False).astype(bool)
+    else:
+        output["is_illiquid"] = False
     return output
 
 
