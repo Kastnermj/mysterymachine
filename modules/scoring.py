@@ -185,6 +185,7 @@ def build_theory_scores(
     price_features = _read_csv(config["paths"]["price_history_features_output"])
     fundamentals = _read_csv(config["paths"].get("fundamentals_output", ""))
     event_shocks = _read_csv(config["paths"].get("event_shocks_output", ""))
+    ticker_metadata = _read_csv(config.get("universe", {}).get("metadata_csv", ""))
     if universe.empty:
         logger.warning("No universe data found; writing empty theory score output")
         return _save_scores(pd.DataFrame(columns=SCORE_COLUMNS), config, logger)
@@ -198,6 +199,22 @@ def build_theory_scores(
     if not event_shocks.empty and "ticker" in event_shocks.columns:
         keep = [column for column in event_shocks.columns if column == "ticker" or column not in frame.columns]
         frame = frame.merge(event_shocks[keep], how="left", on="ticker", suffixes=("", "_event"))
+    if not ticker_metadata.empty and "ticker" in ticker_metadata.columns:
+        metadata_columns = [
+            column
+            for column in ["ticker", "company_name", "sector", "industry", "universe_reason"]
+            if column in ticker_metadata.columns
+        ]
+        metadata = ticker_metadata[metadata_columns].copy()
+        metadata = metadata.rename(
+            columns={
+                "company_name": "metadata_company_name",
+                "sector": "metadata_sector",
+                "industry": "metadata_industry",
+                "universe_reason": "metadata_universe_reason",
+            }
+        )
+        frame = frame.merge(metadata, how="left", on="ticker")
     frame = prepare_scoring_frame(frame)
     sector_stats = build_sector_stats(frame)
 
@@ -563,6 +580,10 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
             "signal_interpretation",
             "event_shock_reason",
             "event_override_note",
+            "metadata_company_name",
+            "metadata_sector",
+            "metadata_industry",
+            "metadata_universe_reason",
         ]
     ).lower()
     narrative_terms = [term.lower() for term in config["scoring"].get("narrative_terms", [])]
@@ -579,6 +600,17 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
     has_useful_industry = any(text_has_term(text, term) for term in useful_terms)
     has_evolved_narrative = bool(matched_evolution_clusters)
     evolved_cluster_count = len(matched_evolution_clusters)
+    necessity_clusters = {
+        "defense_dual_use",
+        "resource_constraints",
+        "supply_chain_resilience",
+        "healthspan_maintenance",
+        "physical_automation",
+        "physical_labor_productivity",
+        "engineering_automation",
+        "strategic_necessity",
+    }
+    necessity_cluster_count = sum(1 for cluster in matched_evolution_clusters if cluster in necessity_clusters)
     technology_narrative = 70 if has_narrative else 20
     if evolved_cluster_count >= 2:
         technology_narrative = max(technology_narrative, 76)
@@ -588,6 +620,13 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
     narrative_evolution = 80 if evolved_cluster_count >= 2 else 62 if has_evolved_narrative else 20
     ricardo_productivity = 75 if has_useful_industry or has_evolved_narrative or any(text_has_term(text, term) for term in ["automation", "productivity", "efficiency"]) else 20
     malthus_constraint = 75 if any(text_has_term(text, term) for term in constraint_terms) else 15
+    latent_necessity = 20
+    if necessity_cluster_count >= 2:
+        latent_necessity = 78
+    elif necessity_cluster_count == 1:
+        latent_necessity = 62
+    if has_useful_industry and necessity_cluster_count >= 1:
+        latent_necessity = min(85, latent_necessity + 6)
     tech_hype_warning = 0
     if technology_narrative >= 70 and technology_usefulness < 50:
         tech_hype_warning = 35
@@ -601,6 +640,7 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
         "narrative_evolution_clusters": ",".join(matched_evolution_clusters),
         "ricardo_productivity_score": ricardo_productivity,
         "malthus_constraint_score": malthus_constraint,
+        "latent_infrastructure_relevance_score": latent_necessity,
         "tech_hype_warning": tech_hype_warning,
         "boring_beneficiary_flag": boring_beneficiary,
     }
@@ -1088,6 +1128,10 @@ def score_asymmetry(row: pd.Series, config: dict[str, Any], sub: dict[str, Any],
     score += max(clean_float(sub.get("technology_usefulness_score")), clean_float(sub.get("ricardo_productivity_score"))) * 0.07
     if sub["technology_usefulness_score"] >= 70 or sub["ricardo_productivity_score"] >= 70:
         reasons.append("usefulness/productivity optionality")
+    latent_necessity = clean_float(sub.get("latent_infrastructure_relevance_score", 20))
+    if latent_necessity >= 60:
+        score += min(4, latent_necessity * 0.045)
+        reasons.append("latent infrastructure relevance")
     if explosive >= 50:
         score += min(12, explosive * 0.12)
         reasons.append("prior explosive behavior")
@@ -1312,7 +1356,9 @@ def compute_factor_stack(
     return_20d = clean_float(row.get("return_20d"))
     near_low = clean_float(row.get("near_52w_low_score"))
     explosive = clean_float(row.get("explosive_behavior_score"))
-    animal_spirits, animal_spirits_note = score_animal_spirits(row, config, compute_subsignals(row, config))
+    sub = compute_subsignals(row, config)
+    latent_necessity = clean_float(sub.get("latent_infrastructure_relevance_score", 20))
+    animal_spirits, animal_spirits_note = score_animal_spirits(row, config, sub)
 
     cash_to_market = to_float(row.get("cash_to_market_cap"))
     if cash_to_market is None:
@@ -1377,7 +1423,7 @@ def compute_factor_stack(
         + (10 if return_20d > 0 else 0)
         + min(15, filing_activity * 0.15),
     )
-    story_factor = min(100, keynes * 0.58 + narrative * 0.12 + catalyst * 0.12 + catalyst_probability * 0.18)
+    story_factor = min(100, keynes * 0.55 + narrative * 0.12 + catalyst * 0.12 + catalyst_probability * 0.17 + latent_necessity * 0.04)
     relative_value = min(
         100,
         relative * 0.65
@@ -1438,6 +1484,7 @@ def compute_factor_stack(
         f"animal_spirits={round(animal_spirits, 1)}",
         f"portfolio_viability={round(portfolio_viability, 1)}",
         f"catalyst_probability={round(catalyst_probability, 1)}",
+        f"latent_necessity={round(latent_necessity, 1)}",
         f"sec_penalty={round(sec_penalty, 1)}",
         f"accounting={round(max(0, min(100, accounting_quality)), 1)}",
     ]
@@ -1457,6 +1504,7 @@ def compute_factor_stack(
         "trading_setup_factor": round(max(0, min(100, trading_setup)), 1),
         "animal_spirits_factor": round(max(0, min(100, animal_spirits)), 1),
         "portfolio_viability_factor": round(max(0, min(100, portfolio_viability)), 1),
+        "latent_necessity_factor": round(max(0, min(100, latent_necessity)), 1),
         "sec_risk_penalty": round(max(0, sec_penalty), 1),
         "accounting_quality_factor": round(max(0, min(100, accounting_quality)), 1),
         "factor_stack_note": "; ".join(note_bits),
@@ -1736,6 +1784,7 @@ def score_long_term_microcap(
     """Score whether a microcap looks like a long-term research candidate."""
     accounting = clean_float(factors.get("accounting_quality_factor"), 45)
     portfolio = clean_float(factors.get("portfolio_viability_factor"), 50)
+    latent_necessity = clean_float(factors.get("latent_necessity_factor"), 20)
     dcf_score = clean_float(dcf.get("dcf_plausibility_score"))
     expectation_gap = clean_float(dcf.get("expectation_gap_score"))
     dilution = clean_float(row.get("dilution_pressure_score"))
@@ -1757,6 +1806,7 @@ def score_long_term_microcap(
         + min(100, dcf_score * 28) * 0.20
         + expectation_gap * 0.12
         + data_confidence * 0.10
+        + latent_necessity * 0.04
         + clean_float(row.get("relative_mispricing_score")) * 0.08
         + clean_float(row.get("asymmetry_score")) * 0.04
     )
@@ -1779,6 +1829,9 @@ def score_long_term_microcap(
     if cash_to_market is not None and cash_to_market >= 0.25:
         score += 5
         reasons.append("cash cushion versus market cap")
+    if latent_necessity >= 60:
+        score += min(4, latent_necessity * 0.04)
+        reasons.append("latent infrastructure relevance")
 
     score -= dilution * 0.30
     score -= survival * 0.18
@@ -2715,6 +2768,7 @@ def build_subsignal_tags(sub: dict[str, Any]) -> str:
         f"narrative_evolution={sub.get('narrative_evolution_score', 20)}",
         f"ricardo_productivity={sub['ricardo_productivity_score']}",
         f"malthus_constraint={sub['malthus_constraint_score']}",
+        f"latent_necessity={sub.get('latent_infrastructure_relevance_score', 20)}",
     ]
     if sub.get("narrative_evolution_clusters"):
         tags.append("outcome_clusters=" + str(sub["narrative_evolution_clusters"]))
