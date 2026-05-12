@@ -555,7 +555,15 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
     """Compute Ricardo/Malthus/Technology sub-signals used to adjust main scores."""
     text = " ".join(
         str(row.get(column) or "")
-        for column in ["company_name", "sector", "industry", "universe_reason"]
+        for column in [
+            "company_name",
+            "sector",
+            "industry",
+            "universe_reason",
+            "signal_interpretation",
+            "event_shock_reason",
+            "event_override_note",
+        ]
     ).lower()
     narrative_terms = [term.lower() for term in config["scoring"].get("narrative_terms", [])]
     useful_terms = [term.lower() for term in config["scoring"].get("useful_industries", [])]
@@ -570,11 +578,14 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
     has_narrative = any(text_has_term(text, term) for term in narrative_terms)
     has_useful_industry = any(text_has_term(text, term) for term in useful_terms)
     has_evolved_narrative = bool(matched_evolution_clusters)
+    evolved_cluster_count = len(matched_evolution_clusters)
     technology_narrative = 70 if has_narrative else 20
-    if has_evolved_narrative:
-        technology_narrative = max(technology_narrative, 78)
+    if evolved_cluster_count >= 2:
+        technology_narrative = max(technology_narrative, 76)
+    elif evolved_cluster_count == 1:
+        technology_narrative = max(technology_narrative, 66)
     technology_usefulness = 70 if has_useful_industry or has_evolved_narrative else 20
-    narrative_evolution = 80 if len(matched_evolution_clusters) >= 2 else 68 if has_evolved_narrative else 20
+    narrative_evolution = 80 if evolved_cluster_count >= 2 else 62 if has_evolved_narrative else 20
     ricardo_productivity = 75 if has_useful_industry or has_evolved_narrative or any(text_has_term(text, term) for term in ["automation", "productivity", "efficiency"]) else 20
     malthus_constraint = 75 if any(text_has_term(text, term) for term in constraint_terms) else 15
     tech_hype_warning = 0
@@ -2142,6 +2153,17 @@ def personal_signal_label(
         zombie_decay,
         long_term,
     )
+    positive_signal_count = sum(
+        [
+            hume >= 50,
+            keynes >= 50,
+            pre_flow_opportunity >= 50,
+            relative >= 45,
+            asymmetry >= 50,
+            dcf_plausibility >= 2,
+            data_confidence >= 70,
+        ]
+    )
 
     if is_hard_stop_event(row, event_override):
         return "This is Garbage"
@@ -2161,6 +2183,8 @@ def personal_signal_label(
         return "This is Garbage"
     if stale_drag and comprehensive_score < 38:
         return "This is Garbage"
+    if catastrophic_reset and comprehensive_score >= 40 and positive_signal_count >= 3:
+        return "High Signal, Red Flags"
     if catastrophic_reset and comprehensive_score >= 45:
         return "High Signal, Red Flags"
     if sub_500k_spiral and comprehensive_score >= 45:
