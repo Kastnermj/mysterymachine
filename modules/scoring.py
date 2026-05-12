@@ -2526,10 +2526,14 @@ def classify_risk_posture(
         return "Old thesis reset watch"
     if thesis_break >= 80:
         return "Old thesis broken: needs reset catalyst"
-    if is_catastrophic_reset_cycle(row, event_override):
-        return "Catastrophic reset cycle"
-    if is_sub_500k_spiral_risk(row, hume, austrian, keynes):
+    catastrophic_reset = is_catastrophic_reset_cycle(row, event_override)
+    sub_500k_spiral = is_sub_500k_spiral_risk(row, hume, austrian, keynes)
+    if catastrophic_reset and sub_500k_spiral:
+        return "Sub-500K + reset spiral risk"
+    if sub_500k_spiral:
         return "Sub-500K spiral risk"
+    if catastrophic_reset:
+        return "Catastrophic reset cycle"
     if dilution >= 85:
         return "Extreme dilution watch"
     if dilution >= 70 and survival >= 70:
