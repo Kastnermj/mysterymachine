@@ -574,9 +574,10 @@ def board_cell(column: str, value: Any) -> str:
     if column == "ticker":
         ticker = clean_text(value, "n/a").upper()
         return (
-            f'<button type="button" class="ticker-scout-button" '
-            f'data-ticker="{html.escape(ticker, quote=True)}">'
-            f'{html.escape(ticker)}</button>'
+            f'<a class="ticker-scout-button" '
+            f'href="?scout_ticker={html.escape(ticker, quote=True)}" '
+            f'data-ticker="{html.escape(ticker, quote=True)}" target="_top">'
+            f'{html.escape(ticker)}</a>'
         )
     if column == "price":
         number = safe_number(value, None)
@@ -735,6 +736,9 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             box-shadow: 1px 0 0 #d7deea;
         }}
         .ticker-scout-button {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             min-height: 28px;
             border: 1px solid #2563eb;
@@ -744,6 +748,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             font-weight: 950;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(37, 99, 235, .12);
+            text-decoration: none;
         }}
         .ticker-scout-button:hover {{
             background: linear-gradient(180deg, #dbeafe, #bfdbfe);
@@ -915,16 +920,17 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
                 detail.style.display = "block";
             }});
         }});
-        table.querySelectorAll(".ticker-scout-button").forEach((button) => {{
-            button.addEventListener("click", (event) => {{
+        table.querySelectorAll(".ticker-scout-button").forEach((link) => {{
+            link.addEventListener("click", (event) => {{
                 event.preventDefault();
                 event.stopPropagation();
-                const ticker = button.dataset.ticker || "";
+                const ticker = link.dataset.ticker || "";
                 if (!ticker) return;
-                const url = new URL(window.parent.location.href);
+                const url = new URL(window.location.href);
                 url.searchParams.set("scout_ticker", ticker);
                 url.searchParams.set("scout_nonce", String(Date.now()));
-                window.parent.location.href = url.toString();
+                link.href = url.pathname + url.search;
+                window.open(link.href, "_top");
             }});
         }});
         </script>
