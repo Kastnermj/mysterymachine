@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import json
 import math
 from pathlib import Path
 from typing import Any
@@ -569,15 +570,41 @@ def board_full_text(column: str, value: Any) -> str:
     return clean_text(value, "n/a")
 
 
-def board_cell(column: str, value: Any) -> str:
+def table_scout_payload(row: pd.Series) -> str:
+    """Return compact scout data for the in-table popout."""
+    payload = {
+        "ticker": clean_text(row.get("ticker"), "n/a").upper(),
+        "company": clean_text(row.get("company_name"), ""),
+        "grade": clean_text(row.get("movement_grade"), "n/a"),
+        "price": price_money(row.get("price")),
+        "market_cap": money(row.get("market_cap")),
+        "what": clean_text(row.get("what_i_think"), "n/a"),
+        "also": clean_text(row.get("secondary_what_i_think"), ""),
+        "risk": clean_text(row.get("risk_posture"), "n/a"),
+        "flow": clean_text(row.get("flow_state"), "n/a"),
+        "move": f"{safe_number(row.get('movement_score')):.1f}",
+        "scooby": f"{safe_number(row.get('scooby_score')):.1f}",
+        "pre_flow": f"{safe_number(row.get('pre_flow_opportunity_score')):.1f}",
+        "austrian": f"{safe_number(row.get('austrian_mispricing_score')):.1f}",
+        "hume": f"{safe_number(row.get('hume_flow_potential_score')):.1f}",
+        "keynes": f"{safe_number(row.get('keynes_repricing_potential_score')):.1f}",
+        "relative": f"{safe_number(row.get('relative_mispricing_score')):.1f}",
+        "asymmetry": f"{safe_number(row.get('asymmetry_score')):.1f}",
+        "data": f"{safe_number(row.get('data_confidence_score')):.1f}",
+        "why": clean_text(row.get("ranking_note"), "No ranking note available."),
+        "sequence": clean_text(row.get("sequence_interpretation"), ""),
+    }
+    return html.escape(json.dumps(payload), quote=True)
+
+
+def board_cell(column: str, value: Any, row: pd.Series | None = None) -> str:
     """Format one big-board cell."""
     if column == "ticker":
         ticker = clean_text(value, "n/a").upper()
+        scout_data = table_scout_payload(row if row is not None else pd.Series(dtype=object))
         return (
-            f'<a class="ticker-scout-button" '
-            f'href="?scout_ticker={html.escape(ticker, quote=True)}" '
-            f'data-ticker="{html.escape(ticker, quote=True)}" target="_top">'
-            f'{html.escape(ticker)}</a>'
+            f'<button type="button" class="ticker-scout-button" '
+            f'data-scout="{scout_data}">{html.escape(ticker)}</button>'
         )
     if column == "price":
         number = safe_number(value, None)
@@ -632,7 +659,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             cells.append(
                 f'<td class="{" ".join(classes)}" data-sort-value="{sort_value}" '
                 f'data-label="{html.escape(label, quote=True)}" data-full-text="{full_text}">'
-                f"{board_cell(column, row.get(column))}</td>"
+                f"{board_cell(column, row.get(column), row)}</td>"
             )
         rows.append("<tr>" + "".join(cells) + "</tr>")
 
@@ -736,9 +763,6 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             box-shadow: 1px 0 0 #d7deea;
         }}
         .ticker-scout-button {{
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 100%;
             min-height: 28px;
             border: 1px solid #2563eb;
@@ -748,7 +772,6 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             font-weight: 950;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(37, 99, 235, .12);
-            text-decoration: none;
         }}
         .ticker-scout-button:hover {{
             background: linear-gradient(180deg, #dbeafe, #bfdbfe);
@@ -819,6 +842,117 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             font-weight: 900;
             margin-bottom: 5px;
         }}
+        .scout-modal-backdrop {{
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(15, 23, 42, .55);
+            padding: 18px;
+            box-sizing: border-box;
+        }}
+        .scout-modal {{
+            max-width: 860px;
+            max-height: calc(100vh - 36px);
+            overflow: auto;
+            margin: 0 auto;
+            border: 1px solid #60a5fa;
+            border-radius: 12px;
+            background:
+                radial-gradient(circle at 88% 6%, rgba(37,99,235,.22), transparent 24%),
+                radial-gradient(circle at 8% 12%, rgba(22,163,74,.16), transparent 24%),
+                linear-gradient(180deg, #0f172a, #111827);
+            box-shadow: 0 30px 80px rgba(2, 6, 23, .45);
+            color: #f8fafc;
+        }}
+        .scout-modal-header {{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 20px 12px;
+            border-bottom: 1px solid rgba(148, 163, 184, .25);
+        }}
+        .scout-modal-kicker {{
+            color: #93c5fd;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }}
+        .scout-modal-title {{
+            font-size: 28px;
+            font-weight: 950;
+            line-height: 1.05;
+        }}
+        .scout-modal-company {{
+            margin-top: 5px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }}
+        .scout-modal-close {{
+            border: 1px solid rgba(191,219,254,.45);
+            background: rgba(15,23,42,.78);
+            color: #f8fafc;
+            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            font-size: 22px;
+            cursor: pointer;
+        }}
+        .scout-modal-body {{
+            padding: 16px 20px 20px;
+        }}
+        .scout-modal-grid {{
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }}
+        .scout-stat {{
+            border: 1px solid rgba(148, 163, 184, .28);
+            background: rgba(15, 23, 42, .58);
+            border-radius: 8px;
+            padding: 10px;
+        }}
+        .scout-stat span {{
+            display: block;
+            color: #93c5fd;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }}
+        .scout-stat strong {{
+            color: #f8fafc;
+            font-size: 18px;
+        }}
+        .scout-pill-row {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }}
+        .scout-modal-pill {{
+            border-radius: 999px;
+            padding: 6px 10px;
+            border: 1px solid rgba(147,197,253,.42);
+            background: rgba(37,99,235,.14);
+            color: #dbeafe;
+            font-weight: 850;
+            font-size: 12px;
+        }}
+        .scout-why {{
+            border: 1px solid rgba(148, 163, 184, .28);
+            background: rgba(255,255,255,.06);
+            border-radius: 8px;
+            padding: 12px;
+            color: #e2e8f0;
+            line-height: 1.45;
+        }}
+        @media (max-width: 720px) {{
+            .scout-modal-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+            .scout-modal-title {{ font-size: 23px; }}
+            .scout-modal-backdrop {{ padding: 10px; }}
+        }}
         </style>
         <div class="top-scroll synced-scroll" id="topScroll"><div class="scroll-inner" id="topScrollInner"></div></div>
         <div class="board-wrap" id="boardScroll">
@@ -832,6 +966,23 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             <div class="cell-detail-title" id="cellDetailTitle"></div>
             <div id="cellDetailText"></div>
         </div>
+        <div class="scout-modal-backdrop" id="scoutModalBackdrop">
+            <div class="scout-modal" role="dialog" aria-modal="true">
+                <div class="scout-modal-header">
+                    <div>
+                        <div class="scout-modal-kicker">Front Office Scout Card</div>
+                        <div class="scout-modal-title" id="scoutModalTitle"></div>
+                        <div class="scout-modal-company" id="scoutModalCompany"></div>
+                    </div>
+                    <button class="scout-modal-close" id="scoutModalClose" type="button">x</button>
+                </div>
+                <div class="scout-modal-body">
+                    <div class="scout-pill-row" id="scoutModalPills"></div>
+                    <div class="scout-modal-grid" id="scoutModalGrid"></div>
+                    <div class="scout-why" id="scoutModalWhy"></div>
+                </div>
+            </div>
+        </div>
         <script>
         const topScroll = document.getElementById("topScroll");
         const topScrollInner = document.getElementById("topScrollInner");
@@ -843,6 +994,13 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
         const detail = document.getElementById("cellDetail");
         const detailTitle = document.getElementById("cellDetailTitle");
         const detailText = document.getElementById("cellDetailText");
+        const scoutModalBackdrop = document.getElementById("scoutModalBackdrop");
+        const scoutModalTitle = document.getElementById("scoutModalTitle");
+        const scoutModalCompany = document.getElementById("scoutModalCompany");
+        const scoutModalPills = document.getElementById("scoutModalPills");
+        const scoutModalGrid = document.getElementById("scoutModalGrid");
+        const scoutModalWhy = document.getElementById("scoutModalWhy");
+        const scoutModalClose = document.getElementById("scoutModalClose");
         let syncingTop = false;
         let syncingBoard = false;
         function syncTopScrollbarWidth() {{
@@ -920,17 +1078,56 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
                 detail.style.display = "block";
             }});
         }});
-        table.querySelectorAll(".ticker-scout-button").forEach((link) => {{
-            link.addEventListener("click", (event) => {{
+        function escapeText(value) {{
+            return String(value || "").replace(/[&<>"']/g, (char) => ({{
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }}[char]));
+        }}
+        function openScoutModal(data) {{
+            scoutModalTitle.textContent = `${{data.ticker || "N/A"}} · Grade ${{data.grade || "n/a"}}`;
+            scoutModalCompany.textContent = `${{data.company || ""}} | Price ${{data.price || "n/a"}} | Market cap ${{data.market_cap || "n/a"}}`;
+            const pills = [data.what, data.also, data.risk, data.flow].filter(Boolean);
+            scoutModalPills.innerHTML = pills.map((pill) => `<span class="scout-modal-pill">${{escapeText(pill)}}</span>`).join("");
+            const stats = [
+                ["Scooby", data.scooby],
+                ["Move", data.move],
+                ["Pre-Flow", data.pre_flow],
+                ["Austrian", data.austrian],
+                ["Hume", data.hume],
+                ["Keynes", data.keynes],
+                ["Relative", data.relative],
+                ["Asymmetry", data.asymmetry],
+                ["Data", data.data],
+            ];
+            scoutModalGrid.innerHTML = stats.map(([label, value]) => (
+                `<div class="scout-stat"><span>${{escapeText(label)}}</span><strong>${{escapeText(value)}}</strong></div>`
+            )).join("");
+            scoutModalWhy.textContent = data.why || data.sequence || "No scout note available.";
+            scoutModalBackdrop.style.display = "block";
+        }}
+        function closeScoutModal() {{
+            scoutModalBackdrop.style.display = "none";
+        }}
+        scoutModalClose.addEventListener("click", closeScoutModal);
+        scoutModalBackdrop.addEventListener("click", (event) => {{
+            if (event.target === scoutModalBackdrop) closeScoutModal();
+        }});
+        document.addEventListener("keydown", (event) => {{
+            if (event.key === "Escape") closeScoutModal();
+        }});
+        table.querySelectorAll(".ticker-scout-button").forEach((button) => {{
+            button.addEventListener("click", (event) => {{
                 event.preventDefault();
                 event.stopPropagation();
-                const ticker = link.dataset.ticker || "";
-                if (!ticker) return;
-                const url = new URL(window.location.href);
-                url.searchParams.set("scout_ticker", ticker);
-                url.searchParams.set("scout_nonce", String(Date.now()));
-                link.href = url.pathname + url.search;
-                window.open(link.href, "_top");
+                try {{
+                    openScoutModal(JSON.parse(button.dataset.scout || "{{}}"));
+                }} catch (error) {{
+                    openScoutModal({{ ticker: button.textContent || "N/A", why: "Scout payload could not be read." }});
+                }}
             }});
         }});
         </script>
@@ -2261,14 +2458,6 @@ def build_visible_scores(active_research_lens: str, active_sort_by: str) -> pd.D
 
 
 filtered = build_visible_scores(research_lens, sort_by)
-
-scout_ticker_param = clean_text(st.query_params.get("scout_ticker", "")).upper()
-scout_nonce_param = clean_text(st.query_params.get("scout_nonce", scout_ticker_param))
-if scout_ticker_param and st.session_state.get("_last_table_scout_nonce") != scout_nonce_param:
-    scout_rows = theory_scores[theory_scores["ticker"].astype(str).str.upper() == scout_ticker_param]
-    if not scout_rows.empty:
-        st.session_state["_last_table_scout_nonce"] = scout_nonce_param
-        front_office_scout_dialog(scout_rows.iloc[0].to_dict())
 
 watchlist_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
     ["Big Board", "Scout Card", "Data Room", "Math Appendix"]
