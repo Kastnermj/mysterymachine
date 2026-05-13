@@ -571,6 +571,13 @@ def board_full_text(column: str, value: Any) -> str:
 
 def board_cell(column: str, value: Any) -> str:
     """Format one big-board cell."""
+    if column == "ticker":
+        ticker = clean_text(value, "n/a").upper()
+        return (
+            f'<button type="button" class="ticker-scout-button" '
+            f'data-ticker="{html.escape(ticker, quote=True)}">'
+            f'{html.escape(ticker)}</button>'
+        )
     if column == "price":
         number = safe_number(value, None)
         return "n/a" if number is None else html.escape(f"${number:,.2f}")
@@ -726,6 +733,21 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             font-weight: 900;
             color: #0f172a;
             box-shadow: 1px 0 0 #d7deea;
+        }}
+        .ticker-scout-button {{
+            width: 100%;
+            min-height: 28px;
+            border: 1px solid #2563eb;
+            border-radius: 8px;
+            background: linear-gradient(180deg, #eff6ff, #dbeafe);
+            color: #1e3a8a;
+            font-weight: 950;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, .12);
+        }}
+        .ticker-scout-button:hover {{
+            background: linear-gradient(180deg, #dbeafe, #bfdbfe);
+            color: #172554;
         }}
         .big-board-table th.sticky-ticker {{
             z-index: 8;
@@ -891,6 +913,18 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
                 detailTitle.textContent = cell.dataset.label || "Cell detail";
                 detailText.textContent = cell.dataset.fullText || cell.textContent || "";
                 detail.style.display = "block";
+            }});
+        }});
+        table.querySelectorAll(".ticker-scout-button").forEach((button) => {{
+            button.addEventListener("click", (event) => {{
+                event.preventDefault();
+                event.stopPropagation();
+                const ticker = button.dataset.ticker || "";
+                if (!ticker) return;
+                const url = new URL(window.parent.location.href);
+                url.searchParams.set("scout_ticker", ticker);
+                url.searchParams.set("scout_nonce", String(Date.now()));
+                window.parent.location.href = url.toString();
             }});
         }});
         </script>
@@ -2221,6 +2255,14 @@ def build_visible_scores(active_research_lens: str, active_sort_by: str) -> pd.D
 
 
 filtered = build_visible_scores(research_lens, sort_by)
+
+scout_ticker_param = clean_text(st.query_params.get("scout_ticker", "")).upper()
+scout_nonce_param = clean_text(st.query_params.get("scout_nonce", scout_ticker_param))
+if scout_ticker_param and st.session_state.get("_last_table_scout_nonce") != scout_nonce_param:
+    scout_rows = theory_scores[theory_scores["ticker"].astype(str).str.upper() == scout_ticker_param]
+    if not scout_rows.empty:
+        st.session_state["_last_table_scout_nonce"] = scout_nonce_param
+        front_office_scout_dialog(scout_rows.iloc[0].to_dict())
 
 watchlist_tab, ticker_tab, data_tab, appendix_tab = st.tabs(
     ["Big Board", "Scout Card", "Data Room", "Math Appendix"]
