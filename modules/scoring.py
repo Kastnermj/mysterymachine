@@ -214,7 +214,17 @@ def build_theory_scores(
                 "universe_reason": "metadata_universe_reason",
             }
         )
+        metadata = metadata.drop_duplicates(subset=["ticker"], keep="first")
         frame = frame.merge(metadata, how="left", on="ticker")
+        for base_column, metadata_column in [
+            ("company_name", "metadata_company_name"),
+            ("sector", "metadata_sector"),
+            ("industry", "metadata_industry"),
+            ("universe_reason", "metadata_universe_reason"),
+        ]:
+            if base_column in frame.columns and metadata_column in frame.columns:
+                override = frame[metadata_column].notna() & (frame[metadata_column].astype(str).str.strip() != "")
+                frame.loc[override, base_column] = frame.loc[override, metadata_column]
     frame = prepare_scoring_frame(frame)
     sector_stats = build_sector_stats(frame)
 
@@ -1720,6 +1730,8 @@ def score_movement_potential(
         score += min(6, pre_flow_gap * 0.10)
     if austrian >= 70 and flow < 35 and story < 45:
         score -= 12
+    if is_sub_5m_spiral_risk(row, hume, austrian, keynes):
+        score -= 8
     score -= sec_penalty * 0.28
     score -= event_shock_penalty * 0.32
     score -= clean_float(zombie_decay.get("zombie_decay_penalty")) * 0.35
@@ -1967,10 +1979,10 @@ def is_catastrophic_reset_cycle(row: pd.Series, event_override: dict[str, Any] |
     return False
 
 
-def is_sub_500k_spiral_risk(row: pd.Series, hume: float = 0, austrian: float = 0, keynes: float = 0) -> bool:
-    """Flag ultra-tiny market caps where movement may be death-spiral mechanics."""
+def is_sub_5m_spiral_risk(row: pd.Series, hume: float = 0, austrian: float = 0, keynes: float = 0) -> bool:
+    """Flag sub-$5M market caps where movement may be death-spiral mechanics."""
     market_cap = to_float(row.get("market_cap"))
-    if market_cap is None or market_cap <= 0 or market_cap >= 500_000:
+    if market_cap is None or market_cap <= 0 or market_cap >= 5_000_000:
         return False
     dilution = clean_float(row.get("dilution_pressure_score"))
     survival = clean_float(row.get("survival_risk_score"))
@@ -2123,13 +2135,15 @@ def compute_scooby_score(
     event_penalty = clean_float(event_override.get("event_shock_penalty"))
     long_term_score = clean_float(long_term.get("long_term_investment_score"))
     catastrophic_reset = is_catastrophic_reset_cycle(row, event_override)
+    sub_5m_spiral = is_sub_5m_spiral_risk(row, hume, austrian, keynes)
     flag_haircut = min(
-        12,
+        18,
         dilution * 0.035
         + survival * 0.030
         + zombie_penalty * 0.20
         + event_penalty * 0.16
-        + (6 if catastrophic_reset else 0),
+        + (6 if catastrophic_reset else 0)
+        + (8 if sub_5m_spiral else 0),
     )
     score = (
         movement_score * 0.30
@@ -2179,7 +2193,7 @@ def personal_signal_label(
     serious_survival = survival >= 70
     stale_drag = zombie_penalty >= 8
     catastrophic_reset = is_catastrophic_reset_cycle(row, event_override)
-    sub_500k_spiral = is_sub_500k_spiral_risk(row, hume, austrian, keynes)
+    sub_5m_spiral = is_sub_5m_spiral_risk(row, hume, austrian, keynes)
     reset_catalyst = has_reset_catalyst(
         row,
         event_override,
@@ -2240,7 +2254,7 @@ def personal_signal_label(
         return "High Signal, Red Flags"
     if catastrophic_reset and comprehensive_score >= 45:
         return "High Signal, Red Flags"
-    if sub_500k_spiral and comprehensive_score >= 45:
+    if sub_5m_spiral and comprehensive_score >= 45:
         return "High Signal, Red Flags"
     if (serious_dilution or serious_survival) and comprehensive_score >= 45:
         return "High Signal, Red Flags"
@@ -2361,11 +2375,14 @@ def secondary_signal_label(
     long_term_score = clean_float(long_term.get("long_term_investment_score"))
     dcf_plausibility = clean_float(dcf.get("dcf_plausibility_score"))
     labels: list[str] = []
+    sub_5m_spiral = is_sub_5m_spiral_risk(row, hume, austrian, keynes)
 
     if primary_label in {"This is Garbage", "Needs More Clues"}:
         return ""
     if is_hard_stop_event(row, event_override) or data_confidence < 40:
         return ""
+    if sub_5m_spiral:
+        return "" if primary_label == "High Signal, Red Flags" else "High Signal, Red Flags"
     if hume >= 60 and hume >= pre_flow_opportunity + 20 and movement_score >= 45:
         labels.append("Meme Supreme")
     if (
@@ -2390,7 +2407,7 @@ def secondary_signal_label(
         or survival >= 70
         or event_penalty > 0
         or is_catastrophic_reset_cycle(row, event_override)
-        or is_sub_500k_spiral_risk(row, hume, austrian, keynes)
+        or is_sub_5m_spiral_risk(row, hume, austrian, keynes)
     ) and movement_score >= 45:
         labels.append("High Signal, Red Flags")
     if austrian >= 65 and pre_flow_opportunity >= 45 and relative >= 45 and keynes >= 45 and hume < 50:
@@ -2459,7 +2476,7 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
         | event_reason.str.contains(liquidation_terms_pattern, regex=True, na=False)
         | event_note.str.contains(liquidation_terms_pattern, regex=True, na=False)
     )
-    sub_500k_spiral = (number("market_cap") > 0) & (number("market_cap") < 500_000) & (
+    sub_5m_spiral = (number("market_cap") > 0) & (number("market_cap") < 5_000_000) & (
         (hume >= 55)
         | (number("austrian_mispricing_score") >= 65)
         | (dilution >= 50)
@@ -2513,7 +2530,7 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
         | (survival >= 80)
         | ((thesis_break >= 80) & ~reset_catalyst)
         | reset_cycle
-        | sub_500k_spiral
+        | sub_5m_spiral
         | hard_stop_event
     )
     labels = output["what_i_think"].astype(str)
@@ -2604,11 +2621,11 @@ def classify_risk_posture(
     if thesis_break >= 80:
         return "Old thesis broken: needs reset catalyst"
     catastrophic_reset = is_catastrophic_reset_cycle(row, event_override)
-    sub_500k_spiral = is_sub_500k_spiral_risk(row, hume, austrian, keynes)
-    if catastrophic_reset and sub_500k_spiral:
-        return "Sub-500K + reset spiral risk"
-    if sub_500k_spiral:
-        return "Sub-500K spiral risk"
+    sub_5m_spiral = is_sub_5m_spiral_risk(row, hume, austrian, keynes)
+    if catastrophic_reset and sub_5m_spiral:
+        return "Sub-$5M + reset spiral risk"
+    if sub_5m_spiral:
+        return "Sub-$5M spiral risk"
     if catastrophic_reset:
         return "Catastrophic reset cycle"
     if dilution >= 85:

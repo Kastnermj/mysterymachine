@@ -104,7 +104,7 @@ def add_broad_public_universe(
         return seed_frame
     combined = pd.concat([seed_frame, result.frame], ignore_index=True, sort=False)
     combined["ticker"] = combined["ticker"].astype(str).str.upper().str.strip()
-    combined = combined.drop_duplicates(subset=["ticker"], keep="last")
+    combined = combined.drop_duplicates(subset=["ticker"], keep="first")
     logger.info("Universe after broad public screener merge has %s unique tickers", len(combined))
     return combined
 
