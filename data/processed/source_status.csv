@@ -12,3 +12,4 @@ timestamp_utc,stage,provider,status,rows,fallback_used,detail
 2026-05-19T15:15:27+00:00,fundamentals,sec_companyfacts,ok,246,True,"companyfacts_ok=224, companyfacts_sparse=21, companyfacts_unavailable=1"
 2026-05-19T15:15:27+00:00,fundamentals,sec_companyfacts,ok,246,False,
 2026-05-19T15:15:28+00:00,scoring,local_model,ok,250,False,
+2026-05-19T15:42:57+00:00,event_shocks,sec_8k_text_with_metadata_fallback,ok,246,True,"metadata_none=16, metadata_only=230"
