@@ -148,6 +148,7 @@ st.markdown(
 GITHUB_ACTIONS_URL = "https://github.com/Kastnermj/mysterymachine/actions/workflows/refresh-data.yml"
 GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Kastnermj/mysterymachine/main"
 REMOTE_REFRESHABLE_PREFIXES = ("data/processed/", "outputs/watchlists/", "outputs/reports/")
+REMOTE_MARKER_PATH = "outputs/reports/streamlit_redeploy_marker.txt"
 
 
 def github_raw_url(path: Path) -> str | None:
@@ -161,6 +162,24 @@ def github_raw_url(path: Path) -> str | None:
     return f"{GITHUB_RAW_BASE_URL}/{relative}"
 
 
+@st.cache_data(show_spinner=False, ttl=60)
+def remote_refresh_nonce() -> str:
+    """Read the latest refresh marker so raw CSV requests avoid stale CDN cache."""
+    try:
+        response = requests.get(
+            f"{GITHUB_RAW_BASE_URL}/{REMOTE_MARKER_PATH}",
+            headers={"Cache-Control": "no-cache", "Pragma": "no-cache"},
+            timeout=8,
+        )
+        response.raise_for_status()
+    except requests.RequestException:
+        return "local"
+    marker = response.text.strip()
+    if not marker:
+        return "empty"
+    return str(abs(hash(marker)))
+
+
 @st.cache_data(show_spinner=False, ttl=300)
 def load_csv(path_text: str) -> pd.DataFrame:
     """Load a CSV, preferring fresh GitHub data on the hosted app."""
@@ -169,8 +188,9 @@ def load_csv(path_text: str) -> pd.DataFrame:
     remote_url = github_raw_url(path)
     if remote_url:
         try:
+            nonce = remote_refresh_nonce()
             response = requests.get(
-                remote_url,
+                f"{remote_url}?refresh={nonce}",
                 headers={"Cache-Control": "no-cache", "Pragma": "no-cache"},
                 timeout=12,
             )
@@ -404,6 +424,113 @@ def story_tile(title: str, body: Any, tone: str = "blue") -> str:
     )
 
 
+def score_band(value: Any) -> str:
+    """Return a plain-language score band."""
+    score = safe_number(value)
+    if score >= 75:
+        return "high"
+    if score >= 55:
+        return "solid"
+    if score >= 35:
+        return "mixed"
+    return "low"
+
+
+def company_snapshot(row: pd.Series) -> str:
+    """Summarize what the company appears to be from available metadata."""
+    company = clean_text(row.get("company_name"), "This company")
+    sector = clean_text(row.get("sector"), "an unclear sector")
+    industry = clean_text(row.get("industry"), "")
+    price = price_money(row.get("price"))
+    market_cap = money(row.get("market_cap"))
+    industry_text = f" in {industry}" if industry else ""
+    return (
+        f"{company} is showing up as a {sector}{industry_text} microcap. "
+        f"The board is reading it at {price} with a market value around {market_cap}. "
+        "That does not make it safe; it means the company is small enough that new evidence, flow, or fear can move the price quickly."
+    )
+
+
+def economic_theory_read(row: pd.Series) -> str:
+    """Explain the model's economic theory stack in plain English."""
+    austrian = score_band(row.get("austrian_mispricing_score"))
+    hume = score_band(row.get("hume_flow_potential_score"))
+    keynes = score_band(row.get("keynes_repricing_potential_score"))
+    preflow = safe_number(row.get("pre_flow_opportunity_score"))
+    hume_score = safe_number(row.get("hume_flow_potential_score"))
+
+    pieces = [
+        f"Austrian/pricing-gap pressure is {austrian}: the market may be pricing damage, scarcity, or forced selling.",
+        f"Hume/flow is {hume}: this checks whether money is already moving or still absent.",
+        f"Keynes/story power is {keynes}: this asks whether ordinary investors can understand the re-rating story fast.",
+    ]
+    if preflow - hume_score >= 20:
+        pieces.append("Pre-flow is meaningfully ahead of confirmed Hume flow, so this may be early rather than dead.")
+    elif hume_score - preflow >= 20:
+        pieces.append("Hume flow is well ahead of pre-flow, so check whether the move is already crowded or running hot.")
+    else:
+        pieces.append("Pre-flow and Hume are close enough that the setup is more balanced than hidden.")
+    return " ".join(pieces)
+
+
+def finance_theory_read(row: pd.Series) -> str:
+    """Explain the financial theory layer without burying the user in factors."""
+    long_term = score_band(row.get("long_term_investment_score"))
+    data = score_band(row.get("data_confidence_score"))
+    dilution = score_band(row.get("dilution_pressure_score"))
+    survival = score_band(row.get("survival_risk_score"))
+    scooby = safe_number(row.get("scooby_score"))
+    movement = safe_number(row.get("movement_score"))
+    return (
+        f"Finance lens: Scooby Score {scooby:.1f}, adjusted movement {movement:.1f}, "
+        f"long-term quality is {long_term}, and data confidence is {data}. "
+        f"Dilution pressure is {dilution} and survival risk is {survival}; those are warnings, not automatic disqualifiers. "
+        "The better case is not just 'cheap.' It is cheap plus plausible survival, enough liquidity, and a story the market can rediscover."
+    )
+
+
+def market_process_read(row: pd.Series) -> str:
+    """Frame the stock like an institutional/market-process analyst."""
+    verdict = clean_text(row.get("what_i_think"), "Unlabeled")
+    risk = clean_text(row.get("risk_posture"), "risk posture unclear")
+    flow = clean_text(row.get("flow_state"), "flow unclear")
+    viability = clean_text(row.get("viability_window"), "viability window unclear")
+    return (
+        f"Market-process read: {verdict}. The incentives are messy, the knowledge is dispersed, and the price is a signal, not a verdict. "
+        f"Current posture: {risk}; {flow}; viability window: {viability}. "
+        "Research the constraint that would change behavior: cash, dilution, contracts, customer adoption, regulation, or a cleaner narrative."
+    )
+
+
+def economist_cue(row: pd.Series) -> str:
+    """Return one short economist quote/cue matched to the setup."""
+    dilution = safe_number(row.get("dilution_pressure_score"))
+    survival = safe_number(row.get("survival_risk_score"))
+    hume = safe_number(row.get("hume_flow_potential_score"))
+    keynes = safe_number(row.get("keynes_repricing_potential_score"))
+    preflow = safe_number(row.get("pre_flow_opportunity_score"))
+    relative = safe_number(row.get("relative_mispricing_score"))
+    latent = "latent_necessity" in clean_text(row.get("subsignal_tags")).lower()
+
+    if survival >= 75:
+        return 'Malthus cue: "Population, when unchecked" outruns subsistence. Here, obligations may outrun runway.'
+    if dilution >= 75:
+        return 'Ostrom cue: "No panaceas." If institutions and constraints are ugly, the label should stay humble.'
+    if hume - preflow >= 20:
+        return 'Keynes cue: speculation is "forecasting the psychology of the market." Hot tape needs a clock check.'
+    if preflow - hume >= 20:
+        return 'Hayek cue: useful knowledge is "dispersed bits" in time and place. Early setups often look incomplete.'
+    if hume >= 65:
+        return 'Hume cue: money is an "instrument" of exchange. Flow matters because it transmits belief into price.'
+    if latent:
+        return 'Sen cue: "Freedoms are... principal means." Useful capacity matters when it expands real options.'
+    if relative >= 70:
+        return 'Smith cue: markets can be "led by an invisible hand"; value may emerge before consensus explains it.'
+    if keynes >= 70:
+        return 'Keynes cue: story can outrun spreadsheets. Ask whether enterprise or speculation is driving the move.'
+    return 'Marshall cue: markets usually move at the margin. Look for the small constraint that changes the whole setup.'
+
+
 def scout_console_html(row: pd.Series, compact: bool = False) -> str:
     """Return the futuristic Scout analytics console for one ticker."""
     ticker = clean_text(row.get("ticker"), "???")
@@ -434,16 +561,21 @@ def scout_console_html(row: pd.Series, compact: bool = False) -> str:
         )
 
     tiles = [
+        story_tile("What The Company Does", company_snapshot(row), "blue"),
+        story_tile("Economic Theory Read", economic_theory_read(row), "green"),
+        story_tile("Finance Theory Read", finance_theory_read(row), "teal"),
+        story_tile("Market Process Cue", market_process_read(row), "purple"),
+        story_tile("Economist Quote", economist_cue(row), "amber"),
         story_tile("Why It Could Move", row.get("ranking_note"), "green"),
-        story_tile("Setup Read", row.get("setup_type"), "blue"),
-        story_tile("Flow State", row.get("flow_state"), "teal"),
         story_tile("Risk Console", risk_text, "amber"),
         story_tile("Event Shock", event_text, "red"),
-        story_tile("Next Research Question", row.get("final_rank_interpretation"), "purple"),
     ]
     if not compact:
         tiles.extend(
             [
+                story_tile("Setup Read", row.get("setup_type"), "blue"),
+                story_tile("Flow State", row.get("flow_state"), "teal"),
+                story_tile("Next Research Question", row.get("final_rank_interpretation"), "purple"),
                 story_tile("Long-Term Reality", row.get("long_term_investment_note"), "blue"),
                 story_tile("Thesis Integrity", row.get("thesis_integrity_note"), "amber"),
                 story_tile("DCF Plausibility", row.get("dcf_plausibility_note"), "green"),

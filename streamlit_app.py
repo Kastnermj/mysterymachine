@@ -7,8 +7,16 @@ from pathlib import Path
 
 import streamlit as st
 
+try:
+    from app.refresh_stamp import REFRESH_RUN_ID, REFRESH_STAMP_UTC
+except Exception:
+    REFRESH_RUN_ID = "unknown"
+    REFRESH_STAMP_UTC = "unknown"
+
 
 ROOT = Path(__file__).resolve().parent
+st.session_state["_refresh_stamp_utc"] = REFRESH_STAMP_UTC
+st.session_state["_refresh_run_id"] = REFRESH_RUN_ID
 runpy.run_path(str(ROOT / "app" / "dashboard.py"), run_name="__main__")
 
 # Narrow, late-loading fix for the Math Appendix only. The previous broad guard
