@@ -8,9 +8,15 @@ on:
         required: false
         default: "manual refresh"
   schedule:
-    # Daily at 06:00 UTC, which is 1:00 AM Eastern Standard Time.
-    # During daylight saving time this runs at 2:00 AM Eastern.
-    - cron: "0 6 * * *"
+    # GitHub cron is UTC, so schedule both DST and standard-time equivalents.
+    # The "Check Eastern refresh window" step below runs only the matching
+    # America/New_York windows: 8:45 AM, 12:00 PM, and 6:00 PM.
+    - cron: "45 12 * * *"
+    - cron: "45 13 * * *"
+    - cron: "0 16 * * *"
+    - cron: "0 17 * * *"
+    - cron: "0 22 * * *"
+    - cron: "0 23 * * *"
 
 permissions:
   contents: write
@@ -30,38 +36,90 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check Eastern refresh window
+        id: schedule_gate
+        shell: python
+        run: |
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          event_name = os.environ.get("GITHUB_EVENT_NAME", "")
+          now = datetime.now(ZoneInfo("America/New_York"))
+
+          # Allow for normal GitHub schedule delay. Wrong DST/standard-time
+          # mirror runs land outside these windows and are skipped.
+          windows = [
+              (8, 45, 35, "8:45 AM ET"),
+              (12, 0, 35, "12:00 PM ET"),
+              (18, 0, 35, "6:00 PM ET"),
+          ]
+
+          should_run = event_name == "workflow_dispatch"
+          matched = "manual refresh"
+          if not should_run:
+              for hour, minute, allowance, label in windows:
+                  elapsed = (now.hour - hour) * 60 + (now.minute - minute)
+                  if 0 <= elapsed <= allowance:
+                      should_run = True
+                      matched = label
+                      break
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f"should_run={'true' if should_run else 'false'}\n")
+              out.write(f"local_time={now:%Y-%m-%d %H:%M:%S %Z}\n")
+              out.write(f"matched_window={matched}\n")
+
+          print(f"New York time: {now:%Y-%m-%d %H:%M:%S %Z}")
+          print(f"Refresh window: {matched if should_run else 'outside target windows; skipping'}")
 
       - name: Set up Python
+        if: steps.schedule_gate.outputs.should_run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "pip"
 
       - name: Install dependencies
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
       - name: Refresh Top 250 research data
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: python main.py
 
       - name: Force Streamlit redeploy marker
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
           mkdir -p outputs/reports
           {
             echo "last_refresh_utc=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "matched_window=${{ steps.schedule_gate.outputs.matched_window }}"
+            echo "local_time=${{ steps.schedule_gate.outputs.local_time }}"
             echo "github_run_id=${GITHUB_RUN_ID}"
             echo "github_sha=${GITHUB_SHA}"
+            echo "redeploy_nonce=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           } > outputs/reports/streamlit_redeploy_marker.txt
 
       - name: Commit refreshed outputs
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
           git add data/processed outputs/watchlists outputs/reports
           if git diff --cached --quiet; then
             echo "No refreshed data changes to commit."
           else
-            git commit -m "Refresh Top 250 research data"
+            git commit -m "Refresh Top 250 research data (${{ steps.schedule_gate.outputs.matched_window }})"
             git push
           fi
+
+      - name: Skip outside target refresh windows
+        if: steps.schedule_gate.outputs.should_run != 'true'
+        run: echo "Skipped because this UTC mirror run is outside the active Eastern refresh window."
