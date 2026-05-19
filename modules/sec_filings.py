@@ -35,6 +35,8 @@ FILING_COLUMNS = [
     "accession_number",
     "primary_document",
     "filing_url",
+    "sec_sic",
+    "sec_sic_description",
     "is_high_signal",
 ]
 
@@ -52,6 +54,8 @@ FLAG_COLUMNS = [
     "has_recent_424b",
     "latest_filing_type",
     "latest_filing_date",
+    "sec_sic",
+    "sec_sic_description",
     "sec_activity_flag",
 ]
 
@@ -64,6 +68,8 @@ SIGNAL_COLUMNS = [
     "catalyst_signal_score",
     "narrative_trigger_score",
     "filing_activity_score",
+    "sec_sic",
+    "sec_sic_description",
     "catalyst_signal_label",
     "signal_interpretation",
 ]
@@ -215,6 +221,8 @@ def parse_recent_filings(
                 "accession_number": accession,
                 "primary_document": primary_doc,
                 "filing_url": filing_url,
+                "sec_sic": payload.get("sic"),
+                "sec_sic_description": payload.get("sicDescription"),
                 "is_high_signal": is_high_signal_form(form, high_signal_forms),
             }
         )
@@ -251,6 +259,8 @@ def summarize_filing_flags(filings: pd.DataFrame, config: dict[str, Any]) -> pd.
                 "has_recent_424b": any(form.startswith("424B") for form in forms),
                 "latest_filing_type": latest["filing_type"],
                 "latest_filing_date": latest["filing_date"],
+                "sec_sic": latest.get("sec_sic"),
+                "sec_sic_description": latest.get("sec_sic_description"),
                 "sec_activity_flag": classify_activity(recent_group),
             }
         )
@@ -312,6 +322,8 @@ def interpret_filing_signals(
                 "catalyst_signal_score": catalyst_score,
                 "narrative_trigger_score": narrative_score,
                 "filing_activity_score": activity_score,
+                "sec_sic": flag_row.get("sec_sic"),
+                "sec_sic_description": flag_row.get("sec_sic_description"),
                 "catalyst_signal_label": catalyst_label,
                 "signal_interpretation": build_signal_interpretation(
                     dilution_score,

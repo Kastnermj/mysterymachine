@@ -29,6 +29,10 @@ SCORE_COLUMNS = [
     "volume",
     "avg_volume",
     "dollar_volume",
+    "sec_sic",
+    "sec_sic_description",
+    "identity_mismatch_score",
+    "identity_mismatch_note",
     "austrian_mispricing_score",
     "hume_flow_potential_score",
     "keynes_repricing_potential_score",
@@ -169,6 +173,49 @@ def text_has_term(text: str, term: str) -> bool:
     if len(clean_term) <= 3 and clean_term.isalnum():
         return re.search(rf"(?<![a-z0-9]){re.escape(clean_term)}(?![a-z0-9])", clean_text) is not None
     return clean_term in clean_text
+
+
+IDENTITY_CATEGORY_TERMS = {
+    "real_estate": ["real estate", "lessor", "property", "properties", "land", "reit"],
+    "energy": ["oil", "gas", "petroleum", "natural gas", "energy", "mining", "coal", "lng"],
+    "technology": ["software", "computer", "cyber", "data processing", "semiconductor", "electronic", "technology"],
+    "healthcare": ["pharmaceutical", "medical", "biotechnology", "health", "diagnostic", "hospital"],
+    "industrial": ["manufacturing", "machinery", "construction", "equipment", "industrial", "transportation"],
+    "financial": ["bank", "finance", "investment", "capital markets", "insurance"],
+    "consumer": ["retail", "restaurant", "apparel", "consumer", "food", "beverage"],
+}
+
+IDENTITY_COMPATIBLE_PAIRS = {
+    frozenset({"technology", "industrial"}),
+    frozenset({"technology", "consumer"}),
+    frozenset({"technology", "healthcare"}),
+    frozenset({"industrial", "energy"}),
+}
+
+
+def identity_category(text: Any) -> str:
+    """Classify a business-description blob into a broad economic identity."""
+    normalized = str(text or "").lower()
+    for category, terms in IDENTITY_CATEGORY_TERMS.items():
+        if any(text_has_term(normalized, term) for term in terms):
+            return category
+    return ""
+
+
+def identity_mismatch(row: pd.Series) -> tuple[float, str]:
+    """Detect stale screener sector identity using SEC SIC description as a tie-breaker."""
+    public_text = " ".join(str(row.get(column) or "") for column in ["sector", "industry", "company_name"])
+    sec_text = str(row.get("sec_sic_description") or "")
+    public_category = identity_category(public_text)
+    sec_category = identity_category(sec_text)
+    if not sec_category:
+        return 0.0, ""
+    if not public_category:
+        return 12.0, f"SEC SIC says {sec_text}; public sector/industry is too thin to fully trust."
+    if public_category == sec_category or frozenset({public_category, sec_category}) in IDENTITY_COMPATIBLE_PAIRS:
+        return 0.0, f"SEC SIC identity agrees broadly: {sec_text}."
+    score = 72.0 if {public_category, sec_category} == {"energy", "real_estate"} else 55.0
+    return score, f"Public sector/industry reads {public_category}, but SEC SIC reads {sec_category}: {sec_text}."
 
 
 def build_theory_scores(
@@ -359,6 +406,10 @@ def build_theory_scores(
                 "volume": row.get("volume"),
                 "avg_volume": row.get("avg_volume"),
                 "dollar_volume": row.get("dollar_volume"),
+                "sec_sic": row.get("sec_sic"),
+                "sec_sic_description": row.get("sec_sic_description"),
+                "identity_mismatch_score": identity_mismatch(row)[0],
+                "identity_mismatch_note": identity_mismatch(row)[1],
                 "austrian_mispricing_score": austrian,
                 "hume_flow_potential_score": hume,
                 "keynes_repricing_potential_score": keynes,
@@ -774,6 +825,10 @@ def score_hume(row: pd.Series, sector_stats: dict[str, float], config: dict[str,
     if dollar_volume and dollar_volume > config["scoring"]["thresholds"]["high_dollar_volume"]:
         score += min(10, math.log10(max(dollar_volume, 10)) - math.log10(config["scoring"]["thresholds"]["high_dollar_volume"]) + 6)
         reasons.append("enough liquidity for flow to matter")
+    mismatch_score, _ = identity_mismatch(row)
+    if mismatch_score >= 50:
+        score -= min(8, mismatch_score * 0.10)
+        reasons.append("sector identity mismatch tempers sector-flow read")
 
     return round(max(0, min(100, score)), 1), "; ".join(reasons) or "limited Hume flow evidence"
 
@@ -803,9 +858,13 @@ def score_keynes(row: pd.Series, config: dict[str, Any], sub: dict[str, Any]) ->
     score += clean_float(sub.get("narrative_evolution_score", 20)) * 0.06
     if sub.get("narrative_evolution_score", 20) >= 65:
         reasons.append("specific outcome narrative")
-    if row.get("sector") in config["scoring"].get("narrative_sectors", []):
+    mismatch_score, _ = identity_mismatch(row)
+    if row.get("sector") in config["scoring"].get("narrative_sectors", []) and mismatch_score < 50:
         score += 8
         reasons.append("narrative-friendly sector")
+    elif mismatch_score >= 50:
+        score -= min(9, mismatch_score * 0.12)
+        reasons.append("stale sector identity warning")
     animal_spirits, animal_reason = score_animal_spirits(row, config, sub)
     score += animal_spirits * 0.14
     if animal_spirits >= 50:
@@ -853,9 +912,13 @@ def score_animal_spirits(row: pd.Series, config: dict[str, Any], sub: dict[str, 
     if matched_terms:
         score += 28
         reasons.append("hot theme: " + ", ".join(matched_terms[:3]))
-    if sector in config["scoring"].get("narrative_sectors", []):
+    mismatch_score, _ = identity_mismatch(row)
+    if sector in config["scoring"].get("narrative_sectors", []) and mismatch_score < 50:
         score += 16
         reasons.append("story-friendly sector")
+    elif mismatch_score >= 50:
+        score -= min(14, mismatch_score * 0.16)
+        reasons.append("sector story may be stale")
     if sub["technology_narrative_score"] >= 70:
         score += 14
         reasons.append("technology narrative")
@@ -972,6 +1035,10 @@ def score_relative_mispricing(
     if sub["boring_beneficiary_flag"]:
         score += 8
         reasons.append("boring beneficiary: useful but under-narrated")
+    mismatch_score, _ = identity_mismatch(row)
+    if mismatch_score >= 50:
+        score -= min(8, mismatch_score * 0.10)
+        reasons.append("SEC SIC conflicts with sector peer context")
     return round(max(0, min(100, score)), 1), "; ".join(reasons) or "limited relative mispricing evidence"
 
 
@@ -1215,6 +1282,11 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
         present.append("SEC signal metadata")
     else:
         missing.append("SEC signal metadata")
+    if has_value("sec_sic_description"):
+        score += 4
+        present.append("SEC business identity")
+    else:
+        missing.append("SEC business identity")
 
     accounting_columns = [
         "cash",
@@ -1253,7 +1325,11 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
     else:
         missing.append("share count proxy")
 
-    score = round(min(100, score), 1)
+    mismatch_score, mismatch_note = identity_mismatch(row)
+    if mismatch_score >= 50:
+        score -= min(10, mismatch_score * 0.12)
+        missing.append("clean sector identity")
+    score = round(max(0, min(100, score)), 1)
     if score >= 85:
         label = "very high confidence"
     elif score >= 70:
@@ -1267,6 +1343,8 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
     explanation = f"Evidence present: {', '.join(present) or 'limited'}."
     if missing:
         explanation += f" Missing/weak: {', '.join(missing)}."
+    if mismatch_score >= 50 and mismatch_note:
+        explanation += f" Identity warning: {mismatch_note}"
     return score, label, explanation
 
 
@@ -1369,6 +1447,7 @@ def compute_factor_stack(
     sub = compute_subsignals(row, config)
     latent_necessity = clean_float(sub.get("latent_infrastructure_relevance_score", 20))
     animal_spirits, animal_spirits_note = score_animal_spirits(row, config, sub)
+    identity_mismatch_score, identity_mismatch_note = identity_mismatch(row)
 
     cash_to_market = to_float(row.get("cash_to_market_cap"))
     if cash_to_market is None:
@@ -1434,6 +1513,8 @@ def compute_factor_stack(
         + min(15, filing_activity * 0.15),
     )
     story_factor = min(100, keynes * 0.55 + narrative * 0.12 + catalyst * 0.12 + catalyst_probability * 0.17 + latent_necessity * 0.04)
+    if identity_mismatch_score >= 50:
+        story_factor = max(0, story_factor - min(8, identity_mismatch_score * 0.10))
     relative_value = min(
         100,
         relative * 0.65
@@ -1441,6 +1522,8 @@ def compute_factor_stack(
         + (min(20, cash_to_market * 40) if cash_to_market is not None else 0)
         + (10 if market_cap is not None and market_cap < thresholds["small_market_cap"] else 0),
     )
+    if identity_mismatch_score >= 50:
+        relative_value = max(0, relative_value - min(8, identity_mismatch_score * 0.10))
     convexity = min(
         100,
         asymmetry * 0.60
@@ -1497,7 +1580,10 @@ def compute_factor_stack(
         f"latent_necessity={round(latent_necessity, 1)}",
         f"sec_penalty={round(sec_penalty, 1)}",
         f"accounting={round(max(0, min(100, accounting_quality)), 1)}",
+        f"identity_mismatch={round(identity_mismatch_score, 1)}",
     ]
+    if identity_mismatch_note and identity_mismatch_score >= 50:
+        note_bits.append("identity_note=" + identity_mismatch_note)
     if animal_spirits_note:
         note_bits.append("animal_spirits_note=" + animal_spirits_note)
     if portfolio_note:
@@ -1515,6 +1601,7 @@ def compute_factor_stack(
         "animal_spirits_factor": round(max(0, min(100, animal_spirits)), 1),
         "portfolio_viability_factor": round(max(0, min(100, portfolio_viability)), 1),
         "latent_necessity_factor": round(max(0, min(100, latent_necessity)), 1),
+        "identity_mismatch_factor": round(max(0, min(100, identity_mismatch_score)), 1),
         "sec_risk_penalty": round(max(0, sec_penalty), 1),
         "accounting_quality_factor": round(max(0, min(100, accounting_quality)), 1),
         "factor_stack_note": "; ".join(note_bits),
@@ -1732,6 +1819,9 @@ def score_movement_potential(
         score -= 12
     if is_sub_5m_spiral_risk(row, hume, austrian, keynes):
         score -= 8
+    identity_mismatch_score, _ = identity_mismatch(row)
+    if identity_mismatch_score >= 50:
+        score -= min(5, identity_mismatch_score * 0.06)
     score -= sec_penalty * 0.28
     score -= event_shock_penalty * 0.32
     score -= clean_float(zombie_decay.get("zombie_decay_penalty")) * 0.35

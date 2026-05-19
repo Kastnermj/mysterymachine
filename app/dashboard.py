@@ -441,14 +441,21 @@ def company_snapshot(row: pd.Series) -> str:
     company = clean_text(row.get("company_name"), "This company")
     sector = clean_text(row.get("sector"), "an unclear sector")
     industry = clean_text(row.get("industry"), "")
+    sic = clean_text(row.get("sec_sic_description"), "")
+    identity_note = clean_text(row.get("identity_mismatch_note"), "")
     price = price_money(row.get("price"))
     market_cap = money(row.get("market_cap"))
     industry_text = f" in {industry}" if industry else ""
-    return (
+    snapshot = (
         f"{company} is showing up as a {sector}{industry_text} microcap. "
         f"The board is reading it at {price} with a market value around {market_cap}. "
         "That does not make it safe; it means the company is small enough that new evidence, flow, or fear can move the price quickly."
     )
+    if identity_note:
+        return snapshot + f" SEC identity check: {identity_note}"
+    if sic:
+        return snapshot + f" SEC business identity: {sic}."
+    return snapshot
 
 
 def economic_theory_read(row: pd.Series) -> str:
@@ -707,6 +714,9 @@ BOARD_LABELS = {
     "asymmetry_score": "Asymmetry",
     "long_term_investment_score": "Long-Term",
     "data_confidence_score": "Data",
+    "identity_mismatch_score": "Identity",
+    "identity_mismatch_note": "Identity Note",
+    "sec_sic_description": "SEC Identity",
     "dilution_pressure_score": "Dilution",
     "survival_risk_score": "Survival",
     "event_shock_penalty": "Event",
@@ -728,6 +738,7 @@ SCORE_COLUMNS = {
     "asymmetry_score",
     "long_term_investment_score",
     "data_confidence_score",
+    "identity_mismatch_score",
     "dilution_pressure_score",
     "survival_risk_score",
     "event_shock_penalty",
@@ -2726,6 +2737,7 @@ with watchlist_tab:
             "asymmetry_score",
             "long_term_investment_score",
             "data_confidence_score",
+            "identity_mismatch_score",
             "dilution_pressure_score",
             "survival_risk_score",
             "event_shock_penalty",
@@ -2752,6 +2764,8 @@ with watchlist_tab:
             "recent_dynamism_score",
             "public_age_years_proxy",
             "factor_stack_note",
+            "identity_mismatch_note",
+            "sec_sic_description",
         ]
         table_columns = core_columns + advanced_columns if advanced_mode else core_columns
         st.caption("Ticker stays frozen while the rest of the board scrolls.")
