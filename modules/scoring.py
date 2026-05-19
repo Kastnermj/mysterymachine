@@ -159,7 +159,7 @@ def clean_float(value: Any, default: float = 0.0) -> float:
 def is_noise_security(row: pd.Series) -> bool:
     """Return True for structures that are not clean common-stock research targets."""
     text = " ".join(
-        str(row.get(column) or "")
+        ("" if pd.isna(row.get(column)) else str(row.get(column)))
         for column in ["ticker", "company_name", "sector", "industry"]
     ).lower()
     return any(term in text for term in SECURITY_NOISE_TERMS)
@@ -206,8 +206,8 @@ def identity_category(text: Any) -> str:
 
 def identity_mismatch(row: pd.Series) -> tuple[float, str]:
     """Detect stale screener sector identity using SEC SIC description as a tie-breaker."""
-    public_text = " ".join(str(row.get(column) or "") for column in ["sector", "industry", "company_name"])
-    sec_text = " ".join(str(row.get(column) or "") for column in ["sec_sic_description", "business_profile", "event_business_profile"])
+    public_text = " ".join(("" if pd.isna(row.get(column)) else str(row.get(column))) for column in ["sector", "industry", "company_name"])
+    sec_text = " ".join(("" if pd.isna(row.get(column)) else str(row.get(column))) for column in ["sec_sic_description", "business_profile", "event_business_profile"])
     public_category = identity_category(public_text)
     sec_category = identity_category(sec_text)
     if not sec_category:
@@ -325,7 +325,7 @@ def build_theory_scores(
 
     rows = []
     for _, row in frame.iterrows():
-        sector_row = sector_stats.get(str(row.get("sector") or ""), {})
+        sector_row = sector_stats.get(("" if pd.isna(row.get("sector")) else str(row.get("sector"))), {})
         sub = compute_subsignals(row, config)
         austrian, austrian_note = score_austrian(row, config, sub)
         hume, hume_note = score_hume(row, sector_row, config)
@@ -681,7 +681,7 @@ def build_sector_stats(frame: pd.DataFrame) -> dict[str, dict[str, float]]:
 def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]:
     """Compute Ricardo/Malthus/Technology sub-signals used to adjust main scores."""
     text = " ".join(
-        str(row.get(column) or "")
+        ("" if pd.isna(row.get(column)) else str(row.get(column)))
         for column in [
             "company_name",
             "sector",
@@ -889,7 +889,7 @@ def score_keynes(row: pd.Series, config: dict[str, Any], sub: dict[str, Any]) ->
     score = 0.0
     reasons = []
     text = " ".join(
-        str(row.get(column) or "")
+        ("" if pd.isna(row.get(column)) else str(row.get(column)))
         for column in ["company_name", "sector", "industry", "universe_reason", "signal_interpretation"]
     ).lower()
     price = to_float(row.get("price"))
@@ -945,10 +945,10 @@ def score_animal_spirits(row: pd.Series, config: dict[str, Any], sub: dict[str, 
     """Score crowd-believability and theme heat without over-rewarding low price alone."""
     thresholds = config["scoring"]["thresholds"]
     text = " ".join(
-        str(row.get(column) or "")
+        ("" if pd.isna(row.get(column)) else str(row.get(column)))
         for column in ["company_name", "sector", "industry", "universe_reason", "signal_interpretation"]
     ).lower()
-    sector = str(row.get("sector") or "")
+    sector = ("" if pd.isna(row.get("sector")) else str(row.get("sector")))
     price = to_float(row.get("price"))
     market_cap = to_float(row.get("market_cap"))
     dollar_volume = to_float(row.get("dollar_volume"))
@@ -1311,7 +1311,7 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
     add_check("sector", "sector", 5)
     add_check("industry", "industry", 4)
 
-    if str(row.get("price_history_status") or "").lower() == "ok":
+    if ("" if pd.isna(row.get("price_history_status")) else str(row.get("price_history_status"))).lower() == "ok":
         score += 12
         present.append("price history")
     else:
@@ -1400,14 +1400,14 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
 
 def get_event_override(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]:
     """Return manual event-shock adjustments for known thesis-changing events."""
-    ticker = str(row.get("ticker") or "").upper().strip()
+    ticker = ("" if pd.isna(row.get("ticker")) else str(row.get("ticker"))).upper().strip()
     override = config.get("scoring", {}).get("event_overrides", {}).get(ticker, {})
     event_config = config.get("event_shocks", {})
     computed_shock = clean_float(row.get("event_shock_score"))
     computed_thesis_break = clean_float(row.get("event_thesis_break_risk_score"))
-    computed_note = str(row.get("event_shock_reason") or "")
-    computed_label = str(row.get("event_shock_label") or "")
-    computed_confidence = str(row.get("event_shock_confidence") or "")
+    computed_note = ("" if pd.isna(row.get("event_shock_reason")) else str(row.get("event_shock_reason")))
+    computed_label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label")))
+    computed_confidence = ("" if pd.isna(row.get("event_shock_confidence")) else str(row.get("event_shock_confidence")))
     callout_only_labels = {
         str(label).strip()
         for label in event_config.get("callout_only_detail_labels", [])
@@ -2101,8 +2101,8 @@ def is_catastrophic_reset_cycle(row: pd.Series, event_override: dict[str, Any] |
     event_override = event_override or {}
     all_time_drawdown = clean_float(row.get("all_time_drawdown"))
     dilution = clean_float(row.get("dilution_pressure_score"))
-    event_label = str(row.get("event_shock_label") or "").lower()
-    event_reason = str(row.get("event_shock_reason") or "").lower()
+    event_label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label"))).lower()
+    event_reason = ("" if pd.isna(row.get("event_shock_reason")) else str(row.get("event_shock_reason"))).lower()
     event_note = str(event_override.get("event_override_note") or "").lower()
     reverse_split_seen = (
         "reverse_split" in event_label
@@ -2176,8 +2176,8 @@ def is_hard_stop_event(row: pd.Series, event_override: dict[str, Any] | None = N
     event_override = event_override or {}
     if is_liquidation_event(row, event_override):
         return True
-    label = str(row.get("event_shock_label") or "").lower()
-    confidence = str(row.get("event_shock_confidence") or "").lower()
+    label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label"))).lower()
+    confidence = ("" if pd.isna(row.get("event_shock_confidence")) else str(row.get("event_shock_confidence"))).lower()
     penalty = clean_float(event_override.get("event_shock_penalty"))
     thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
     metadata_shock = label in {"event_shock_watch", "metadata_shock_suspected"} or confidence == "metadata_only"
@@ -2787,8 +2787,8 @@ def classify_risk_posture(
 
 def build_event_callouts(row: pd.Series, event_override: dict[str, Any]) -> str:
     """Summarize event-shock context as a callout, not always as a penalty."""
-    label = str(row.get("event_shock_label") or "").strip()
-    reason = str(row.get("event_shock_reason") or "").strip()
+    label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label"))).strip()
+    reason = ("" if pd.isna(row.get("event_shock_reason")) else str(row.get("event_shock_reason"))).strip()
     note = str(event_override.get("event_override_note") or "").strip()
     penalty = clean_float(event_override.get("event_shock_penalty"))
     thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
@@ -2954,8 +2954,8 @@ def interpret_thesis_integrity(
     dilution = clean_float(row.get("dilution_pressure_score"))
     survival = clean_float(row.get("survival_risk_score"))
     note = str(event_override.get("event_override_note") or "")
-    event_label = str(row.get("event_shock_label") or "")
-    event_confidence = str(row.get("event_shock_confidence") or "")
+    event_label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label")))
+    event_confidence = ("" if pd.isna(row.get("event_shock_confidence")) else str(row.get("event_shock_confidence")))
     if is_liquidation_event(row, event_override):
         return (
             "Liquidation / Wind-Down",
