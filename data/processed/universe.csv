@@ -784,6 +784,7 @@ MNTSW,Momentus Inc. Warrant,0.012,119909.0,290215.0,,3482.58,NASDAQ,Industrials,
 GGROW,Gogoro Inc. Warrant,0.0082,121143.0,1.0,,0.0082,NASDAQ,Industrials,Auto Manufacturing,,True,Matched broad public screener and configured penny/microcap filters.
 LNZAW,LanzaTech Global Inc. Warrant,0.0146,147302.0,115691.0,,1689.0886,NASDAQ,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 BENFW,Beneficient Warrant,0.0104,147823.0,15833.0,,164.6632,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
+HUBC,Hub Cyber Security Ltd. Ordinary Shares,0.1276,153535.0,24751885.0,,3158340.5259999996,NASDAQ,Telecommunications,Computer Communications Equipment,,True,Matched broad public screener and configured penny/microcap filters.
 SHFSW,SHF Holdings Inc. Warrants,0.0315,158543.0,33800.0,,1064.7,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 NCPLW,Netcapital Inc. Warrants,0.0209,164021.0,100.0,,2.09,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 TVGNW,Tevogen Bio Holdings Inc. Warrant,0.0426,177395.0,167342.0,,7128.7692,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
@@ -1021,6 +1022,7 @@ ALBT,Avalon GloboCare Corp. Common Stock,0.3207,3863682.0,71863.0,,23046.4640999
 ALZN,Alzamend Neuro Inc. Common Stock,1.02,3880836.0,13511.0,,13781.22,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 CHR,Cheer Holding Inc. Class A Ordinary Share,1.94,4000441.0,109459.0,,212350.46,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 AKTX,Akari Therapeutics plc ADS,3.5,4006058.0,9771.0,,34198.5,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
+GBR,New Concept Energy Inc Common Stock,0.7831,4018818.0,43056.0,,33717.1536,AMEX,Energy,Oil & Gas Production,,True,Matched broad public screener and configured penny/microcap filters.
 XRTX,XORTX Therapeutics Inc. Common Shares,2.6,4022169.0,32907.0,,85558.2,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 MBIO,Mustang Bio Inc. Common Stock,0.5979,4025135.0,91989.0,,55000.223099999996,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 REVB,Revelation Biosciences Inc. Common Stock,1.04,4064757.0,84121.0,,87485.84,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3595,5 +3597,3 @@ VUZI,Vuzix Corp,,,,,,NASDAQ,Technology,Consumer Electronics,,True,Configured AR 
 WULF,TeraWulf Inc.,,,,,,NASDAQ,Technology,Capital Markets,,True,Configured bitcoin-mining equity; power-cost and risk-appetite sensitivity.
 XELA,Exela Technologies Inc.,,,,,,NASDAQ,Technology,Information Technology Services,,True,Configured distressed processing/BPO equity; restructuring and dilution risk.
 ZOM,Zomedica Corp,,,,,,NYSE American,Healthcare,Diagnostics & Research,,True,Configured veterinary diagnostics speculation; cash runway and adoption optionality.
-HUBC,HUB Cyber Security Ltd.,,,,,,NASDAQ,Technology,Cybersecurity,,True,Verified business override: cybersecurity hardware/software and managed cyber services; sub-$5M/SPAC-reset risk should not be treated as clean long-term quality.
-GBR,New Concept Energy Inc.,,,,,,NYSE American,Real Estate,Real Estate Services,,True,Verified business override: primarily owns West Virginia real estate and provides management services for a third-party oil and gas operator; do not score as a true oil-and-gas producer.
