@@ -1,4 +1,9 @@
 ticker,company_name,price,market_cap,volume,avg_volume,dollar_volume,exchange,sector,industry,float,is_illiquid,universe_reason
+RAVE,Rave Restaurant Group Inc.,2.0,30000000.0,120000.0,140000.0,240000.0,NASDAQ,Consumer Cyclical,Restaurants,,False,Small franchisor with consumer-cycle and brand optionality.
+USEG,U.S. Energy Corp.,1.5,40000000.0,200000.0,180000.0,300000.0,NASDAQ,Energy,Oil & Gas E&P,,False,Tiny energy producer with commodity-cycle optionality.
+JOB,GEE Group Inc.,0.3,40000000.0,350000.0,300000.0,105000.0,NYSE American,Industrials,Staffing & Employment Services,,False,Sub-dollar staffing microcap with cyclical recovery sensitivity.
+ELTK,Eltek Ltd.,4.8,70000000.0,90000.0,110000.0,432000.0,NASDAQ,Technology,Electronic Components,,False,Small component maker tied to industrial and defense narratives.
+LCTX,Lineage Cell Therapeutics Inc.,1.0,180000000.0,600000.0,650000.0,600000.0,NYSE American,Healthcare,Biotechnology,,False,Biotech optionality with financing and catalyst risk.
 GOF,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,11.09,0.0,2887125.0,,32018216.25,NYSE,Finance,Finance/Investors Services,,True,Matched broad public screener and configured penny/microcap filters.
 FACT,FACT II Acquisition Corp. Class A Ordinary Shares,10.67,0.0,1814477.0,,19360469.59,NASDAQ,,,,True,Matched broad public screener and configured penny/microcap filters.
 CLM,Cornerstone Strategic Investment Fund Inc. Common Shares,7.42,0.0,2410085.0,,17882830.7,AMEX,Finance,Finance/Investors Services,,True,Matched broad public screener and configured penny/microcap filters.
@@ -779,7 +784,6 @@ MNTSW,Momentus Inc. Warrant,0.012,119909.0,290215.0,,3482.58,NASDAQ,Industrials,
 GGROW,Gogoro Inc. Warrant,0.0082,121143.0,1.0,,0.0082,NASDAQ,Industrials,Auto Manufacturing,,True,Matched broad public screener and configured penny/microcap filters.
 LNZAW,LanzaTech Global Inc. Warrant,0.0146,147302.0,115691.0,,1689.0886,NASDAQ,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 BENFW,Beneficient Warrant,0.0104,147823.0,15833.0,,164.6632,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
-HUBC,Hub Cyber Security Ltd. Ordinary Shares,0.1276,153535.0,24751885.0,,3158340.5259999996,NASDAQ,Telecommunications,Computer Communications Equipment,,True,Matched broad public screener and configured penny/microcap filters.
 SHFSW,SHF Holdings Inc. Warrants,0.0315,158543.0,33800.0,,1064.7,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 NCPLW,Netcapital Inc. Warrants,0.0209,164021.0,100.0,,2.09,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 TVGNW,Tevogen Bio Holdings Inc. Warrant,0.0426,177395.0,167342.0,,7128.7692,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
@@ -859,7 +863,6 @@ STSSW,Sharps Technology Inc. Warrant,0.034,1438954.0,430.0,,14.620000000000001,N
 GV,Visionary Holdings Inc. Common Shares,0.257,1441088.0,1253194.0,,322070.858,NASDAQ,Real Estate,Other Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 TBLAW,Taboola.com Ltd. Warrant,0.0053,1448619.0,19165.0,,101.5745,NASDAQ,Technology,Computer Software: Programming Data Processing,,True,Matched broad public screener and configured penny/microcap filters.
 UPC,Universe Pharmaceuticals Inc. Class A Ordinary Shares,2.58,1453412.0,8509.0,,21953.22,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
-ADTX,Aditxt Inc. Common Stock,1.625,1469761.0,385475.0,,626396.875,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 GFAIW,Guardforce AI Co. Limited Warrant,0.05,1562521.0,40.0,,2.0,NASDAQ,Consumer Discretionary,Diversified Commercial Services,,True,Matched broad public screener and configured penny/microcap filters.
 JZXN,Jiuzi Holdings Inc. Ordinary Shares,1.18,1568032.0,520638.0,,614352.84,NASDAQ,Consumer Discretionary,Retail-Auto Dealers and Gas Stations,,True,Matched broad public screener and configured penny/microcap filters.
 WTO,UTime Limited Class A Ordinary Shares,0.884,1568108.0,55724.0,,49260.016,NASDAQ,Technology,Consumer Electronics/Appliances,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1018,7 +1021,6 @@ ALBT,Avalon GloboCare Corp. Common Stock,0.3207,3863682.0,71863.0,,23046.4640999
 ALZN,Alzamend Neuro Inc. Common Stock,1.02,3880836.0,13511.0,,13781.22,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 CHR,Cheer Holding Inc. Class A Ordinary Share,1.94,4000441.0,109459.0,,212350.46,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 AKTX,Akari Therapeutics plc ADS,3.5,4006058.0,9771.0,,34198.5,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
-GBR,New Concept Energy Inc Common Stock,0.7831,4018818.0,43056.0,,33717.1536,AMEX,Energy,Oil & Gas Production,,True,Matched broad public screener and configured penny/microcap filters.
 XRTX,XORTX Therapeutics Inc. Common Shares,2.6,4022169.0,32907.0,,85558.2,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 MBIO,Mustang Bio Inc. Common Stock,0.5979,4025135.0,91989.0,,55000.223099999996,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 REVB,Revelation Biosciences Inc. Common Stock,1.04,4064757.0,84121.0,,87485.84,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1120,7 +1122,6 @@ FTFT,Future FinTech Group Inc. Common Stock,1.14,5974220.0,34933.0,,39823.619999
 SUGP,SU Group Holdings Limited Class A Ordinary Shares,4.08,5976270.0,135871.0,,554353.68,NASDAQ,Consumer Discretionary,Diversified Commercial Services,,True,Matched broad public screener and configured penny/microcap filters.
 JCSE,JE Cleantech Holdings Limited Ordinary Shares,1.14,5988101.0,37724.0,,43005.35999999999,NASDAQ,Consumer Discretionary,Miscellaneous manufacturing industries,,True,Matched broad public screener and configured penny/microcap filters.
 BNZI,Banzai International Inc. Class A Common Stock,5.08,5991205.0,320136.0,,1626290.8800000001,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
-CENN,Cenntro Inc. Common Stock,4.095,6001026.0,13167.0,,53918.865,NASDAQ,Industrials,Auto Manufacturing,,True,Matched broad public screener and configured penny/microcap filters.
 CNEY,CN Energy Group Inc. Class A Ordinary Shares,0.7326,6009743.0,33935.0,,24860.781000000003,NASDAQ,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 LUCY,Innovative Eyewear Inc. Common Stock,0.9401,6020145.0,78342.0,,73649.31420000001,NASDAQ,Health Care,Ophthalmic Goods,,True,Matched broad public screener and configured penny/microcap filters.
 PCLA,PicoCELA Inc. American Depositary Shares,1.45,6023017.0,2265.0,,3284.25,NASDAQ,Consumer Discretionary,Building Products,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1227,7 +1228,6 @@ CYAB,Cyabra Inc. Common Stock,0.606,8371360.0,280698.0,,170102.98799999998,NASDA
 BOLT,Bolt Biotherapeutics Inc. Common Stock,4.36,8378032.0,73241.0,,319330.76,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 LIMN,Liminatus Pharma Inc. Class A Common Stock,0.1871,8396605.0,1228512.0,,229854.59519999998,NASDAQ,,,,True,Matched broad public screener and configured penny/microcap filters.
 FRGT,Freight Technologies Inc. Ordinary Shares,2.94,8410240.0,75830.0,,222940.19999999998,NASDAQ,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
-ORGN,Origin Materials Inc. Common Stock,1.53,8419238.0,1032737.0,,1580087.61,NASDAQ,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 SNES,SenesTech Inc. Common Stock,1.59,8432447.0,80302.0,,127680.18000000001,NASDAQ,Industrials,Agricultural Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 MSN,Emerson Radio Corporation Common Stock,0.4011,8440208.0,5985.0,,2400.5835,AMEX,Consumer Staples,Consumer Electronics/Appliances,,True,Matched broad public screener and configured penny/microcap filters.
 ETS,Elite Express Holding Inc. Class A Common Stock,0.505,8441919.0,25488.0,,12871.44,NASDAQ,Industrials,Trucking Freight/Courier Services,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1358,8 +1358,6 @@ AIRI,Air Industries Group Common Stock,2.71,13145283.0,13842.0,,37511.82,AMEX,In
 HIND,Vyome Holdings Inc. Common Stock,1.89,13265018.0,26460.0,,50009.399999999994,NASDAQ,Health Care,Medical/Dental Instruments,,True,Matched broad public screener and configured penny/microcap filters.
 SURG,SurgePays Inc. Common Stock,0.5288,13284458.0,148110.0,,78320.56800000001,NASDAQ,Consumer Discretionary,Advertising,,True,Matched broad public screener and configured penny/microcap filters.
 GTIM,Good Times Restaurants Inc. Common Stock,1.26,13302949.0,44559.0,,56144.340000000004,NASDAQ,Consumer Discretionary,Restaurants,,True,Matched broad public screener and configured penny/microcap filters.
-BNGO,Bionano Genomics Inc. Common Stock,1.16,13311000.0,160046.0,,185653.36,NASDAQ,Industrials,Biotechnology: Laboratory Analytical Instruments,,True,Matched broad public screener and configured penny/microcap filters.
-AQMS,Aqua Metals Inc. Common Stock,3.99,13414404.0,57829.0,,230737.71000000002,NASDAQ,Industrials,Metal Fabrications,,True,Matched broad public screener and configured penny/microcap filters.
 WVVIP,Willamette Valley Vineyards Inc. Series A Redeemable Preferred Stock,2.6969,13429292.0,905.0,,2440.6945,NASDAQ,Consumer Staples,Beverages (Production/Distribution),,True,Matched broad public screener and configured penny/microcap filters.
 RVSN,Rail Vision Ltd. Ordinary Share,6.145,13470983.0,15132.0,,92986.14,NASDAQ,Industrials,Railroads,,True,Matched broad public screener and configured penny/microcap filters.
 NTRBW,Nutriband Inc. Warrant,1.11,13493141.0,100.0,,111.00000000000001,NASDAQ,Health Care,Industrial Specialties,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1404,7 +1402,6 @@ TBH,Brag House Holdings Inc. Common Stock,0.65,15272481.0,883373.0,,574192.45000
 LEDS,SemiLEDS Corporation Common Stock,1.85,15276658.0,94676.0,,175150.6,NASDAQ,Technology,Semiconductors,,True,Matched broad public screener and configured penny/microcap filters.
 COSM,Cosmos Health Inc. Common Stock,0.2937,15453644.0,1019492.0,,299424.8004,NASDAQ,Health Care,Other Pharmaceuticals,,True,Matched broad public screener and configured penny/microcap filters.
 GAUZ,Gauzy Ltd. Ordinary Shares,0.829,15537195.0,199459.0,,165351.511,NASDAQ,Miscellaneous,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
-TOMZ,TOMI Environmental Solutions Inc. Common Stock,0.7167,15552723.0,334846.0,,239984.1282,NASDAQ,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 GIGM,GigaMedia Limited Ordinary Shares,1.41,15583651.0,467.0,,658.4699999999999,NASDAQ,Technology,Computer Software: Programming Data Processing,,True,Matched broad public screener and configured penny/microcap filters.
 STAK,STAK Inc. Class A Ordinary Shares,1.18,15588212.0,971529.0,,1146404.22,NASDAQ,Consumer Discretionary,Oil and Gas Field Machinery,,True,Matched broad public screener and configured penny/microcap filters.
 INTJ,Intelligent Group Limited Class A Ordinary Shares ,10.15,15605605.0,297.0,,3014.55,NASDAQ,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1558,7 +1555,6 @@ MDCXW,Medicus Pharma Ltd. Warrant,0.43,23720720.0,1130.0,,485.9,NASDAQ,Health Ca
 VNTG,Vantage Corp Class A Ordinary Shares,0.75,23803125.0,87416.0,,65562.0,AMEX,Industrials,Integrated Freight & Logistics,,True,Matched broad public screener and configured penny/microcap filters.
 BESS,Bimergen Energy Corporation Common Stock,3.37,23834571.0,165431.0,,557502.47,AMEX,Utilities,Electric Utilities: Central,,True,Matched broad public screener and configured penny/microcap filters.
 ARKR,Ark Restaurants Corp. Common Stock,6.61,23836698.0,1954.0,,12915.94,NASDAQ,Consumer Discretionary,Restaurants,,True,Matched broad public screener and configured penny/microcap filters.
-CLIR,ClearSign Technologies Corporation Common Stock (DE),4.41,23854277.0,25394.0,,111987.54000000001,NASDAQ,Industrials,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
 JVA,Coffee Holding Co. Inc. Common Stock,4.2,23976116.0,41966.0,,176257.2,NASDAQ,Consumer Staples,Packaged Foods,,True,Matched broad public screener and configured penny/microcap filters.
 BLIV,BeLive Holdings Ordinary Share,2.21,24011212.0,2525.0,,5580.25,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 EFOI,Energy Focus Inc. Common Stock,3.81,24016080.0,98108.0,,373791.48,NASDAQ,Consumer Discretionary,Building Products,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1591,7 +1587,6 @@ FMST,Foremost Clean Energy Ltd. Common Shares,1.57,25568620.0,155902.0,,244766.1
 OFAL,OFA Group Class A Ordinary Shares,0.5529,25580939.0,418180.0,,231211.72199999998,NASDAQ,Consumer Discretionary,Military/Government/Technical,,True,Matched broad public screener and configured penny/microcap filters.
 PLRZ,Polyrizon Ltd. Ordinary Shares,13.71,25663036.0,20895.0,,286470.45,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 BRRWW,ProCap Financial Inc. Warrant,0.285,25813454.0,10643.0,,3033.2549999999997,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
-JOB,GEE Group Inc. Common Stock,0.235,25819611.0,201655.0,,47388.924999999996,AMEX,Consumer Discretionary,Diversified Commercial Services,,True,Matched broad public screener and configured penny/microcap filters.
 AIFF,Firefly Neuroscience Inc. Common Stock,1.66,25849155.0,225844.0,,374901.04,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 ACCS,ACCESS Newswire Inc. Common Stock,6.66,25855079.0,21733.0,,144741.78,AMEX,Consumer Discretionary,Publishing,,True,Matched broad public screener and configured penny/microcap filters.
 BAFN,BayFirst Financial Corp. Common Stock,6.3,25880854.0,19413.0,,122301.9,NASDAQ,Finance,Major Banks,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1738,7 +1733,6 @@ ATNM,Actinium Pharmaceuticals Inc. (Delaware) Common Stock,1.17,36708739.0,10568
 MREO,Mereo BioPharma Group plc American Depositary Shares,0.2374,36831567.0,1359512.0,,322748.1488,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 OESX,Orion Energy Systems Inc. Common Stock,9.09,36840525.0,26137.0,,237585.33,NASDAQ,Consumer Discretionary,Building Products,,True,Matched broad public screener and configured penny/microcap filters.
 HOLO,MicroCloud Hologram Inc. Ordinary Shares,1.61,36888900.0,388010.0,,624696.1000000001,NASDAQ,Technology,Computer Software: Programming Data Processing,,True,Matched broad public screener and configured penny/microcap filters.
-RAVE,Rave Restaurant Group Inc. Common Stock,2.6,36950072.0,50531.0,,131380.6,NASDAQ,Consumer Discretionary,Food Distributors,,True,Matched broad public screener and configured penny/microcap filters.
 SWAG,Stran & Company Inc. Common Stock,1.97,36977209.0,111897.0,,220437.09,NASDAQ,Consumer Discretionary,Advertising,,True,Matched broad public screener and configured penny/microcap filters.
 TVGN,Tevogen Bio Holdings Inc. Common Stock,8.88,36978140.0,15183.0,,134825.04,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 AERT,Aeries Technology Inc. Class A Ordinary Share,0.7373,37019624.0,137798.0,,101598.4654,NASDAQ,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1786,7 +1780,6 @@ SNAL,Snail Inc. Class A Common Stock,0.96,40917122.0,8360368.0,,8025953.27999999
 MIRA,MIRA Pharmaceuticals Inc. Common Stock,0.976,41013557.0,162527.0,,158626.35199999998,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 WYHG,Wing Yip Food Holdings Group Limited American Depositary Shares,0.8168,41110302.0,35828.0,,29264.3104,NASDAQ,Consumer Staples,Specialty Foods,,True,Matched broad public screener and configured penny/microcap filters.
 JRSH,Jerash Holdings (US) Inc. Common Stock,3.24,41147806.0,492540.0,,1595829.6,NASDAQ,Consumer Discretionary,Apparel,,True,Matched broad public screener and configured penny/microcap filters.
-ATOS,Atossa Therapeutics Inc. Common Stock,4.78,41162306.0,42731.0,,204254.18000000002,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 FGNX,FG Nexus Inc. Common Stock ,6.59,41260530.0,161317.0,,1063079.03,NASDAQ,Finance,Property-Casualty Insurers,,True,Matched broad public screener and configured penny/microcap filters.
 QUCY,Quantum Cyber N.V. Ordinary Shares,3.3,41300609.0,26243268.0,,86602784.39999999,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 TLPH,Talphera Inc. Common Stock,0.7973,41379589.0,268369.0,,213970.6037,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1827,7 +1820,6 @@ AAME,Atlantic American Corporation Common Stock,2.2,44873902.0,2303.0,,5066.6,NA
 JZ,Jianzhi Education Technology Group Company Limited American Depositary Shs,0.95,44886911.0,1766268.0,,1677954.5999999999,NASDAQ,Real Estate,Other Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 PAVM,PAVmed Inc. Common Stock,6.21,45163709.0,8229.0,,51102.09,NASDAQ,Health Care,Medical/Dental Instruments,,True,Matched broad public screener and configured penny/microcap filters.
 FTEK,Fuel Tech Inc. Common Stock,1.45,45189611.0,98404.0,,142685.8,NASDAQ,Industrials,Pollution Control Equipment,,True,Matched broad public screener and configured penny/microcap filters.
-GOSS,Gossamer Bio Inc. Common Stock,0.1927,45225973.0,57199031.0,,11022253.2737,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 KSCP,Knightscope Inc. Class A Common Stock,2.78,45266498.0,754474.0,,2097437.7199999997,NASDAQ,Telecommunications,Telecommunications Equipment,,True,Matched broad public screener and configured penny/microcap filters.
 IXHL,Incannex Healthcare Inc. Common Stock,3.79,45268946.0,287814.0,,1090815.06,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 PRPL,Purple Innovation Inc. Common Stock,0.416,45339294.0,326074.0,,135646.78399999999,NASDAQ,Consumer Discretionary,Home Furnishings,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1866,7 +1858,6 @@ NSPR,InspireMD Inc. Common Stock,1.05,49180910.0,144528.0,,151754.4,NASDAQ,Healt
 SPWH,Sportsman's Warehouse Holdings Inc. Common Stock,1.27,49470755.0,342407.0,,434856.89,NASDAQ,Consumer Discretionary,Other Specialty Stores,,True,Matched broad public screener and configured penny/microcap filters.
 UEIC,Universal Electronics Inc. Common Stock,3.92,49510784.0,63480.0,,248841.6,NASDAQ,Consumer Staples,Consumer Electronics/Appliances,,True,Matched broad public screener and configured penny/microcap filters.
 BOF,BranchOut Food Inc. Common Stock,3.245,49700517.0,28079.0,,91116.355,NASDAQ,Consumer Staples,Packaged Foods,,True,Matched broad public screener and configured penny/microcap filters.
-USEG,U.S. Energy Corp. Common Stock (DE),0.9525,49835209.0,826943.0,,787663.2075,NASDAQ,Energy,Oil & Gas Production,,True,Matched broad public screener and configured penny/microcap filters.
 BRIA,BrilliA Inc Class A Ordinary Shares,1.63,49918750.0,2650.0,,4319.5,AMEX,Consumer Discretionary,Apparel,,True,Matched broad public screener and configured penny/microcap filters.
 INKT,MiNK Therapeutics Inc. Common Stock,10.04,50018266.0,28372.0,,284854.88,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 AACG,ATA Creativity Global American Depositary Shares,1.17,50345096.0,11243.0,,13154.31,NASDAQ,Real Estate,Other Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
@@ -1905,7 +1896,6 @@ OKYO,OKYO Pharma Limited Ordinary Shares,1.59,53805600.0,70381.0,,111905.7900000
 YTRA,Yatra Online Inc. Ordinary Shares,0.87,53988503.0,13540.0,,11779.8,NASDAQ,Consumer Discretionary,Transportation Services,,True,Matched broad public screener and configured penny/microcap filters.
 ALAR,Alarum Technologies Ltd. American Depositary Share,7.45,54016009.0,33022.0,,246013.9,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 VNCE,Vince Holding Corp. Common Stock,4.21,54087108.0,151972.0,,639802.12,NASDAQ,Consumer Discretionary,Clothing/Shoe/Accessory Stores,,True,Matched broad public screener and configured penny/microcap filters.
-ELTK,Eltek Ltd. Ordinary Shares,8.085,54329801.0,2960.0,,23931.600000000002,NASDAQ,Technology,Electrical Products,,True,Matched broad public screener and configured penny/microcap filters.
 SCYX,SCYNEXIS Inc. Common Stock,0.6852,54434092.0,631246.0,,432529.75920000003,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 DCGO,DocGo Inc. Common Stock,0.5527,54594829.0,394023.0,,217776.5121,NASDAQ,Health Care,Medical/Nursing Services,,True,Matched broad public screener and configured penny/microcap filters.
 FRMM,Forum Markets Incorporated Common Stock,3.73,54642941.0,453887.0,,1692998.51,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2045,7 +2035,6 @@ SLNG,Stabilis Solutions Inc. Common Stock,3.85,71595759.0,4947.0,,19045.95,NASDA
 FATN,FatPipe Inc. Common Stock,5.15,71711010.0,1113468.0,,5734360.2,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 NSTS,NSTS Bancorp Inc. Common Stock,13.64,71767310.0,27406.0,,373817.84,NASDAQ,Finance,Savings Institutions,,True,Matched broad public screener and configured penny/microcap filters.
 BTMD,Biote Corp. Class A Common Stock,1.91,71780291.0,406160.0,,775765.6,NASDAQ,Health Care, Medicinal Chemicals and Botanical Products ,,True,Matched broad public screener and configured penny/microcap filters.
-OPTT,Ocean Power Technologies Inc. Common Stock,0.315,71827383.0,3585430.0,,1129410.45,AMEX,Utilities,Electric Utilities: Central,,True,Matched broad public screener and configured penny/microcap filters.
 AREN,The Arena Group Holdings Inc. Common Stock,1.51,71880213.0,131286.0,,198241.86000000002,AMEX,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 HOUR,Hour Loop Inc. Common Stock,2.06,72495293.0,55809.0,,114966.54000000001,NASDAQ,Consumer Discretionary,Catalog/Specialty Distribution,,True,Matched broad public screener and configured penny/microcap filters.
 SLND,Southland Holdings Inc. Common Stock,1.34,72653302.0,107934.0,,144631.56,AMEX,Industrials,Military/Government/Technical,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2134,7 +2123,6 @@ GIBO,GIBO Holdings Limited Class A Ordinary Shares,1.31,85304086.0,9204.0,,12057
 IH,iHuman Inc. American depositary shares each representing five Class A ordinary shares,1.67,85358480.0,6502.0,,10858.34,NYSE,Real Estate,Other Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 AURE,Aurelion Inc. Class A Ordinary Shares,2.4804,85818943.0,2056.0,,5099.7024,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 GCV,Gabelli Convertible and Income Securities Fund Inc. (The) Common Stock,4.52,86060931.0,62265.0,,281437.8,NYSE,Finance,Finance/Investors Services,,True,Matched broad public screener and configured penny/microcap filters.
-LIDR,AEye Inc. Class A Common Stock,1.86,86145565.0,896447.0,,1667391.4200000002,NASDAQ,Consumer Discretionary,Auto Parts:O.E.M.,,True,Matched broad public screener and configured penny/microcap filters.
 SPAI,Safe Pro Group Inc. Common Stock,4.14,86482886.0,708467.0,,2933053.38,NASDAQ,Health Care,Industrial Specialties,,True,Matched broad public screener and configured penny/microcap filters.
 IDN,Intellicheck Inc. Common Stock,4.28,86675226.0,575039.0,,2461166.92,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 DTCX,Datacentrex Inc. Common Stock,2.23,86688186.0,209683.0,,467593.08999999997,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2194,7 +2182,6 @@ RMI,RiverNorth Opportunistic Municipal Income Fund Inc. Common Stock,15.18,96746
 CMU,MFS Municipal Income Trust Common Stock,3.42,96872574.0,58919.0,,201502.97999999998,NYSE,Finance,Investment Managers,,True,Matched broad public screener and configured penny/microcap filters.
 BAER,Bridger Aerospace Group Holdings Inc. Common Stock,1.69,97407613.0,1138532.0,,1924119.0799999998,NASDAQ,Industrials,Aerospace,,True,Matched broad public screener and configured penny/microcap filters.
 QTTB,Q32 Bio Inc. Common Stock,5.75,97499386.0,245406.0,,1411084.5,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
-CGTX,Cognition Therapeutics Inc. Common Stock,1.09,97552836.0,970993.0,,1058382.37,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 AMTD,AMTD IDEA Group American Depositary Shares each representing six (6) Class A Ordinary Shares,1.02,97619665.0,6894.0,,7031.88,NYSE,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 SEAT,Vivid Seats Inc. Class A Common Stock,8.89,97678084.0,79526.0,,706986.14,NASDAQ,Consumer Discretionary,Services-Misc. Amusement & Recreation,,True,Matched broad public screener and configured penny/microcap filters.
 CBUS,Cibus Inc. Class A Common Stock,1.28,97704492.0,327051.0,,418625.28,NASDAQ,Industrials,Agricultural Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2226,7 +2213,6 @@ GEOS,Geospace Technologies Corporation Common Stock (Texas),8.07,104390316.0,313
 ZVIA,Zevia PBC Class A Common Stock,1.36,104698411.0,1411179.0,,1919203.4400000002,NYSE,Consumer Staples,Beverages (Production/Distribution),,True,Matched broad public screener and configured penny/microcap filters.
 SKLZ,Skillz Inc. Class A Common Stock,6.6,104712452.0,705496.0,,4656273.6,NYSE,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 ENGN,enGene Therapeutics Inc. Common Stock,1.57,105173462.0,1833971.0,,2879334.47,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
-REKR,Rekor Systems Inc. Common Stock,0.7644,105187643.0,3645776.0,,2786831.1744,NASDAQ,Telecommunications,Telecommunications Equipment,,True,Matched broad public screener and configured penny/microcap filters.
 FFAI,Faraday Future Intelligent Electric Inc. Class A Common Stock,0.3477,105667472.0,13057054.0,,4539937.6758,NASDAQ,Industrials,Auto Manufacturing,,True,Matched broad public screener and configured penny/microcap filters.
 FGMC,FG Merger II Corp. Common stock,10.32,105680907.0,54409.0,,561500.88,NASDAQ,,,,True,Matched broad public screener and configured penny/microcap filters.
 DTI,Drilling Tools International Corporation Common Stock,3.01,105768673.0,139207.0,,419013.06999999995,NASDAQ,Consumer Discretionary,Oil and Gas Field Machinery,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2395,13 +2381,11 @@ WHG,Westwood Holdings Group Inc Common Stock,16.03,152092287.0,14523.0,,232803.6
 GRX,The Gabelli Healthcare & Wellness Trust Common Shares of Beneficial Interest,8.92,152469319.0,16637.0,,148402.04,NYSE,Finance,Finance/Investors Services,,True,Matched broad public screener and configured penny/microcap filters.
 NRDY,Nerdy Inc. Class A Common Stock,0.8035,152752284.0,763740.0,,613665.09,NYSE,Real Estate,Other Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 MOLN,Molecular Partners AG American Depositary Shares,3.8,153379761.0,7045.0,,26771.0,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
-AMTX,Aemetis Inc. (DE) Common Stock,2.18,153398920.0,1069180.0,,2330812.4000000004,NASDAQ,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 TUSK,Mammoth Energy Services Inc. Common Stock,3.19,153664364.0,236887.0,,755669.53,NASDAQ,Energy,Oilfield Services/Equipment,,True,Matched broad public screener and configured penny/microcap filters.
 PLX,Protalix BioTherapeutics Inc. (DE) Common Stock,1.91,153891836.0,1104317.0,,2109245.4699999997,AMEX,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 HTLM,HomesToLife Ltd Ordinary Shares,1.72,154262500.0,1999.0,,3438.2799999999997,NASDAQ,Consumer Discretionary,Other Specialty Stores,,True,Matched broad public screener and configured penny/microcap filters.
 BIPI,BIP Bermuda Holdings I Limited 5.125% Perpetual Subordinated Notes,16.3139,154605199.0,5840.0,,95273.176,NYSE,Consumer Discretionary,Marine Transportation,,True,Matched broad public screener and configured penny/microcap filters.
 TRT,Trio-Tech International Common Stock,15.32,154925017.0,3075519.0,,47116951.08,AMEX,Technology,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
-INVZ,Innoviz Technologies Ltd. Ordinary shares,0.7223,154950368.0,4771280.0,,3446295.544,NASDAQ,Consumer Discretionary,Auto Parts:O.E.M.,,True,Matched broad public screener and configured penny/microcap filters.
 WSHP,WeShop Holdings Limited Class A Ordinary Shares,6.61,154962745.0,70838.0,,468239.18000000005,NASDAQ,Consumer Discretionary,Other Specialty Stores,,True,Matched broad public screener and configured penny/microcap filters.
 WTF,Waton Financial Limited Ordinary Shares,3.22,155324660.0,728403.0,,2345457.66,NASDAQ,Finance,Investment Bankers/Brokers/Service,,True,Matched broad public screener and configured penny/microcap filters.
 CHPT,ChargePoint Holdings Inc. Common Stock,6.39,156019748.0,764775.0,,4886912.25,NYSE,Consumer Discretionary,Industrial Specialties,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2480,9 +2464,7 @@ BZAI,Blaize Holdings Inc. Common Stock,1.27,180720315.0,7365505.0,,9354191.35,NA
 IFRX,InflaRx N.V. Common Stock,2.5,180732148.0,1598458.0,,3996145.0,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 DPRO,Draganfly Inc. Common Shares,5.27,181161367.0,1078900.0,,5685803.0,NASDAQ,Industrials,Aerospace,,True,Matched broad public screener and configured penny/microcap filters.
 EGAN,eGain Corporation Common Stock,6.6,181170535.0,527284.0,,3480074.4,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
-KULR,KULR Technology Group Inc. Common Stock,3.92,181328087.0,5881603.0,,23055883.759999998,AMEX,Technology,Electrical Products,,True,Matched broad public screener and configured penny/microcap filters.
 MIST,Milestone Pharmaceuticals Inc. Common Shares,1.46,181767051.0,1283905.0,,1874501.3,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
-MVIS,MicroVision Inc. Common Stock,0.5569,182096681.0,7773986.0,,4329332.8034,NASDAQ,Technology,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
 SGC,Superior Group of Companies Inc. Common Stock,11.67,182449352.0,54605.0,,637240.35,NASDAQ,Consumer Discretionary,Apparel,,True,Matched broad public screener and configured penny/microcap filters.
 ELTX,Elicio Therapeutics Inc. Common Stock,9.57,182653795.0,171786.0,,1643992.02,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 CVGI,Commercial Vehicle Group Inc. Common Stock,5.04,182740068.0,382195.0,,1926262.8,NASDAQ,Consumer Discretionary,Auto Parts:O.E.M.,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2523,7 +2505,6 @@ DRTSW,Alpha Tau Medical Ltd. Warrant,2.25,198021908.0,362990.0,,816727.5,NASDAQ,
 ANIK,Anika Therapeutics Inc. Common Stock,14.95,198919079.0,72853.0,,1089152.3499999999,NASDAQ,Health Care,Medical/Dental Instruments,,True,Matched broad public screener and configured penny/microcap filters.
 INSE,Inspired Entertainment Inc. Common Stock,7.46,198998148.0,95984.0,,716040.64,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 ARQQ,Arqit Quantum Inc. Ordinary Shares,12.74,199404684.0,372781.0,,4749229.94,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
-HUMA,Humacyte Inc. Common Stock,0.8984,199461967.0,6543098.0,,5878319.243199999,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 SJT,San Juan Basin Royalty Trust Common Stock,4.28,199485647.0,210596.0,,901350.88,NYSE,Energy,Oil & Gas Production,,True,Matched broad public screener and configured penny/microcap filters.
 OMSE,OMS Energy Technologies Inc. Ordinary Shares,4.7,199508909.0,11545.0,,54261.5,NASDAQ,Consumer Discretionary,Oil and Gas Field Machinery,,True,Matched broad public screener and configured penny/microcap filters.
 FT,Franklin Universal Trust Common Stock,7.95,199798557.0,31190.0,,247960.5,NYSE,Finance,Trusts Except Educational Religious and Charitable,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2548,7 +2529,6 @@ LFMD,LifeMD Inc. Common Stock,4.24,205057042.0,847223.0,,3592225.52,NASDAQ,Healt
 CRBU,Caribou Biosciences Inc. Common Stock,2.07,205303790.0,2047840.0,,4239028.8,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 PLG,Platinum Group Metals Ltd. Ordinary Shares (Canada),1.62,205457924.0,2780571.0,,4504525.0200000005,AMEX,Basic Materials,Precious Metals,,True,Matched broad public screener and configured penny/microcap filters.
 JACK,Jack In The Box Inc. Common Stock,10.78,205613580.0,1051538.0,,11335579.639999999,NASDAQ,Consumer Discretionary,Restaurants,,True,Matched broad public screener and configured penny/microcap filters.
-HITI,High Tide Inc. Common Shares,2.34,205681032.0,282526.0,,661110.84,NASDAQ,Consumer Discretionary,Other Specialty Stores,,True,Matched broad public screener and configured penny/microcap filters.
 DMRC,Digimarc Corporation Common Stock,9.26,205960689.0,221374.0,,2049923.24,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 MRBK,Meridian Corporation Common Stock,17.33,206058518.0,93592.0,,1621949.3599999999,NASDAQ,Finance,Major Banks,,True,Matched broad public screener and configured penny/microcap filters.
 AOMR,Angel Oak Mortgage REIT Inc. Common Stock,8.28,206293277.0,91247.0,,755525.1599999999,NYSE,Finance,Real Estate,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2583,7 +2563,6 @@ TBCH,Turtle Beach Corporation Common Stock,10.9,216336889.0,295461.0,,3220524.9,
 LENZ,LENZ Therapeutics Inc. Common Stock,6.9,216345319.0,878540.0,,6061926.0,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 EXOD,Exodus Movement Inc. Class A Common Stock,7.22,216692337.0,52667.0,,380255.74,AMEX,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 AMPY,Amplify Energy Corp. Common Stock,5.25,216759044.0,539604.0,,2832921.0,NYSE,Energy,Oil & Gas Production,,True,Matched broad public screener and configured penny/microcap filters.
-TRVG,trivago N.V. American Depositary Shares,3.07,216802399.0,30616.0,,93991.12,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 DAVA,Endava plc American Depositary Shares (each representing one Class A Ordinary Share),4.0,217310412.0,440567.0,,1762268.0,NYSE,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 EGG,Enigmatig Limited Class A Ordinary Shares,7.81,217471012.0,21692.0,,169414.52,AMEX,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
 UNCY,Unicycive Therapeutics Inc. Common Stock,8.15,217605220.0,488003.0,,3977224.45,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2629,11 +2608,9 @@ GLDG,GoldMining Inc. Common Shares,1.08,231119909.0,1618561.0,,1748045.880000000
 CDXS,Codexis Inc. Common Stock,2.55,231786246.0,728348.0,,1857287.4,NASDAQ,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 YSG,Yatsen Holding Limited American Depositary Shares each representing twenty (20) Class A Ordinary Shares,2.47,231847543.0,100004.0,,247009.88000000003,NYSE,Consumer Discretionary,Package Goods/Cosmetics,,True,Matched broad public screener and configured penny/microcap filters.
 YDDL,One and One Green Technologies. Inc Class A Ordinary Shares,4.14,231977999.0,120190.0,,497586.6,NASDAQ,Consumer Discretionary,Industrial Specialties,,True,Matched broad public screener and configured penny/microcap filters.
-SENS,Senseonics Holdings Inc. Common Stock,5.56,232424485.0,647606.0,,3600689.36,NASDAQ,Health Care,Medical/Dental Instruments,,True,Matched broad public screener and configured penny/microcap filters.
 LAW,CS Disco Inc. Common Stock,3.63,232807894.0,698610.0,,2535954.3,NYSE,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 TII,Titan Mining Corporation Common Shares,2.37,232942806.0,311102.0,,737311.74,AMEX,,,,True,Matched broad public screener and configured penny/microcap filters.
 FJET,Starfighters Space Inc. Common Stock,5.28,233238572.0,813312.0,,4294287.36,AMEX,Consumer Discretionary,Air Freight/Delivery Services,,True,Matched broad public screener and configured penny/microcap filters.
-POWW,Outdoor Holding Company Common Stock,1.99,233404557.0,616085.0,,1226009.15,NASDAQ,Industrials,Ordnance And Accessories,,True,Matched broad public screener and configured penny/microcap filters.
 TPVG,TriplePoint Venture Growth BDC Corp. Common Stock,5.78,234662110.0,558968.0,,3230835.04,NYSE,Consumer Discretionary,Other Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 ALEC,Alector Inc. Common Stock,2.12,235373396.0,814468.0,,1726672.1600000001,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 FTF,Franklin Limited Duration Income Trust Common Shares of Beneficial Interest,5.84,235967384.0,150442.0,,878581.28,AMEX,Finance,Finance/Investors Services,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2682,7 +2659,6 @@ ACRE,Ares Commercial Real Estate Corporation Common Stock,4.64,257432364.0,38248
 ZNTL,Zentalis Pharmaceuticals Inc. Common Stock,3.63,258406443.0,3193989.0,,11594180.07,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 TARA,Protara Therapeutics Inc.  Common Stock,4.6,258539490.0,1019116.0,,4687933.6,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 MKTW,MarketWise Inc. Class A Common Stock,16.6,259384196.0,36249.0,,601733.4,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
-SPCE,Virgin Galactic Holdings Inc. Common Stock,2.58,259763270.0,14570842.0,,37592772.36,NYSE,Consumer Discretionary,Transportation Services,,True,Matched broad public screener and configured penny/microcap filters.
 DEFT,Defi Technologies Inc. Common Stock,0.6701,259849528.0,4615059.0,,3092551.0359,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 SBMT,Silver Bow Mining Corp. Common Shares,8.83,260736655.0,83881.0,,740669.23,AMEX,Basic Materials,Precious Metals,,True,Matched broad public screener and configured penny/microcap filters.
 TG,Tredegar Corporation Common Stock,7.45,260875302.0,176468.0,,1314686.6,NYSE,Industrials,Metal Fabrications,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2770,7 +2746,6 @@ NMG,Nouveau Monde Graphite Inc. Common Shares,1.87,300745628.0,596372.0,,1115215
 CURR,Currenc Group Inc. Ordinary Shares,2.69,302038271.0,385884.0,,1038027.96,NASDAQ,Consumer Discretionary,Business Services,,True,Matched broad public screener and configured penny/microcap filters.
 TYGO,Tigo Energy Inc. Common Stock,3.98,302124960.0,844184.0,,3359852.32,NASDAQ,Technology,Semiconductors,,True,Matched broad public screener and configured penny/microcap filters.
 PMM,Putnam Managed Municipal Income Trust Common Stock,6.2,302180616.0,53171.0,,329660.2,NYSE,Finance,Investment Managers,,True,Matched broad public screener and configured penny/microcap filters.
-VUZI,Vuzix Corporation Common Stock,3.65,303527642.0,6747789.0,,24629429.849999998,NASDAQ,Technology,Radio And Television Broadcasting And Communications Equipment,,True,Matched broad public screener and configured penny/microcap filters.
 BCYC,Bicycle Therapeutics plc American Depositary Shares,4.36,304376941.0,336806.0,,1468474.1600000001,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 MBI,MBIA Inc. Common Stock,5.98,304585553.0,218114.0,,1304321.7200000002,NYSE,Finance,Property-Casualty Insurers,,True,Matched broad public screener and configured penny/microcap filters.
 NUCL,Eagle Nuclear Energy Corp. Common stock,10.31,304962717.0,327900.0,,3380649.0,NASDAQ,Basic Materials,Other Metals and Minerals,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2783,7 +2758,6 @@ GBAB,Guggenheim Taxable Municipal Bond & Investment Grade Debt Trust Common Shar
 DBI,Designer Brands Inc. Class A Common Stock,6.07,308049592.0,455707.0,,2766141.49,NYSE,Consumer Discretionary,Clothing/Shoe/Accessory Stores,,True,Matched broad public screener and configured penny/microcap filters.
 TENX,Tenax Therapeutics Inc. Common Stock,11.62,308222348.0,828492.0,,9627077.04,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 SVCO,Silvaco Group Inc. Common Stock,9.45,308906864.0,505014.0,,4772382.3,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
-LCTX,Lineage Cell Therapeutics Inc. Common Stock,1.24,309129886.0,1456790.0,,1806419.6,AMEX,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 EVTL,Vertical Aerospace Ltd. Ordinary Shares,2.43,309407050.0,2720135.0,,6609928.050000001,NYSE,Industrials,Aerospace,,True,Matched broad public screener and configured penny/microcap filters.
 OTLY,Oatly Group AB American Depositary Shares,9.91,309439750.0,36694.0,,363637.54,NASDAQ,Consumer Staples,Packaged Foods,,True,Matched broad public screener and configured penny/microcap filters.
 ATOM,Atomera Incorporated Common Stock,8.005,309925583.0,1542525.0,,12347912.625000002,NASDAQ,Technology,Semiconductors,,True,Matched broad public screener and configured penny/microcap filters.
@@ -2804,7 +2778,6 @@ CV,CapsoVision Inc. Common Stock,6.36,317768407.0,107412.0,,683140.3200000001,NA
 RFMZ,RiverNorth Flexible Municipal Income Fund II Inc. Common Stock,13.07,318277451.0,30479.0,,398360.53,NYSE,Finance,Trusts Except Educational Religious and Charitable,,True,Matched broad public screener and configured penny/microcap filters.
 ORGO,Organogenesis Holdings Inc. Class A Common Stock,2.48,319112879.0,1930930.0,,4788706.4,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 FUFU,BitFuFu Inc. Class A Ordinary Shares,1.92,319974908.0,240932.0,,462589.44,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
-NNDM,Nano Dimension Ltd. American Depositary Shares,1.53,320089144.0,3232107.0,,4945123.71,NASDAQ,Technology,Electrical Products,,True,Matched broad public screener and configured penny/microcap filters.
 SSP,E.W. Scripps Company (The) Class A Common Stock,3.5,320392884.0,895093.0,,3132825.5,NASDAQ,Industrials,Broadcasting,,True,Matched broad public screener and configured penny/microcap filters.
 TLS,Telos Corporation Common Stock,4.3,321722453.0,822208.0,,3535494.4,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
 GSIT,GSI Technology Common Stock,8.96,324228379.0,1475720.0,,13222451.200000001,NASDAQ,Technology,Semiconductors,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3000,7 +2973,6 @@ NPWR,NET Power Inc. Class A Common Stock,1.98,445028128.0,1177726.0,,2331897.48,
 DCBO,Docebo Inc. Common Shares,17.32,445162450.0,82254.0,,1424639.28,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 SKBL,Skyline Builders Group Holding Limited Class A Ordinary Shares,3.2,445457952.0,185034.0,,592108.8,NASDAQ,Consumer Discretionary,Engineering & Construction,,True,Matched broad public screener and configured penny/microcap filters.
 ACTG,Acacia Research Corporation (Acacia Tech) Common Stock,4.64,448173572.0,319520.0,,1482572.7999999998,NASDAQ,Miscellaneous,Multi-Sector Companies,,True,Matched broad public screener and configured penny/microcap filters.
-CLNE,Clean Energy Fuels Corp. Common Stock,2.04,449258253.0,1202517.0,,2453134.68,NASDAQ,Utilities,Natural Gas Distribution,,True,Matched broad public screener and configured penny/microcap filters.
 RPD,Rapid7 Inc. Common Stock,6.73,449770059.0,2220538.0,,14944220.74,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
 OVID,Ovid Therapeutics Inc. Common Stock,2.41,449802646.0,1369784.0,,3301179.4400000004,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 FLGT,Fulgent Genetics Inc. Common Stock,15.85,450149875.0,497787.0,,7889923.95,NASDAQ,Health Care,Medical Specialities,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3112,7 +3084,6 @@ RFI,Cohen & Steers Total Return Realty Fund Inc. Common Stock,11.21,550844020.0,
 KELYB,Kelly Services Inc. Class B Common Stock,15.89,550893429.0,918.0,,14587.02,NASDAQ,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
 OIS,Oil States International Inc. Common Stock,9.18,552575550.0,771787.0,,7085004.66,NYSE,Consumer Discretionary,Oil and Gas Field Machinery,,True,Matched broad public screener and configured penny/microcap filters.
 BWBBP,Bridgewater Bancshares Inc. Depositary Shares Each Representing a 1/100th Interest in a Share of 5.875% Non-Cumulative Perpetual Preferred Stock Series A,19.8819,554374314.0,2579.0,,51275.4201,NASDAQ,Finance,Major Banks,,True,Matched broad public screener and configured penny/microcap filters.
-BTBT,Bit Digital Inc. Ordinary Shares,1.7,555181272.0,19750624.0,,33576060.8,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 VELO,Velo3D Inc. Common stock,18.63,555192667.0,2337605.0,,43549581.15,NASDAQ,Technology,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
 ONT,Onterris Inc. Common Stock,15.37,555459919.0,784579.0,,12058979.229999999,NYSE,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
 GDYN,Grid Dynamics Holdings Inc. Class A Common Stock,6.68,558622041.0,1758461.0,,11746519.479999999,NASDAQ,Technology,Computer Software: Prepackaged Software,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3154,7 +3125,6 @@ SUJA,Suja Life Inc. Class A Common Stock,15.55,600618937.0,384587.0,,5980327.850
 ORN,Orion Group Holdings Inc. Common,14.85,601117278.0,271711.0,,4034908.35,NYSE,Industrials,Military/Government/Technical,,True,Matched broad public screener and configured penny/microcap filters.
 RMR,The RMR Group Inc. Class A Common Stock,19.38,602589724.0,120874.0,,2342538.12,NASDAQ,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
 EVGO,EVgo Inc. Class A Common Stock,1.92,602609981.0,6684789.0,,12834794.879999999,NASDAQ,Technology,EDP Services,,True,Matched broad public screener and configured penny/microcap filters.
-TLRY,Tilray Brands Inc. Common Stock ,5.18,603587068.0,3474682.0,,17998852.759999998,NASDAQ,Health Care, Medicinal Chemicals and Botanical Products ,,True,Matched broad public screener and configured penny/microcap filters.
 RILYZ,BRC Group Holdings Inc. 5.25% Senior Notes due 2028,19.85,605366760.0,58920.0,,1169562.0,NASDAQ,Finance,Investment Managers,,True,Matched broad public screener and configured penny/microcap filters.
 BWMX,Betterware de Mexico S.A.P.I. de C.V. Ordinary Shares,16.27,605958578.0,95407.0,,1552271.89,NYSE,Consumer Discretionary,Catalog/Specialty Distribution,,True,Matched broad public screener and configured penny/microcap filters.
 RILYP,BRC Group Holdings Inc. Depositary Shares each representing a 1/1000th fractional interest in a share of Series A Cumulative Perpetual Preferred Stock,16.32,605971261.0,24765.0,,404164.8,NASDAQ,Finance,Investment Managers,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3289,7 +3259,6 @@ NMFC,New Mountain Finance Corporation Common Stock,7.95,750896501.0,422752.0,,33
 BHFAN,Brighthouse Financial Inc. Depositary shares each representing a 1/1000th interest in a share of 5.375% Non-Cumulative Preferred Stock Series C,13.17,756560988.0,39400.0,,518898.0,NASDAQ,Finance,Life Insurance,,True,Matched broad public screener and configured penny/microcap filters.
 AMPH,Amphastar Pharmaceuticals Inc. Common Stock,17.2,758398207.0,866053.0,,14896111.6,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 NFGC,New Found Gold Corp Common Shares,1.98,760483447.0,1206298.0,,2388470.04,AMEX,Basic Materials,Precious Metals,,True,Matched broad public screener and configured penny/microcap filters.
-CTMX,CytomX Therapeutics Inc. Common Stock,3.5,761960217.0,3125391.0,,10938868.5,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 VOR,Vor Biopharma Inc. Common Stock,14.13,765646442.0,827347.0,,11690413.110000001,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
 CGBD,Carlyle Secured Lending Inc. Common Stock,10.92,765775298.0,486721.0,,5314993.32,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 VTS,Vitesse Energy Inc. Common Stock,18.36,765840105.0,484468.0,,8894832.48,NYSE,Energy,Oil & Gas Production,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3304,7 +3273,6 @@ IHRT,iHeartMedia Inc. Class A Common Stock,5.18,782969416.0,1652509.0,,8559996.6
 NAVI,Navient Corporation Common Stock,8.35,784732866.0,939193.0,,7842261.55,NASDAQ,Finance,Investment Bankers/Brokers/Service,,True,Matched broad public screener and configured penny/microcap filters.
 EFOR,Everforth Inc. Common Stock,19.1,786055305.0,1862948.0,,35582306.800000004,NYSE,Consumer Discretionary,Professional Services,,True,Matched broad public screener and configured penny/microcap filters.
 ASC,Ardmore Shipping Corporation Common Stock,19.27,786266372.0,1700776.0,,32773953.52,NYSE,Consumer Discretionary,Marine Transportation,,True,Matched broad public screener and configured penny/microcap filters.
-GERN,Geron Corporation Common Stock,1.23,789070798.0,10351601.0,,12732469.23,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
 ARKO,ARKO Corp. Common Stock,7.04,789787476.0,629546.0,,4432003.84,NASDAQ,Consumer Staples,Food Chains,,True,Matched broad public screener and configured penny/microcap filters.
 ADAM,Adamas Trust Inc. Common Stock,8.79,789879139.0,740516.0,,6509135.64,NASDAQ,Real Estate,Real Estate Investment Trusts,,True,Matched broad public screener and configured penny/microcap filters.
 GFR,Greenfire Resources Ltd. Common Shares,6.3,790202700.0,98049.0,,617708.7,NYSE,Energy,Oil & Gas Production,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3357,7 +3325,6 @@ MFIC,MidCap Financial Investment Corporation Common Stock,10.72,883034572.0,4831
 NRGV,Energy Vault Holdings Inc. Common Stock,5.08,884664911.0,5446715.0,,27669312.2,NYSE,Miscellaneous,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
 SLI,Standard Lithium Ltd. Common Shares,3.64,885118005.0,2219947.0,,8080607.08,AMEX,Industrials,Major Chemicals,,True,Matched broad public screener and configured penny/microcap filters.
 LOT,Lotus Technology Inc. American Depositary Shares,1.38,886084028.0,90593.0,,125018.34,NASDAQ,Industrials,Auto Manufacturing,,True,Matched broad public screener and configured penny/microcap filters.
-INDI,indie Semiconductor Inc. Class A Common Stock,3.91,887193616.0,4535903.0,,17735380.73,NASDAQ,Technology,Semiconductors,,True,Matched broad public screener and configured penny/microcap filters.
 BBDC,Barings BDC Inc. Common Stock,8.48,887914376.0,482271.0,,4089658.08,NYSE,Finance,Diversified Financial Services,,True,Matched broad public screener and configured penny/microcap filters.
 BVS,Bioventus Inc. Class A Common Stock,10.63,887974765.0,425538.0,,4523468.94,NASDAQ,Health Care,Medical/Dental Instruments,,True,Matched broad public screener and configured penny/microcap filters.
 ODV,Osisko Development Corp. Common Shares,2.92,889786424.0,1456070.0,,4251724.399999999,NYSE,Basic Materials,Precious Metals,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3379,7 +3346,6 @@ PMT,PennyMac Mortgage Investment Trust Common Shares of Beneficial Interest,10.4
 RPC,Ridgepost Capital Inc. Class A Common Stock,8.33,911939978.0,341341.0,,2843370.53,NYSE,Finance,Investment Managers,,True,Matched broad public screener and configured penny/microcap filters.
 KODK,Eastman Kodak Company Common New,9.36,913536000.0,970591.0,,9084731.76,NYSE,Consumer Discretionary,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
 CGEM,Cullinan Therapeutics Inc. Common Stock,14.87,913881144.0,1941030.0,,28863116.099999998,NASDAQ,Health Care,Biotechnology: Biological Products (No Diagnostic Substances),,True,Matched broad public screener and configured penny/microcap filters.
-HIVE,HIVE Digital Technologies Ltd. Common Shares,3.46,914991305.0,110697587.0,,383013651.02,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 HBNC,Horizon Bancorp Inc. Common Stock,17.9,918802776.0,225720.0,,4040387.9999999995,NASDAQ,Finance,Major Banks,,True,Matched broad public screener and configured penny/microcap filters.
 BHFAP,Brighthouse Financial Inc. Depositary Shares 6.6% Non-Cumulative Preferred Stock Series A,16.0,919132560.0,21589.0,,345424.0,NASDAQ,Finance,Life Insurance,,True,Matched broad public screener and configured penny/microcap filters.
 GOOS,Canada Goose Holdings Inc. Subordinate Voting Shares,9.5,922720266.0,640457.0,,6084341.5,NYSE,Consumer Discretionary,Apparel,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3392,7 +3358,6 @@ NMAX,Newsmax Inc. Class B Common Stock,7.22,932539857.0,1253802.0,,9052450.44,NY
 HQH,abrdn Healthcare Investors Shares of Beneficial Interest,19.7,932671402.0,228721.0,,4505803.7,NYSE,Finance,Finance Companies,,True,Matched broad public screener and configured penny/microcap filters.
 PURR,Hyperliquid Strategies Inc Common Stock,6.93,932927487.0,9626765.0,,66713481.449999996,NASDAQ,Finance,Finance: Consumer Services,,True,Matched broad public screener and configured penny/microcap filters.
 TRON,Tron Inc. Common Stock,1.98,939276487.0,994490.0,,1969090.2,NASDAQ,Consumer Discretionary,Recreational Games/Products/Toys,,True,Matched broad public screener and configured penny/microcap filters.
-FCEL,FuelCell Energy Inc. Common Stock,17.74,939827343.0,15612082.0,,276958334.67999995,NASDAQ,Energy,Industrial Machinery/Components,,True,Matched broad public screener and configured penny/microcap filters.
 HEPS,D-Market Electronic Services & Trading American Depositary Shares,2.65,946646780.0,264538.0,,701025.7,NASDAQ,Consumer Discretionary,Catalog/Specialty Distribution,,True,Matched broad public screener and configured penny/microcap filters.
 PSF,Cohen & Steers Select Preferred and Income Fund Inc. Common Stock,19.28,947392748.0,87312.0,,1683375.36,NYSE,Finance,Investment Managers,,True,Matched broad public screener and configured penny/microcap filters.
 LXRX,Lexicon Pharmaceuticals Inc. Common Stock,2.14,950580275.0,2226641.0,,4765011.74,NASDAQ,Health Care,Biotechnology: Pharmaceutical Preparations,,True,Matched broad public screener and configured penny/microcap filters.
@@ -3570,15 +3535,65 @@ OPP^C,RiverNorth/DoubleLine Strategic Opportunity Fund Inc. 6.00% Series C Term 
 PCG^H,Pacific Gas & Electric Co. 4.50% 1st Preferred Stock,17.31,,45.0,,778.9499999999999,AMEX,,,,True,Matched broad public screener and configured penny/microcap filters.
 RC^C,Ready Capital Corporation 6.25% Series C Cumulative Convertible Preferred Stock,12.29,,7.0,,86.03,NYSE,,,,True,Matched broad public screener and configured penny/microcap filters.
 RAC/WS,Rithm Acquisition Corp.,0.6304,,98.0,,61.779199999999996,NYSE,,,,True,Matched broad public screener and configured penny/microcap filters.
+OPTT,"Ocean Power Technologies, Inc.",,,,,,NYSE American,Industrials,Electrical Equipment,,True,Configured ocean-energy microcap; survival and commercialization optionality.
+WATT,Energous Corp,,,,,,NASDAQ,Technology,Electronic Components,,True,Configured wireless-power microcap; narrative and product-cycle optionality.
+AQMS,"Aqua Metals, Inc.",,,,,,NASDAQ,Industrials,Waste Management,,True,Configured battery recycling speculation; policy and commercialization optionality.
+TOMZ,TOMI Environmental Solutions Inc.,,,,,,NASDAQ,Industrials,Pollution & Treatment Controls,,True,"Configured physical-automation watch: autonomous cleaning, SteraMist robot upgrade, fleet hygiene, biosecurity, decontamination automation, drone/UAV and defense-adjacent sanitation; keep dilution/reset risks visible."
+CLIR,ClearSign Technologies Corp,,,,,,NASDAQ,Industrials,Pollution & Treatment Controls,,True,Configured emissions-control microcap; industrial adoption optionality.
+ABEV,Ambev S.A.,,,,,,NYSE,Consumer Defensive,Beverages,,True,Configured low-priced international ADR; consumer and currency-flow sensitivity.
+ADTX,"Aditxt, Inc.",,,,,,NASDAQ,Healthcare,Biotechnology,,True,Configured distressed biotech; financing and catalyst optionality.
 AGRI,AgriFORCE Growing Systems Ltd.,,,,,,NASDAQ,Consumer Defensive,Agricultural Inputs,,True,Configured ag-tech microcap; food-system narrative optionality.
+AMTX,"Aemetis, Inc.",,,,,,NASDAQ,Energy,Renewable Fuels,,True,"Configured renewable fuels equity; policy, credit, and financing sensitivity."
 AREB,American Rebel Holdings Inc.,,,,,,NASDAQ,Consumer Cyclical,Leisure Products,,True,Configured microcap consumer/security brand; dilution and survival risk.
+ASRT,Assertio Holdings Inc.,,,,,,NASDAQ,Healthcare,Drug Manufacturers Specialty & Generic,,True,Configured small healthcare equity; restructuring and cash-flow repricing potential.
+ATOS,Atossa Therapeutics Inc.,,,,,,NASDAQ,Healthcare,Biotechnology,,True,Configured biotech optionality; clinical catalyst and dilution risk.
 AULT,Ault Alliance Inc.,,,,,,NYSE American,Financial Services,Capital Markets,,True,Configured distressed holding-company speculation; financing and asset-value uncertainty.
+BBAI,BigBear.ai Holdings Inc.,,,,,,NYSE,Technology,Information Technology Services,,True,Configured AI/defense narrative equity; reflexive attention and contract optionality.
+BNGO,Bionano Genomics Inc.,,,,,,NASDAQ,Healthcare,Diagnostics & Research,,True,"Configured genomics speculation; survival, adoption, and dilution risk."
+BTBT,Bit Digital Inc.,,,,,,NASDAQ,Technology,Capital Markets,,True,Configured crypto-adjacent equity; liquidity and narrative flow sensitivity.
+CENN,Cenntro Inc.,,,,,,NASDAQ,Consumer Cyclical,Auto Manufacturers,,True,Configured EV microcap; survival and policy narrative sensitivity.
+CGTX,Cognition Therapeutics Inc.,,,,,,NASDAQ,Healthcare,Biotechnology,,True,Configured biotech optionality; clinical readout and financing risk.
+CLNE,Clean Energy Fuels Corp,,,,,,NASDAQ,Energy,Oil & Gas Refining & Marketing,,True,Configured clean fuels infrastructure equity; policy and fleet adoption optionality.
 CRKN,Crown ElectroKinetics Corp,,,,,,NASDAQ,Industrials,Building Products & Equipment,,True,Configured distressed smart-glass/building-products speculation.
+CTMX,CytomX Therapeutics Inc.,,,,,,NASDAQ,Healthcare,Biotechnology,,True,Configured biotech optionality; partnership and pipeline repricing risk.
+EOSE,Eos Energy Enterprises Inc.,,,,,,NASDAQ,Industrials,Electrical Equipment,,True,Configured battery/storage manufacturing speculation; policy and liquidity risk.
+FCEL,FuelCell Energy Inc.,,,,,,NASDAQ,Industrials,Electrical Equipment,,True,"Configured clean-energy equity; policy, backlog, and financing sensitivity."
 FFIE,Faraday Future Intelligent Electric Inc.,,,,,,NASDAQ,Consumer Cyclical,Auto Manufacturers,,True,Configured distressed EV speculation; survival and dilution risk.
+FUBO,FuboTV Inc.,,,,,,NYSE,Communication Services,Broadcasting,,True,Configured streaming/sports-media speculation; narrative and balance-sheet sensitivity.
+GERN,Geron Corp,,,,,,NASDAQ,Healthcare,Biotechnology,,True,Configured biotech commercialization equity; regulatory and launch-execution optionality.
+GOSS,Gossamer Bio Inc.,,,,,,NASDAQ,Healthcare,Biotechnology,,True,Configured biotech optionality; trial and partnership repricing potential.
+GRAB,Grab Holdings Ltd.,,,,,,NASDAQ,Technology,Software Application,,True,Configured low-priced platform equity; regional growth and sentiment sensitivity.
+HIVE,HIVE Digital Technologies Ltd.,,,,,,NASDAQ,Technology,Capital Markets,,True,Configured crypto-infrastructure equity; liquidity and risk-appetite sensitivity.
+HITI,High Tide Inc.,,,,,,NASDAQ,Healthcare,Pharmaceutical Retailers,,True,Configured cannabis retail speculation; policy and profitability repricing potential.
+HUMA,Humacyte Inc.,,,,,,NASDAQ,Healthcare,Biotechnology,,True,Configured biotech/medical-device optionality; regulatory and commercialization catalyst risk.
 IDEX,Ideanomics Inc.,,,,,,NASDAQ,Financial Services,Shell Companies,,True,"Configured distressed speculative equity; financing, compliance, and survival risk."
+INDI,indie Semiconductor Inc.,,,,,,NASDAQ,Technology,Semiconductors,,True,Configured auto semiconductor equity; cycle recovery and design-win optionality.
+INVZ,Innoviz Technologies Ltd.,,,,,,NASDAQ,Consumer Cyclical,Auto Parts,,True,Configured lidar/ADAS speculation; OEM adoption and financing risk.
+KULR,KULR Technology Group Inc.,,,,,,NYSE American,Industrials,Electrical Equipment,,True,Configured battery-safety microcap; defense/space narrative optionality.
 LAZR,Luminar Technologies Inc.,,,,,,NASDAQ,Consumer Cyclical,Auto Parts,,True,Configured lidar speculation; auto-cycle and financing sensitivity.
+LIDR,AEye Inc.,,,,,,NASDAQ,Technology,Electronic Components,,True,Configured lidar microcap; survival and strategic optionality.
+LUMN,Lumen Technologies Inc.,,,,,,NYSE,Communication Services,Telecom Services,,True,"Configured distressed telecom; debt, asset sales, and refinancing repricing potential."
 MESA,Mesa Air Group Inc.,,,,,,NASDAQ,Industrials,Airlines,,True,Configured distressed airline operator; contract and restructuring optionality.
+MVIS,MicroVision Inc.,,,,,,NASDAQ,Technology,Scientific & Technical Instruments,,True,Configured lidar/technology speculation; strategic and narrative optionality.
 NKLA,Nikola Corp,,,,,,NASDAQ,Industrials,Farm & Heavy Construction Machinery,,True,Configured distressed EV/hydrogen transport speculation; survival and dilution risk.
+NNDM,Nano Dimension Ltd.,,,,,,NASDAQ,Technology,Computer Hardware,,True,Configured cash-rich electronics manufacturing speculation; asset-value and strategic optionality.
+OPEN,Opendoor Technologies Inc.,,,,,,NASDAQ,Real Estate,Real Estate Services,,True,Configured housing-cycle speculation; rate sensitivity and sentiment reversal potential.
+ORGN,Origin Materials Inc.,,,,,,NASDAQ,Basic Materials,Chemicals,,True,Configured materials-tech speculation; commercialization and policy optionality.
+PLUG,Plug Power Inc.,,,,,,NASDAQ,Industrials,Electrical Equipment,,True,"Configured hydrogen equity; policy, liquidity, and execution sensitivity."
+POWW,AMMO Inc.,,,,,,NASDAQ,Industrials,Aerospace & Defense,,True,Configured small defense/ammunition equity; demand-cycle and asset-value optionality.
+PSNY,Polestar Automotive Holding UK PLC,,,,,,NASDAQ,Consumer Cyclical,Auto Manufacturers,,True,"Configured EV equity; financing, delivery, and narrative sensitivity."
+REKR,Rekor Systems Inc.,,,,,,NASDAQ,Technology,Software Infrastructure,,True,Configured public-safety AI/vehicle analytics microcap; contract optionality.
+RGTI,Rigetti Computing Inc.,,,,,,NASDAQ,Technology,Computer Hardware,,True,Configured quantum-computing speculation; narrative and funding-cycle sensitivity.
+RKLB,Rocket Lab USA Inc.,,,,,,NASDAQ,Industrials,Aerospace & Defense,,True,Configured space/aerospace equity; contract and launch cadence optionality.
+SENS,Senseonics Holdings Inc.,,,,,,NYSE American,Healthcare,Medical Devices,,True,Configured diabetes-device speculation; adoption and financing risk.
+SOUN,SoundHound AI Inc.,,,,,,NASDAQ,Technology,Software Application,,True,Configured AI voice equity; reflexive narrative and revenue-growth optionality.
+SPCE,Virgin Galactic Holdings Inc.,,,,,,NYSE,Industrials,Aerospace & Defense,,True,Configured space tourism speculation; financing and flight-cadence risk.
 TELL,Tellurian Inc.,,,,,,NYSE American,Energy,Oil & Gas Midstream,,True,Configured LNG speculation; project financing and commodity-cycle optionality.
+TLRY,Tilray Brands Inc.,,,,,,NASDAQ,Healthcare,Drug Manufacturers Specialty & Generic,,True,Configured cannabis equity; policy and consumer-demand optionality.
+TRVG,trivago N.V.,,,,,,NASDAQ,Communication Services,Internet Content & Information,,True,Configured travel advertising/platform equity; cycle and sentiment sensitivity.
+VUZI,Vuzix Corp,,,,,,NASDAQ,Technology,Consumer Electronics,,True,Configured AR hardware speculation; adoption and defense/enterprise narrative optionality.
+WULF,TeraWulf Inc.,,,,,,NASDAQ,Technology,Capital Markets,,True,Configured bitcoin-mining equity; power-cost and risk-appetite sensitivity.
 XELA,Exela Technologies Inc.,,,,,,NASDAQ,Technology,Information Technology Services,,True,Configured distressed processing/BPO equity; restructuring and dilution risk.
 ZOM,Zomedica Corp,,,,,,NYSE American,Healthcare,Diagnostics & Research,,True,Configured veterinary diagnostics speculation; cash runway and adoption optionality.
+HUBC,HUB Cyber Security Ltd.,,,,,,NASDAQ,Technology,Cybersecurity,,True,Verified business override: cybersecurity hardware/software and managed cyber services; sub-$5M/SPAC-reset risk should not be treated as clean long-term quality.
+GBR,New Concept Energy Inc.,,,,,,NYSE American,Real Estate,Real Estate Services,,True,Verified business override: primarily owns West Virginia real estate and provides management services for a third-party oil and gas operator; do not score as a true oil-and-gas producer.
