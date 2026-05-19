@@ -1,0 +1,189 @@
+Refresh failed
+last_attempt_utc=2026-05-19T15:00:21Z
+matched_window=manual refresh
+local_time=2026-05-19 10:55:20 EDT
+event_schedule=
+github_run_id=26105352347
+github_run_attempt=1
+github_sha=b3b222677cfcaf8cb4be559186cbfcba2151be97
+
+Last refresh log tail:
+2026-05-19 14:55:39,391 | INFO | contrarian_flow_engine | Starting Contrarian Flow Engine pipeline
+[  5%] Starting research engine
+[ 10%] Building broad 10-bagger candidate universe
+2026-05-19 14:55:39,392 | INFO | contrarian_flow_engine | Building starting universe
+2026-05-19 14:55:39,397 | INFO | contrarian_flow_engine | Loaded seed universe from /home/runner/work/mysterymachine/mysterymachine/data/raw/seed_universe.csv
+2026-05-19 14:55:39,399 | INFO | contrarian_flow_engine | Loaded ticker metadata from /home/runner/work/mysterymachine/mysterymachine/data/raw/ticker_metadata.csv
+2026-05-19 14:55:39,400 | INFO | contrarian_flow_engine | Loaded 65 configured tickers
+2026-05-19 14:55:39,407 | INFO | contrarian_flow_engine | Combined starting universe has 66 unique tickers
+2026-05-19 14:55:46,679 | INFO | contrarian_flow_engine | Universe after broad public screener merge has 7038 unique tickers
+2026-05-19 14:55:46,690 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 7038 -> 3564 rows
+2026-05-19 14:55:46,883 | WARNING | contrarian_flow_engine | Yahoo quote enrichment failed without blocking universe build: [Errno 36] File name too long: '/home/runner/work/mysterymachine/mysterymachine/data/cache/yahoo_quote_ABEV_ADTX_AGRI_AMTX_AQMS_AREB_ASRT_ATOS_AULT_BBAI_BNGO_BTBT_CENN_CGTX_CLIR_CLNE_CRKN_CTMX_EOSE_FCEL_FFIE_FUBO_GERN_GOSS_GRAB_HITI_HIVE_HUMA_IDEX_INDI_INVZ_KULR_LAZR_LIDR_LUMN_MESA_MVIS_NKLA_NNDM_OPEN_OPTT_ORGN_PLUG_POWW_PSNY_REKR_RGTI_RKLB_SENS_SOUN_SPCE_TELL_TLRY_TOMZ_TRVG_VUZI_WATT_WULF_XELA_ZOM.json'
+2026-05-19 14:55:46,884 | INFO | contrarian_flow_engine | Stooq universe fallback disabled; leaving 60 missing-price rows for data-quality filters
+2026-05-19 14:55:46,889 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 3564 -> 3564 rows
+2026-05-19 14:55:46,920 | INFO | contrarian_flow_engine | Universe saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/universe.csv with 3564 rows
+2026-05-19 14:55:46,921 | INFO | contrarian_flow_engine | Universe stage complete with 3564 candidates
+[ 30%] Universe built: 3564 candidates
+[ 32%] Pre-screening Top 250 10-bagger research batch
+2026-05-19 14:55:47,572 | INFO | contrarian_flow_engine | 10-bagger research batch selected with 250 tickers
+      Research batch: selected 250 best pre-screened 10-bagger candidates
+2026-05-19 14:55:47,576 | INFO | contrarian_flow_engine | 10-bagger research batch saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/research_batch.csv
+[ 34%] Research batch ready: 250 candidates
+[ 35%] Refreshing price and volume history for Top 250 batch
+2026-05-19 14:55:47,583 | INFO | contrarian_flow_engine | Selected 250 tickers for price-history refresh
+      Price history: 1/250 tickers checked
+      Price history: 10/250 tickers checked
+      Price history: 20/250 tickers checked
+      Price history: 30/250 tickers checked
+      Price history: 40/250 tickers checked
+      Price history: 50/250 tickers checked
+      Price history: 60/250 tickers checked
+      Price history: 70/250 tickers checked
+      Price history: 80/250 tickers checked
+      Price history: 90/250 tickers checked
+      Price history: 100/250 tickers checked
+      Price history: 110/250 tickers checked
+      Price history: 120/250 tickers checked
+      Price history: 130/250 tickers checked
+      Price history: 140/250 tickers checked
+      Price history: 150/250 tickers checked
+      Price history: 160/250 tickers checked
+      Price history: 170/250 tickers checked
+      Price history: 180/250 tickers checked
+      Price history: 190/250 tickers checked
+      Price history: 200/250 tickers checked
+      Price history: 210/250 tickers checked
+      Price history: 220/250 tickers checked
+      Price history: 230/250 tickers checked
+      Price history: 240/250 tickers checked
+      Price history: 250/250 tickers checked
+2026-05-19 14:56:37,400 | INFO | contrarian_flow_engine | Price-history features saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/price_history_features.csv with 250 rows
+2026-05-19 14:56:37,401 | INFO | contrarian_flow_engine | Price-history stage complete with 250 rows
+[ 55%] Price-history features ready: 250 rows
+[ 60%] Checking SEC filing metadata and signals for Top 250 batch
+      SEC metadata: 1/250 tickers checked
+      SEC metadata: 25/250 tickers checked
+      SEC metadata: 50/250 tickers checked
+      SEC metadata: 75/250 tickers checked
+      SEC metadata: 100/250 tickers checked
+      SEC metadata: 125/250 tickers checked
+      SEC metadata: 150/250 tickers checked
+      SEC metadata: 175/250 tickers checked
+      SEC metadata: 200/250 tickers checked
+      SEC metadata: 225/250 tickers checked
+      SEC metadata: 250/250 tickers checked
+2026-05-19 14:57:17,067 | INFO | contrarian_flow_engine | SEC filing metadata saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filings.csv with 19095 rows
+2026-05-19 14:57:17,067 | INFO | contrarian_flow_engine | SEC filing flags saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_flags.csv with 250 rows
+2026-05-19 14:57:17,067 | INFO | contrarian_flow_engine | SEC filing signals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_signals.csv with 250 rows
+2026-05-19 14:57:17,074 | INFO | contrarian_flow_engine | SEC metadata stage complete with 19095 filings and 250 ticker flags
+[ 78%] SEC metadata ready: 19095 filings
+[ 80%] Scanning event-shock risk for Top 250 batch
+      Event shock scan: 1/250 tickers checked
+      Event shock scan: 10/250 tickers checked
+      Event shock scan: 20/250 tickers checked
+      Event shock scan: 30/250 tickers checked
+      Event shock scan: 40/250 tickers checked
+      Event shock scan: 50/250 tickers checked
+      Event shock scan: 60/250 tickers checked
+      Event shock scan: 70/250 tickers checked
+      Event shock scan: 80/250 tickers checked
+      Event shock scan: 90/250 tickers checked
+      Event shock scan: 100/250 tickers checked
+      Event shock scan: 110/250 tickers checked
+      Event shock scan: 120/250 tickers checked
+      Event shock scan: 130/250 tickers checked
+      Event shock scan: 140/250 tickers checked
+      Event shock scan: 150/250 tickers checked
+      Event shock scan: 160/250 tickers checked
+      Event shock scan: 170/250 tickers checked
+      Event shock scan: 180/250 tickers checked
+      Event shock scan: 190/250 tickers checked
+      Event shock scan: 200/250 tickers checked
+      Event shock scan: 210/250 tickers checked
+      Event shock scan: 220/250 tickers checked
+      Event shock scan: 230/250 tickers checked
+      Event shock scan: 240/250 tickers checked
+      Event shock scan: 250/250 tickers checked
+2026-05-19 14:59:07,749 | INFO | contrarian_flow_engine | Event shock output saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/event_shocks.csv with 250 rows
+2026-05-19 14:59:07,751 | INFO | contrarian_flow_engine | Event shock stage complete with 250 rows
+[ 81%] Event shock scan ready: 250 rows
+[ 82%] Extracting accounting fundamentals and ratios
+      Fundamentals: 1/250 tickers checked
+      Fundamentals: 10/250 tickers checked
+      Fundamentals: 20/250 tickers checked
+      Fundamentals: 30/250 tickers checked
+      Fundamentals: 40/250 tickers checked
+      Fundamentals: 50/250 tickers checked
+      Fundamentals: 60/250 tickers checked
+      Fundamentals: 70/250 tickers checked
+      Fundamentals: 80/250 tickers checked
+      Fundamentals: 90/250 tickers checked
+      Fundamentals: 100/250 tickers checked
+      Fundamentals: 110/250 tickers checked
+      Fundamentals: 120/250 tickers checked
+      Fundamentals: 130/250 tickers checked
+      Fundamentals: 140/250 tickers checked
+      Fundamentals: 150/250 tickers checked
+      Fundamentals: 160/250 tickers checked
+      Fundamentals: 170/250 tickers checked
+      Fundamentals: 180/250 tickers checked
+      Fundamentals: 190/250 tickers checked
+      Fundamentals: 200/250 tickers checked
+      Fundamentals: 210/250 tickers checked
+      Fundamentals: 220/250 tickers checked
+      Fundamentals: 230/250 tickers checked
+      Fundamentals: 240/250 tickers checked
+      Fundamentals: 250/250 tickers checked
+2026-05-19 15:00:20,840 | INFO | contrarian_flow_engine | Fundamentals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/fundamentals_stub.csv with 250 rows
+2026-05-19 15:00:20,842 | INFO | contrarian_flow_engine | Fundamentals stage complete with 250 rows
+[ 88%] Fundamentals ready: 250 rows
+[ 92%] Scoring final Top 250 post-prescreen research board
+2026-05-19 15:00:20,842 | INFO | contrarian_flow_engine | Scoring final dashboard board from research batch: data/processed/research_batch.csv
+2026-05-19 15:00:20,914 | ERROR | contrarian_flow_engine | Theory scoring stage failed
+Traceback (most recent call last):
+  File "/home/runner/work/mysterymachine/mysterymachine/main.py", line 102, in run_pipeline
+    theory_scores = build_theory_scores(config, logger)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring_batch.py", line 39, in build_theory_scores
+    return build_core_theory_scores(scoped_config, logger)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring.py", line 329, in build_theory_scores
+    sub = compute_subsignals(row, config)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring.py", line 683, in compute_subsignals
+    text = " ".join(
+           ^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring.py", line 684, in <genexpr>
+    str(row.get(column) or "")
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/missing.pyx", line 415, in pandas._libs.missing.NAType.__bool__
+TypeError: boolean value of NA is ambiguous
+Traceback (most recent call last):
+  File "/home/runner/work/mysterymachine/mysterymachine/main.py", line 102, in run_pipeline
+    theory_scores = build_theory_scores(config, logger)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring_batch.py", line 39, in build_theory_scores
+    return build_core_theory_scores(scoped_config, logger)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring.py", line 329, in build_theory_scores
+    sub = compute_subsignals(row, config)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring.py", line 683, in compute_subsignals
+    text = " ".join(
+           ^^^^^^^^^
+  File "/home/runner/work/mysterymachine/mysterymachine/modules/scoring.py", line 684, in <genexpr>
+    str(row.get(column) or "")
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/missing.pyx", line 415, in pandas._libs.missing.NAType.__bool__
+TypeError: boolean value of NA is ambiguous
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/mysterymachine/mysterymachine/main.py", line 143, in <module>
+    main()
+  File "/home/runner/work/mysterymachine/mysterymachine/main.py", line 139, in main
+    run_pipeline(args.config, quick=args.quick)
+  File "/home/runner/work/mysterymachine/mysterymachine/main.py", line 108, in run_pipeline
+    raise RuntimeError(f"Theory scoring stage failed: {exc}") from exc
+RuntimeError: Theory scoring stage failed: boolean value of NA is ambiguous
