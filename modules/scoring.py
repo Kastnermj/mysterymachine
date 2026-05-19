@@ -34,6 +34,9 @@ SCORE_COLUMNS = [
     "business_profile",
     "identity_mismatch_score",
     "identity_mismatch_note",
+    "business_substance_score",
+    "business_substance_label",
+    "business_substance_note",
     "austrian_mispricing_score",
     "hume_flow_potential_score",
     "keynes_repricing_potential_score",
@@ -87,6 +90,7 @@ SCORE_COLUMNS = [
     "trading_setup_factor",
     "animal_spirits_factor",
     "portfolio_viability_factor",
+    "business_substance_factor",
     "sec_risk_penalty",
     "accounting_quality_factor",
     "factor_stack_note",
@@ -156,12 +160,26 @@ def clean_float(value: Any, default: float = 0.0) -> float:
     return float(converted)
 
 
+def safe_text(value: Any) -> str:
+    """Return plain text for pandas values without treating pd.NA as boolean."""
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    return str(value)
+
+
+def row_text(row: pd.Series, columns: list[str]) -> str:
+    """Join selected row fields into a searchable lowercase text blob."""
+    return " ".join(safe_text(row.get(column)) for column in columns).lower()
+
+
 def is_noise_security(row: pd.Series) -> bool:
     """Return True for structures that are not clean common-stock research targets."""
-    text = " ".join(
-        ("" if pd.isna(row.get(column)) else str(row.get(column)))
-        for column in ["ticker", "company_name", "sector", "industry"]
-    ).lower()
+    text = row_text(row, ["ticker", "company_name", "sector", "industry"])
     return any(term in text for term in SECURITY_NOISE_TERMS)
 
 
@@ -206,8 +224,8 @@ def identity_category(text: Any) -> str:
 
 def identity_mismatch(row: pd.Series) -> tuple[float, str]:
     """Detect stale screener sector identity using SEC SIC description as a tie-breaker."""
-    public_text = " ".join(("" if pd.isna(row.get(column)) else str(row.get(column))) for column in ["sector", "industry", "company_name"])
-    sec_text = " ".join(("" if pd.isna(row.get(column)) else str(row.get(column))) for column in ["sec_sic_description", "business_profile", "event_business_profile"])
+    public_text = row_text(row, ["sector", "industry", "company_name"])
+    sec_text = row_text(row, ["sec_sic_description", "business_profile", "event_business_profile"])
     public_category = identity_category(public_text)
     sec_category = identity_category(sec_text)
     if not sec_category:
@@ -325,7 +343,7 @@ def build_theory_scores(
 
     rows = []
     for _, row in frame.iterrows():
-        sector_row = sector_stats.get(("" if pd.isna(row.get("sector")) else str(row.get("sector"))), {})
+        sector_row = sector_stats.get(safe_text(row.get("sector")), {})
         sub = compute_subsignals(row, config)
         austrian, austrian_note = score_austrian(row, config, sub)
         hume, hume_note = score_hume(row, sector_row, config)
@@ -459,6 +477,9 @@ def build_theory_scores(
                 "business_profile": row.get("business_profile"),
                 "identity_mismatch_score": identity_mismatch(row)[0],
                 "identity_mismatch_note": identity_mismatch(row)[1],
+                "business_substance_score": factors["business_substance_factor"],
+                "business_substance_label": factors["business_substance_label"],
+                "business_substance_note": factors["business_substance_note"],
                 "austrian_mispricing_score": austrian,
                 "hume_flow_potential_score": hume,
                 "keynes_repricing_potential_score": keynes,
@@ -522,6 +543,7 @@ def build_theory_scores(
                 "trading_setup_factor": factors["trading_setup_factor"],
                 "animal_spirits_factor": factors["animal_spirits_factor"],
                 "portfolio_viability_factor": factors["portfolio_viability_factor"],
+                "business_substance_factor": factors["business_substance_factor"],
                 "sec_risk_penalty": factors["sec_risk_penalty"],
                 "accounting_quality_factor": factors["accounting_quality_factor"],
                 "factor_stack_note": factors["factor_stack_note"],
@@ -680,9 +702,9 @@ def build_sector_stats(frame: pd.DataFrame) -> dict[str, dict[str, float]]:
 
 def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]:
     """Compute Ricardo/Malthus/Technology sub-signals used to adjust main scores."""
-    text = " ".join(
-        ("" if pd.isna(row.get(column)) else str(row.get(column)))
-        for column in [
+    text = row_text(
+        row,
+        [
             "company_name",
             "sector",
             "industry",
@@ -695,8 +717,8 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
             "metadata_sector",
             "metadata_industry",
             "metadata_universe_reason",
-        ]
-    ).lower()
+        ],
+    )
     narrative_terms = [term.lower() for term in config["scoring"].get("narrative_terms", [])]
     useful_terms = [term.lower() for term in config["scoring"].get("useful_industries", [])]
     constraint_terms = [term.lower() for term in config["scoring"].get("constraint_terms", [])]
@@ -888,10 +910,7 @@ def score_keynes(row: pd.Series, config: dict[str, Any], sub: dict[str, Any]) ->
     thresholds = config["scoring"]["thresholds"]
     score = 0.0
     reasons = []
-    text = " ".join(
-        ("" if pd.isna(row.get(column)) else str(row.get(column)))
-        for column in ["company_name", "sector", "industry", "universe_reason", "signal_interpretation"]
-    ).lower()
+    text = row_text(row, ["company_name", "sector", "industry", "universe_reason", "signal_interpretation"])
     price = to_float(row.get("price"))
     market_cap = to_float(row.get("market_cap"))
     dollar_volume = to_float(row.get("dollar_volume"))
@@ -909,7 +928,7 @@ def score_keynes(row: pd.Series, config: dict[str, Any], sub: dict[str, Any]) ->
     if sub.get("narrative_evolution_score", 20) >= 65:
         reasons.append("specific outcome narrative")
     mismatch_score, _ = identity_mismatch(row)
-    if row.get("sector") in config["scoring"].get("narrative_sectors", []) and mismatch_score < 50:
+    if safe_text(row.get("sector")) in config["scoring"].get("narrative_sectors", []) and mismatch_score < 50:
         score += 8
         reasons.append("narrative-friendly sector")
     elif mismatch_score >= 50:
@@ -944,11 +963,8 @@ def score_keynes(row: pd.Series, config: dict[str, Any], sub: dict[str, Any]) ->
 def score_animal_spirits(row: pd.Series, config: dict[str, Any], sub: dict[str, Any]) -> tuple[float, str]:
     """Score crowd-believability and theme heat without over-rewarding low price alone."""
     thresholds = config["scoring"]["thresholds"]
-    text = " ".join(
-        ("" if pd.isna(row.get(column)) else str(row.get(column)))
-        for column in ["company_name", "sector", "industry", "universe_reason", "signal_interpretation"]
-    ).lower()
-    sector = ("" if pd.isna(row.get("sector")) else str(row.get("sector")))
+    text = row_text(row, ["company_name", "sector", "industry", "universe_reason", "signal_interpretation"])
+    sector = safe_text(row.get("sector"))
     price = to_float(row.get("price"))
     market_cap = to_float(row.get("market_cap"))
     dollar_volume = to_float(row.get("dollar_volume"))
@@ -1047,6 +1063,143 @@ def score_portfolio_viability(
     return round(max(0, min(100, score)), 1), "; ".join(reasons) or "ordinary portfolio viability"
 
 
+def score_business_substance(row: pd.Series) -> dict[str, Any]:
+    """Score whether the ticker looks like an operating business, not just a listed option."""
+    market_cap = to_float(row.get("market_cap"))
+    dollar_volume = to_float(row.get("dollar_volume"))
+    cash = to_float(row.get("cash"))
+    total_assets = to_float(row.get("total_assets"))
+    revenue = to_float(row.get("revenue"))
+    operating_cash_flow = to_float(row.get("operating_cash_flow"))
+    net_income = to_float(row.get("net_income"))
+    revenue_to_market = to_float(row.get("revenue_to_market_cap"))
+    cash_to_market = to_float(row.get("cash_to_market_cap"))
+    profile_text = row_text(
+        row,
+        [
+            "company_name",
+            "sector",
+            "industry",
+            "sec_sic_description",
+            "business_profile",
+            "event_business_profile",
+        ],
+    )
+
+    score = 45.0
+    reasons: list[str] = []
+    if not any(value is not None for value in [cash, total_assets, revenue, operating_cash_flow, net_income]):
+        score = 32.0
+        reasons.append("operating facts sparse")
+
+    if revenue is not None:
+        if revenue >= 10_000_000:
+            score += 25
+            reasons.append("meaningful revenue scale")
+        elif revenue >= 1_000_000:
+            score += 15
+            reasons.append("some revenue scale")
+        elif revenue >= 250_000:
+            score += 6
+            reasons.append("small but visible revenue")
+        elif revenue > 0:
+            score -= 8
+            reasons.append("token revenue footprint")
+        else:
+            score -= 16
+            reasons.append("no revenue evidence")
+
+    if revenue_to_market is not None:
+        if revenue_to_market >= 0.5:
+            score += 8
+            reasons.append("revenue matters versus market cap")
+        elif revenue_to_market < 0.05:
+            score -= 8
+            reasons.append("revenue tiny versus market cap")
+
+    if cash is not None:
+        if cash >= 1_000_000:
+            score += 8
+            reasons.append("cash supports real runway")
+        elif cash >= 500_000:
+            score += 4
+            reasons.append("some cash cushion")
+        elif cash < 250_000:
+            score -= 7
+            reasons.append("cash base is very thin")
+
+    if cash_to_market is not None and cash_to_market >= 0.25 and cash is not None and cash < 500_000:
+        score -= 4
+        reasons.append("cash ratio flatters a tiny absolute cash base")
+
+    if total_assets is not None:
+        if total_assets >= 5_000_000:
+            score += 8
+            reasons.append("asset base supports substance")
+        elif total_assets >= 1_000_000:
+            score += 4
+            reasons.append("some asset base")
+        elif total_assets < 500_000:
+            score -= 7
+            reasons.append("asset base is very thin")
+
+    if operating_cash_flow is not None:
+        if operating_cash_flow >= 0:
+            score += 8
+            reasons.append("operating cash flow nonnegative")
+        elif revenue is not None and revenue < 1_000_000:
+            score -= 6
+            reasons.append("negative operating cash flow with low revenue scale")
+
+    if net_income is not None and net_income >= 0:
+        score += 4
+        reasons.append("net income nonnegative")
+
+    dormant_terms = [
+        "no material operations",
+        "nominal operations",
+        "limited operations",
+        "holding company",
+        "shell company",
+        "seeking acquisitions",
+        "seeking a business combination",
+        "one employee",
+        "two employees",
+        "2 employees",
+        "has no employees",
+    ]
+    if any(term in profile_text for term in dormant_terms):
+        score -= 18
+        reasons.append("dormant/shell-like language")
+
+    if market_cap is not None and market_cap < 5_000_000:
+        if revenue is not None and revenue < 250_000:
+            score -= 12
+            reasons.append("sub-$5M cap with token revenue")
+        if cash is not None and cash < 500_000:
+            score -= 6
+            reasons.append("sub-$5M cap with thin cash")
+
+    if dollar_volume is not None and dollar_volume < 50_000:
+        score -= 5
+        reasons.append("thin trading footprint")
+
+    score = round(max(0, min(100, score)), 1)
+    if score >= 70:
+        label = "Operating Business Present"
+    elif score >= 55:
+        label = "Some Operating Substance"
+    elif score >= 40:
+        label = "Thin Operating Footprint"
+    else:
+        label = "Asset Shell / Dormant Operator"
+    return {
+        "business_substance_score": score,
+        "business_substance_label": label,
+        "business_substance_note": "; ".join(reasons[:6]) or "ordinary operating footprint",
+    }
+
+
 def score_relative_mispricing(
     row: pd.Series,
     sector_stats: dict[str, float],
@@ -1111,6 +1264,8 @@ def score_dcf_plausibility(row: pd.Series) -> dict[str, Any]:
     filing_activity = clean_float(row.get("filing_activity_score"))
     survival = clean_float(row.get("survival_risk_score"))
     dilution = clean_float(row.get("dilution_pressure_score"))
+    substance = score_business_substance(row)
+    substance_score = clean_float(substance.get("business_substance_score"), 45)
 
     monthly_burn = None
     runway_months = None
@@ -1164,6 +1319,15 @@ def score_dcf_plausibility(row: pd.Series) -> dict[str, Any]:
     if dilution >= 70 or survival >= 70:
         plausibility_points -= 0.45
         reasons.append("SEC risk pressures viability")
+    if substance_score >= 65:
+        plausibility_points += 0.35
+        reasons.append("operating substance supports belief")
+    elif substance_score < 40:
+        plausibility_points -= 0.85
+        reasons.append("operating substance is thin")
+    elif substance_score < 50:
+        plausibility_points -= 0.30
+        reasons.append("operating footprint needs proof")
 
     if plausibility_points >= 2.15:
         plausibility = 3
@@ -1191,9 +1355,16 @@ def score_dcf_plausibility(row: pd.Series) -> dict[str, Any]:
         expectation_gap += 12
     if survival >= 70 or dilution >= 70:
         expectation_gap -= 12
+    if substance_score < 40:
+        expectation_gap -= 14
+    elif substance_score < 50:
+        expectation_gap -= 6
     expectation_gap = round(max(0, min(100, expectation_gap)), 1)
 
-    if runway_months is not None and runway_months >= 12 and (catalyst >= 50 or operating_cash_flow is not None and operating_cash_flow >= 0):
+    if substance_score < 35:
+        viability = "needs proof of operating business"
+        viability_score = 25
+    elif runway_months is not None and runway_months >= 12 and (catalyst >= 50 or operating_cash_flow is not None and operating_cash_flow >= 0):
         viability = "< 12 months"
         viability_score = 85
     elif runway_months is not None and runway_months >= 12:
@@ -1212,6 +1383,7 @@ def score_dcf_plausibility(row: pd.Series) -> dict[str, Any]:
     runway_text = f"runway proxy={round(runway_months, 1)} months" if runway_months is not None else "runway proxy unknown"
     note = (
         f"{runway_text}; DCF plausibility={plausibility}/3; expectation gap={expectation_gap}. "
+        + f"Business substance={substance_score} ({substance.get('business_substance_label')}). "
         + "; ".join(reasons[:5])
     )
     return {
@@ -1311,7 +1483,7 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
     add_check("sector", "sector", 5)
     add_check("industry", "industry", 4)
 
-    if ("" if pd.isna(row.get("price_history_status")) else str(row.get("price_history_status"))).lower() == "ok":
+    if safe_text(row.get("price_history_status")).lower() == "ok":
         score += 12
         present.append("price history")
     else:
@@ -1400,14 +1572,14 @@ def score_data_confidence(row: pd.Series) -> tuple[float, str, str]:
 
 def get_event_override(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]:
     """Return manual event-shock adjustments for known thesis-changing events."""
-    ticker = ("" if pd.isna(row.get("ticker")) else str(row.get("ticker"))).upper().strip()
+    ticker = safe_text(row.get("ticker")).upper().strip()
     override = config.get("scoring", {}).get("event_overrides", {}).get(ticker, {})
     event_config = config.get("event_shocks", {})
     computed_shock = clean_float(row.get("event_shock_score"))
     computed_thesis_break = clean_float(row.get("event_thesis_break_risk_score"))
-    computed_note = ("" if pd.isna(row.get("event_shock_reason")) else str(row.get("event_shock_reason")))
-    computed_label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label")))
-    computed_confidence = ("" if pd.isna(row.get("event_shock_confidence")) else str(row.get("event_shock_confidence")))
+    computed_note = safe_text(row.get("event_shock_reason"))
+    computed_label = safe_text(row.get("event_shock_label"))
+    computed_confidence = safe_text(row.get("event_shock_confidence"))
     callout_only_labels = {
         str(label).strip()
         for label in event_config.get("callout_only_detail_labels", [])
@@ -1498,6 +1670,8 @@ def compute_factor_stack(
     latent_necessity = clean_float(sub.get("latent_infrastructure_relevance_score", 20))
     animal_spirits, animal_spirits_note = score_animal_spirits(row, config, sub)
     identity_mismatch_score, identity_mismatch_note = identity_mismatch(row)
+    business_substance = score_business_substance(row)
+    business_substance_score = clean_float(business_substance.get("business_substance_score"), 45)
 
     cash_to_market = to_float(row.get("cash_to_market_cap"))
     if cash_to_market is None:
@@ -1547,6 +1721,12 @@ def compute_factor_stack(
         if roa is not None and roa > 0:
             accounting_quality += 8
             accounting_reasons.append("positive net income/assets")
+        if business_substance_score < 40:
+            accounting_quality = min(accounting_quality - 12, 50)
+            accounting_reasons.append("operating substance is thin")
+        elif business_substance_score < 50:
+            accounting_quality -= 6
+            accounting_reasons.append("operating footprint needs proof")
 
     pricing_gap = min(
         100,
@@ -1574,6 +1754,10 @@ def compute_factor_stack(
     )
     if identity_mismatch_score >= 50:
         relative_value = max(0, relative_value - min(8, identity_mismatch_score * 0.10))
+    if business_substance_score < 40:
+        relative_value = max(0, relative_value - 14)
+    elif business_substance_score < 50:
+        relative_value = max(0, relative_value - 7)
     convexity = min(
         100,
         asymmetry * 0.60
@@ -1597,6 +1781,12 @@ def compute_factor_stack(
         market_cap,
         sec_penalty_seed=dilution * 0.38 + survival * 0.25,
     )
+    if business_substance_score < 40:
+        portfolio_viability = max(0, portfolio_viability - 14)
+        portfolio_note = (portfolio_note + "; " if portfolio_note else "") + "operating substance needs proof"
+    elif business_substance_score < 50:
+        portfolio_viability = max(0, portfolio_viability - 7)
+        portfolio_note = (portfolio_note + "; " if portfolio_note else "") + "thin operating footprint"
     has_sec_risk_data = (
         (raw_dilution_value is not None and not pd.isna(raw_dilution_value))
         or (raw_survival_value is not None and not pd.isna(raw_survival_value))
@@ -1630,6 +1820,7 @@ def compute_factor_stack(
         f"latent_necessity={round(latent_necessity, 1)}",
         f"sec_penalty={round(sec_penalty, 1)}",
         f"accounting={round(max(0, min(100, accounting_quality)), 1)}",
+        f"business_substance={round(business_substance_score, 1)}",
         f"identity_mismatch={round(identity_mismatch_score, 1)}",
     ]
     if identity_mismatch_note and identity_mismatch_score >= 50:
@@ -1640,6 +1831,8 @@ def compute_factor_stack(
         note_bits.append("portfolio_note=" + portfolio_note)
     if accounting_reasons:
         note_bits.append("accounting_note=" + ", ".join(accounting_reasons[:3]))
+    if business_substance.get("business_substance_note"):
+        note_bits.append("business_substance_note=" + safe_text(business_substance.get("business_substance_note")))
 
     return {
         "pricing_gap_factor": round(max(0, min(100, pricing_gap)), 1),
@@ -1650,6 +1843,9 @@ def compute_factor_stack(
         "trading_setup_factor": round(max(0, min(100, trading_setup)), 1),
         "animal_spirits_factor": round(max(0, min(100, animal_spirits)), 1),
         "portfolio_viability_factor": round(max(0, min(100, portfolio_viability)), 1),
+        "business_substance_factor": round(max(0, min(100, business_substance_score)), 1),
+        "business_substance_label": business_substance.get("business_substance_label", ""),
+        "business_substance_note": business_substance.get("business_substance_note", ""),
         "latent_necessity_factor": round(max(0, min(100, latent_necessity)), 1),
         "identity_mismatch_factor": round(max(0, min(100, identity_mismatch_score)), 1),
         "sec_risk_penalty": round(max(0, sec_penalty), 1),
@@ -1833,6 +2029,7 @@ def score_movement_potential(
     convexity = to_float(factors.get("convexity_factor")) or 0
     trading_setup = to_float(factors.get("trading_setup_factor")) or 0
     portfolio_viability = to_float(factors.get("portfolio_viability_factor")) or 50
+    business_substance = to_float(factors.get("business_substance_factor")) or 45
     sec_penalty = to_float(factors.get("sec_risk_penalty")) or 0
     accounting = to_float(factors.get("accounting_quality_factor")) or 45
     catalyst_probability = score_catalyst_probability(row, event_override)
@@ -1872,6 +2069,10 @@ def score_movement_potential(
     identity_mismatch_score, _ = identity_mismatch(row)
     if identity_mismatch_score >= 50:
         score -= min(5, identity_mismatch_score * 0.06)
+    if business_substance < 35:
+        score -= 10
+    elif business_substance < 45:
+        score -= 5
     score -= sec_penalty * 0.28
     score -= event_shock_penalty * 0.32
     score -= clean_float(zombie_decay.get("zombie_decay_penalty")) * 0.35
@@ -1898,6 +2099,7 @@ def score_pre_flow_opportunity(
     convexity = clean_float(factors.get("convexity_factor"))
     accounting = clean_float(factors.get("accounting_quality_factor"), 45)
     portfolio_viability = clean_float(factors.get("portfolio_viability_factor"), 50)
+    business_substance = clean_float(factors.get("business_substance_factor"), 45)
     sec_penalty = clean_float(factors.get("sec_risk_penalty"))
     event_shock = clean_float(event_override.get("event_shock_penalty"))
     thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
@@ -1920,6 +2122,10 @@ def score_pre_flow_opportunity(
         score = min(score, 12)
     if thesis_break >= 80:
         score -= 3
+    if business_substance < 35:
+        score -= 12
+    elif business_substance < 45:
+        score -= 6
     if is_noise_security(row):
         score -= 25
     return round(max(0, min(100, score)), 1)
@@ -1936,6 +2142,7 @@ def score_long_term_microcap(
     """Score whether a microcap looks like a long-term research candidate."""
     accounting = clean_float(factors.get("accounting_quality_factor"), 45)
     portfolio = clean_float(factors.get("portfolio_viability_factor"), 50)
+    business_substance = clean_float(factors.get("business_substance_factor"), 45)
     latent_necessity = clean_float(factors.get("latent_necessity_factor"), 20)
     dcf_score = clean_float(dcf.get("dcf_plausibility_score"))
     expectation_gap = clean_float(dcf.get("expectation_gap_score"))
@@ -1958,6 +2165,7 @@ def score_long_term_microcap(
         + min(100, dcf_score * 28) * 0.20
         + expectation_gap * 0.12
         + data_confidence * 0.10
+        + business_substance * 0.08
         + latent_necessity * 0.04
         + clean_float(row.get("relative_mispricing_score")) * 0.08
         + clean_float(row.get("asymmetry_score")) * 0.04
@@ -1984,6 +2192,12 @@ def score_long_term_microcap(
     if latent_necessity >= 60:
         score += min(4, latent_necessity * 0.04)
         reasons.append("latent infrastructure relevance")
+    if business_substance < 35:
+        score -= 18
+        reasons.append("operating substance looks shell-like")
+    elif business_substance < 45:
+        score -= 10
+        reasons.append("thin operating substance")
 
     score -= dilution * 0.30
     score -= survival * 0.18
@@ -2033,10 +2247,20 @@ def score_long_term_microcap(
         score = min(score, 25)
         risk_bits.append("reverse-split/dilution-cycle pattern")
         cap_bits.append("catastrophic reset pattern blocks long-term treatment")
+    if business_substance < 35:
+        score = min(score, 38)
+        risk_bits.append("asset-shell/substance risk")
+        cap_bits.append("thin operating substance blocks long-term treatment")
+    elif business_substance < 45:
+        score = min(score, 50)
+        risk_bits.append("thin operating footprint")
+        cap_bits.append("needs proof of operating business")
 
     score = round(max(0, min(100, score)), 1)
     if is_hard_stop_event(row, event_override) or is_catastrophic_reset_cycle(row, event_override) or dilution >= 85 or thesis_break >= 80:
         label = "Not Long-Term Material Yet"
+    elif business_substance < 35:
+        label = "Needs Proof of Operating Business"
     elif survival >= 70:
         label = "Speculative Survival Story"
     elif zombie_penalty >= 8 and score >= 45:
@@ -2101,8 +2325,8 @@ def is_catastrophic_reset_cycle(row: pd.Series, event_override: dict[str, Any] |
     event_override = event_override or {}
     all_time_drawdown = clean_float(row.get("all_time_drawdown"))
     dilution = clean_float(row.get("dilution_pressure_score"))
-    event_label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label"))).lower()
-    event_reason = ("" if pd.isna(row.get("event_shock_reason")) else str(row.get("event_shock_reason"))).lower()
+    event_label = safe_text(row.get("event_shock_label")).lower()
+    event_reason = safe_text(row.get("event_shock_reason")).lower()
     event_note = str(event_override.get("event_override_note") or "").lower()
     reverse_split_seen = (
         "reverse_split" in event_label
@@ -2176,8 +2400,8 @@ def is_hard_stop_event(row: pd.Series, event_override: dict[str, Any] | None = N
     event_override = event_override or {}
     if is_liquidation_event(row, event_override):
         return True
-    label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label"))).lower()
-    confidence = ("" if pd.isna(row.get("event_shock_confidence")) else str(row.get("event_shock_confidence"))).lower()
+    label = safe_text(row.get("event_shock_label")).lower()
+    confidence = safe_text(row.get("event_shock_confidence")).lower()
     penalty = clean_float(event_override.get("event_shock_penalty"))
     thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
     metadata_shock = label in {"event_shock_watch", "metadata_shock_suspected"} or confidence == "metadata_only"
@@ -2239,7 +2463,7 @@ def has_reset_catalyst(
         return False
 
     text = event_text_blob(row, event_override)
-    text += " " + " ".join(str(row.get(field) or "").lower() for field in ["company_name", "sector", "industry"])
+    text += " " + row_text(row, ["company_name", "sector", "industry"])
     forward_language = any(term in text for term in RESET_CATALYST_TERMS)
     plausible_path = clean_float(dcf.get("dcf_plausibility_score")) >= 2
     long_term_support = clean_float(long_term.get("long_term_investment_score")) >= 45
@@ -2271,6 +2495,7 @@ def compute_scooby_score(
     long_term = long_term or {}
     dilution = clean_float(row.get("dilution_pressure_score"))
     survival = clean_float(row.get("survival_risk_score"))
+    business_substance_score = clean_float(score_business_substance(row).get("business_substance_score"), 45)
     zombie_penalty = clean_float(zombie_decay.get("zombie_decay_penalty"))
     event_penalty = clean_float(event_override.get("event_shock_penalty"))
     long_term_score = clean_float(long_term.get("long_term_investment_score"))
@@ -2283,7 +2508,8 @@ def compute_scooby_score(
         + zombie_penalty * 0.20
         + event_penalty * 0.16
         + (6 if catastrophic_reset else 0)
-        + (8 if sub_5m_spiral else 0),
+        + (8 if sub_5m_spiral else 0)
+        + (8 if business_substance_score < 35 else 4 if business_substance_score < 45 else 0),
     )
     score = (
         movement_score * 0.30
@@ -2326,11 +2552,14 @@ def personal_signal_label(
     zombie_penalty = clean_float(zombie_decay.get("zombie_decay_penalty"))
     dcf_plausibility = clean_float(dcf.get("dcf_plausibility_score"))
     long_term_score = clean_float(long_term.get("long_term_investment_score"))
+    business_substance_score = clean_float(score_business_substance(row).get("business_substance_score"), 45)
     thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
     event_penalty = clean_float(event_override.get("event_shock_penalty"))
     serious_dilution = dilution >= 85
     heavy_dilution = dilution >= 70
     serious_survival = survival >= 70
+    very_thin_substance = business_substance_score < 35
+    thin_substance = business_substance_score < 45
     stale_drag = zombie_penalty >= 8
     catastrophic_reset = is_catastrophic_reset_cycle(row, event_override)
     sub_5m_spiral = is_sub_5m_spiral_risk(row, hume, austrian, keynes)
@@ -2388,6 +2617,10 @@ def personal_signal_label(
         return "This is Garbage"
     if serious_survival and comprehensive_score < 40:
         return "This is Garbage"
+    if very_thin_substance and comprehensive_score < 48:
+        return "This is Garbage"
+    if very_thin_substance and comprehensive_score >= 48:
+        return "Asset Shell, Prove It"
     if stale_drag and comprehensive_score < 38:
         return "This is Garbage"
     if catastrophic_reset and comprehensive_score >= 40 and positive_signal_count >= 3:
@@ -2395,6 +2628,8 @@ def personal_signal_label(
     if catastrophic_reset and comprehensive_score >= 45:
         return "High Signal, Red Flags"
     if sub_5m_spiral and comprehensive_score >= 45:
+        return "High Signal, Red Flags"
+    if thin_substance and comprehensive_score >= 45:
         return "High Signal, Red Flags"
     if (serious_dilution or serious_survival) and comprehensive_score >= 45:
         return "High Signal, Red Flags"
@@ -2466,6 +2701,7 @@ def personal_signal_label(
         and dcf_plausibility >= 2
         and dilution < 70
         and survival < 70
+        and not thin_substance
     ):
         return "Scrappy Doo"
     if hume >= 55 and keynes >= 70 and relative < 35 and asymmetry < 35:
@@ -2516,11 +2752,16 @@ def secondary_signal_label(
     dcf_plausibility = clean_float(dcf.get("dcf_plausibility_score"))
     labels: list[str] = []
     sub_5m_spiral = is_sub_5m_spiral_risk(row, hume, austrian, keynes)
+    business_substance_score = clean_float(score_business_substance(row).get("business_substance_score"), 45)
 
     if primary_label in {"This is Garbage", "Needs More Clues"}:
         return ""
     if is_hard_stop_event(row, event_override) or data_confidence < 40:
         return ""
+    if business_substance_score < 35:
+        return "" if primary_label == "Asset Shell, Prove It" else "Asset Shell, Prove It"
+    if business_substance_score < 45 and movement_score >= 45:
+        labels.append("High Signal, Red Flags")
     if sub_5m_spiral:
         return "" if primary_label == "High Signal, Red Flags" else "High Signal, Red Flags"
     if hume >= 60 and hume >= pre_flow_opportunity + 20 and movement_score >= 45:
@@ -2598,6 +2839,7 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
     zombie = number("zombie_decay_penalty")
     event_penalty = number("event_shock_penalty")
     thesis_break = number("thesis_break_risk_score")
+    business_substance = number("business_substance_score")
     all_time_drawdown = number("all_time_drawdown")
     event_label = output.get("event_shock_label", pd.Series("", index=output.index)).astype(str).str.lower()
     event_reason = output.get("event_shock_reason", pd.Series("", index=output.index)).astype(str).str.lower()
@@ -2671,6 +2913,7 @@ def apply_best_candidate_labels(scores: pd.DataFrame) -> pd.DataFrame:
         | ((thesis_break >= 80) & ~reset_catalyst)
         | reset_cycle
         | sub_5m_spiral
+        | (business_substance < 40)
         | hard_stop_event
     )
     labels = output["what_i_think"].astype(str)
@@ -2749,6 +2992,8 @@ def classify_risk_posture(
     event_penalty = clean_float(event_override.get("event_shock_penalty"))
     dilution = clean_float(row.get("dilution_pressure_score"))
     survival = clean_float(row.get("survival_risk_score"))
+    business_substance = score_business_substance(row)
+    business_substance_score = clean_float(business_substance.get("business_substance_score"), 45)
     zombie_penalty = clean_float(zombie_decay.get("zombie_decay_penalty"))
     if data_confidence < 45:
         return "Data thin: verify manually"
@@ -2766,6 +3011,10 @@ def classify_risk_posture(
         return "Sub-$5M + reset spiral risk"
     if sub_5m_spiral:
         return "Sub-$5M spiral risk"
+    if business_substance_score < 35:
+        return "Asset shell / dormant operator"
+    if business_substance_score < 45:
+        return "Thin operating footprint"
     if catastrophic_reset:
         return "Catastrophic reset cycle"
     if dilution >= 85:
@@ -2787,8 +3036,8 @@ def classify_risk_posture(
 
 def build_event_callouts(row: pd.Series, event_override: dict[str, Any]) -> str:
     """Summarize event-shock context as a callout, not always as a penalty."""
-    label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label"))).strip()
-    reason = ("" if pd.isna(row.get("event_shock_reason")) else str(row.get("event_shock_reason"))).strip()
+    label = safe_text(row.get("event_shock_label")).strip()
+    reason = safe_text(row.get("event_shock_reason")).strip()
     note = str(event_override.get("event_override_note") or "").strip()
     penalty = clean_float(event_override.get("event_shock_penalty"))
     thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
@@ -2954,8 +3203,8 @@ def interpret_thesis_integrity(
     dilution = clean_float(row.get("dilution_pressure_score"))
     survival = clean_float(row.get("survival_risk_score"))
     note = str(event_override.get("event_override_note") or "")
-    event_label = ("" if pd.isna(row.get("event_shock_label")) else str(row.get("event_shock_label")))
-    event_confidence = ("" if pd.isna(row.get("event_shock_confidence")) else str(row.get("event_shock_confidence")))
+    event_label = safe_text(row.get("event_shock_label"))
+    event_confidence = safe_text(row.get("event_shock_confidence"))
     if is_liquidation_event(row, event_override):
         return (
             "Liquidation / Wind-Down",

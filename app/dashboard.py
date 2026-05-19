@@ -564,6 +564,7 @@ def scout_console_html(row: pd.Series, compact: bool = False) -> str:
         power_bar("Pre-Flow", row.get("pre_flow_opportunity_score"), clean_text(row.get("flow_state"), "flow read")),
         power_bar("Catalyst", row.get("catalyst_probability_score"), clean_text(row.get("viability_window"), "viability")),
         power_bar("Long-Term", row.get("long_term_investment_score"), clean_text(row.get("long_term_investment_label"), "business lens")),
+        power_bar("Business Substance", row.get("business_substance_score"), clean_text(row.get("business_substance_label"), "operating footprint")),
         power_bar("Data", row.get("data_confidence_score"), clean_text(row.get("data_confidence_label"), "confidence")),
     ]
     if not compact:
@@ -582,6 +583,7 @@ def scout_console_html(row: pd.Series, compact: bool = False) -> str:
         story_tile("Economist Quote", economist_cue(row), "amber"),
         story_tile("Why It Could Move", row.get("ranking_note"), "green"),
         story_tile("Risk Console", risk_text, "amber"),
+        story_tile("Operating Substance", row.get("business_substance_note"), "teal"),
         story_tile("Event Shock", event_text, "red"),
     ]
     if not compact:
@@ -723,6 +725,9 @@ BOARD_LABELS = {
     "data_confidence_score": "Data",
     "identity_mismatch_score": "Identity",
     "identity_mismatch_note": "Identity Note",
+    "business_substance_score": "Business Substance",
+    "business_substance_label": "Substance Read",
+    "business_substance_note": "Substance Note",
     "sec_sic_description": "SEC Identity",
     "business_profile": "Business Profile",
     "dilution_pressure_score": "Dilution",
@@ -747,6 +752,7 @@ SCORE_COLUMNS = {
     "long_term_investment_score",
     "data_confidence_score",
     "identity_mismatch_score",
+    "business_substance_score",
     "dilution_pressure_score",
     "survival_risk_score",
     "event_shock_penalty",
@@ -2745,6 +2751,7 @@ with watchlist_tab:
             "asymmetry_score",
             "long_term_investment_score",
             "data_confidence_score",
+            "business_substance_score",
             "identity_mismatch_score",
             "dilution_pressure_score",
             "survival_risk_score",
@@ -2764,6 +2771,8 @@ with watchlist_tab:
             "dcf_plausibility_score",
             "expectation_gap_score",
             "long_term_investment_note",
+            "business_substance_label",
+            "business_substance_note",
             "time_to_viability_score",
             "catalyst_probability_score",
             "volume_to_float",
