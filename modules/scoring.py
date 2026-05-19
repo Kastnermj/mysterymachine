@@ -31,6 +31,7 @@ SCORE_COLUMNS = [
     "dollar_volume",
     "sec_sic",
     "sec_sic_description",
+    "business_profile",
     "identity_mismatch_score",
     "identity_mismatch_note",
     "austrian_mispricing_score",
@@ -183,6 +184,7 @@ IDENTITY_CATEGORY_TERMS = {
     "industrial": ["manufacturing", "machinery", "construction", "equipment", "industrial", "transportation"],
     "financial": ["bank", "finance", "investment", "capital markets", "insurance"],
     "consumer": ["retail", "restaurant", "apparel", "consumer", "food", "beverage"],
+    "sports_media": ["sports media", "sports and entertainment", "cricket", "t20", "media rights", "broadcast rights", "live events"],
 }
 
 IDENTITY_COMPATIBLE_PAIRS = {
@@ -205,7 +207,7 @@ def identity_category(text: Any) -> str:
 def identity_mismatch(row: pd.Series) -> tuple[float, str]:
     """Detect stale screener sector identity using SEC SIC description as a tie-breaker."""
     public_text = " ".join(str(row.get(column) or "") for column in ["sector", "industry", "company_name"])
-    sec_text = str(row.get("sec_sic_description") or "")
+    sec_text = " ".join(str(row.get(column) or "") for column in ["sec_sic_description", "business_profile", "event_business_profile"])
     public_category = identity_category(public_text)
     sec_category = identity_category(sec_text)
     if not sec_category:
@@ -215,7 +217,44 @@ def identity_mismatch(row: pd.Series) -> tuple[float, str]:
     if public_category == sec_category or frozenset({public_category, sec_category}) in IDENTITY_COMPATIBLE_PAIRS:
         return 0.0, f"SEC SIC identity agrees broadly: {sec_text}."
     score = 72.0 if {public_category, sec_category} == {"energy", "real_estate"} else 55.0
-    return score, f"Public sector/industry reads {public_category}, but SEC SIC reads {sec_category}: {sec_text}."
+    return score, f"Public sector/industry reads {public_category}, but SEC/business text reads {sec_category}: {sec_text}."
+
+
+def coalesce_price_context(frame: pd.DataFrame) -> pd.DataFrame:
+    """Use validated history/accounting fields to fill quote gaps without hiding source quality."""
+    output = frame.copy()
+    if "latest_close" not in output.columns and {"all_time_high", "all_time_drawdown"}.issubset(output.columns):
+        high = pd.to_numeric(output["all_time_high"], errors="coerce")
+        drawdown = pd.to_numeric(output["all_time_drawdown"], errors="coerce")
+        output["latest_close"] = high * (1 + drawdown)
+    if "latest_volume" not in output.columns and "avg_volume_20d" in output.columns:
+        output["latest_volume"] = output["avg_volume_20d"]
+    if "latest_dollar_volume" not in output.columns and {"latest_close", "latest_volume"}.issubset(output.columns):
+        output["latest_dollar_volume"] = output["latest_close"] * output["latest_volume"]
+    if "latest_close" in output.columns:
+        if "price" not in output.columns:
+            output["price"] = pd.NA
+        missing_price = output["price"].isna() & output["latest_close"].notna()
+        output.loc[missing_price, "price"] = output.loc[missing_price, "latest_close"]
+    if "latest_volume" in output.columns:
+        if "volume" not in output.columns:
+            output["volume"] = pd.NA
+        missing_volume = output["volume"].isna() & output["latest_volume"].notna()
+        output.loc[missing_volume, "volume"] = output.loc[missing_volume, "latest_volume"]
+    if "latest_dollar_volume" in output.columns:
+        if "dollar_volume" not in output.columns:
+            output["dollar_volume"] = pd.NA
+        missing_dollar = output["dollar_volume"].isna() & output["latest_dollar_volume"].notna()
+        output.loc[missing_dollar, "dollar_volume"] = output.loc[missing_dollar, "latest_dollar_volume"]
+    if "avg_volume_20d" in output.columns:
+        if "avg_volume" not in output.columns:
+            output["avg_volume"] = pd.NA
+        missing_average = output["avg_volume"].isna() & output["avg_volume_20d"].notna()
+        output.loc[missing_average, "avg_volume"] = output.loc[missing_average, "avg_volume_20d"]
+    if {"market_cap", "price", "shares_outstanding"}.issubset(output.columns):
+        missing_cap = output["market_cap"].isna() & output["price"].notna() & output["shares_outstanding"].notna()
+        output.loc[missing_cap, "market_cap"] = output.loc[missing_cap, "price"] * output.loc[missing_cap, "shares_outstanding"]
+    return output
 
 
 def build_theory_scores(
@@ -249,7 +288,7 @@ def build_theory_scores(
     if not ticker_metadata.empty and "ticker" in ticker_metadata.columns:
         metadata_columns = [
             column
-            for column in ["ticker", "company_name", "sector", "industry", "universe_reason"]
+            for column in ["ticker", "company_name", "sector", "industry", "universe_reason", "business_profile"]
             if column in ticker_metadata.columns
         ]
         metadata = ticker_metadata[metadata_columns].copy()
@@ -259,6 +298,7 @@ def build_theory_scores(
                 "sector": "metadata_sector",
                 "industry": "metadata_industry",
                 "universe_reason": "metadata_universe_reason",
+                "business_profile": "metadata_business_profile",
             }
         )
         metadata = metadata.drop_duplicates(subset=["ticker"], keep="first")
@@ -268,10 +308,18 @@ def build_theory_scores(
             ("sector", "metadata_sector"),
             ("industry", "metadata_industry"),
             ("universe_reason", "metadata_universe_reason"),
+            ("business_profile", "metadata_business_profile"),
         ]:
             if base_column in frame.columns and metadata_column in frame.columns:
                 override = frame[metadata_column].notna() & (frame[metadata_column].astype(str).str.strip() != "")
                 frame.loc[override, base_column] = frame.loc[override, metadata_column]
+    if "event_business_profile" in frame.columns:
+        if "business_profile" not in frame.columns:
+            frame["business_profile"] = pd.NA
+        missing_profile = frame["business_profile"].isna() | (frame["business_profile"].astype(str).str.strip() == "")
+        event_profile = frame["event_business_profile"].notna() & (frame["event_business_profile"].astype(str).str.strip() != "")
+        frame.loc[missing_profile & event_profile, "business_profile"] = frame.loc[missing_profile & event_profile, "event_business_profile"]
+    frame = coalesce_price_context(frame)
     frame = prepare_scoring_frame(frame)
     sector_stats = build_sector_stats(frame)
 
@@ -408,6 +456,7 @@ def build_theory_scores(
                 "dollar_volume": row.get("dollar_volume"),
                 "sec_sic": row.get("sec_sic"),
                 "sec_sic_description": row.get("sec_sic_description"),
+                "business_profile": row.get("business_profile"),
                 "identity_mismatch_score": identity_mismatch(row)[0],
                 "identity_mismatch_note": identity_mismatch(row)[1],
                 "austrian_mispricing_score": austrian,
@@ -638,6 +687,7 @@ def compute_subsignals(row: pd.Series, config: dict[str, Any]) -> dict[str, Any]
             "sector",
             "industry",
             "universe_reason",
+            "business_profile",
             "signal_interpretation",
             "event_shock_reason",
             "event_override_note",

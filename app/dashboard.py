@@ -441,16 +441,23 @@ def company_snapshot(row: pd.Series) -> str:
     company = clean_text(row.get("company_name"), "This company")
     sector = clean_text(row.get("sector"), "an unclear sector")
     industry = clean_text(row.get("industry"), "")
+    profile = clean_text(row.get("business_profile"), "")
     sic = clean_text(row.get("sec_sic_description"), "")
     identity_note = clean_text(row.get("identity_mismatch_note"), "")
     price = price_money(row.get("price"))
     market_cap = money(row.get("market_cap"))
     industry_text = f" in {industry}" if industry else ""
-    snapshot = (
+    if profile:
+        snapshot = (
+            f"{company}: {profile} "
+            f"The board is reading it at {price} with a market value around {market_cap}."
+        )
+    else:
+        snapshot = (
         f"{company} is showing up as a {sector}{industry_text} microcap. "
         f"The board is reading it at {price} with a market value around {market_cap}. "
         "That does not make it safe; it means the company is small enough that new evidence, flow, or fear can move the price quickly."
-    )
+        )
     if identity_note:
         return snapshot + f" SEC identity check: {identity_note}"
     if sic:
@@ -717,6 +724,7 @@ BOARD_LABELS = {
     "identity_mismatch_score": "Identity",
     "identity_mismatch_note": "Identity Note",
     "sec_sic_description": "SEC Identity",
+    "business_profile": "Business Profile",
     "dilution_pressure_score": "Dilution",
     "survival_risk_score": "Survival",
     "event_shock_penalty": "Event",
@@ -2766,6 +2774,7 @@ with watchlist_tab:
             "factor_stack_note",
             "identity_mismatch_note",
             "sec_sic_description",
+            "business_profile",
         ]
         table_columns = core_columns + advanced_columns if advanced_mode else core_columns
         st.caption("Ticker stays frozen while the rest of the board scrolls.")

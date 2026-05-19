@@ -177,7 +177,9 @@ sec:
 event_shocks:
   enabled: true
   max_detail_tickers: 250
-  max_8k_documents_per_ticker: 1
+  max_8k_documents_per_ticker: 4
+  scan_exhibits: true
+  max_exhibit_documents_per_filing: 2
   detail_timeout_seconds: 4
   inspect_suspicious_outside_batch: false
   cache_ttl_hours: 24
@@ -187,6 +189,7 @@ event_shocks:
     - "major_financing_or_warrants"
     - "restructuring_or_workforce"
     - "asset_sale_or_impairment"
+    - "business_pivot_or_rebrand"
 
 fundamentals:
   enabled: true

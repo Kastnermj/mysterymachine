@@ -7,6 +7,7 @@ import logging
 import re
 import urllib.error
 import urllib.request
+from urllib.parse import urljoin
 from datetime import datetime, timezone
 from typing import Any
 
@@ -40,6 +41,8 @@ EVENT_SHOCK_COLUMNS = [
     "event_shock_source_url",
     "event_thesis_break_risk_score",
     "event_shock_confidence",
+    "event_business_profile",
+    "event_identity_terms",
 ]
 
 
@@ -71,6 +74,60 @@ DETAIL_PATTERNS = [
     ("clinical_or_regulatory_setback", 45, 80, [r"\bclinical hold\b", r"\bfda.*hold\b", r"\bfailed.*endpoint\b", r"\bcomplete response letter\b"]),
     ("restructuring_or_workforce", 30, 55, [r"\brestructuring\b", r"\bworkforce reduction\b", r"\blayoff\b", r"\breduction in force\b"]),
     ("asset_sale_or_impairment", 26, 45, [r"\bimpairment\b", r"\basset sale\b", r"\bgoing private\b"]),
+    (
+        "business_pivot_or_rebrand",
+        14,
+        10,
+        [
+            r"\bstrategic (?:focus|pivot|transformation)\b",
+            r"\bbusiness combination\b",
+            r"\brecent combination\b",
+            r"\bevolved into\b",
+            r"\brebrand(?:ed|ing)?\b",
+            r"\boperating as\b",
+            r"\bflash sports\b",
+            r"\bglobal t20 cricket\b",
+            r"\bt20 cricket\b",
+            r"\bcricket ecosystem\b",
+            r"\bsports media\b",
+            r"\bsports and entertainment\b",
+            r"\bmedia rights\b",
+            r"\bbroadcast rights\b",
+            r"\blive events\b",
+        ],
+    ),
+]
+
+
+BUSINESS_IDENTITY_PATTERNS = [
+    (
+        "sports_media",
+        [
+            r"\bflash sports\b",
+            r"\bglobal t20 cricket\b",
+            r"\bt20 cricket\b",
+            r"\bcricket ecosystem\b",
+            r"\bsports media\b",
+            r"\bsports and entertainment\b",
+            r"\bmedia rights\b",
+            r"\bbroadcast rights\b",
+            r"\blive events\b",
+            r"\bbranded fan experiences\b",
+        ],
+        "SEC filing exhibits describe a sports/media pivot around Flash Sports & Media, T20 cricket, league rights, media distribution, sponsorships, and live-event monetization.",
+    ),
+    (
+        "construction_services",
+        [
+            r"\bconstruction\b",
+            r"\barchitecture\b",
+            r"\bengineering\b",
+            r"\bfacility design\b",
+            r"\bdesign-build\b",
+            r"\bcontrolled environment agriculture\b",
+        ],
+        "SEC filing text describes construction, design-build, engineering, or controlled-environment agriculture services.",
+    ),
 ]
 
 
@@ -185,6 +242,8 @@ def build_event_shocks(
                 "event_shock_source_url": detail["source_url"] or suspicion["source_url"],
                 "event_thesis_break_risk_score": round(thesis_break, 1),
                 "event_shock_confidence": detail["confidence"] if detail["score"] > 0 else suspicion["confidence"],
+                "event_business_profile": detail.get("business_profile", ""),
+                "event_identity_terms": detail.get("identity_terms", ""),
             }
         )
     return save_event_shocks(pd.DataFrame(rows, columns=EVENT_SHOCK_COLUMNS), config, logger)
@@ -267,13 +326,20 @@ def score_event_shock_detail(filings: pd.DataFrame, config: dict[str, Any], logg
         detail = classify_event_text(text)
         if detail["score"] > best["score"]:
             best = {**detail, "source_url": url, "confidence": "8k_text"}
+        elif detail.get("business_profile") and not best.get("business_profile"):
+            best = {
+                **best,
+                "source_url": best.get("source_url") or url,
+                "business_profile": detail.get("business_profile", ""),
+                "identity_terms": detail.get("identity_terms", ""),
+            }
     return best
 
 
 def fetch_filing_text(url: str, config: dict[str, Any], logger: logging.Logger) -> str:
     """Fetch and cache a filing document as plain text."""
     cache_dir = config["paths"]["cache_dir"]
-    cache_key = "event_shock_doc_" + re.sub(r"[^A-Za-z0-9]+", "_", url)[-140:]
+    cache_key = "event_shock_doc_v2_" + re.sub(r"[^A-Za-z0-9]+", "_", url)[-140:]
     ttl = int(config.get("event_shocks", {}).get("cache_ttl_hours", config["refresh"].get("cache_ttl_hours", 24)))
     cached = read_json_cache(cache_dir, cache_key, ttl)
     if cached and isinstance(cached, dict):
@@ -288,10 +354,66 @@ def fetch_filing_text(url: str, config: dict[str, Any], logger: logging.Logger) 
         request = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(request, timeout=timeout) as response:
             raw_text = response.read(350_000).decode("utf-8", errors="ignore")
-    text = html_to_text(raw_text)
+    text_parts = [html_to_text(raw_text)]
+    if bool(config.get("event_shocks", {}).get("scan_exhibits", True)):
+        max_exhibits = int(config.get("event_shocks", {}).get("max_exhibit_documents_per_filing", 2))
+        for exhibit_url in extract_exhibit_urls(raw_text, url)[:max_exhibits]:
+            try:
+                exhibit_raw = fetch_raw_document(exhibit_url, headers, timeout)
+            except Exception as exc:
+                logger.debug("Event shock exhibit fetch skipped for %s: %s", exhibit_url, exc)
+                continue
+            text_parts.append(html_to_text(exhibit_raw[:350_000]))
+    text = "\n\n".join(text_parts)
     write_json_cache(cache_dir, cache_key, {"url": url, "text": text[:120_000]})
     logger.debug("Cached event shock filing text for %s", url)
     return text
+
+
+def fetch_raw_document(url: str, headers: dict[str, str], timeout: int) -> str:
+    """Fetch a single SEC document without cache orchestration."""
+    if requests is not None:
+        response = requests.get(url, timeout=timeout, headers=headers)
+        response.raise_for_status()
+        return response.text
+    request = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        return response.read(350_000).decode("utf-8", errors="ignore")
+
+
+def extract_exhibit_urls(raw_html: str, base_url: str) -> list[str]:
+    """Find high-signal exhibit documents linked from a filing cover page."""
+    links: list[str] = []
+    seen = set()
+    if BeautifulSoup is not None:
+        soup = BeautifulSoup(raw_html or "", "html.parser")
+        for anchor in soup.find_all("a", href=True):
+            href = str(anchor.get("href") or "")
+            label = " ".join([str(anchor.get_text(" ", strip=True) or ""), href]).lower()
+            if not is_detail_exhibit_link(label, href):
+                continue
+            absolute = urljoin(base_url, href)
+            if absolute not in seen:
+                seen.add(absolute)
+                links.append(absolute)
+    if links:
+        return links
+    for match in re.finditer(r'href=["\']([^"\']+)["\']', raw_html or "", flags=re.IGNORECASE):
+        href = match.group(1)
+        if is_detail_exhibit_link(href.lower(), href):
+            absolute = urljoin(base_url, href)
+            if absolute not in seen:
+                seen.add(absolute)
+                links.append(absolute)
+    return links
+
+
+def is_detail_exhibit_link(label: str, href: str) -> bool:
+    """Keep exhibits likely to hold business-update language, not XBRL/static assets."""
+    combined = f"{label} {href}".lower()
+    if any(skip in combined for skip in [".xml", ".xsd", ".jpg", ".png", ".gif", "ixviewer", "xslf345"]):
+        return False
+    return bool(re.search(r"(?:^|[^a-z0-9])ex(?:hibit)?[-_ ]?99|ex99[-_ ]?\d|\b99\.[0-9]\b|press release|investor presentation", combined))
 
 
 def html_to_text(raw_html: str) -> str:
@@ -308,6 +430,7 @@ def classify_event_text(text: str) -> dict[str, Any]:
     best_score = 0
     best_thesis = 0
     best_label = ""
+    business_identity = classify_business_identity(clean)
     management_detail = classify_management_change(clean)
     if management_detail["score"] > 0:
         matches.append(management_detail["label"])
@@ -330,6 +453,18 @@ def classify_event_text(text: str) -> dict[str, Any]:
                 best_label = label
             best_thesis = max(best_thesis, thesis)
     if not matches:
+        if business_identity["identity_terms"]:
+            detail = empty_detail()
+            detail.update(
+                {
+                    "score": 0,
+                    "label": "business_identity_context",
+                    "reason": "SEC text identified business context: " + business_identity["identity_terms"],
+                    "business_profile": business_identity["business_profile"],
+                    "identity_terms": business_identity["identity_terms"],
+                }
+            )
+            return detail
         return empty_detail()
     return {
         "score": min(100, best_score + min(20, (len(matches) - 1) * 6)),
@@ -338,6 +473,22 @@ def classify_event_text(text: str) -> dict[str, Any]:
         "source_url": "",
         "thesis_break": best_thesis,
         "confidence": "8k_text",
+        "business_profile": business_identity["business_profile"],
+        "identity_terms": business_identity["identity_terms"],
+    }
+
+
+def classify_business_identity(clean_text: str) -> dict[str, str]:
+    """Extract a plain-English business profile clue from SEC filing text."""
+    identities = []
+    profiles = []
+    for label, patterns, profile in BUSINESS_IDENTITY_PATTERNS:
+        if any(re.search(pattern, clean_text) for pattern in patterns):
+            identities.append(label)
+            profiles.append(profile)
+    return {
+        "identity_terms": ", ".join(identities),
+        "business_profile": " ".join(profiles[:2]),
     }
 
 
@@ -408,7 +559,16 @@ def choose_event_label(score: float, detail_label: str, suspicion_label: str) ->
 
 def empty_detail() -> dict[str, Any]:
     """Return an empty detail classification."""
-    return {"score": 0, "label": "none_detected", "reason": "", "source_url": "", "thesis_break": 0, "confidence": "not_checked"}
+    return {
+        "score": 0,
+        "label": "none_detected",
+        "reason": "",
+        "source_url": "",
+        "thesis_break": 0,
+        "confidence": "not_checked",
+        "business_profile": "",
+        "identity_terms": "",
+    }
 
 
 def save_event_shocks(frame: pd.DataFrame, config: dict[str, Any], logger: logging.Logger) -> pd.DataFrame:
