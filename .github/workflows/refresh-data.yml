@@ -94,6 +94,39 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Apply scoring NA compatibility hotfix
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("modules/scoring.py")
+          text = path.read_text(encoding="utf-8")
+          text = text.replace(
+              'str(row.get(column) or "")',
+              '("" if pd.isna(row.get(column)) else str(row.get(column)))',
+          )
+          text = text.replace(
+              'str(row.get("sector") or "")',
+              '("" if pd.isna(row.get("sector")) else str(row.get("sector")))',
+          )
+          text = text.replace(
+              'str(row.get("ticker") or "")',
+              '("" if pd.isna(row.get("ticker")) else str(row.get("ticker")))',
+          )
+          text = text.replace(
+              'str(row.get("price_history_status") or "")',
+              '("" if pd.isna(row.get("price_history_status")) else str(row.get("price_history_status")))',
+          )
+          for field in ["event_shock_reason", "event_shock_label", "event_shock_confidence"]:
+              text = text.replace(
+                  f'str(row.get("{field}") or "")',
+                  f'("" if pd.isna(row.get("{field}")) else str(row.get("{field}")))',
+              )
+          path.write_text(text, encoding="utf-8")
+          PY
+          python -m py_compile modules/scoring.py
+
       - name: Refresh Top 250 research data
         if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
@@ -144,7 +177,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
-          git add app/refresh_stamp.py data/processed outputs/watchlists outputs/reports
+          git add modules/scoring.py app/refresh_stamp.py data/processed outputs/watchlists outputs/reports
           if git diff --cached --quiet; then
             echo "No refreshed data changes to commit."
           else
