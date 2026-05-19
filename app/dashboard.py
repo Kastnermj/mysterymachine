@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import html
+import io
 import json
 import math
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
+import requests
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -27,6 +29,29 @@ MATH_APPENDIX_PATH = ROOT / "docs" / "math_appendix.md"
 
 
 st.set_page_config(page_title="Contrarian 10-Bagger Engine", layout="wide", initial_sidebar_state="expanded")
+
+components.html(
+    """
+    <script>
+    (() => {
+      const refreshMs = 10 * 60 * 1000;
+      const startedAt = Date.now();
+      const refresh = () => window.parent.location.reload();
+      window.setTimeout(() => {
+        if (window.parent.document.visibilityState === "visible") {
+          refresh();
+        }
+      }, refreshMs);
+      window.parent.document.addEventListener("visibilitychange", () => {
+        if (window.parent.document.visibilityState === "visible" && Date.now() - startedAt > refreshMs) {
+          refresh();
+        }
+      });
+    })();
+    </script>
+    """,
+    height=0,
+)
 
 st.markdown(
     """
@@ -121,12 +146,40 @@ st.markdown(
 
 
 GITHUB_ACTIONS_URL = "https://github.com/Kastnermj/mysterymachine/actions/workflows/refresh-data.yml"
+GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Kastnermj/mysterymachine/main"
+REMOTE_REFRESHABLE_PREFIXES = ("data/processed/", "outputs/watchlists/", "outputs/reports/")
 
 
-@st.cache_data(show_spinner=False)
+def github_raw_url(path: Path) -> str | None:
+    """Return the raw GitHub URL for files that should update without redeploy."""
+    try:
+        relative = path.resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return None
+    if not relative.startswith(REMOTE_REFRESHABLE_PREFIXES):
+        return None
+    return f"{GITHUB_RAW_BASE_URL}/{relative}"
+
+
+@st.cache_data(show_spinner=False, ttl=300)
 def load_csv(path_text: str) -> pd.DataFrame:
-    """Load a CSV once per Streamlit session."""
+    """Load a CSV, preferring fresh GitHub data on the hosted app."""
     path = Path(path_text)
+
+    remote_url = github_raw_url(path)
+    if remote_url:
+        try:
+            response = requests.get(
+                remote_url,
+                headers={"Cache-Control": "no-cache", "Pragma": "no-cache"},
+                timeout=12,
+            )
+            response.raise_for_status()
+            if response.text.strip():
+                return pd.read_csv(io.StringIO(response.text))
+        except (requests.RequestException, pd.errors.ParserError, UnicodeDecodeError):
+            pass
+
     if not path.exists():
         return pd.DataFrame()
     try:
