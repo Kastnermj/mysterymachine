@@ -1,6 +1,6 @@
-last_refresh_utc=2026-05-19T16:11:02Z
-matched_window=manual refresh
-local_time=2026-05-19 12:06:27 EDT
-github_run_id=26109495257
-github_sha=a39f42f09f3b9d4fdb7c4407f4ca58b77dba7f55
-redeploy_nonce=26109495257-1
+last_refresh_utc=2026-05-19T19:34:50Z
+matched_window=8:45 AM ET
+local_time=2026-05-19 15:28:52 EDT
+github_run_id=26120222344
+github_sha=733128c572bd80c63ef92e46524f0f978f9193fa
+redeploy_nonce=26120222344-1
