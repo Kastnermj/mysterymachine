@@ -2211,6 +2211,14 @@ def score_long_term_microcap(
 
     risk_bits = []
     cap_bits = []
+    reset_relevance_evidence = (
+        business_substance >= 65
+        and dcf_score >= 2
+        and expectation_gap >= 60
+        and latent_necessity >= 60
+        and event_penalty <= 0
+        and thesis_break < 80
+    )
     if is_hard_stop_event(row, event_override):
         score = min(score, 12)
         risk_bits.append("hard-stop event pattern")
@@ -2244,9 +2252,13 @@ def score_long_term_microcap(
         score = min(score, 35)
         cap_bits.append("broken thesis needs reset before long-term treatment")
     if is_catastrophic_reset_cycle(row, event_override):
-        score = min(score, 25)
+        if reset_relevance_evidence:
+            score = min(score, 52)
+            cap_bits.append("reset-cycle history stays capped, but operating substance plus latent relevance avoids a hard long-term block")
+        else:
+            score = min(score, 25)
+            cap_bits.append("catastrophic reset pattern blocks long-term treatment")
         risk_bits.append("reverse-split/dilution-cycle pattern")
-        cap_bits.append("catastrophic reset pattern blocks long-term treatment")
     if business_substance < 35:
         score = min(score, 38)
         risk_bits.append("asset-shell/substance risk")
@@ -2257,7 +2269,7 @@ def score_long_term_microcap(
         cap_bits.append("needs proof of operating business")
 
     score = round(max(0, min(100, score)), 1)
-    if is_hard_stop_event(row, event_override) or is_catastrophic_reset_cycle(row, event_override) or dilution >= 85 or thesis_break >= 80:
+    if is_hard_stop_event(row, event_override) or (is_catastrophic_reset_cycle(row, event_override) and not reset_relevance_evidence) or dilution >= 85 or thesis_break >= 80:
         label = "Not Long-Term Material Yet"
     elif business_substance < 35:
         label = "Needs Proof of Operating Business"
@@ -2774,6 +2786,8 @@ def secondary_signal_label(
         and survival < 70
     ):
         labels.append("Pre-Flow Sleeper")
+    if movement_score >= 68 and keynes >= 65 and dcf_plausibility >= 2 and dilution < 70 and survival < 70:
+        labels.append("Scrappy Doo")
     if (
         hume >= 55
         and pre_flow_opportunity >= 50
@@ -2805,9 +2819,6 @@ def secondary_signal_label(
         labels.append("Rocket Shape, No Map")
     if long_term_score >= 65 and movement_score < 55 and dilution < 70 and survival < 70 and zombie_penalty <= 3:
         labels.append("Long-Term Clue, Slow Fuse")
-    if movement_score >= 68 and keynes >= 65 and dcf_plausibility >= 2 and dilution < 70 and survival < 70:
-        labels.append("Scrappy Doo")
-
     for label in labels:
         if label != primary_label:
             return label
