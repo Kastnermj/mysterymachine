@@ -11,7 +11,6 @@ AIM,0000946644,AIM ImmunoTech Inc. Common Stock,11,10,False,True,True,False,Fals
 AIOS,0001603993,AIOS Tech Inc. Class A Common Shares,4,0,False,False,False,False,False,False,6-K,2026-05-12,3490,Miscellaneous Fabricated Metal Products,recent_other_activity
 AIRI,0001009891,Air Industries Group Common Stock,4,1,False,True,False,False,False,False,10-Q,2026-05-13,3728,"Aircraft Parts & Auxiliary Equipment, NEC",recent_periodic_reporting
 AISP,0001842566,Airship AI Holdings Inc. Class A Common Stock,10,4,False,True,True,False,True,False,EFFECT,2026-05-19,7372,Services-Prepackaged Software,financing_or_registration_activity
-AKAN,0001888014,Akanda Corp. Common Shares,6,0,False,False,False,False,False,False,6-K,2026-05-13,2833,Medicinal Chemicals & Botanical Products,recent_other_activity
 AKTX,0001541157,Akari Therapeutics plc ADS,6,2,False,True,False,True,False,False,RW,2026-05-21,2834,Pharmaceutical Preparations,financing_or_registration_activity
 ALGS,0001799448,Aligos Therapeutics Inc. Common Stock,9,4,False,True,True,False,False,False,SCHEDULE 13G,2026-05-15,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 ALLR,0001860657,Allarity Therapeutics Inc. Common Stock,18,7,False,True,True,False,False,True,10-Q,2026-05-15,2834,Pharmaceutical Preparations,financing_or_registration_activity
@@ -103,6 +102,7 @@ GNPX,0001595248,Genprex Inc. Common Stock,10,5,False,True,True,False,False,False
 GOSS,0001728117,Gossamer Bio Inc.,9,3,False,True,True,False,False,False,PRE 14A,2026-05-18,2834,Pharmaceutical Preparations,recent_event_activity
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,35,8,True,True,True,True,False,False,8-K,2026-05-19,2834,Pharmaceutical Preparations,financing_or_registration_activity
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,4,2,False,False,True,False,False,False,SCHEDULE 13G/A,2026-05-15,2834,Pharmaceutical Preparations,recent_event_activity
+GRML,0001907223,Greenland Mines Ltd. Common Stock,8,5,False,True,True,False,False,False,8-K,2026-05-21,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,5,2,False,True,True,False,False,False,4,2026-05-19,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,2,2,False,True,False,False,False,False,10-Q/A,2026-05-19,7372,Services-Prepackaged Software,recent_periodic_reporting
 HBIO,0001123494,Harvard Bioscience Inc. Common Stock,6,3,False,True,True,False,False,False,SCHEDULE 13G/A,2026-05-14,3826,Laboratory Analytical Instruments,recent_event_activity
