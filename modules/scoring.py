@@ -2565,6 +2565,8 @@ def personal_signal_label(
     dcf_plausibility = clean_float(dcf.get("dcf_plausibility_score"))
     long_term_score = clean_float(long_term.get("long_term_investment_score"))
     business_substance_score = clean_float(score_business_substance(row).get("business_substance_score"), 45)
+    revenue_to_market = to_float(row.get("revenue_to_market_cap"))
+    current_ratio = to_float(row.get("current_ratio"))
     thesis_break = clean_float(event_override.get("thesis_break_risk_score"))
     event_penalty = clean_float(event_override.get("event_shock_penalty"))
     serious_dilution = dilution >= 85
@@ -2601,6 +2603,15 @@ def personal_signal_label(
         zombie_decay,
         long_term,
     )
+    real_operating_business_floor = (
+        business_substance_score >= 55
+        and revenue_to_market is not None
+        and revenue_to_market >= 1
+        and current_ratio is not None
+        and current_ratio >= 1
+        and thesis_break < 80
+        and not is_hard_stop_event(row, event_override)
+    )
     positive_signal_count = sum(
         [
             hume >= 50,
@@ -2624,16 +2635,24 @@ def personal_signal_label(
     if data_confidence < 40:
         return "Needs More Clues"
     if movement_score < 25:
+        if real_operating_business_floor:
+            return "Cold Case"
         return "This is Garbage" if data_confidence >= 60 else "Needs More Clues"
     if serious_dilution and comprehensive_score < 40:
+        if real_operating_business_floor:
+            return "Business Looks Real, Risks Bite"
         return "This is Garbage"
     if serious_survival and comprehensive_score < 40:
+        if real_operating_business_floor:
+            return "Business Looks Real, Risks Bite"
         return "This is Garbage"
     if very_thin_substance and comprehensive_score < 48:
         return "This is Garbage"
     if very_thin_substance and comprehensive_score >= 48:
         return "Asset Shell, Prove It"
     if stale_drag and comprehensive_score < 38:
+        if real_operating_business_floor:
+            return "Business Looks Real, Risks Bite"
         return "This is Garbage"
     if catastrophic_reset and comprehensive_score >= 40 and positive_signal_count >= 3:
         return "High Signal, Red Flags"
@@ -2730,6 +2749,8 @@ def personal_signal_label(
         return "Quiet Clue, No Headline Yet"
     if comprehensive_score >= 50:
         return "Eh this is Mid"
+    if real_operating_business_floor:
+        return "Business Looks Real, Risks Bite"
     return "This is Garbage"
 
 
