@@ -632,6 +632,250 @@ def render_scout_console(row: pd.Series, compact: bool = False) -> None:
     st.markdown(scout_console_html(row, compact=compact), unsafe_allow_html=True)
 
 
+SCOUT_COMPONENT_CSS = """
+        .scout-console {
+            border: 1px solid #b9c8df;
+            background:
+                radial-gradient(circle at 88% 5%, rgba(37, 99, 235, .16), transparent 28%),
+                radial-gradient(circle at 8% 18%, rgba(22, 163, 74, .12), transparent 25%),
+                linear-gradient(180deg, #ffffff, #f7fbff);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 18px 42px rgba(15, 23, 42, .12);
+            margin: 0;
+        }
+        .scout-console,
+        .scout-console * {
+            color: #0f172a !important;
+            text-shadow: none !important;
+            box-sizing: border-box;
+        }
+        .scout-console-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            border-bottom: 1px solid #dbe6f5;
+            padding-bottom: .85rem;
+            margin-bottom: .9rem;
+        }
+        .scout-kicker {
+            color: #2563eb !important;
+            font-size: .76rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+        .scout-console-title {
+            color: #0f172a !important;
+            font-size: 1.45rem;
+            line-height: 1.1;
+            font-weight: 950;
+            margin-top: .15rem;
+        }
+        .scout-console-title span {
+            color: #475569 !important;
+            font-size: .9rem;
+            font-weight: 750;
+            margin-left: .35rem;
+        }
+        .scout-console-subtitle {
+            color: #64748b !important;
+            font-size: .88rem;
+            margin: .3rem 0 .55rem 0;
+        }
+        .scout-grade-orb {
+            min-width: 5.35rem;
+            min-height: 5.35rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #0f172a, #1d4ed8);
+            border: 3px solid #bfdbfe;
+            box-shadow: 0 16px 32px rgba(29, 78, 216, .24);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .scout-grade-orb span,
+        .scout-grade-orb small {
+            color: #ffffff !important;
+        }
+        .scout-grade-orb span {
+            font-size: 1.35rem;
+            font-weight: 950;
+            line-height: 1;
+        }
+        .scout-grade-orb small {
+            font-size: .7rem;
+            margin-top: .25rem;
+            opacity: .9;
+        }
+        .scout-console-grid {
+            display: grid;
+            grid-template-columns: minmax(235px, 320px) minmax(260px, 1fr);
+            gap: 1rem;
+            align-items: stretch;
+        }
+        .power-hex-card,
+        .power-bars,
+        .story-tile {
+            border: 1px solid #d5e1f0;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .86);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+        }
+        .power-hex-card {
+            padding: .75rem .65rem .55rem .65rem;
+        }
+        .power-heading {
+            color: #1e3a8a !important;
+            font-weight: 950;
+            font-size: .9rem;
+            margin: 0 0 .2rem .2rem;
+        }
+        .power-hex {
+            width: 100%;
+            min-height: 238px;
+            display: block;
+        }
+        .power-ring {
+            fill: none;
+            stroke: #cbd5e1;
+            stroke-width: 1.1;
+        }
+        .power-spoke {
+            stroke: #d8e2ef;
+            stroke-width: 1;
+        }
+        .power-shape {
+            fill: rgba(37, 99, 235, .22);
+            stroke: #2563eb;
+            stroke-width: 3;
+        }
+        .power-core {
+            fill: #16a34a;
+        }
+        .power-label {
+            fill: #334155;
+            font-size: 10.5px;
+            font-weight: 850;
+        }
+        .power-bars {
+            padding: .85rem;
+        }
+        .power-bar-row {
+            display: grid;
+            grid-template-columns: minmax(96px, 1fr) 2.4rem;
+            gap: .55rem;
+            align-items: center;
+            margin-bottom: .72rem;
+        }
+        .power-bar-row strong {
+            display: block;
+            color: #0f172a !important;
+            font-size: .86rem;
+            font-weight: 950;
+        }
+        .power-bar-row span {
+            display: block;
+            color: #64748b !important;
+            font-size: .73rem;
+            line-height: 1.05rem;
+        }
+        .power-bar-row b {
+            color: #1d4ed8 !important;
+            font-size: .9rem;
+            text-align: right;
+        }
+        .power-bar {
+            grid-column: 1 / 3;
+            height: .5rem;
+            border-radius: 999px;
+            background: #e2eaf5;
+            overflow: hidden;
+        }
+        .power-bar div {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #2563eb, #16a34a);
+        }
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .7rem;
+            margin-top: .9rem;
+        }
+        .story-tile {
+            padding: .75rem;
+            min-height: 6rem;
+            border-left: 5px solid #2563eb;
+        }
+        .story-title {
+            color: #0f172a !important;
+            font-size: .8rem;
+            font-weight: 950;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            margin-bottom: .35rem;
+        }
+        .story-body {
+            color: #475569 !important;
+            font-size: .86rem;
+            line-height: 1.25rem;
+        }
+        .story-green { border-left-color: #16a34a; }
+        .story-teal { border-left-color: #0891b2; }
+        .story-amber { border-left-color: #d97706; }
+        .story-red { border-left-color: #dc2626; }
+        .story-purple { border-left-color: #7c3aed; }
+        .verdict-pill {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            max-width: 100%;
+            padding: .32rem .52rem;
+            border-radius: 999px;
+            font-weight: 850;
+            font-size: .78rem;
+            border: 1px solid transparent;
+            white-space: normal;
+            margin-right: .35rem;
+            margin-bottom: .3rem;
+        }
+        .verdict-scooby { background: #dcfce7; color: #14532d !important; border-color: #86efac; }
+        .verdict-watch { background: #dbeafe; color: #1e3a8a !important; border-color: #93c5fd; }
+        .verdict-mid { background: #f1f5f9; color: #334155 !important; border-color: #cbd5e1; }
+        .verdict-risk { background: #fef3c7; color: #92400e !important; border-color: #fcd34d; }
+        .verdict-garbage { background: #fee2e2; color: #991b1b !important; border-color: #fecaca; }
+        @media (max-width: 760px) {
+            .scout-console {
+                padding: .8rem;
+            }
+            .scout-console-hero,
+            .scout-console-grid {
+                grid-template-columns: 1fr;
+                display: grid;
+            }
+            .scout-console-hero {
+                align-items: start;
+            }
+            .scout-grade-orb {
+                justify-self: start;
+                min-width: 4.7rem;
+                min-height: 4.7rem;
+            }
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+            .scout-console-title {
+                font-size: 1.2rem;
+            }
+        }
+"""
+
+
 def ticker_card(row: pd.Series, rank: int) -> None:
     """Render one compact front-office card."""
     ticker = clean_text(row.get("ticker"), "???")
@@ -803,6 +1047,7 @@ def table_scout_payload(row: pd.Series) -> str:
         "data": f"{safe_number(row.get('data_confidence_score')):.1f}",
         "why": clean_text(row.get("ranking_note"), "No ranking note available."),
         "sequence": clean_text(row.get("sequence_interpretation"), ""),
+        "scout_html": scout_console_html(row, compact=True),
     }
     return html.escape(json.dumps(payload), quote=True)
 
@@ -1062,7 +1307,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             box-sizing: border-box;
         }}
         .scout-modal {{
-            max-width: 860px;
+            max-width: 980px;
             max-height: calc(100vh - 36px);
             overflow: auto;
             margin: 0 auto;
@@ -1110,7 +1355,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             cursor: pointer;
         }}
         .scout-modal-body {{
-            padding: 16px 20px 20px;
+            padding: 14px;
         }}
         .scout-modal-grid {{
             display: grid;
@@ -1163,6 +1408,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
             .scout-modal-title {{ font-size: 23px; }}
             .scout-modal-backdrop {{ padding: 10px; }}
         }}
+        {SCOUT_COMPONENT_CSS}
         </style>
         <div class="top-scroll synced-scroll" id="topScroll"><div class="scroll-inner" id="topScrollInner"></div></div>
         <div class="board-wrap" id="boardScroll">
@@ -1187,9 +1433,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
                     <button class="scout-modal-close" id="scoutModalClose" type="button">x</button>
                 </div>
                 <div class="scout-modal-body">
-                    <div class="scout-pill-row" id="scoutModalPills"></div>
-                    <div class="scout-modal-grid" id="scoutModalGrid"></div>
-                    <div class="scout-why" id="scoutModalWhy"></div>
+                    <div id="scoutModalContent"></div>
                 </div>
             </div>
         </div>
@@ -1207,9 +1451,7 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
         const scoutModalBackdrop = document.getElementById("scoutModalBackdrop");
         const scoutModalTitle = document.getElementById("scoutModalTitle");
         const scoutModalCompany = document.getElementById("scoutModalCompany");
-        const scoutModalPills = document.getElementById("scoutModalPills");
-        const scoutModalGrid = document.getElementById("scoutModalGrid");
-        const scoutModalWhy = document.getElementById("scoutModalWhy");
+        const scoutModalContent = document.getElementById("scoutModalContent");
         const scoutModalClose = document.getElementById("scoutModalClose");
         let syncingTop = false;
         let syncingBoard = false;
@@ -1299,24 +1541,12 @@ def render_big_board(frame: pd.DataFrame, columns: list[str]) -> None:
         }}
         function openScoutModal(data) {{
             scoutModalTitle.textContent = `${{data.ticker || "N/A"}} · Grade ${{data.grade || "n/a"}}`;
-            scoutModalCompany.textContent = `${{data.company || ""}} | Price ${{data.price || "n/a"}} | Market cap ${{data.market_cap || "n/a"}}`;
-            const pills = [data.what, data.also, data.risk, data.flow].filter(Boolean);
-            scoutModalPills.innerHTML = pills.map((pill) => `<span class="scout-modal-pill">${{escapeText(pill)}}</span>`).join("");
-            const stats = [
-                ["Scooby", data.scooby],
-                ["Move", data.move],
-                ["Pre-Flow", data.pre_flow],
-                ["Austrian", data.austrian],
-                ["Hume", data.hume],
-                ["Keynes", data.keynes],
-                ["Relative", data.relative],
-                ["Asymmetry", data.asymmetry],
-                ["Data", data.data],
-            ];
-            scoutModalGrid.innerHTML = stats.map(([label, value]) => (
-                `<div class="scout-stat"><span>${{escapeText(label)}}</span><strong>${{escapeText(value)}}</strong></div>`
-            )).join("");
-            scoutModalWhy.textContent = data.why || data.sequence || "No scout note available.";
+            scoutModalCompany.textContent = "Compact read from the Big Board ticker cell";
+            if (data.scout_html) {{
+                scoutModalContent.innerHTML = data.scout_html;
+            }} else {{
+                scoutModalContent.innerHTML = `<div class="scout-why">${{escapeText(data.why || data.sequence || "No scout note available.")}}</div>`;
+            }}
             scoutModalBackdrop.style.display = "block";
         }}
         function closeScoutModal() {{
