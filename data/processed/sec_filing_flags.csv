@@ -44,7 +44,7 @@ BTAI,0001720893,BioXcel Therapeutics Inc. Common Stock,15,2,False,True,True,Fals
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,5,2,False,False,False,False,False,True,424B3,2026-05-18,7371,Services-Computer Programming Services,financing_or_registration_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,8,2,False,True,True,False,False,False,10-Q,2026-05-20,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,1,1,False,True,False,False,False,False,10-Q,2026-05-15,2835,In Vitro & In Vivo Diagnostic Substances,recent_periodic_reporting
-CDT,0001896212,CDT Equity Inc. Common Stock,11,5,False,False,True,False,True,True,8-K,2026-05-28,2834,Pharmaceutical Preparations,financing_or_registration_activity
+CDT,0001896212,CDT Equity Inc. Common Stock,13,5,False,False,True,False,True,True,8-K,2026-05-28,2834,Pharmaceutical Preparations,financing_or_registration_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-05-15,1700,Construction - Special Trade Contractors,recent_event_activity
 CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-05-29,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
 CHSN,0001825349,Chanson International Holding Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-05-06,2000,Food and Kindred Products,recent_other_activity
@@ -89,7 +89,7 @@ EZGO,0001806904,EZGO Technologies Ltd. Ordinary Shares,2,0,False,False,False,Fal
 FABC,0001086745,Fabric.AI Inc. Common Stock,10,2,False,True,True,False,False,False,ARS,2026-06-01,4899,"Communications Services, NEC",recent_event_activity
 FBLG,0001958777,FibroBiologics Inc. Common Stock,15,7,False,True,True,False,False,True,8-K,2026-05-06,2834,Pharmaceutical Preparations,financing_or_registration_activity
 FCHL,0002023796,Fitness Champs Holdings Limited Common Stock,11,1,False,False,False,False,False,True,6-K,2026-06-01,7990,Services-Miscellaneous Amusement & Recreation,financing_or_registration_activity
-FCUV,0001590418,Focus Universal Inc. Common Stock,10,6,False,True,True,True,False,False,8-K,2026-05-26,3823,"Industrial Instruments For Measurement, Display, and Control",financing_or_registration_activity
+FCUV,0001590418,Focus Universal Inc. Common Stock,12,6,False,True,True,True,False,False,8-K,2026-05-26,3823,"Industrial Instruments For Measurement, Display, and Control",financing_or_registration_activity
 FEED,0001326706,ENvue Medical Inc. Common Stock,6,3,False,True,False,False,True,True,EFFECT,2026-05-28,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",financing_or_registration_activity
 FGI,0001864943,FGI Industries Ltd. Ordinary Shares,5,3,False,True,True,False,False,False,10-Q,2026-05-15,3430,"Heating Equip, Except Elec & Warm Air; & Plumbing Fixtures",recent_event_activity
 FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,5,0,False,False,False,False,False,False,6-K,2026-05-18,1090,Miscellaneous Metal Ores,recent_other_activity
@@ -110,7 +110,7 @@ HCAI,0001958399,Huachen AI Parking Management Technology Holding Co. Ltd. Class 
 HCWB,0001828673,HCW Biologics Inc. Common Stock,18,9,False,True,True,True,False,False,8-K,2026-06-01,2834,Pharmaceutical Preparations,financing_or_registration_activity
 HPAI,0002001699,Helport AI Limited Ordinary Shares,2,0,False,False,False,False,False,False,3,2026-05-26,7372,Services-Prepackaged Software,recent_other_activity
 HTOO,0001819794,Fusion Fuel Green PLC Class A Ordinary Shares,14,0,False,False,False,False,False,False,6-K,2026-05-27,3590,Misc Industrial & Commercial Machinery & Equipment,recent_other_activity
-HUBC,0001905660,Hub Cyber Security Ltd. Ordinary Shares,27,0,False,False,False,False,False,False,4,2026-06-01,3576,Computer Communications Equipment,recent_other_activity
+HUBC,0001905660,Hub Cyber Security Ltd. Ordinary Shares,28,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-06-01,3576,Computer Communications Equipment,recent_other_activity
 HUMA,0001818382,Humacyte Inc.,12,3,False,True,True,False,False,False,4,2026-05-20,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 IDAI,0001718939,T Stamp Inc. Class A Common Stock,12,3,False,True,True,False,True,False,4,2026-05-28,7372,Services-Prepackaged Software,financing_or_registration_activity
 IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,10,4,False,True,True,False,False,False,10-Q,2026-05-13,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
