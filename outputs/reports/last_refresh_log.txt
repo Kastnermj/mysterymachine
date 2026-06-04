@@ -1,26 +1,26 @@
-2026-06-04 10:51:10,635 | INFO | contrarian_flow_engine | Starting Contrarian Flow Engine pipeline
+2026-06-04 20:33:56,360 | INFO | contrarian_flow_engine | Starting Contrarian Flow Engine pipeline
 [  5%] Starting research engine
 [ 10%] Building broad 10-bagger candidate universe
-2026-06-04 10:51:10,635 | INFO | contrarian_flow_engine | Building starting universe
-2026-06-04 10:51:10,640 | INFO | contrarian_flow_engine | Loaded seed universe from /home/runner/work/mysterymachine/mysterymachine/data/raw/seed_universe.csv
-2026-06-04 10:51:10,642 | INFO | contrarian_flow_engine | Loaded ticker metadata from /home/runner/work/mysterymachine/mysterymachine/data/raw/ticker_metadata.csv
-2026-06-04 10:51:10,643 | INFO | contrarian_flow_engine | Loaded 65 configured tickers
-2026-06-04 10:51:10,650 | INFO | contrarian_flow_engine | Combined starting universe has 66 unique tickers
-2026-06-04 10:51:16,856 | INFO | contrarian_flow_engine | Universe after broad public screener merge has 7050 unique tickers
-2026-06-04 10:51:16,866 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 7050 -> 3556 rows
-2026-06-04 10:51:17,226 | WARNING | contrarian_flow_engine | Yahoo quote enrichment failed without blocking universe build: [Errno 36] File name too long: '/home/runner/work/mysterymachine/mysterymachine/data/cache/yahoo_quote_ABEV_ADTX_AGRI_AMTX_AQMS_AREB_ASRT_ATOS_AULT_BBAI_BNGO_BTBT_CENN_CGTX_CLIR_CLNE_CRKN_CTMX_EOSE_FCEL_FFIE_FUBO_GERN_GOSS_GRAB_HITI_HIVE_HUMA_IDEX_INDI_INVZ_KULR_LAZR_LIDR_LUMN_MESA_MVIS_NKLA_NNDM_OPEN_OPTT_ORGN_PLUG_POWW_PSNY_REKR_RGTI_RKLB_SENS_SOUN_SPCE_TELL_TLRY_TOMZ_TRVG_VUZI_WATT_WULF_XELA_ZOM.json'
-2026-06-04 10:51:17,228 | INFO | contrarian_flow_engine | Stooq universe fallback disabled; leaving 60 missing-price rows for data-quality filters
-2026-06-04 10:51:17,233 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 3556 -> 3556 rows
-2026-06-04 10:51:17,263 | INFO | contrarian_flow_engine | Universe saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/universe.csv with 3556 rows
-2026-06-04 10:51:17,264 | INFO | contrarian_flow_engine | Universe stage complete with 3556 candidates
-[ 30%] Universe built: 3556 candidates
+2026-06-04 20:33:56,361 | INFO | contrarian_flow_engine | Building starting universe
+2026-06-04 20:33:56,365 | INFO | contrarian_flow_engine | Loaded seed universe from /home/runner/work/mysterymachine/mysterymachine/data/raw/seed_universe.csv
+2026-06-04 20:33:56,367 | INFO | contrarian_flow_engine | Loaded ticker metadata from /home/runner/work/mysterymachine/mysterymachine/data/raw/ticker_metadata.csv
+2026-06-04 20:33:56,368 | INFO | contrarian_flow_engine | Loaded 65 configured tickers
+2026-06-04 20:33:56,375 | INFO | contrarian_flow_engine | Combined starting universe has 66 unique tickers
+2026-06-04 20:34:03,368 | INFO | contrarian_flow_engine | Universe after broad public screener merge has 7163 unique tickers
+2026-06-04 20:34:03,379 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 7163 -> 3646 rows
+2026-06-04 20:34:03,584 | WARNING | contrarian_flow_engine | Yahoo quote enrichment failed without blocking universe build: [Errno 36] File name too long: '/home/runner/work/mysterymachine/mysterymachine/data/cache/yahoo_quote_ABEV_ADTX_AGRI_AMTX_AQMS_AREB_ASRT_ATOS_AULT_BBAI_BNGO_BTBT_CENN_CGTX_CLIR_CLNE_CRKN_CTMX_EOSE_FCEL_FFIE_FUBO_GERN_GOSS_GRAB_HITI_HIVE_HUMA_IDEX_INDI_INVZ_KULR_LAZR_LIDR_LUMN_MESA_MVIS_NKLA_NNDM_OPEN_OPTT_ORGN_PLUG_POWW_PSNY_REKR_RGTI_RKLB_SENS_SOUN_SPCE_TELL_TLRY_TOMZ_TRVG_VUZI_WATT_WULF_XELA_ZOM.json'
+2026-06-04 20:34:03,586 | INFO | contrarian_flow_engine | Stooq universe fallback disabled; leaving 60 missing-price rows for data-quality filters
+2026-06-04 20:34:03,590 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 3646 -> 3646 rows
+2026-06-04 20:34:03,619 | INFO | contrarian_flow_engine | Universe saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/universe.csv with 3646 rows
+2026-06-04 20:34:03,620 | INFO | contrarian_flow_engine | Universe stage complete with 3646 candidates
+[ 30%] Universe built: 3646 candidates
 [ 32%] Pre-screening Top 250 10-bagger research batch
-2026-06-04 10:51:17,906 | INFO | contrarian_flow_engine | 10-bagger research batch selected with 250 tickers
+2026-06-04 20:34:04,288 | INFO | contrarian_flow_engine | 10-bagger research batch selected with 250 tickers
       Research batch: selected 250 best pre-screened 10-bagger candidates
-2026-06-04 10:51:17,909 | INFO | contrarian_flow_engine | 10-bagger research batch saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/research_batch.csv
+2026-06-04 20:34:04,291 | INFO | contrarian_flow_engine | 10-bagger research batch saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/research_batch.csv
 [ 34%] Research batch ready: 250 candidates
 [ 35%] Refreshing price and volume history for Top 250 batch
-2026-06-04 10:51:17,917 | INFO | contrarian_flow_engine | Selected 250 tickers for price-history refresh
+2026-06-04 20:34:04,296 | INFO | contrarian_flow_engine | Selected 250 tickers for price-history refresh
       Price history: 1/250 tickers checked
       Price history: 10/250 tickers checked
       Price history: 20/250 tickers checked
@@ -47,8 +47,8 @@
       Price history: 230/250 tickers checked
       Price history: 240/250 tickers checked
       Price history: 250/250 tickers checked
-2026-06-04 10:51:43,128 | INFO | contrarian_flow_engine | Price-history features saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/price_history_features.csv with 250 rows
-2026-06-04 10:51:43,130 | INFO | contrarian_flow_engine | Price-history stage complete with 250 rows
+2026-06-04 20:34:29,501 | INFO | contrarian_flow_engine | Price-history features saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/price_history_features.csv with 250 rows
+2026-06-04 20:34:29,502 | INFO | contrarian_flow_engine | Price-history stage complete with 250 rows
 [ 55%] Price-history features ready: 250 rows
 [ 60%] Checking SEC filing metadata and signals for Top 250 batch
       SEC metadata: 1/250 tickers checked
@@ -61,79 +61,77 @@
       SEC metadata: 175/250 tickers checked
       SEC metadata: 200/250 tickers checked
       SEC metadata: 225/250 tickers checked
-2026-06-04 10:52:30,909 | INFO | contrarian_flow_engine | No SEC CIK found for BIDWU
-2026-06-04 10:52:31,435 | INFO | contrarian_flow_engine | No SEC CIK found for AACPR
       SEC metadata: 250/250 tickers checked
-2026-06-04 10:52:33,675 | INFO | contrarian_flow_engine | SEC filing metadata saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filings.csv with 19147 rows
-2026-06-04 10:52:33,675 | INFO | contrarian_flow_engine | SEC filing flags saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_flags.csv with 248 rows
-2026-06-04 10:52:33,675 | INFO | contrarian_flow_engine | SEC filing signals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_signals.csv with 248 rows
-2026-06-04 10:52:33,681 | INFO | contrarian_flow_engine | SEC metadata stage complete with 19147 filings and 248 ticker flags
-[ 78%] SEC metadata ready: 19147 filings
+2026-06-04 20:35:11,573 | INFO | contrarian_flow_engine | SEC filing metadata saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filings.csv with 19200 rows
+2026-06-04 20:35:11,573 | INFO | contrarian_flow_engine | SEC filing flags saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_flags.csv with 250 rows
+2026-06-04 20:35:11,573 | INFO | contrarian_flow_engine | SEC filing signals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_signals.csv with 250 rows
+2026-06-04 20:35:11,580 | INFO | contrarian_flow_engine | SEC metadata stage complete with 19200 filings and 250 ticker flags
+[ 78%] SEC metadata ready: 19200 filings
 [ 80%] Scanning event-shock risk for Top 250 batch
-      Event shock scan: 1/248 tickers checked
-      Event shock scan: 10/248 tickers checked
-      Event shock scan: 20/248 tickers checked
-      Event shock scan: 30/248 tickers checked
-      Event shock scan: 40/248 tickers checked
-      Event shock scan: 50/248 tickers checked
-      Event shock scan: 60/248 tickers checked
-      Event shock scan: 70/248 tickers checked
-      Event shock scan: 80/248 tickers checked
-      Event shock scan: 90/248 tickers checked
-      Event shock scan: 100/248 tickers checked
-      Event shock scan: 110/248 tickers checked
-      Event shock scan: 120/248 tickers checked
-      Event shock scan: 130/248 tickers checked
-      Event shock scan: 140/248 tickers checked
-      Event shock scan: 150/248 tickers checked
-      Event shock scan: 160/248 tickers checked
-      Event shock scan: 170/248 tickers checked
-      Event shock scan: 180/248 tickers checked
-      Event shock scan: 190/248 tickers checked
-      Event shock scan: 200/248 tickers checked
-      Event shock scan: 210/248 tickers checked
-      Event shock scan: 220/248 tickers checked
-      Event shock scan: 230/248 tickers checked
-      Event shock scan: 240/248 tickers checked
-      Event shock scan: 248/248 tickers checked
-2026-06-04 10:55:32,138 | INFO | contrarian_flow_engine | Event shock output saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/event_shocks.csv with 248 rows
-2026-06-04 10:55:32,140 | INFO | contrarian_flow_engine | Event shock stage complete with 248 rows
-[ 81%] Event shock scan ready: 248 rows
+      Event shock scan: 1/250 tickers checked
+      Event shock scan: 10/250 tickers checked
+      Event shock scan: 20/250 tickers checked
+      Event shock scan: 30/250 tickers checked
+      Event shock scan: 40/250 tickers checked
+      Event shock scan: 50/250 tickers checked
+      Event shock scan: 60/250 tickers checked
+      Event shock scan: 70/250 tickers checked
+      Event shock scan: 80/250 tickers checked
+      Event shock scan: 90/250 tickers checked
+      Event shock scan: 100/250 tickers checked
+      Event shock scan: 110/250 tickers checked
+      Event shock scan: 120/250 tickers checked
+      Event shock scan: 130/250 tickers checked
+      Event shock scan: 140/250 tickers checked
+      Event shock scan: 150/250 tickers checked
+      Event shock scan: 160/250 tickers checked
+      Event shock scan: 170/250 tickers checked
+      Event shock scan: 180/250 tickers checked
+      Event shock scan: 190/250 tickers checked
+      Event shock scan: 200/250 tickers checked
+      Event shock scan: 210/250 tickers checked
+      Event shock scan: 220/250 tickers checked
+      Event shock scan: 230/250 tickers checked
+      Event shock scan: 240/250 tickers checked
+      Event shock scan: 250/250 tickers checked
+2026-06-04 20:36:45,617 | INFO | contrarian_flow_engine | Event shock output saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/event_shocks.csv with 250 rows
+2026-06-04 20:36:45,618 | INFO | contrarian_flow_engine | Event shock stage complete with 250 rows
+[ 81%] Event shock scan ready: 250 rows
 [ 82%] Extracting accounting fundamentals and ratios
-      Fundamentals: 1/248 tickers checked
-      Fundamentals: 10/248 tickers checked
-      Fundamentals: 20/248 tickers checked
-      Fundamentals: 30/248 tickers checked
-      Fundamentals: 40/248 tickers checked
-      Fundamentals: 50/248 tickers checked
-      Fundamentals: 60/248 tickers checked
-      Fundamentals: 70/248 tickers checked
-      Fundamentals: 80/248 tickers checked
-      Fundamentals: 90/248 tickers checked
-      Fundamentals: 100/248 tickers checked
-      Fundamentals: 110/248 tickers checked
-      Fundamentals: 120/248 tickers checked
-      Fundamentals: 130/248 tickers checked
-      Fundamentals: 140/248 tickers checked
-      Fundamentals: 150/248 tickers checked
-      Fundamentals: 160/248 tickers checked
-      Fundamentals: 170/248 tickers checked
-      Fundamentals: 180/248 tickers checked
-      Fundamentals: 190/248 tickers checked
-      Fundamentals: 200/248 tickers checked
-      Fundamentals: 210/248 tickers checked
-      Fundamentals: 220/248 tickers checked
-      Fundamentals: 230/248 tickers checked
-      Fundamentals: 240/248 tickers checked
-      Fundamentals: 248/248 tickers checked
-2026-06-04 10:57:01,321 | INFO | contrarian_flow_engine | Fundamentals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/fundamentals_stub.csv with 248 rows
-2026-06-04 10:57:01,323 | INFO | contrarian_flow_engine | Fundamentals stage complete with 248 rows
-[ 88%] Fundamentals ready: 248 rows
+      Fundamentals: 1/250 tickers checked
+      Fundamentals: 10/250 tickers checked
+      Fundamentals: 20/250 tickers checked
+      Fundamentals: 30/250 tickers checked
+      Fundamentals: 40/250 tickers checked
+      Fundamentals: 50/250 tickers checked
+      Fundamentals: 60/250 tickers checked
+      Fundamentals: 70/250 tickers checked
+      Fundamentals: 80/250 tickers checked
+      Fundamentals: 90/250 tickers checked
+      Fundamentals: 100/250 tickers checked
+      Fundamentals: 110/250 tickers checked
+      Fundamentals: 120/250 tickers checked
+      Fundamentals: 130/250 tickers checked
+      Fundamentals: 140/250 tickers checked
+      Fundamentals: 150/250 tickers checked
+      Fundamentals: 160/250 tickers checked
+      Fundamentals: 170/250 tickers checked
+      Fundamentals: 180/250 tickers checked
+      Fundamentals: 190/250 tickers checked
+      Fundamentals: 200/250 tickers checked
+      Fundamentals: 210/250 tickers checked
+      Fundamentals: 220/250 tickers checked
+      Fundamentals: 230/250 tickers checked
+      Fundamentals: 240/250 tickers checked
+      Fundamentals: 250/250 tickers checked
+2026-06-04 20:38:06,820 | INFO | contrarian_flow_engine | Fundamentals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/fundamentals_stub.csv with 250 rows
+2026-06-04 20:38:06,821 | INFO | contrarian_flow_engine | Fundamentals stage complete with 250 rows
+[ 88%] Fundamentals ready: 250 rows
 [ 92%] Scoring final Top 250 post-prescreen research board
-2026-06-04 10:57:01,323 | INFO | contrarian_flow_engine | Scoring final dashboard board from research batch: data/processed/research_batch.csv
-2026-06-04 10:57:02,223 | INFO | contrarian_flow_engine | Theory scores saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/theory_scores.csv with 250 rows
-2026-06-04 10:57:02,223 | INFO | contrarian_flow_engine | Ranked repricing watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/repricing_sequence_watchlist.csv
-2026-06-04 10:57:02,223 | INFO | contrarian_flow_engine | Focused non-garbage watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/focused_research_watchlist.csv with 135 rows
-2026-06-04 10:57:02,225 | INFO | contrarian_flow_engine | Theory scoring stage complete with 250 rows
+2026-06-04 20:38:06,821 | INFO | contrarian_flow_engine | Scoring final dashboard board from research batch: data/processed/research_batch.csv
+2026-06-04 20:38:07,724 | INFO | contrarian_flow_engine | Theory scores saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/theory_scores.csv with 250 rows
+2026-06-04 20:38:07,724 | INFO | contrarian_flow_engine | Ranked repricing watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/repricing_sequence_watchlist.csv
+2026-06-04 20:38:07,724 | INFO | contrarian_flow_engine | Focused non-garbage watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/focused_research_watchlist.csv with 132 rows
+2026-06-04 20:38:07,726 | INFO | contrarian_flow_engine | Theory scoring stage complete with 250 rows
 [100%] Watchlist complete: 250 scored candidates
-2026-06-04 10:57:02,225 | INFO | contrarian_flow_engine | Pipeline complete
+2026-06-04 20:38:07,726 | INFO | contrarian_flow_engine | Pipeline complete
