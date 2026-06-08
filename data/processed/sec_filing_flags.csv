@@ -54,6 +54,7 @@ CING,0001862150,Cingulate Inc. Common Stock,10,5,False,True,True,False,False,Tru
 CISS,0001951067,C3is Inc. Common Stock,17,4,False,False,False,False,False,True,424B3,2026-05-18,4412,Deep Sea Foreign Transportation of  Freight,financing_or_registration_activity
 CKX,0000352955,CKX Lands Inc. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-06-08,1311,Crude Petroleum & Natural Gas,recent_event_activity
 CLDI,0001855485,Calidi Biotherapeutics Inc. Common Stock,8,4,False,True,True,False,False,False,DEFA14A,2026-06-05,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
+CLM,0000814083,Cornerstone Strategic Investment Fund Inc. Common Shares,1,0,False,False,False,False,False,False,NPORT-P,2026-05-21,,,recent_other_activity
 CLRB,0001279704,Cellectar Biosciences Inc.  Common Stock,17,9,False,True,True,True,False,True,SCHEDULE 13G,2026-06-05,2834,Pharmaceutical Preparations,financing_or_registration_activity
 CMND,0001892500,Clearmind Medicine Inc. Common Shares,17,1,False,False,False,False,False,False,6-K,2026-06-01,2834,Pharmaceutical Preparations,recent_other_activity
 CNSP,0001729427,CNS Pharmaceuticals Inc. Common Stock,9,5,False,True,True,False,True,True,EFFECT,2026-05-26,2834,Pharmaceutical Preparations,financing_or_registration_activity
@@ -116,7 +117,6 @@ HUMA,0001818382,Humacyte Inc.,12,3,False,True,True,False,False,False,8-K,2026-06
 IDAI,0001718939,T Stamp Inc. Class A Common Stock,12,2,False,True,True,False,False,False,4,2026-06-02,7372,Services-Prepackaged Software,recent_event_activity
 IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,9,4,False,True,True,False,False,False,10-Q,2026-05-13,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 INDO,0001757840,Indonesia Energy Corporation Limited Ordinary Shares,3,1,False,False,False,False,False,True,6-K,2026-05-28,1311,Crude Petroleum & Natural Gas,financing_or_registration_activity
-INHD,0001961847,Inno Holdings Inc. Common Stock,5,4,False,True,True,False,False,True,8-K,2026-05-20,3317,Steel Pipe & Tubes,financing_or_registration_activity
 INKT,0001840229,MiNK Therapeutics Inc. Common Stock,11,2,False,True,True,False,False,False,4,2026-06-05,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 INM,0001728328,InMed Pharmaceuticals Inc. Common Shares,10,5,False,True,True,False,False,False,SCHEDULE 13G,2026-06-05,2834,Pharmaceutical Preparations,recent_event_activity
 IPFX,0002102041,Inflection Point Acquisition Corp. VI Class A Ordinary Shares,9,3,False,True,True,False,False,False,425,2026-06-08,6770,Blank Checks,recent_event_activity
