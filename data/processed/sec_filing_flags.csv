@@ -1,6 +1,6 @@
 ticker,cik,company_name,recent_filing_count,recent_high_signal_count,has_recent_10k,has_recent_10q,has_recent_8k,has_recent_s1,has_recent_s3,has_recent_424b,latest_filing_type,latest_filing_date,sec_sic,sec_sic_description,sec_activity_flag
 AACP,0002102123,Apogee Acquisition Corp Class A Ordinary Shares,2,2,False,True,True,False,False,False,8-K,2026-05-22,6770,Blank Checks,recent_event_activity
-ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,3,2,False,True,True,False,False,False,SCHEDULE 13G/A,2026-05-15,2834,Pharmaceutical Preparations,recent_event_activity
+ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,4,3,False,True,True,False,False,False,8-K,2026-06-11,2834,Pharmaceutical Preparations,recent_event_activity
 ADTX,0001726711,"Aditxt, Inc.",16,9,False,True,True,False,False,False,4,2026-06-10,2834,Pharmaceutical Preparations,recent_event_activity
 AEHL,0001470683,Antelope Enterprise Holdings Limited Class A Ordinary Shares,7,2,False,False,False,False,False,True,424B5,2026-05-26,4899,"Communications Services, NEC",financing_or_registration_activity
 AEMD,0000882291,Aethlon Medical Inc. Common Stock,6,4,True,False,True,False,False,True,S-8,2026-06-10,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
@@ -71,7 +71,7 @@ DCOY,0001615219,Decoy Therapeutics Inc. Common Stock,6,3,False,True,True,False,F
 DERM,0001867066,Journey Medical Corporation Common Stock,5,2,False,True,True,False,False,False,10-Q,2026-05-13,2834,Pharmaceutical Preparations,recent_event_activity
 DEVS,0001854480,DevvStream Corp. Common Stock,12,6,False,False,True,False,False,False,SCHEDULE 13G/A,2026-06-08,6799,"Investors, NEC",recent_event_activity
 DFLI,0001847986,Dragonfly Energy Holdings Corp. Common Stock (NV),5,4,False,True,True,False,False,False,8-K,2026-06-08,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",recent_event_activity
-DFNS,0001787518,T3 Defense Inc. Common Stock,10,4,False,True,True,True,False,False,S-1,2026-06-04,8742,Services-Management Consulting Services,financing_or_registration_activity
+DFNS,0001787518,T3 Defense Inc. Common Stock,12,5,False,True,True,True,False,False,3,2026-06-11,8742,Services-Management Consulting Services,financing_or_registration_activity
 DKI,0002058584,DarkIris Inc. Class A Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-05-29,7372,Services-Prepackaged Software,recent_other_activity
 DLXY,0002025218,Delixy Holdings Limited Class A Ordinary Shares,2,0,False,False,False,False,False,False,20-F,2026-04-30,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
 DXST,0001958133,Decent Holding Inc Class A Ordinary Shares,9,0,False,False,False,False,False,False,4,2026-06-05,4950,Sanitary Services,recent_other_activity
@@ -108,7 +108,7 @@ GRCE,0001444192,Grace Therapeutics Inc. Common Stock,2,1,False,False,True,False,
 GRML,0001907223,Greenland Mines Ltd. Common Stock,8,4,False,True,True,False,False,False,PRE 14A,2026-06-09,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,5,2,False,True,True,False,False,False,4,2026-05-19,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,2,2,False,True,False,False,False,False,10-Q/A,2026-05-19,7372,Services-Prepackaged Software,recent_periodic_reporting
-HBIO,0001123494,Harvard Bioscience Inc. Common Stock,10,4,False,True,True,False,False,False,4,2026-06-11,3826,Laboratory Analytical Instruments,recent_event_activity
+HBIO,0001123494,Harvard Bioscience Inc. Common Stock,11,4,False,True,True,False,False,False,4,2026-06-11,3826,Laboratory Analytical Instruments,recent_event_activity
 HCAI,0001958399,Huachen AI Parking Management Technology Holding Co. Ltd. Class A Ordinary Shares,9,1,False,False,False,False,False,False,F-3,2026-06-05,3990,Miscellaneous Manufacturing Industries,recent_other_activity
 HCWB,0001828673,HCW Biologics Inc. Common Stock,18,8,False,True,True,True,False,False,D,2026-06-08,2834,Pharmaceutical Preparations,financing_or_registration_activity
 HPAI,0002001699,Helport AI Limited Ordinary Shares,2,0,False,False,False,False,False,False,3,2026-05-26,7372,Services-Prepackaged Software,recent_other_activity
@@ -166,7 +166,7 @@ OESX,0001409375,Orion Energy Systems Inc. Common Stock,5,3,True,False,True,False
 OLOX,0001023994,Olenox Industries Inc. Common Stock,6,5,False,False,True,False,False,False,8-K,2026-06-11,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
 ONCO,0001782107,Onconetix Inc. Common Stock,13,8,False,True,True,True,False,True,S-1,2026-06-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
 ORKT,0001979407,Orangekloud Technology Inc. Class A Ordinary Shares,13,0,False,False,False,False,False,False,S-8,2026-06-10,7372,Services-Prepackaged Software,recent_other_activity
-OSRH,0001840425,OSR Holdings Inc. Common Stock,6,4,False,True,True,False,False,False,8-K,2026-06-02,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
+OSRH,0001840425,OSR Holdings Inc. Common Stock,8,5,False,True,True,False,False,False,8-K,2026-06-11,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 OTLK,0001649989,Outlook Therapeutics Inc. Common Stock,20,9,False,True,True,False,False,True,4,2026-06-03,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 PASG,0001787297,Passage Bio Inc. Common Stock,10,4,False,True,True,False,False,False,8-K,2026-05-27,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 PAVS,0001751876,Paranovus Entertainment Technology Ltd. Class A Ordinary Shares,4,1,False,False,False,False,False,True,6-K,2026-06-09,7374,Services-Computer Processing & Data Preparation,financing_or_registration_activity
