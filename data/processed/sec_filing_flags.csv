@@ -126,7 +126,7 @@ IPST,0001788230,IP Strategy Holdings Inc. Common Stock,11,3,False,True,True,Fals
 IPW,0001830072,iPower Inc. Common Stock,9,7,False,True,True,False,False,False,SCHEDULE 13G/A,2026-06-08,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
 IRIX,0001006045,IRIDEX Corporation Common Stock,8,2,False,True,True,False,False,False,4,2026-06-09,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 ISPC,0001558569,iSpecimen Inc. Common Stock,9,6,False,True,True,False,True,False,S-3,2026-06-04,8731,Services-Commercial Physical & Biological Research,financing_or_registration_activity
-JCTC,0000885307,Jewett-Cameron Trading Company Common Shares,1,0,False,False,False,False,False,False,SCHEDULE 13D,2026-05-18,5211,Retail-Lumber & Other Building Materials Dealers,recent_other_activity
+JCTC,0000885307,Jewett-Cameron Trading Company Common Shares,2,0,False,False,False,False,False,False,SCHEDULE 13D/A,2026-06-12,5211,Retail-Lumber & Other Building Materials Dealers,recent_other_activity
 JOB,0000040570,GEE Group Inc.,9,4,False,True,True,False,True,False,SCHEDULE 13D/A,2026-06-03,7361,Services-Employment Agencies,financing_or_registration_activity
 JTAI,0001861622,Jet.AI Inc. Common Stock,5,2,False,True,True,False,False,False,8-K,2026-05-21,4522,"Air Transportation, Nonscheduled",recent_event_activity
 JZXN,0001816172,Jiuzi Holdings Inc. Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-05-07,5500,Retail-Auto Dealers & Gasoline Stations,recent_other_activity
@@ -207,6 +207,7 @@ RVSN,0001743905,Rail Vision Ltd. Ordinary Share,4,0,False,False,False,False,Fals
 SBEV,0001553788,Splash Beverage Group Inc. (NV) Common Stock,13,6,False,True,True,False,False,False,4,2026-06-10,2080,Beverages,recent_event_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,10,5,False,True,True,True,False,True,DEF 14C,2026-06-08,2834,Pharmaceutical Preparations,financing_or_registration_activity
 SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,5,3,False,False,True,False,False,False,8-K,2026-06-03,7372,Services-Prepackaged Software,recent_event_activity
+SHOTU,0002104879,RMG ML Sports Holdings Unit,12,3,False,False,True,False,False,True,8-K,2026-06-11,6770,Blank Checks,financing_or_registration_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,11,3,False,False,False,False,False,True,6-K,2026-06-05,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",financing_or_registration_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,6,1,False,True,False,False,False,False,4,2026-05-29,4955,Hazardous Waste Management,recent_periodic_reporting
 SLE,0001621672,Super League Enterprise Inc. Common Stock,9,6,False,True,True,False,False,False,8-K,2026-06-09,7373,Services-Computer Integrated Systems Design,recent_event_activity
@@ -224,7 +225,7 @@ SUNE,0000022701,SUNation Energy Inc. Common Stock,8,4,False,True,True,False,Fals
 TAOX,0001571934,Tao Synergies Inc. Common Stock,7,2,False,True,False,False,False,False,10-K/A,2026-06-05,6199,Finance Services,recent_periodic_reporting
 TMDE,0002009714,TMD Energy Limited Ordinary Shares,7,0,False,False,False,False,False,False,6-K,2026-06-08,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
 TOVX,0000894158,Theriva Biologics Inc. Common Stock,5,4,False,True,True,False,False,False,8-K,2026-06-11,2834,Pharmaceutical Preparations,recent_event_activity
-TPET,0001898766,Trio Petroleum Corp. Common Stock,10,5,False,True,True,False,False,True,10-Q,2026-06-11,1311,Crude Petroleum & Natural Gas,financing_or_registration_activity
+TPET,0001898766,Trio Petroleum Corp. Common Stock,11,5,False,True,True,False,False,True,4,2026-06-12,1311,Crude Petroleum & Natural Gas,financing_or_registration_activity
 TRUG,0001857086,TruGolf Holdings Inc. Class A Common Stock,5,3,False,True,True,False,False,False,3,2026-05-22,3949,"Sporting & Athletic Goods, NEC",recent_event_activity
 TVGN,0001860871,Tevogen Bio Holdings Inc. Common Stock,2,2,False,True,False,False,False,False,10-Q,2026-05-15,2836,"Biological Products, (No Diagnostic Substances)",recent_periodic_reporting
 TWAV,0000746210,TaoWeave Inc. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-06-03,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
