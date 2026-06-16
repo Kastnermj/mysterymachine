@@ -21,7 +21,6 @@ AMZE,0001880343,Amaze Holdings Inc. Common Stock,4,2,False,True,True,False,False
 APLM,0001944885,Apollomics Inc. Class A Ordinary Shares,3,1,False,False,False,False,False,False,EFFECT,2026-06-02,2834,Pharmaceutical Preparations,recent_other_activity
 APUS,0001894525,Apimeds Pharmaceuticals US Inc. Common Stock,6,4,True,True,True,False,False,False,10-Q,2026-05-26,2834,Pharmaceutical Preparations,recent_event_activity
 APVO,0001671584,Aptevo Therapeutics Inc. Common Stock,5,4,False,True,True,False,False,False,3,2026-05-28,2834,Pharmaceutical Preparations,recent_event_activity
-ARQQ,0001859690,Arqit Quantum Inc. Ordinary Shares,27,1,False,False,False,False,False,True,4,2026-06-15,7372,Services-Prepackaged Software,financing_or_registration_activity
 ARTL,0001621221,Artelo Biosciences Inc. Common Stock,13,7,False,True,True,False,True,True,ARS,2026-06-05,2834,Pharmaceutical Preparations,financing_or_registration_activity
 ASBP,0001847345,Aspire Biopharma Holdings Inc. Common Stock,8,4,False,True,True,False,False,False,8-K,2026-06-12,2834,Pharmaceutical Preparations,recent_event_activity
 ATCX,0001684688,Atlas Critical Minerals Corporation Common Stock,1,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-05-15,1040,Gold and Silver Ores,recent_other_activity
@@ -105,6 +104,7 @@ GNPX,0001595248,Genprex Inc. Common Stock,6,5,False,True,True,False,True,False,8
 GOF,0001380936,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,1,0,False,False,False,False,False,False,APP ORDR,2026-05-28,,,recent_other_activity
 GOSS,0001728117,Gossamer Bio Inc.,19,5,False,True,True,False,False,False,SCHEDULE 13D,2026-06-11,2834,Pharmaceutical Preparations,recent_event_activity
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,11,5,False,True,True,True,False,False,SCHEDULE 13G,2026-06-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
+GRAF,0001897463,Graf Global Corp. Class A ordinary shares,16,4,True,True,True,False,False,False,425,2026-06-16,6770,Blank Checks,recent_event_activity
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,2,1,False,False,True,False,False,False,8-K,2026-06-05,2834,Pharmaceutical Preparations,recent_event_activity
 GRML,0001907223,Greenland Mines Ltd. Common Stock,8,4,False,True,True,False,False,False,PRE 14A,2026-06-09,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,3,2,False,True,True,False,False,False,4,2026-05-19,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
@@ -191,7 +191,7 @@ QSI,0001816431,Quantum-Si Incorporated Class A Common Stock,14,3,False,True,True
 QTI,0001844505,QT Imaging Holdings Inc. Common Stock,5,4,False,True,True,False,False,True,8-K,2026-05-21,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
 QTTB,0001661998,Q32 Bio Inc. Common Stock,14,3,False,True,True,False,False,False,3,2026-06-08,2834,Pharmaceutical Preparations,recent_event_activity
 QUCY,0001874252,Quantum Cyber N.V. Ordinary Shares,17,9,False,True,True,False,True,False,8-K,2026-06-15,2834,Pharmaceutical Preparations,financing_or_registration_activity
-RAIL,0001320854,FreightCar America Inc. Common Stock,9,3,False,True,True,False,False,False,8-K,2026-06-16,3743,Railroad Equipment,recent_event_activity
+RAIL,0001320854,FreightCar America Inc. Common Stock,10,3,False,True,True,False,False,False,3,2026-06-16,3743,Railroad Equipment,recent_event_activity
 RAIN,0002028293,Rain Enhancement Technologies Holdco Inc. Class A Common Stock,15,3,False,True,True,False,False,True,4,2026-06-09,3590,Misc Industrial & Commercial Machinery & Equipment,financing_or_registration_activity
 RAVE,0000718332,Rave Restaurant Group Inc.,3,2,False,True,True,False,False,False,SCHEDULE 13D/A,2026-05-15,5140,Wholesale-Groceries & Related Products,recent_event_activity
 RBNE,0002039060,Robin Energy Ltd. Common Stock,4,0,False,False,False,False,False,False,6-K,2026-06-16,4412,Deep Sea Foreign Transportation of  Freight,recent_other_activity
