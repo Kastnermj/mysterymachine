@@ -1,7 +1,7 @@
 ticker,cik,company_name,recent_filing_count,recent_high_signal_count,has_recent_10k,has_recent_10q,has_recent_8k,has_recent_s1,has_recent_s3,has_recent_424b,latest_filing_type,latest_filing_date,sec_sic,sec_sic_description,sec_activity_flag
 AACP,0002102123,Apogee Acquisition Corp Class A Ordinary Shares,2,2,False,True,True,False,False,False,8-K,2026-05-22,6770,Blank Checks,recent_event_activity
 ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,8,3,False,True,True,False,False,False,4,2026-06-16,2834,Pharmaceutical Preparations,recent_event_activity
-ADTX,0001726711,"Aditxt, Inc.",27,8,False,True,True,False,False,False,4,2026-06-17,2834,Pharmaceutical Preparations,recent_event_activity
+ADTX,0001726711,"Aditxt, Inc.",28,8,False,True,True,False,False,False,4,2026-06-18,2834,Pharmaceutical Preparations,recent_event_activity
 AEHL,0001470683,Antelope Enterprise Holdings Limited Class A Ordinary Shares,4,1,False,False,False,False,False,True,424B5,2026-05-26,4899,"Communications Services, NEC",financing_or_registration_activity
 AEMD,0000882291,Aethlon Medical Inc. Common Stock,6,4,True,False,True,False,False,True,S-8,2026-06-10,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
 AGPU,0001446159,Axe Compute Inc. Common Stock,9,7,False,True,True,False,True,True,S-3,2026-06-09,6199,Finance Services,financing_or_registration_activity
@@ -112,7 +112,7 @@ GRWG,0001604868,GrowGeneration Corp. Common Stock,6,2,False,True,True,False,Fals
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,2,2,False,True,False,False,False,False,10-Q/A,2026-05-19,7372,Services-Prepackaged Software,recent_periodic_reporting
 HBIO,0001123494,Harvard Bioscience Inc. Common Stock,12,4,False,True,True,False,False,False,4,2026-06-12,3826,Laboratory Analytical Instruments,recent_event_activity
 HCAI,0001958399,Huachen AI Parking Management Technology Holding Co. Ltd. Class A Ordinary Shares,9,1,False,False,False,False,False,False,6-K,2026-06-16,3990,Miscellaneous Manufacturing Industries,recent_other_activity
-HCWB,0001828673,HCW Biologics Inc. Common Stock,15,8,False,True,True,True,False,False,8-K,2026-06-16,2834,Pharmaceutical Preparations,financing_or_registration_activity
+HCWB,0001828673,HCW Biologics Inc. Common Stock,16,9,False,True,True,True,False,False,S-1/A,2026-06-18,2834,Pharmaceutical Preparations,financing_or_registration_activity
 HPAI,0002001699,Helport AI Limited Ordinary Shares,2,0,False,False,False,False,False,False,3,2026-05-26,7372,Services-Prepackaged Software,recent_other_activity
 HTOO,0001819794,Fusion Fuel Green PLC Class A Ordinary Shares,14,0,False,False,False,False,False,False,6-K,2026-06-10,3590,Misc Industrial & Commercial Machinery & Equipment,recent_other_activity
 HUBC,0001905660,Hub Cyber Security Ltd. Ordinary Shares,65,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-06-12,3576,Computer Communications Equipment,recent_other_activity
@@ -207,7 +207,6 @@ RVSN,0001743905,Rail Vision Ltd. Ordinary Share,4,0,False,False,False,False,Fals
 SBEV,0001553788,Splash Beverage Group Inc. (NV) Common Stock,15,8,False,True,True,True,False,False,4,2026-06-15,2080,Beverages,financing_or_registration_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,14,5,False,True,True,True,False,True,DEF 14C,2026-06-08,2834,Pharmaceutical Preparations,financing_or_registration_activity
 SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,5,3,False,False,True,False,False,False,8-K,2026-06-03,7372,Services-Prepackaged Software,recent_event_activity
-SHOTU,0002104879,RMG ML Sports Holdings Unit,15,5,False,False,True,False,False,True,8-K,2026-06-17,6770,Blank Checks,financing_or_registration_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,11,3,False,False,False,False,False,True,6-K,2026-06-05,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",financing_or_registration_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,6,1,False,True,False,False,False,False,4,2026-05-29,4955,Hazardous Waste Management,recent_periodic_reporting
 SLE,0001621672,Super League Enterprise Inc. Common Stock,9,6,False,True,True,False,True,False,S-3,2026-06-12,7373,Services-Computer Integrated Systems Design,financing_or_registration_activity
@@ -218,7 +217,7 @@ SNGX,0000812796,Soligenix Inc. Common Stock,8,8,False,True,True,False,False,True
 SNOA,0001367083,Sonoma Pharmaceuticals Inc. Common Stock,2,1,True,False,False,False,False,False,10-K,2026-06-16,3841,Surgical & Medical Instruments & Apparatus,recent_periodic_reporting
 SOAR,0001853070,Volato Group Inc. Class A Common Stock,8,5,False,True,True,False,False,False,RW,2026-06-15,4522,"Air Transportation, Nonscheduled",recent_event_activity
 SOBR,0001425627,SOBR Safe Inc. Common Stock,6,3,False,False,True,False,False,False,S-4,2026-06-09,2721,Periodicals: Publishing or  Publishing & Printing,recent_event_activity
-SRXH,0001471727,SRX Health Solutions Inc. Common Stock,7,4,False,True,False,False,False,True,424B3,2026-06-08,2080,Beverages,financing_or_registration_activity
+SRXH,0001471727,SRX Health Solutions Inc. Common Stock,8,5,False,True,True,False,False,True,8-K,2026-06-18,2080,Beverages,financing_or_registration_activity
 STAK,0002002453,STAK Inc. Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-06-08,3533,Oil & Gas Field Machinery & Equipment,recent_other_activity
 STEX,0001530766,Streamex Corp. Common Stock,10,3,False,True,True,False,False,False,4,2026-06-15,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 SUNE,0000022701,SUNation Energy Inc. Common Stock,5,4,False,True,True,False,False,False,425,2026-06-08,1700,Construction - Special Trade Contractors,recent_event_activity
