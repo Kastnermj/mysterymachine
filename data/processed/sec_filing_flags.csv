@@ -16,7 +16,7 @@ ALLR,0001860657,Allarity Therapeutics Inc. Common Stock,6,3,False,True,True,Fals
 ALP,0001095435,Alpha Compute Corp Common Stock,11,5,False,False,False,False,False,True,SCHEDULE 13G,2026-06-16,6199,Finance Services,financing_or_registration_activity
 ALZN,0001677077,Alzamend Neuro Inc. Common Stock,0,0,False,False,False,False,False,False,8-K,2026-04-17,2834,Pharmaceutical Preparations,quiet
 AMIX,0001617867,Autonomix Medical Inc. Common Stock,2,2,True,False,False,False,False,False,10-K/A,2026-06-15,3841,Surgical & Medical Instruments & Apparatus,recent_periodic_reporting
-AMS,0000744825,American Shared Hospital Services Common Stock,3,3,False,True,True,False,False,False,8-K,2026-06-04,8071,Services-Medical Laboratories,recent_event_activity
+AMS,0000744825,American Shared Hospital Services Common Stock,4,3,False,True,True,False,False,False,SCHEDULE 13D/A,2026-06-23,8071,Services-Medical Laboratories,recent_event_activity
 AMZE,0001880343,Amaze Holdings Inc. Common Stock,5,3,False,True,True,False,False,False,8-K,2026-06-17,5961,Retail-Catalog & Mail-Order Houses,recent_event_activity
 APUS,0001894525,Apimeds Pharmaceuticals US Inc. Common Stock,2,1,False,True,False,False,False,False,10-Q,2026-05-26,2834,Pharmaceutical Preparations,recent_periodic_reporting
 APVO,0001671584,Aptevo Therapeutics Inc. Common Stock,6,3,False,True,True,False,False,False,SCHEDULE 13G,2026-06-22,2834,Pharmaceutical Preparations,recent_event_activity
@@ -96,7 +96,7 @@ FCUV,0001590418,Focus Universal Inc. Common Stock,4,4,False,True,True,False,Fals
 FEED,0001326706,ENvue Medical Inc. Common Stock,8,3,False,True,False,False,True,True,SCHEDULE 13D/A,2026-06-22,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",financing_or_registration_activity
 FGI,0001864943,FGI Industries Ltd. Ordinary Shares,4,3,False,True,True,False,False,False,8-K,2026-06-03,3430,"Heating Equip, Except Elec & Warm Air; & Plumbing Fixtures",recent_event_activity
 FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,1,0,False,False,False,False,False,False,6-K,2026-05-18,1090,Miscellaneous Metal Ores,recent_other_activity
-GBR,0000105744,New Concept Energy Inc Common Stock,2,1,False,False,True,False,False,False,PRER14A,2026-05-22,1311,Crude Petroleum & Natural Gas,recent_event_activity
+GBR,0000105744,New Concept Energy Inc Common Stock,3,1,False,False,True,False,False,False,DEF 14A,2026-06-23,1311,Crude Petroleum & Natural Gas,recent_event_activity
 GCTK,0001506983,GlucoTrack Inc. Common Stock,5,3,False,True,True,False,False,False,PRE 14A,2026-06-17,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 GDC,0001641398,GD Culture Group Limited Common Stock,2,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-06-23,5050,Wholesale-Metals & Minerals (No Petroleum),recent_other_activity
 GMEX,0001928581,GMEX ROBOTICS CORPORATION Class A Ordinary Shares,8,0,False,False,False,False,False,False,6-K,2026-06-11,3949,"Sporting & Athletic Goods, NEC",recent_other_activity
@@ -172,9 +172,8 @@ PASG,0001787297,Passage Bio Inc. Common Stock,9,3,False,True,True,False,False,Fa
 PAVS,0001751876,Paranovus Entertainment Technology Ltd. Class A Ordinary Shares,6,2,False,False,False,False,False,True,6-K,2026-06-16,7374,Services-Computer Processing & Data Preparation,financing_or_registration_activity
 PBM,0001985062,Psyence Biomedical Ltd. Common Shares,4,0,False,False,False,False,False,False,20-F,2026-06-22,2834,Pharmaceutical Preparations,recent_other_activity
 PDYN,0001826681,Palladyne AI Corp. Common Stock,24,2,False,False,True,False,False,False,4,2026-06-08,7372,Services-Prepackaged Software,recent_event_activity
-PECER,0002088626,Peace Acquisition Corp Right,19,4,False,False,True,False,False,True,SCHEDULE 13D,2026-06-16,6770,Blank Checks,financing_or_registration_activity
 PED,0001141197,Pedevco Corp. Common Stock,4,3,False,True,True,False,False,False,4,2026-05-27,1311,Crude Petroleum & Natural Gas,recent_event_activity
-PFSA,0001859807,Profusa Inc. Common Stock,11,7,False,True,True,False,False,True,424B3,2026-06-08,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
+PFSA,0001859807,Profusa Inc. Common Stock,12,8,False,True,True,False,False,True,8-K,2026-06-23,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
 PHGE,0001739174,BiomX Inc. COmmon Stock,13,7,False,True,True,False,False,True,DEFA14A,2026-06-22,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 PLRZ,0001893645,Polyrizon Ltd. Ordinary Shares,8,0,False,False,False,False,False,False,6-K,2026-06-17,3841,Surgical & Medical Instruments & Apparatus,recent_other_activity
 PMI,0002030617,Picard Medical Inc. Common Stock,13,8,False,True,True,True,False,True,PRE 14A,2026-06-15,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
