@@ -45,7 +45,7 @@ BTTC,0002034400,Black Titan Corporation Ordinary Shares,6,1,False,False,False,Fa
 CAES,0002087965,Cantor Equity Partners VII Inc. Class A Ordinary Shares,17,6,False,False,True,True,False,True,8-K,2026-06-25,6770,Blank Checks,financing_or_registration_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,4,3,False,True,True,False,False,False,8-K,2026-06-22,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
 CCIXW,0002006291,Churchill Capital Corp IX Warrant,2,1,False,True,False,False,False,False,10-Q,2026-05-15,7373,Services-Computer Integrated Systems Design,recent_periodic_reporting
-CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,12,2,False,True,True,False,False,False,425,2026-06-25,6770,Blank Checks,recent_event_activity
+CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,13,2,False,True,True,False,False,False,425,2026-06-26,6770,Blank Checks,recent_event_activity
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,1,1,False,True,False,False,False,False,10-Q,2026-05-15,2835,In Vitro & In Vivo Diagnostic Substances,recent_periodic_reporting
 CDT,0001896212,CDT Equity Inc. Common Stock,10,3,False,False,True,False,False,False,SCHEDULE 13D/A,2026-06-23,2834,Pharmaceutical Preparations,recent_event_activity
 CEPT,0002034269,Cantor Equity Partners II Inc. Class A Ordinary Share,8,0,False,False,False,False,False,False,425,2026-06-12,6770,Blank Checks,recent_other_activity
@@ -143,7 +143,7 @@ LHAI,0002017758,Linkhome Holdings Inc. Common stock,7,4,False,True,True,False,Fa
 LNAI,0001527728,Lunai Bioworks Inc. Common Stock,5,5,False,True,True,False,False,False,8-K,2026-06-17,2834,Pharmaceutical Preparations,recent_event_activity
 LNKS,0001972074,Linkers Industries Limited Class A Ordinary Shares,4,0,False,False,False,False,False,False,4,2026-06-25,3670,Electronic Components & Accessories,recent_other_activity
 LSF,0001650696,Laird Superfood Inc. Common Stock,9,3,False,True,True,False,False,False,4,2026-06-12,2000,Food and Kindred Products,recent_event_activity
-MASK,0001993097,3 E Network Technology Group Ltd Class A Ordinary Shares,7,3,False,False,False,False,False,False,F-1,2026-06-25,7371,Services-Computer Programming Services,recent_other_activity
+MASK,0001993097,3 E Network Technology Group Ltd Class A Ordinary Shares,8,3,False,False,False,False,False,False,AW,2026-06-26,7371,Services-Computer Programming Services,recent_other_activity
 MBAI,0001610590,Check-Cap Ltd. Ordinary Share,4,0,False,False,False,False,False,False,6-K/A,2026-06-24,3844,X-Ray Apparatus & Tubes & Related Irradiation Apparatus,recent_other_activity
 MDCX,0001997296,Medicus Pharma Ltd. Common Stock  ,19,6,False,True,True,False,False,True,424B3,2026-06-04,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MGN,0001995075,Megan Holdings Limited Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-06-18,0200,Agricultural Prod-Livestock & Animal Specialties,recent_other_activity
