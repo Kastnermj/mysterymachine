@@ -1,6 +1,5 @@
 ticker,cik,company_name,recent_filing_count,recent_high_signal_count,has_recent_10k,has_recent_10q,has_recent_8k,has_recent_s1,has_recent_s3,has_recent_424b,latest_filing_type,latest_filing_date,sec_sic,sec_sic_description,sec_activity_flag
-AACP,0002102123,Apogee Acquisition Corp Class A Ordinary Shares,1,1,False,False,True,False,False,False,8-K,2026-05-22,6770,Blank Checks,recent_event_activity
-ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,6,1,False,False,True,False,False,False,SCHEDULE 13G,2026-06-24,2834,Pharmaceutical Preparations,recent_event_activity
+ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,7,1,False,False,True,False,False,False,3,2026-06-29,2834,Pharmaceutical Preparations,recent_event_activity
 ADTX,0001726711,"Aditxt, Inc.",46,8,False,True,True,False,False,False,SCHEDULE 13G,2026-06-26,2834,Pharmaceutical Preparations,recent_event_activity
 AEHL,0001470683,Antelope Enterprise Holdings Limited Class A Ordinary Shares,2,1,False,False,False,False,False,True,424B5,2026-05-26,4899,"Communications Services, NEC",financing_or_registration_activity
 AEMD,0000882291,Aethlon Medical Inc. Common Stock,6,5,True,False,True,True,False,True,S-1,2026-06-22,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
@@ -107,7 +106,7 @@ GOSS,0001728117,Gossamer Bio Inc.,18,5,False,False,True,False,False,False,8-K,20
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,17,3,False,False,True,True,False,False,4,2026-06-22,2834,Pharmaceutical Preparations,financing_or_registration_activity
 GRAF,0001897463,Graf Global Corp. Class A ordinary shares,26,5,False,False,True,False,False,False,8-K,2026-06-26,6770,Blank Checks,recent_event_activity
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,4,4,True,False,True,False,False,False,8-K,2026-06-18,2834,Pharmaceutical Preparations,recent_event_activity
-GRML,0001907223,Greenland Mines Ltd. Common Stock,13,8,False,True,True,False,False,True,4,2026-06-26,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
+GRML,0001907223,Greenland Mines Ltd. Common Stock,14,9,False,True,True,False,False,True,8-K,2026-06-29,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,5,1,False,False,True,False,False,False,8-K,2026-06-22,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,3,2,False,False,True,False,False,False,8-K,2026-06-25,7372,Services-Prepackaged Software,recent_event_activity
 HBIO,0001123494,Harvard Bioscience Inc. Common Stock,8,1,False,False,True,False,False,False,4,2026-06-12,3826,Laboratory Analytical Instruments,recent_event_activity
