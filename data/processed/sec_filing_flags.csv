@@ -15,7 +15,7 @@ ALLR,0001860657,Allarity Therapeutics Inc. Common Stock,2,2,False,False,True,Fal
 ALP,0001095435,Alpha Compute Corp Common Stock,10,5,False,False,False,False,False,True,SCHEDULE 13G,2026-06-16,6199,Finance Services,financing_or_registration_activity
 ALZN,0001677077,Alzamend Neuro Inc. Common Stock,0,0,False,False,False,False,False,False,8-K,2026-04-17,2834,Pharmaceutical Preparations,quiet
 AMIX,0001617867,Autonomix Medical Inc. Common Stock,3,3,True,False,True,False,False,False,8-K,2026-06-24,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
-AMS,0000744825,American Shared Hospital Services Common Stock,4,1,False,False,True,False,False,False,SCHEDULE 13D/A,2026-06-25,8071,Services-Medical Laboratories,recent_event_activity
+AMS,0000744825,American Shared Hospital Services Common Stock,5,2,False,False,True,False,False,False,8-K,2026-06-30,8071,Services-Medical Laboratories,recent_event_activity
 AMZE,0001880343,Amaze Holdings Inc. Common Stock,4,2,False,False,True,False,False,False,8-K,2026-06-17,5961,Retail-Catalog & Mail-Order Houses,recent_event_activity
 APUS,0001894525,Apimeds Pharmaceuticals US Inc. Common Stock,1,1,False,True,False,False,False,False,10-Q,2026-05-26,2834,Pharmaceutical Preparations,recent_periodic_reporting
 APVO,0001671584,Aptevo Therapeutics Inc. Common Stock,4,1,False,False,True,False,False,False,SCHEDULE 13G,2026-06-22,2834,Pharmaceutical Preparations,recent_event_activity
@@ -89,7 +89,7 @@ EPM,0001006655,Evolution Petroleum Corporation Inc. Common Stock,0,0,False,False
 ERNA,0000748592,Ernexa Therapeutics Inc. Common Stock,2,1,False,False,True,False,False,False,8-K,2026-06-26,2834,Pharmaceutical Preparations,recent_event_activity
 EVGN,0001574565,Evogene Ltd Ordinary Shares,6,2,False,False,False,False,False,True,6-K,2026-06-16,2870,Agricultural Chemicals,financing_or_registration_activity
 EVTV,0001563568,Envirotech Vehicles Inc. Common Stock,11,3,False,True,True,False,False,False,8-K,2026-06-29,3714,Motor Vehicle Parts & Accessories,recent_event_activity
-EZGO,0001806904,EZGO Technologies Ltd. Ordinary Shares,3,0,False,False,False,False,False,False,3,2026-06-30,3751,"Motorcycles, Bicycles & Parts",recent_other_activity
+EZGO,0001806904,EZGO Technologies Ltd. Ordinary Shares,8,0,False,False,False,False,False,False,3,2026-06-30,3751,"Motorcycles, Bicycles & Parts",recent_other_activity
 FABC,0001086745,Fabric.AI Inc. Common Stock,10,1,False,False,True,False,False,False,8-K,2026-06-25,4899,"Communications Services, NEC",recent_event_activity
 FBLG,0001958777,FibroBiologics Inc. Common Stock,7,2,False,False,True,False,False,False,D,2026-06-29,2834,Pharmaceutical Preparations,recent_event_activity
 FCHL,0002023796,Fitness Champs Holdings Limited Common Stock,5,0,False,False,False,False,False,False,6-K,2026-06-30,7990,Services-Miscellaneous Amusement & Recreation,recent_other_activity
@@ -116,7 +116,7 @@ HPAI,0002001699,Helport AI Limited Ordinary Shares,2,0,False,False,False,False,F
 HTOO,0001819794,Fusion Fuel Green PLC Class A Ordinary Shares,6,0,False,False,False,False,False,False,6-K,2026-06-10,3590,Misc Industrial & Commercial Machinery & Equipment,recent_other_activity
 HUBC,0001905660,Hub Cyber Security Ltd. Ordinary Shares,60,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-06-12,3576,Computer Communications Equipment,recent_other_activity
 HUMA,0001818382,Humacyte Inc.,25,6,False,False,True,False,False,True,SCHEDULE 13G,2026-06-22,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
-IDAI,0001718939,T Stamp Inc. Class A Common Stock,7,1,False,False,True,False,False,False,8-K,2026-06-25,7372,Services-Prepackaged Software,recent_event_activity
+IDAI,0001718939,T Stamp Inc. Class A Common Stock,8,1,False,False,True,False,False,False,SCHEDULE 13G/A,2026-06-30,7372,Services-Prepackaged Software,recent_event_activity
 IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,4,1,False,False,True,False,False,False,8-K,2026-06-17,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 INDO,0001757840,Indonesia Energy Corporation Limited Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-06-18,1311,Crude Petroleum & Natural Gas,recent_other_activity
 INKT,0001840229,MiNK Therapeutics Inc. Common Stock,7,1,False,False,True,False,False,False,8-K,2026-06-23,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
