@@ -44,8 +44,8 @@ BTAI,0001720893,BioXcel Therapeutics Inc. Common Stock,12,0,False,False,False,Fa
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-06-23,7371,Services-Computer Programming Services,recent_other_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,5,5,False,True,True,True,False,False,S-1,2026-06-29,5030,Wholesale-Lumber & Other Construction Materials,financing_or_registration_activity
 CCIXW,0002006291,Churchill Capital Corp IX Warrant,0,0,False,False,False,False,False,False,10-Q,2026-05-15,7373,Services-Computer Integrated Systems Design,quiet
-CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,13,1,False,False,True,False,False,False,SCHEDULE 13D/A,2026-06-26,6770,Blank Checks,recent_event_activity
-CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,0,0,False,False,False,False,False,False,10-Q,2026-05-15,2835,In Vitro & In Vivo Diagnostic Substances,quiet
+CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,14,1,False,False,True,False,False,False,SCHEDULE 13G,2026-07-02,6770,Blank Checks,recent_event_activity
+CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,4,0,False,False,False,False,False,False,4,2026-07-02,2835,In Vitro & In Vivo Diagnostic Substances,recent_other_activity
 CDT,0001896212,CDT Equity Inc. Common Stock,7,3,False,False,True,False,False,False,8-K,2026-06-29,2834,Pharmaceutical Preparations,recent_event_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-06-02,1700,Construction - Special Trade Contractors,recent_event_activity
 CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-07-01,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
@@ -159,7 +159,7 @@ NVVE,0001836875,Nuvve Holding Corp. Common Stock,11,7,False,False,True,False,Fal
 NXL,0001527352,Nexalin Technology Inc. Common Stock,3,2,False,False,True,False,False,False,PRE 14A,2026-06-29,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 NXTC,0001661059,NextCure Inc. Common Stock,8,2,False,False,True,False,False,False,8-K,2026-06-25,2834,Pharmaceutical Preparations,recent_event_activity
 NXXT,0001817004,NextNRG Inc. Common Stock,8,5,False,False,True,True,False,True,4,2026-06-22,5500,Retail-Auto Dealers & Gasoline Stations,financing_or_registration_activity
-OESX,0001409375,Orion Energy Systems Inc. Common Stock,8,3,True,False,True,False,False,False,4,2026-06-25,3640,Electric Lighting & Wiring Equipment,recent_event_activity
+OESX,0001409375,Orion Energy Systems Inc. Common Stock,9,3,True,False,True,False,False,False,SCHEDULE 13G/A,2026-07-02,3640,Electric Lighting & Wiring Equipment,recent_event_activity
 OLOX,0001023994,Olenox Industries Inc. Common Stock,5,5,True,False,True,False,False,False,10-K,2026-06-30,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
 ONCO,0001782107,Onconetix Inc. Common Stock,5,3,False,False,True,True,False,True,425,2026-06-24,2834,Pharmaceutical Preparations,financing_or_registration_activity
 ORKT,0001979407,Orangekloud Technology Inc. Class A Ordinary Shares,3,0,False,False,False,False,False,False,S-8,2026-06-10,7372,Services-Prepackaged Software,recent_other_activity
@@ -227,6 +227,7 @@ TRUG,0001857086,TruGolf Holdings Inc. Class A Common Stock,2,1,False,True,False,
 TVGN,0001860871,Tevogen Bio Holdings Inc. Common Stock,3,2,False,False,False,False,True,True,424B3,2026-06-26,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 TWAV,0000746210,TaoWeave Inc. Common Stock,2,2,False,False,True,False,False,False,8-K,2026-06-17,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
 UBXG,0001888525,U-BX Technology Ltd. Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-05-27,7370,"Services-Computer Programming, Data Processing, Etc.",recent_other_activity
+USA,0000799195,Liberty All-Star Equity Fund Common Stock,6,0,False,False,False,False,False,False,DEFA14A,2026-06-25,,,recent_other_activity
 USDEW,0002080215,StablecoinX Inc. Warrants,16,3,False,False,True,False,False,True,8-K,2026-07-02,6199,Finance Services,financing_or_registration_activity
 VBIO,0001787740,Valion Bio Inc. Common Stock,6,2,False,False,True,False,False,False,4,2026-06-18,2834,Pharmaceutical Preparations,recent_event_activity
 VEEE,0001855509,Twin Vee PowerCats Co. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-05-20,3730,Ship & Boat Building & Repairing,recent_event_activity
