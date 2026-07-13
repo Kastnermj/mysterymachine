@@ -79,7 +79,7 @@ EAF,0000931148,GrafTech International Ltd. Common Stock,3,0,False,False,False,Fa
 EDBL,0001809750,Edible Garden AG Incorporated Common Stock,15,6,False,False,True,False,False,False,8-K,2026-07-10,0100,Agricultural Production-Crops,recent_event_activity
 ELAB,0001840563,PMGC Holdings Inc. Common Stock,12,5,False,False,True,False,False,False,8-K,2026-07-09,2834,Pharmaceutical Preparations,recent_event_activity
 ELBM,0001907184,Electra Battery Materials Corporation Common Stock,4,0,False,False,False,False,False,False,6-K,2026-07-06,1400,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),recent_other_activity
-ELPW,0002015691,Elong Power Holding Limited Class A Ordinary Shares,7,2,False,False,False,False,False,False,EFFECT,2026-07-09,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",recent_other_activity
+ELPW,0002015691,Elong Power Holding Limited Class A Ordinary Shares,8,3,False,False,False,False,False,True,424B4,2026-07-13,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",financing_or_registration_activity
 ELTK,0001024672,Eltek Ltd.,3,0,False,False,False,False,False,False,6-K,2026-07-02,3672,Printed Circuit Boards,recent_other_activity
 ENSC,0001716947,Ensysce Biosciences Inc. Common Stock,2,1,False,False,False,False,True,False,EFFECT,2026-06-26,2834,Pharmaceutical Preparations,financing_or_registration_activity
 ENVB,0000890821,Enveric Biosciences Inc. Common Stock,12,3,False,False,True,False,False,True,8-K,2026-06-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
@@ -100,6 +100,7 @@ FGMCR,0001906364,FG Merger II Corp. Rights,11,1,False,False,True,False,False,Fal
 FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,3,0,False,False,False,False,False,False,6-K,2026-07-10,1090,Miscellaneous Metal Ores,recent_other_activity
 GBR,0000105744,New Concept Energy Inc Common Stock,1,0,False,False,False,False,False,False,DEF 14A,2026-06-23,1311,Crude Petroleum & Natural Gas,recent_other_activity
 GCTK,0001506983,GlucoTrack Inc. Common Stock,1,0,False,False,False,False,False,False,PRE 14A,2026-06-17,3841,Surgical & Medical Instruments & Apparatus,recent_other_activity
+GFUZ,0002074850,General Fusion Group Ltd. Common Shares,33,5,False,False,True,False,False,True,25-NSE,2026-07-10,4911,Electric Services,financing_or_registration_activity
 GMEX,0001928581,GMEX ROBOTICS CORPORATION Class A Ordinary Shares,9,0,False,False,False,False,False,False,3,2026-07-10,3949,"Sporting & Athletic Goods, NEC",recent_other_activity
 GNPX,0001595248,Genprex Inc. Common Stock,5,4,False,False,True,False,True,False,S-8,2026-06-26,2834,Pharmaceutical Preparations,financing_or_registration_activity
 GOSS,0001728117,Gossamer Bio Inc.,17,5,False,False,True,False,False,False,SCHEDULE 13D/A,2026-07-01,2834,Pharmaceutical Preparations,recent_event_activity
