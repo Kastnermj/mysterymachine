@@ -15,7 +15,6 @@ ALGS,0001799448,Aligos Therapeutics Inc. Common Stock,8,1,False,False,True,False
 ALLR,0001860657,Allarity Therapeutics Inc. Common Stock,3,3,False,False,True,False,False,False,8-K,2026-07-01,2834,Pharmaceutical Preparations,recent_event_activity
 ALP,0001095435,Alpha Compute Corp Common Stock,5,1,False,False,False,False,False,True,SCHEDULE 13G,2026-07-10,6199,Finance Services,financing_or_registration_activity
 ALPXR,0002125551,Alpex Acquisition Corporation Rights,18,5,False,False,True,False,False,True,SCHEDULE 13G,2026-07-02,6770,Blank Checks,financing_or_registration_activity
-ALPXU,0002125551,Alpex Acquisition Corporation Unit,18,5,False,False,True,False,False,True,SCHEDULE 13G,2026-07-02,6770,Blank Checks,financing_or_registration_activity
 ALZN,0001677077,Alzamend Neuro Inc. Common Stock,0,0,False,False,False,False,False,False,8-K,2026-04-17,2834,Pharmaceutical Preparations,quiet
 AMIX,0001617867,Autonomix Medical Inc. Common Stock,3,3,False,False,True,False,False,False,8-K,2026-07-10,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 AMS,0000744825,American Shared Hospital Services Common Stock,6,3,False,False,True,False,False,False,8-K,2026-07-13,8071,Services-Medical Laboratories,recent_event_activity
@@ -109,6 +108,7 @@ GRAF,0001897463,Graf Global Corp. Class A ordinary shares,27,5,False,False,True,
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,4,4,True,False,True,False,False,False,8-K,2026-06-18,2834,Pharmaceutical Preparations,recent_event_activity
 GRML,0001907223,Greenland Mines Ltd. Common Stock,11,7,False,False,True,False,False,True,8-K,2026-07-08,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,4,1,False,False,True,False,False,False,8-K,2026-06-22,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
+GTENW,0001986817,Gores Holdings X Inc. Warrants,0,0,False,False,False,False,False,False,SCHEDULE 13G,2026-05-15,6770,Blank Checks,quiet
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,5,1,False,False,True,False,False,False,ARS,2026-07-02,7372,Services-Prepackaged Software,recent_event_activity
 HBIO,0001123494,Harvard Bioscience Inc. Common Stock,7,1,False,False,True,False,False,False,4,2026-06-12,3826,Laboratory Analytical Instruments,recent_event_activity
 HCAI,0001958399,Huachen AI Parking Management Technology Holding Co. Ltd. Class A Ordinary Shares,4,1,False,False,False,False,False,False,6-K,2026-07-10,3990,Miscellaneous Manufacturing Industries,recent_other_activity
@@ -145,7 +145,6 @@ MBAI,0001610590,Check-Cap Ltd. Ordinary Share,3,0,False,False,False,False,False,
 MDCX,0001997296,Medicus Pharma Ltd. Common Stock  ,15,2,False,False,True,False,False,True,424B3,2026-06-04,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MGN,0001995075,Megan Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-06-18,0200,Agricultural Prod-Livestock & Animal Specialties,recent_other_activity
 MI,0001958713,NFT Limited Class A Ordinary Share,0,0,False,False,False,False,False,False,6-K,2026-05-12,6199,Finance Services,quiet
-MIACU,0002136530,Meridian3 Industrials Acquisition Corp Units,25,5,False,False,True,True,False,True,8-K,2026-07-10,6770,Blank Checks,financing_or_registration_activity
 MLAAW,0002094265,Mountain Lake Acquisition Corp. II Warrants,0,0,False,False,False,False,False,False,425,2026-05-26,6770,Blank Checks,quiet
 MNDR,0001976695,Mobile-health Network Solutions Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-06-18,7372,Services-Prepackaged Software,recent_other_activity
 MOBX,0001855467,Mobix Labs Inc. Class A Common Stock,17,5,False,False,True,True,False,True,S-1/A,2026-07-09,3674,Semiconductors & Related Devices,financing_or_registration_activity
@@ -200,6 +199,7 @@ REVB,0001810560,Revelation Biosciences Inc. Common Stock,4,3,False,False,True,Fa
 RGNT,0001912966,Regentis Biomaterials Ltd. Ordinary Shares,18,3,False,False,False,False,False,True,EFFECT,2026-07-13,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",financing_or_registration_activity
 RMTI,0001041024,Rockwell Medical Inc. Common Stock,12,2,False,False,True,False,False,False,4,2026-07-06,2834,Pharmaceutical Preparations,recent_event_activity
 RNAZ,0001829635,TransCode Therapeutics Inc. Common Stock,6,4,False,False,True,False,False,False,8-K,2026-07-02,2834,Pharmaceutical Preparations,recent_event_activity
+RNGTW,0002078653,Range Capital Acquisition Corp II Warrants,0,0,False,False,False,False,False,False,10-Q,2026-05-15,6770,Blank Checks,quiet
 RNTX,0001420565,Rein Therapeutics Inc. Common Stock,3,0,False,False,False,False,False,False,ARS,2026-06-08,2834,Pharmaceutical Preparations,recent_other_activity
 RPGL,0001912884,Republic Power Group Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-07-10,7372,Services-Prepackaged Software,recent_other_activity
 RTACW,0002035173,Renatus Tactical Acquisition Corp I Warrant,1,1,False,False,True,False,False,False,8-K,2026-06-09,6770,Blank Checks,recent_event_activity
