@@ -1,6 +1,6 @@
 ticker,cik,company_name,recent_filing_count,recent_high_signal_count,has_recent_10k,has_recent_10q,has_recent_8k,has_recent_s1,has_recent_s3,has_recent_424b,latest_filing_type,latest_filing_date,sec_sic,sec_sic_description,sec_activity_flag
 ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,11,1,False,False,True,False,False,False,4,2026-07-16,2834,Pharmaceutical Preparations,recent_event_activity
-ADTX,0001726711,"Aditxt, Inc.",44,5,False,False,True,False,False,False,SCHEDULE 13G/A,2026-07-02,2834,Pharmaceutical Preparations,recent_event_activity
+ADTX,0001726711,"Aditxt, Inc.",45,6,False,False,True,False,False,False,8-K,2026-07-17,2834,Pharmaceutical Preparations,recent_event_activity
 AEHL,0001470683,Antelope Enterprise Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-06-30,4899,"Communications Services, NEC",recent_other_activity
 AEMD,0000882291,Aethlon Medical Inc. Common Stock,14,9,True,False,True,True,False,True,8-K,2026-07-08,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
 AESPW,0002082526,Aeon Acquisition I Corp. Warrants,11,4,False,False,True,False,False,True,SCHEDULE 13G/A,2026-07-14,6770,Blank Checks,financing_or_registration_activity
@@ -111,7 +111,7 @@ GOSS,0001728117,Gossamer Bio Inc.,17,5,False,False,True,False,False,False,8-K,20
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,15,2,False,False,True,False,False,False,8-K,2026-07-10,2834,Pharmaceutical Preparations,recent_event_activity
 GRAF,0001897463,Graf Global Corp. Class A ordinary shares,29,6,False,False,True,False,False,False,425,2026-07-16,6770,Blank Checks,recent_event_activity
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,4,4,True,False,True,False,False,False,8-K,2026-06-18,2834,Pharmaceutical Preparations,recent_event_activity
-GRML,0001907223,Greenland Mines Ltd. Common Stock,11,7,False,False,True,False,False,True,8-K,2026-07-08,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
+GRML,0001907223,Greenland Mines Ltd. Common Stock,12,7,False,False,True,False,False,True,4,2026-07-17,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,4,1,False,False,True,False,False,False,8-K,2026-06-22,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
 GTENW,0001986817,Gores Holdings X Inc. Warrants,0,0,False,False,False,False,False,False,SCHEDULE 13G,2026-05-15,6770,Blank Checks,quiet
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,5,1,False,False,True,False,False,False,ARS,2026-07-02,7372,Services-Prepackaged Software,recent_event_activity
