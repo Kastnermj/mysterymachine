@@ -104,7 +104,7 @@ FDMMU,0002129659,Freedom Metals Acquisition Corp. Units,14,4,False,False,True,Fa
 FEED,0001326706,ENvue Medical Inc. Common Stock,5,2,False,False,True,False,False,False,PRE 14A,2026-07-14,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",recent_event_activity
 FGI,0001864943,FGI Industries Ltd. Ordinary Shares,0,0,False,False,False,False,False,False,8-K,2026-06-03,3430,"Heating Equip, Except Elec & Warm Air; & Plumbing Fixtures",quiet
 FMACR,0002099232,Future Money Acquisition Corporation Rights,1,1,False,True,False,False,False,False,10-Q,2026-06-10,6770,Blank Checks,recent_periodic_reporting
-FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,5,0,False,False,False,False,False,False,6-K,2026-07-20,1090,Miscellaneous Metal Ores,recent_other_activity
+FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,6,0,False,False,False,False,False,False,4,2026-07-20,1090,Miscellaneous Metal Ores,recent_other_activity
 FTHAW,0002097986,Forefront Tech Holdings Acquisition Corp Warrant,2,2,False,True,True,False,False,False,8-K,2026-06-18,6770,Blank Checks,recent_event_activity
 GBR,0000105744,New Concept Energy Inc Common Stock,1,0,False,False,False,False,False,False,DEF 14A,2026-06-23,1311,Crude Petroleum & Natural Gas,recent_other_activity
 GCTK,0001506983,GlucoTrack Inc. Common Stock,5,1,False,False,True,False,False,False,ARS,2026-07-17,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
@@ -210,7 +210,6 @@ RTACW,0002035173,Renatus Tactical Acquisition Corp I Warrant,1,1,False,False,Tru
 RVSN,0001743905,Rail Vision Ltd. Ordinary Share,1,0,False,False,False,False,False,False,6-K,2026-06-24,3743,Railroad Equipment,recent_other_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,3,1,False,False,True,False,False,False,8-K,2026-07-10,2834,Pharmaceutical Preparations,recent_event_activity
 SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,1,1,True,False,False,False,False,False,10-K,2026-07-10,7372,Services-Prepackaged Software,recent_periodic_reporting
-SHOTR,0002104879,RMG ML Sports Holdings Rights,15,5,False,False,True,False,False,True,8-K,2026-07-13,6770,Blank Checks,financing_or_registration_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-06-24,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",recent_other_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,3,2,False,False,True,False,False,False,SCHEDULE 13G/A,2026-07-07,4955,Hazardous Waste Management,recent_event_activity
 SMTK,0001817760,SmartKem Inc. Common Stock,9,6,False,False,True,False,True,True,424B3,2026-07-10,3674,Semiconductors & Related Devices,financing_or_registration_activity
@@ -237,7 +236,7 @@ VBIO,0001787740,Valion Bio Inc. Common Stock,7,3,False,False,True,True,False,Fal
 VMAR,0001813783,Vision Marine Technologies Inc. Common Shares,17,0,False,False,False,False,False,False,6-K,2026-07-17,3730,Ship & Boat Building & Repairing,recent_other_activity
 VNRX,0000093314,VolitionRX Limited Common Stock,5,4,False,False,True,False,True,True,EFFECT,2026-07-17,2835,In Vitro & In Vivo Diagnostic Substances,financing_or_registration_activity
 VRAX,0001885827,Virax Biolabs Group Limited Ordinary Shares,6,0,False,False,False,False,False,False,6-K,2026-07-16,2835,In Vitro & In Vivo Diagnostic Substances,recent_other_activity
-VTAK,0001716621,Catheter Precision Inc. Common Stock,7,5,False,False,True,True,False,True,8-K,2026-07-15,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
+VTAK,0001716621,Catheter Precision Inc. Common Stock,8,5,False,False,True,True,False,True,SCHEDULE 13G,2026-07-20,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
 WFCF,0001360565,Where Food Comes From Inc. Common Stock,0,0,False,False,False,False,False,False,8-K,2026-05-15,7372,Services-Prepackaged Software,quiet
 WIMI,0001770088,WiMi Hologram Cloud Inc. Class B Ordinary Shares,0,0,False,False,False,False,False,False,3,2026-05-22,7372,Services-Prepackaged Software,quiet
 WLDS,0001887673,Wearable Devices Ltd. Ordinary Share,1,0,False,False,False,False,False,False,6-K,2026-06-17,3576,Computer Communications Equipment,recent_other_activity
