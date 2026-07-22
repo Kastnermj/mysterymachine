@@ -21,6 +21,7 @@ AMIX,0001617867,Autonomix Medical Inc. Common Stock,4,4,False,False,True,False,F
 AMS,0000744825,American Shared Hospital Services Common Stock,6,2,False,False,True,False,False,False,3,2026-07-16,8071,Services-Medical Laboratories,recent_event_activity
 APUS,0001894525,Apimeds Pharmaceuticals US Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-07-13,2834,Pharmaceutical Preparations,recent_event_activity
 APVO,0001671584,Aptevo Therapeutics Inc. Common Stock,3,1,False,False,True,False,False,False,8-K,2026-06-30,2834,Pharmaceutical Preparations,recent_event_activity
+APXTW,0002079253,Apex Treasury Corporation Warrants,2,1,False,False,True,False,False,False,425,2026-07-22,6770,Blank Checks,recent_event_activity
 ARTL,0001621221,Artelo Biosciences Inc. Common Stock,11,1,False,False,True,False,False,False,4,2026-07-21,2834,Pharmaceutical Preparations,recent_event_activity
 ASBP,0001847345,Aspire Biopharma Holdings Inc. Common Stock,5,4,False,False,True,False,False,False,8-K,2026-07-20,2834,Pharmaceutical Preparations,recent_event_activity
 ATRA,0001604464,Atara Biotherapeutics Inc. Common Stock,9,2,False,False,True,False,False,False,3,2026-07-06,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
@@ -74,7 +75,6 @@ CTXR,0001506251,Citius Pharmaceuticals Inc. Common Stock,0,0,False,False,False,F
 CVKD,0001937993,Cadrenal Therapeutics Inc. Common Stock,17,8,False,False,True,False,True,True,8-K,2026-07-21,2834,Pharmaceutical Preparations,financing_or_registration_activity
 CVM,0000725363,Cel-Sci Corporation Common Stock,7,2,False,False,True,False,False,True,ARS,2026-07-02,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 CXAI,0001820875,CXApp Inc. Class A Common Stock,9,2,False,False,True,False,False,False,8-K,2026-07-06,7372,Services-Prepackaged Software,recent_event_activity
-CXIIU,0002114227,Churchill Capital Corp XII Units,3,3,False,True,True,False,False,False,8-K,2026-07-14,6770,Blank Checks,recent_event_activity
 DCOY,0001615219,Decoy Therapeutics Inc. Common Stock,7,5,False,False,True,True,False,True,EFFECT,2026-07-17,2834,Pharmaceutical Preparations,financing_or_registration_activity
 DERM,0001867066,Journey Medical Corporation Common Stock,10,1,False,False,True,False,False,False,SCHEDULE 13G/A,2026-07-15,2834,Pharmaceutical Preparations,recent_event_activity
 DFLI,0001847986,Dragonfly Energy Holdings Corp. Common Stock (NV),6,4,False,False,True,False,False,False,4,2026-06-23,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",recent_event_activity
