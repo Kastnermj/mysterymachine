@@ -45,6 +45,7 @@ BNZI,0001826011,Banzai International Inc. Class A Common Stock,6,6,False,False,T
 BPRE,0001551047,Bluerock Private Real Estate Fund Common Shares of Beneficial Interest,6,1,False,False,True,False,False,False,4,2026-07-21,,,recent_event_activity
 BRKHW,0002098707,Burtech Acquisition Corp II Warrants,2,2,False,True,True,False,False,False,8-K,2026-07-10,6770,Blank Checks,recent_event_activity
 BRN,0000010048,Barnwell Industries Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-07-06,1311,Crude Petroleum & Natural Gas,recent_event_activity
+BRTMU,0002131350,B&R Technology Merger Corp. Units,13,3,False,False,True,True,False,True,4,2026-07-23,6770,Blank Checks,financing_or_registration_activity
 BTAI,0001720893,BioXcel Therapeutics Inc. Common Stock,5,1,False,False,True,False,False,False,8-K,2026-07-06,2834,Pharmaceutical Preparations,recent_event_activity
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-07-21,7371,Services-Computer Programming Services,recent_other_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,14,6,False,False,True,True,False,False,3,2026-07-23,5030,Wholesale-Lumber & Other Construction Materials,financing_or_registration_activity
@@ -81,7 +82,7 @@ DFNS,0001787518,T3 Defense Inc. Common Stock,16,10,False,False,True,False,False,
 DLXY,0002025218,Delixy Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,20-F/A,2026-07-22,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
 DMAAR,0002028614,Drugs Made In America Acquisition Corp. Rights,3,1,False,False,True,False,False,False,425,2026-07-20,6770,Blank Checks,recent_event_activity
 DXST,0001958133,Decent Holding Inc Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-07-14,4950,Sanitary Services,recent_other_activity
-EAF,0000931148,GrafTech International Ltd. Common Stock,4,1,False,False,True,False,False,False,8-K,2026-07-24,3620,Electrical Industrial Apparatus,recent_event_activity
+EAF,0000931148,GrafTech International Ltd. Common Stock,5,2,False,True,True,False,False,False,10-Q,2026-07-24,3620,Electrical Industrial Apparatus,recent_event_activity
 EDBL,0001809750,Edible Garden AG Incorporated Common Stock,12,6,False,False,True,False,False,False,8-K,2026-07-10,0100,Agricultural Production-Crops,recent_event_activity
 ELAB,0001840563,PMGC Holdings Inc. Common Stock,3,3,False,False,True,False,False,False,8-K,2026-07-09,2834,Pharmaceutical Preparations,recent_event_activity
 ELBM,0001907184,Electra Battery Materials Corporation Common Stock,3,0,False,False,False,False,False,False,6-K,2026-07-20,1400,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),recent_other_activity
@@ -208,6 +209,7 @@ RTACW,0002035173,Renatus Tactical Acquisition Corp I Warrant,0,0,False,False,Fal
 RVSN,0001743905,Rail Vision Ltd. Ordinary Share,1,0,False,False,False,False,False,False,6-K,2026-06-24,3743,Railroad Equipment,recent_other_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,4,3,False,False,True,False,False,True,424B5,2026-07-20,2834,Pharmaceutical Preparations,financing_or_registration_activity
 SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,1,1,True,False,False,False,False,False,10-K,2026-07-10,7372,Services-Prepackaged Software,recent_periodic_reporting
+SHOTR,0002104879,RMG ML Sports Holdings Rights,6,5,False,False,True,False,False,True,8-K,2026-07-13,6770,Blank Checks,financing_or_registration_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-06-24,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",recent_other_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,5,3,False,False,True,False,False,False,PRE 14A,2026-07-24,4955,Hazardous Waste Management,recent_event_activity
 SMTK,0001817760,SmartKem Inc. Common Stock,10,7,False,False,True,False,True,True,8-K,2026-07-21,3674,Semiconductors & Related Devices,financing_or_registration_activity
