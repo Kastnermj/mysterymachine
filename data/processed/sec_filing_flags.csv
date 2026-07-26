@@ -45,7 +45,6 @@ BNZI,0001826011,Banzai International Inc. Class A Common Stock,6,6,False,False,T
 BPRE,0001551047,Bluerock Private Real Estate Fund Common Shares of Beneficial Interest,6,1,False,False,True,False,False,False,4,2026-07-21,,,recent_event_activity
 BRKHW,0002098707,Burtech Acquisition Corp II Warrants,2,2,False,True,True,False,False,False,8-K,2026-07-10,6770,Blank Checks,recent_event_activity
 BRN,0000010048,Barnwell Industries Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-07-06,1311,Crude Petroleum & Natural Gas,recent_event_activity
-BRTMU,0002131350,B&R Technology Merger Corp. Units,13,3,False,False,True,True,False,True,4,2026-07-23,6770,Blank Checks,financing_or_registration_activity
 BTAI,0001720893,BioXcel Therapeutics Inc. Common Stock,5,1,False,False,True,False,False,False,8-K,2026-07-06,2834,Pharmaceutical Preparations,recent_event_activity
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-07-21,7371,Services-Computer Programming Services,recent_other_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,17,6,False,False,True,True,False,False,4/A,2026-07-24,5030,Wholesale-Lumber & Other Construction Materials,financing_or_registration_activity
@@ -209,7 +208,6 @@ RTACW,0002035173,Renatus Tactical Acquisition Corp I Warrant,1,1,False,False,Tru
 RVSN,0001743905,Rail Vision Ltd. Ordinary Share,1,0,False,False,False,False,False,False,6-K,2026-06-24,3743,Railroad Equipment,recent_other_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,4,3,False,False,True,False,False,True,424B5,2026-07-20,2834,Pharmaceutical Preparations,financing_or_registration_activity
 SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,1,1,True,False,False,False,False,False,10-K,2026-07-10,7372,Services-Prepackaged Software,recent_periodic_reporting
-SHOTR,0002104879,RMG ML Sports Holdings Rights,4,3,False,False,True,False,False,False,8-K,2026-07-13,6770,Blank Checks,recent_event_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-06-24,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",recent_other_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,5,3,False,False,True,False,False,False,PRE 14A,2026-07-24,4955,Hazardous Waste Management,recent_event_activity
 SMTK,0001817760,SmartKem Inc. Common Stock,10,7,False,False,True,False,True,True,8-K,2026-07-21,3674,Semiconductors & Related Devices,financing_or_registration_activity
