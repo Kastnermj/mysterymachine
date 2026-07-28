@@ -15,7 +15,7 @@ ALGS,0001799448,Aligos Therapeutics Inc. Common Stock,8,1,False,False,True,False
 ALLR,0001860657,Allarity Therapeutics Inc. Common Stock,2,2,False,False,True,False,False,False,8-K,2026-07-01,2834,Pharmaceutical Preparations,recent_event_activity
 ALP,0001095435,Alpha Compute Corp Common Stock,7,0,False,False,False,False,False,False,6-K,2026-07-28,6199,Finance Services,recent_other_activity
 ALZN,0001677077,Alzamend Neuro Inc. Common Stock,2,2,True,False,True,False,False,False,10-K,2026-07-22,2834,Pharmaceutical Preparations,recent_event_activity
-AMIX,0001617867,Autonomix Medical Inc. Common Stock,4,4,False,False,True,False,False,False,8-K,2026-07-15,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
+AMIX,0001617867,Autonomix Medical Inc. Common Stock,5,5,False,False,True,False,False,False,8-K,2026-07-28,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 AMS,0000744825,American Shared Hospital Services Common Stock,7,2,False,False,True,False,False,False,4,2026-07-24,8071,Services-Medical Laboratories,recent_event_activity
 APUS,0001894525,Apimeds Pharmaceuticals US Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-07-13,2834,Pharmaceutical Preparations,recent_event_activity
 APVO,0001671584,Aptevo Therapeutics Inc. Common Stock,5,2,False,False,True,False,False,False,8-K,2026-07-27,2834,Pharmaceutical Preparations,recent_event_activity
@@ -41,11 +41,10 @@ BIAF,0001712762,bioAffinity Technologies Inc. Common Stock,9,8,False,False,True,
 BIYA,0001944712,Baiya International Group Inc Class A Ordinary Shares,4,1,False,False,False,False,False,False,F-3,2026-07-23,7361,Services-Employment Agencies,recent_other_activity
 BLRKW,0002081532,Bluerock Acquisition Corp. Warrants,0,0,False,False,False,False,False,False,10-Q,2026-05-14,6770,Blank Checks,quiet
 BNRG,0001901215,Brenmiller Energy Ltd Ordinary Shares,10,2,False,False,False,False,False,False,6-K,2026-07-27,3433,"Heating Equipment, Except Electric & Warm Air Furnaces",recent_other_activity
-BNZI,0001826011,Banzai International Inc. Class A Common Stock,7,6,False,False,True,True,False,True,EFFECT,2026-07-27,7372,Services-Prepackaged Software,financing_or_registration_activity
+BNZI,0001826011,Banzai International Inc. Class A Common Stock,8,7,False,False,True,True,False,True,424B5,2026-07-28,7372,Services-Prepackaged Software,financing_or_registration_activity
 BPRE,0001551047,Bluerock Private Real Estate Fund Common Shares of Beneficial Interest,6,1,False,False,True,False,False,False,4,2026-07-21,,,recent_event_activity
 BRKHW,0002098707,Burtech Acquisition Corp II Warrants,2,2,False,True,True,False,False,False,8-K,2026-07-10,6770,Blank Checks,recent_event_activity
 BRN,0000010048,Barnwell Industries Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-07-06,1311,Crude Petroleum & Natural Gas,recent_event_activity
-BRTMU,0002131350,B&R Technology Merger Corp. Units,13,3,False,False,True,True,False,True,4,2026-07-23,6770,Blank Checks,financing_or_registration_activity
 BTAI,0001720893,BioXcel Therapeutics Inc. Common Stock,5,1,False,False,True,False,False,False,8-K,2026-07-06,2834,Pharmaceutical Preparations,recent_event_activity
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-07-21,7371,Services-Computer Programming Services,recent_other_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,16,5,False,False,True,True,False,False,4/A,2026-07-24,5030,Wholesale-Lumber & Other Construction Materials,financing_or_registration_activity
@@ -153,7 +152,6 @@ MRCOU,0002106436,Mercator Acquisition Corp. Units,14,3,False,False,True,False,Fa
 MSAI,0001863990,MultiSensor AI Holdings Inc. Common Stock,9,2,False,False,True,False,False,False,4,2026-07-20,3827,Optical Instruments & Lenses,recent_event_activity
 MSDL,0001782524,Morgan Stanley Direct Lending Fund Common Stock,7,5,False,False,True,False,False,True,8-K,2026-07-09,,,financing_or_registration_activity
 MSS,0001892292,Maison Solutions Inc. Class A Common Stock,10,6,False,False,True,False,False,False,8-K,2026-07-28,5411,Retail-Grocery Stores,recent_event_activity
-MTAKU,0002133136,Market Technology Acquisition Corp Unit,12,4,False,False,False,True,False,True,424B4,2026-07-27,6770,Blank Checks,financing_or_registration_activity
 MTNB,0001582554,Matinas Biopharma Holdings Inc. Common Stock,9,5,False,False,True,False,True,True,8-K,2026-07-24,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MTVA,0001638287,MetaVia Inc. Common Stock,3,3,False,False,True,False,False,True,8-K,2026-07-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MXC,0000066418,Mexco Energy Corporation Common Stock,2,2,True,False,True,False,False,False,8-K,2026-06-29,1311,Crude Petroleum & Natural Gas,recent_event_activity
@@ -207,7 +205,6 @@ RTACW,0002035173,Renatus Tactical Acquisition Corp I Warrant,1,1,False,False,Tru
 RVSN,0001743905,Rail Vision Ltd. Ordinary Share,1,0,False,False,False,False,False,False,6-K,2026-06-24,3743,Railroad Equipment,recent_other_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,4,3,False,False,True,False,False,True,424B5,2026-07-20,2834,Pharmaceutical Preparations,financing_or_registration_activity
 SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,1,1,True,False,False,False,False,False,10-K,2026-07-10,7372,Services-Prepackaged Software,recent_periodic_reporting
-SHOTR,0002104879,RMG ML Sports Holdings Rights,4,3,False,False,True,False,False,False,8-K,2026-07-13,6770,Blank Checks,recent_event_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-06-24,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",recent_other_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,5,3,False,False,True,False,False,False,PRE 14A,2026-07-24,4955,Hazardous Waste Management,recent_event_activity
 SMTK,0001817760,SmartKem Inc. Common Stock,11,7,False,False,True,False,True,True,8-K,2026-07-27,3674,Semiconductors & Related Devices,financing_or_registration_activity
