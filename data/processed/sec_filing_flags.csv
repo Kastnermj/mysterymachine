@@ -153,8 +153,7 @@ MOBX,0001855467,Mobix Labs Inc. Class A Common Stock,17,5,False,False,True,True,
 MRCOU,0002106436,Mercator Acquisition Corp. Units,14,3,False,False,True,False,False,True,8-K,2026-07-17,6770,Blank Checks,financing_or_registration_activity
 MSAI,0001863990,MultiSensor AI Holdings Inc. Common Stock,9,2,False,False,True,False,False,False,4,2026-07-20,3827,Optical Instruments & Lenses,recent_event_activity
 MSDL,0001782524,Morgan Stanley Direct Lending Fund Common Stock,7,5,False,False,True,False,False,True,8-K,2026-07-09,,,financing_or_registration_activity
-MSS,0001892292,Maison Solutions Inc. Class A Common Stock,10,6,False,False,True,False,False,False,8-K,2026-07-28,5411,Retail-Grocery Stores,recent_event_activity
-MTAKU,0002133136,Market Technology Acquisition Corp Unit,14,5,False,False,True,True,False,True,8-K,2026-07-28,6770,Blank Checks,financing_or_registration_activity
+MSS,0001892292,Maison Solutions Inc. Class A Common Stock,11,6,False,False,True,False,False,False,NT 10-K,2026-07-29,5411,Retail-Grocery Stores,recent_event_activity
 MTNB,0001582554,Matinas Biopharma Holdings Inc. Common Stock,9,5,False,False,True,False,True,True,8-K,2026-07-24,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MTVA,0001638287,MetaVia Inc. Common Stock,3,3,False,False,True,False,False,True,8-K,2026-07-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MXC,0000066418,Mexco Energy Corporation Common Stock,2,2,True,False,True,False,False,False,8-K,2026-06-29,1311,Crude Petroleum & Natural Gas,recent_event_activity
