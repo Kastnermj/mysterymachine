@@ -154,7 +154,7 @@ MSDL,0001782524,Morgan Stanley Direct Lending Fund Common Stock,7,5,False,False,
 MSS,0001892292,Maison Solutions Inc. Class A Common Stock,11,6,False,False,True,False,False,False,NT 10-K,2026-07-29,5411,Retail-Grocery Stores,recent_event_activity
 MTNB,0001582554,Matinas Biopharma Holdings Inc. Common Stock,11,5,False,False,True,False,True,True,425,2026-07-30,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MTVA,0001638287,MetaVia Inc. Common Stock,3,3,False,False,True,False,False,True,8-K,2026-07-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
-MXC,0000066418,Mexco Energy Corporation Common Stock,4,3,True,False,True,False,False,False,10-K/A,2026-07-30,1311,Crude Petroleum & Natural Gas,recent_event_activity
+MXC,0000066418,Mexco Energy Corporation Common Stock,5,3,True,False,True,False,False,False,DEFA14A,2026-07-30,1311,Crude Petroleum & Natural Gas,recent_event_activity
 NEA,0001195737,Nuveen AMT-Free Quality Municipal Income Fund Common Shares of Beneficial Interest Par Value $.01,4,0,False,False,False,False,False,False,40-17G,2026-07-16,,,recent_other_activity
 NEUP,0001191070,Neuphoria Therapeutics Inc. Common Stock,3,1,False,False,True,False,False,False,SCHEDULE 13G/A,2026-07-28,2834,Pharmaceutical Preparations,recent_event_activity
 NRXS,0001933567,Neuraxis Inc. Common Stock,3,2,False,False,True,False,True,False,S-3,2026-07-23,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
@@ -205,7 +205,7 @@ RPGL,0001912884,Republic Power Group Limited Class A Ordinary Shares,4,1,False,F
 RTACW,0002035173,Renatus Tactical Acquisition Corp I Warrant,1,1,False,False,True,False,False,False,8-K,2026-07-24,6770,Blank Checks,recent_event_activity
 RVSN,0001743905,Rail Vision Ltd. Ordinary Share,1,0,False,False,False,False,False,False,6-K,2026-06-24,3743,Railroad Equipment,recent_other_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,4,3,False,False,True,False,False,True,424B5,2026-07-20,2834,Pharmaceutical Preparations,financing_or_registration_activity
-SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,1,1,True,False,False,False,False,False,10-K,2026-07-10,7372,Services-Prepackaged Software,recent_periodic_reporting
+SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,2,2,True,False,True,False,False,False,8-K,2026-07-30,7372,Services-Prepackaged Software,recent_event_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-06-24,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",recent_other_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,5,3,False,False,True,False,False,False,PRE 14A,2026-07-24,4955,Hazardous Waste Management,recent_event_activity
 SMTK,0001817760,SmartKem Inc. Common Stock,11,7,False,False,True,False,True,True,8-K,2026-07-27,3674,Semiconductors & Related Devices,financing_or_registration_activity
