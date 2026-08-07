@@ -41,7 +41,7 @@ BGMS,0001130166,Bio Green Med Solution Inc. Common Stock,2,1,False,False,True,Fa
 BIAF,0001712762,bioAffinity Technologies Inc. Common Stock,6,6,False,False,True,False,False,False,8-K,2026-08-07,8731,Services-Commercial Physical & Biological Research,recent_event_activity
 BIYA,0001944712,Baiya International Group Inc Class A Ordinary Shares,4,1,False,False,False,False,False,False,F-3,2026-07-23,7361,Services-Employment Agencies,recent_other_activity
 BNRG,0001901215,Brenmiller Energy Ltd Ordinary Shares,11,1,False,False,False,False,False,False,6-K,2026-07-30,3433,"Heating Equipment, Except Electric & Warm Air Furnaces",recent_other_activity
-BPRE,0001551047,Bluerock Private Real Estate Fund Common Shares of Beneficial Interest,11,1,False,False,True,False,False,False,4,2026-08-05,,,recent_event_activity
+BPRE,0001551047,Bluerock Private Real Estate Fund Common Shares of Beneficial Interest,12,2,False,False,True,False,False,False,8-K,2026-08-07,,,recent_event_activity
 BRKHW,0002098707,Burtech Acquisition Corp II Warrants,1,1,False,False,True,False,False,False,8-K,2026-07-10,6770,Blank Checks,recent_event_activity
 BRN,0000010048,Barnwell Industries Inc. Common Stock,2,2,False,False,True,False,False,False,8-K,2026-08-04,1311,Crude Petroleum & Natural Gas,recent_event_activity
 BRTMU,0002131350,B&R Technology Merger Corp. Units,19,4,False,False,True,True,False,True,4/A,2026-08-04,6770,Blank Checks,financing_or_registration_activity
@@ -136,7 +136,7 @@ JTAI,0001861622,Jet.AI Inc. Common Stock,8,5,False,False,True,False,False,False,
 JZXN,0001816172,Jiuzi Holdings Inc. Ordinary Shares,3,0,False,False,False,False,False,False,6-K/A,2026-07-24,5500,Retail-Auto Dealers & Gasoline Stations,recent_other_activity
 KAPA,0001962011,Kairos Pharma Ltd. Common Stock,3,3,False,False,True,False,False,False,8-K,2026-07-22,2834,Pharmaceutical Preparations,recent_event_activity
 KGEI,0001477081,Kolibri Global Energy Inc. Common stock,1,0,False,False,False,False,False,False,6-K,2026-06-29,1311,Crude Petroleum & Natural Gas,recent_other_activity
-KITT,0001849820,Nauticus Robotics Inc. Common stock,19,4,False,False,True,False,False,False,EFFECT,2026-07-31,3569,"General Industrial Machinery & Equipment, NEC",recent_event_activity
+KITT,0001849820,Nauticus Robotics Inc. Common stock,20,4,False,False,True,False,False,False,SCHEDULE 13G,2026-08-07,3569,"General Industrial Machinery & Equipment, NEC",recent_event_activity
 KUST,0001342958,Kustom Entertainment Inc. Common Stock,9,3,False,False,True,False,False,False,8-K,2026-08-04,3663,Radio & Tv Broadcasting & Communications Equipment,recent_event_activity
 LABT,0002079272,Lakewood-Amedex Biotherapeutics Inc. Common Stock,3,1,False,False,True,False,False,False,SCHEDULE 13G,2026-08-06,2834,Pharmaceutical Preparations,recent_event_activity
 LCTX,0000876343,Lineage Cell Therapeutics Inc.,9,2,False,True,True,False,False,False,10-Q,2026-08-06,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
