@@ -102,7 +102,7 @@ FGI,0001864943,FGI Industries Ltd. Ordinary Shares,0,0,False,False,False,False,F
 FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,11,0,False,False,False,False,False,False,6-K,2026-08-05,1090,Miscellaneous Metal Ores,recent_other_activity
 FVN,0002010653,Future Vision II Acquisition Corporation Ordinary shares,7,4,False,False,True,False,False,True,SCHEDULE 13G/A,2026-08-07,7373,Services-Computer Integrated Systems Design,financing_or_registration_activity
 FWACR,0002116105,Futurewave Acquisition Corporation Rights,10,3,False,False,True,False,False,False,SCHEDULE 13G/A,2026-08-06,6770,Blank Checks,recent_event_activity
-GBR,0000105744,New Concept Energy Inc Common Stock,1,1,False,False,True,False,False,False,8-K,2026-07-27,1311,Crude Petroleum & Natural Gas,recent_event_activity
+GBR,0000105744,New Concept Energy Inc Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-08-10,1311,Crude Petroleum & Natural Gas,recent_event_activity
 GCTK,0001506983,GlucoTrack Inc. Common Stock,9,5,False,False,True,False,False,False,8-K,2026-08-05,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 GMEX,0001928581,GMEX ROBOTICS CORPORATION Class A Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-07-28,3949,"Sporting & Athletic Goods, NEC",recent_other_activity
 GNPX,0001595248,Genprex Inc. Common Stock,4,4,False,False,True,False,False,False,8-K,2026-08-05,2834,Pharmaceutical Preparations,recent_event_activity
@@ -110,7 +110,7 @@ GOF,0001380936,Guggenheim Strategic Opportunities Fund Common Shares of Benefici
 GOSS,0001728117,Gossamer Bio Inc.,7,3,False,False,True,False,False,False,SCHEDULE 13G,2026-07-29,2834,Pharmaceutical Preparations,recent_event_activity
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,3,3,False,True,True,False,False,False,10-Q,2026-07-27,2834,Pharmaceutical Preparations,recent_event_activity
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,5,2,False,False,True,False,False,False,SCHEDULE 13G,2026-08-07,2834,Pharmaceutical Preparations,recent_event_activity
-GRML,0001907223,Greenland Mines Ltd. Common Stock,9,5,False,False,True,False,False,False,4,2026-07-23,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
+GRML,0001907223,Greenland Mines Ltd. Common Stock,10,6,False,False,True,False,False,False,8-K,2026-08-10,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,0,0,False,False,False,False,False,False,8-K,2026-06-22,5200,"Retail-Building Materials, Hardware, Garden Supply",quiet
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,3,0,False,False,False,False,False,False,ARS,2026-07-02,7372,Services-Prepackaged Software,recent_other_activity
 HBIO,0001123494,Harvard Bioscience Inc. Common Stock,0,0,False,False,False,False,False,False,4,2026-06-12,3826,Laboratory Analytical Instruments,quiet
@@ -175,7 +175,7 @@ OESX,0001409375,Orion Energy Systems Inc. Common Stock,5,3,False,True,True,False
 OLOX,0001023994,Olenox Industries Inc. Common Stock,7,7,True,True,True,False,False,False,8-K,2026-08-07,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
 ONCO,0001782107,Onconetix Inc. Common Stock,4,1,False,False,True,False,False,False,425,2026-08-06,2834,Pharmaceutical Preparations,recent_event_activity
 ORKT,0001979407,Orangekloud Technology Inc. Class A Ordinary Shares,2,0,False,False,False,False,False,False,S-8 POS,2026-07-16,7372,Services-Prepackaged Software,recent_other_activity
-OSRH,0001840425,OSR Health Inc. Common Stock,4,2,False,False,True,False,False,False,8-K,2026-08-07,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
+OSRH,0001840425,OSR Health Inc. Common Stock,5,3,False,False,True,False,False,False,8-K,2026-08-10,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 OTLK,0001649989,Outlook Therapeutics Inc. Common Stock,11,5,False,False,True,False,True,True,4,2026-07-29,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 PASG,0001787297,Passage Bio Inc. Common Stock,5,1,False,True,False,False,False,False,10-Q,2026-08-10,2836,"Biological Products, (No Diagnostic Substances)",recent_periodic_reporting
 PAVS,0001751876,Paranovus Entertainment Technology Ltd. Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-08-05,7374,Services-Computer Processing & Data Preparation,recent_other_activity
@@ -240,7 +240,7 @@ VRAX,0001885827,Virax Biolabs Group Limited Ordinary Shares,6,1,False,False,Fals
 VTAK,0001716621,Catheter Precision Inc. Common Stock,7,5,False,False,True,False,False,True,8-K,2026-07-31,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
 WFCF,0001360565,Where Food Comes From Inc. Common Stock,2,2,False,True,False,False,True,False,S-3,2026-08-06,7372,Services-Prepackaged Software,financing_or_registration_activity
 WIMI,0001770088,WiMi Hologram Cloud Inc. Class B Ordinary Shares,0,0,False,False,False,False,False,False,3,2026-05-22,7372,Services-Prepackaged Software,quiet
-WLDS,0001887673,Wearable Devices Ltd. Ordinary Share,6,0,False,False,False,False,False,False,6-K,2026-08-05,3576,Computer Communications Equipment,recent_other_activity
+WLDS,0001887673,Wearable Devices Ltd. Ordinary Share,7,0,False,False,False,False,False,False,6-K,2026-08-10,3576,Computer Communications Equipment,recent_other_activity
 WNW,0001787803,Meiwu Technology Company Limited Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-07-29,2840,"Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics",recent_other_activity
 WOK,0001929783,WORK Medical Technology Group LTD Class A Ordinary Shares,0,0,False,False,False,False,False,False,4,2026-06-23,3841,Surgical & Medical Instruments & Apparatus,quiet
 XAIR,0001641631,Beyond Air Inc. Common Stock,7,3,False,False,True,False,False,False,8-K,2026-08-06,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
