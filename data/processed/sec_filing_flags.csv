@@ -119,6 +119,7 @@ HCWB,0001828673,HCW Biologics Inc. Common Stock,8,3,False,False,True,False,False
 HPAI,0002001699,Helport AI Limited Ordinary Shares,2,1,False,False,False,False,False,True,6-K,2026-07-10,7372,Services-Prepackaged Software,financing_or_registration_activity
 HUBC,0001905660,Hub Cyber Security Ltd. Ordinary Shares,8,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-08-07,3576,Computer Communications Equipment,recent_other_activity
 HUMA,0001818382,Humacyte Inc.,3,1,False,False,True,False,False,False,8-K,2026-07-31,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
+HVIIR,0001846416,Hennessy Capital Investment Corp. VII Rights,8,3,False,False,True,False,False,True,425,2026-08-10,4911,Electric Services,financing_or_registration_activity
 HYT,0001222401,Blackrock Corporate High Yield Fund Inc. Common Stock,1,0,False,False,False,False,False,False,3,2026-08-05,,,recent_other_activity
 IDAI,0001718939,T Stamp Inc. Class A Common Stock,8,2,False,False,True,False,False,False,4,2026-08-04,7372,Services-Prepackaged Software,recent_event_activity
 IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,6,2,False,True,True,False,False,False,10-Q,2026-08-10,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
@@ -171,7 +172,6 @@ NXL,0001527352,Nexalin Technology Inc. Common Stock,5,2,False,False,True,False,F
 NXTC,0001661059,NextCure Inc. Common Stock,10,3,False,True,True,False,False,False,425,2026-08-10,2834,Pharmaceutical Preparations,recent_event_activity
 NXXT,0001817004,NextNRG Inc. Common Stock,4,2,False,False,True,False,False,False,PRER14C,2026-08-10,5500,Retail-Auto Dealers & Gasoline Stations,recent_event_activity
 NZF,0001137887,Nuveen Municipal Credit Income Fund ,9,1,False,False,False,False,False,True,40-17G,2026-07-16,,,financing_or_registration_activity
-OESX,0001409375,Orion Energy Systems Inc. Common Stock,5,3,False,True,True,False,False,False,S-8,2026-08-07,3640,Electric Lighting & Wiring Equipment,recent_event_activity
 OLOX,0001023994,Olenox Industries Inc. Common Stock,8,8,True,True,True,False,False,False,8-K,2026-08-11,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
 ONCO,0001782107,Onconetix Inc. Common Stock,4,1,False,False,True,False,False,False,425,2026-08-06,2834,Pharmaceutical Preparations,recent_event_activity
 ORKT,0001979407,Orangekloud Technology Inc. Class A Ordinary Shares,2,0,False,False,False,False,False,False,S-8 POS,2026-07-16,7372,Services-Prepackaged Software,recent_other_activity
