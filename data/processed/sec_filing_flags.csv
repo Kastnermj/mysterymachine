@@ -1,5 +1,5 @@
 ticker,cik,company_name,recent_filing_count,recent_high_signal_count,has_recent_10k,has_recent_10q,has_recent_8k,has_recent_s1,has_recent_s3,has_recent_424b,latest_filing_type,latest_filing_date,sec_sic,sec_sic_description,sec_activity_flag
-ACGCW,0002111542,ACP Holdings Acquisition Corp. Warrants,0,0,False,False,False,False,False,False,8-K,2026-05-22,6770,Blank Checks,quiet
+ACGCW,0002111542,ACP Holdings Acquisition Corp. Warrants,1,0,False,False,False,False,False,False,SCHEDULE 13G,2026-08-12,6770,Blank Checks,recent_other_activity
 ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,7,1,False,False,False,False,False,False,PRE 14A,2026-08-11,2834,Pharmaceutical Preparations,recent_other_activity
 ADTX,0001726711,"Aditxt, Inc.",3,1,False,False,True,False,False,False,8-K,2026-07-17,2834,Pharmaceutical Preparations,recent_event_activity
 AEHL,0001470683,Antelope Enterprise Holdings Limited Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-08-05,4899,"Communications Services, NEC",recent_other_activity
@@ -47,7 +47,7 @@ BTAI,0001720893,BioXcel Therapeutics Inc. Common Stock,3,3,False,False,True,Fals
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-07-21,7371,Services-Computer Programming Services,recent_other_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,30,11,False,True,True,True,False,False,8-K,2026-08-12,5030,Wholesale-Lumber & Other Construction Materials,financing_or_registration_activity
 CATLU,0002104391,Catalyst Acquisition Corp. Units,18,4,False,False,True,True,False,True,SCHEDULE 13D,2026-08-05,6770,Blank Checks,financing_or_registration_activity
-CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,13,3,False,False,True,False,False,False,8-K,2026-08-10,3569,"General Industrial Machinery & Equipment, NEC",recent_event_activity
+CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,14,3,False,False,True,False,False,False,SCHEDULE 13G/A,2026-08-12,3569,"General Industrial Machinery & Equipment, NEC",recent_event_activity
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,9,1,False,True,False,False,False,False,10-Q,2026-08-07,2835,In Vitro & In Vivo Diagnostic Substances,recent_periodic_reporting
 CDT,0001896212,CDT Equity Inc. Common Stock,11,8,False,True,True,False,False,False,ARS,2026-08-11,2834,Pharmaceutical Preparations,recent_event_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-07-06,1700,Construction - Special Trade Contractors,recent_event_activity
@@ -61,7 +61,7 @@ CKX,0000352955,CKX Lands Inc. Common Stock,1,1,False,True,False,False,False,Fals
 CLDI,0001855485,Calidi Biotherapeutics Inc. Common Stock,3,2,False,False,True,False,False,False,8-K,2026-07-31,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 CLM,0000814083,Cornerstone Strategic Investment Fund Inc. Common Shares,0,0,False,False,False,False,False,False,NPORT-P,2026-05-21,,,quiet
 CLRB,0001279704,Cellectar Biosciences Inc.  Common Stock,12,1,False,False,True,False,False,False,SCHEDULE 13G,2026-08-04,2834,Pharmaceutical Preparations,recent_event_activity
-CMND,0001892500,Clearmind Medicine Inc. Common Shares,11,0,False,False,False,False,False,False,6-K,2026-08-11,2834,Pharmaceutical Preparations,recent_other_activity
+CMND,0001892500,Clearmind Medicine Inc. Common Shares,12,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-08-12,2834,Pharmaceutical Preparations,recent_other_activity
 CNSP,0001729427,CNS Pharmaceuticals Inc. Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-08-12,2834,Pharmaceutical Preparations,recent_event_activity
 CRF,0000033934,Cornerstone Total Return Fund Inc. (The) Common Stock,0,0,False,False,False,False,False,False,NPORT-P,2026-05-21,,,quiet
 CRMT,0000799850,America's Car-Mart Inc Common Stock,10,2,True,False,True,False,False,False,3,2026-08-10,5500,Retail-Auto Dealers & Gasoline Stations,recent_event_activity
@@ -100,7 +100,7 @@ FGI,0001864943,FGI Industries Ltd. Ordinary Shares,0,0,False,False,False,False,F
 FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,11,0,False,False,False,False,False,False,6-K,2026-08-05,1090,Miscellaneous Metal Ores,recent_other_activity
 FVN,0002010653,Future Vision II Acquisition Corporation Ordinary shares,8,5,False,True,True,False,False,True,10-Q,2026-08-11,7373,Services-Computer Integrated Systems Design,financing_or_registration_activity
 FXAC,0002121703,FortuneX Acquisition Corporation Ordinary shares,7,2,False,False,True,False,False,False,8-K,2026-07-07,6770,Blank Checks,recent_event_activity
-GBR,0000105744,New Concept Energy Inc Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-08-10,1311,Crude Petroleum & Natural Gas,recent_event_activity
+GBR,0000105744,New Concept Energy Inc Common Stock,3,3,False,True,True,False,False,False,8-K,2026-08-12,1311,Crude Petroleum & Natural Gas,recent_event_activity
 GCTK,0001506983,GlucoTrack Inc. Common Stock,11,6,False,False,True,False,False,False,DEF 14A,2026-08-10,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 GMEX,0001928581,GMEX ROBOTICS CORPORATION Class A Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-08-11,3949,"Sporting & Athletic Goods, NEC",recent_other_activity
 GNPX,0001595248,Genprex Inc. Common Stock,4,4,False,False,True,False,False,False,8-K,2026-08-05,2834,Pharmaceutical Preparations,recent_event_activity
@@ -154,7 +154,6 @@ MI,0001958713,NFT Limited Class A Ordinary Share,0,0,False,False,False,False,Fal
 MKLYR,0002067592,McKinley Acquisition Corporation Rights,4,1,False,False,True,False,False,False,425,2026-08-05,6770,Blank Checks,recent_event_activity
 MNDR,0001976695,Mobile-health Network Solutions Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-08-12,7372,Services-Prepackaged Software,recent_other_activity
 MOBX,0001855467,Mobix Labs Inc. Class A Common Stock,14,4,False,False,True,False,False,True,8-K,2026-07-29,3674,Semiconductors & Related Devices,financing_or_registration_activity
-MRCOU,0002106436,Mercator Acquisition Corp. Units,15,4,False,False,True,False,False,True,8-K,2026-08-07,6770,Blank Checks,financing_or_registration_activity
 MSAI,0001863990,MultiSensor AI Holdings Inc. Common Stock,8,1,False,False,True,False,False,False,4,2026-07-20,3827,Optical Instruments & Lenses,recent_event_activity
 MSDL,0001782524,Morgan Stanley Direct Lending Fund Common Stock,9,7,False,True,True,False,False,True,8-K,2026-08-06,,,financing_or_registration_activity
 MSS,0001892292,Maison Solutions Inc. Class A Common Stock,9,6,False,False,True,False,False,False,NT 10-K,2026-07-29,5411,Retail-Grocery Stores,recent_event_activity
@@ -168,7 +167,7 @@ NRXS,0001933567,Neuraxis Inc. Common Stock,8,5,False,True,True,False,True,True,1
 NUWE,0001506492,Nuwellis Inc. Common Stock,8,3,False,False,True,False,False,True,SCHEDULE 13G,2026-08-07,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
 NVNO,0001661053,enVVeno Medical Corporation Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-07-30,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 NXL,0001527352,Nexalin Technology Inc. Common Stock,6,3,False,False,True,False,False,False,8-K,2026-08-11,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
-NXTC,0001661059,NextCure Inc. Common Stock,10,3,False,True,True,False,False,False,425,2026-08-10,2834,Pharmaceutical Preparations,recent_event_activity
+NXTC,0001661059,NextCure Inc. Common Stock,12,3,False,True,True,False,False,False,4,2026-08-12,2834,Pharmaceutical Preparations,recent_event_activity
 NXXT,0001817004,NextNRG Inc. Common Stock,4,2,False,False,True,False,False,False,PRER14C,2026-08-10,5500,Retail-Auto Dealers & Gasoline Stations,recent_event_activity
 NZF,0001137887,Nuveen Municipal Credit Income Fund ,9,1,False,False,False,False,False,True,40-17G,2026-07-16,,,financing_or_registration_activity
 OLOX,0001023994,Olenox Industries Inc. Common Stock,9,9,True,True,True,False,False,False,8-K/A,2026-08-11,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
