@@ -221,8 +221,6 @@ SUNE,0000022701,SUNation Energy Inc. Common Stock,4,2,False,True,True,False,Fals
 SVAQ,0002085659,Silicon Valley Acquisition Corp. Class A Ordinary Shares,7,2,False,True,True,False,False,False,10-Q,2026-08-14,6770,Blank Checks,recent_event_activity
 TACHW,0002009183,Titan Acquisition Corp. Warrants,3,2,False,True,False,False,False,False,10-Q,2026-08-13,6770,Blank Checks,recent_periodic_reporting
 TAOX,0001571934,Tao Synergies Inc. Common Stock,1,1,False,True,False,False,False,False,10-Q,2026-08-13,6199,Finance Services,recent_periodic_reporting
-THEO,0002080216,BOA Acquisition Corp. II Class A Ordinary Shares,19,7,False,False,True,False,False,True,8-K,2026-08-13,6770,Blank Checks,financing_or_registration_activity
-THEOR,0002080216,BOA Acquisition Corp. II Rights,19,7,False,False,True,False,False,True,8-K,2026-08-13,6770,Blank Checks,financing_or_registration_activity
 THQ,0001604522,abrdn Healthcare Opportunities Fund Shares of Beneficial Interest,1,0,False,False,False,False,False,False,4,2026-07-20,,,recent_other_activity
 TMDE,0002009714,TMD Energy Limited Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-08-11,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
 TOVX,0000894158,Theriva Biologics Inc. Common Stock,5,5,False,True,True,False,False,False,10-Q,2026-08-11,2834,Pharmaceutical Preparations,recent_event_activity
