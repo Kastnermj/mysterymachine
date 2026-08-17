@@ -50,7 +50,7 @@ CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,18,4,False,Tru
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,5,1,False,True,False,False,False,False,10-Q,2026-08-07,2835,In Vitro & In Vivo Diagnostic Substances,recent_periodic_reporting
 CDT,0001896212,CDT Equity Inc. Common Stock,12,8,False,True,True,False,False,False,10-Q,2026-08-12,2834,Pharmaceutical Preparations,recent_event_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,3,2,False,True,True,False,False,False,10-Q,2026-08-14,1700,Construction - Special Trade Contractors,recent_event_activity
-CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,0,0,False,False,False,False,False,False,6-K,2026-07-01,5045,Wholesale-Computers & Peripheral Equipment & Software,quiet
+CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-08-17,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
 CHSN,0001825349,Chanson International Holding Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-07-23,2000,Food and Kindred Products,recent_other_activity
 CHW,0001396277,Calamos Global Dynamic Income Fund Common Stock,1,0,False,False,False,False,False,False,N-23C-2,2026-07-24,,,recent_other_activity
 CIIT,0001557798,Tianci International Inc. Common Stock,6,4,False,False,True,False,False,False,SCHEDULE 13G/A,2026-08-14,3576,Computer Communications Equipment,recent_event_activity
@@ -69,7 +69,7 @@ CSTE,0001504379,Caesarstone Ltd. Ordinary Shares,1,0,False,False,False,False,Fal
 CTNT,0001951667,Cheetah Net Supply Chain Service Inc Class A Common Stock,3,2,False,True,True,False,False,False,8-K,2026-08-13,5010,Wholesale-Motor Vehicles & Motor Vehicle Parts & Supplies,recent_event_activity
 CTXR,0001506251,Citius Pharmaceuticals Inc. Common Stock,4,3,False,True,True,False,False,False,10-Q,2026-08-14,2834,Pharmaceutical Preparations,recent_event_activity
 CVKD,0001937993,Cadrenal Therapeutics Inc. Common Stock,14,7,False,True,True,False,True,True,10-Q,2026-08-13,2834,Pharmaceutical Preparations,financing_or_registration_activity
-CVM,0000725363,Cel-Sci Corporation Common Stock,5,2,False,True,True,False,False,False,4,2026-08-17,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
+CVM,0000725363,Cel-Sci Corporation Common Stock,8,2,False,True,True,False,False,False,4,2026-08-17,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 CXAI,0001820875,CXApp Inc. Class A Common Stock,4,3,False,True,True,False,False,False,10-Q,2026-08-14,7372,Services-Prepackaged Software,recent_event_activity
 DCOY,0001615219,Decoy Therapeutics Inc. Common Stock,10,4,False,True,True,True,False,True,SCHEDULE 13G,2026-08-14,2834,Pharmaceutical Preparations,financing_or_registration_activity
 DERM,0001867066,Journey Medical Corporation Common Stock,4,2,False,True,True,False,False,False,10-Q,2026-08-12,2834,Pharmaceutical Preparations,recent_event_activity
@@ -144,7 +144,7 @@ LNAI,0001527728,Lunai Bioworks Inc. Common Stock,1,0,False,False,False,False,Fal
 LNKS,0001972074,Linkers Industries Limited Class A Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-08-14,3670,Electronic Components & Accessories,recent_other_activity
 LSF,0001650696,Laird Superfood Inc. Common Stock,16,4,False,True,True,False,False,False,S-8,2026-08-14,2000,Food and Kindred Products,recent_event_activity
 MASK,0001993097,3 E Network Technology Group Ltd Class A Ordinary Shares,5,2,False,False,False,False,False,False,EFFECT,2026-07-29,7371,Services-Computer Programming Services,recent_other_activity
-MBAI,0001610590,Check-Cap Ltd. Ordinary Share,5,2,False,False,False,False,False,True,424B3,2026-08-13,3844,X-Ray Apparatus & Tubes & Related Irradiation Apparatus,financing_or_registration_activity
+MBAI,0001610590,Check-Cap Ltd. Ordinary Share,6,3,False,False,False,False,False,True,F-1/A,2026-08-17,3844,X-Ray Apparatus & Tubes & Related Irradiation Apparatus,financing_or_registration_activity
 MDCX,0001997296,Medicus Pharma Ltd. Common Stock  ,2,2,False,True,False,False,False,True,424B3,2026-08-13,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MGN,0001995075,Megan Holdings Limited Class A Ordinary Shares,4,0,False,False,False,False,False,False,6-K/A,2026-08-13,0200,Agricultural Prod-Livestock & Animal Specialties,recent_other_activity
 MI,0001958713,NFT Limited Class A Ordinary Share,0,0,False,False,False,False,False,False,6-K,2026-05-12,6199,Finance Services,quiet
