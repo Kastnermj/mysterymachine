@@ -151,6 +151,7 @@ MI,0001958713,NFT Limited Class A Ordinary Share,2,1,False,False,False,False,Fal
 MKLYR,0002067592,McKinley Acquisition Corporation Rights,7,2,False,True,True,False,False,False,10-Q,2026-08-14,6770,Blank Checks,recent_event_activity
 MNDR,0001976695,Mobile-health Network Solutions Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-08-18,7372,Services-Prepackaged Software,recent_other_activity
 MOBX,0001855467,Mobix Labs Inc. Class A Common Stock,13,7,False,True,True,False,False,True,424B3,2026-08-19,3674,Semiconductors & Related Devices,financing_or_registration_activity
+MRCOW,0002106436,Mercator Acquisition Corp. Warrant,15,4,False,False,True,False,False,True,8-K,2026-08-13,6770,Blank Checks,financing_or_registration_activity
 MSAI,0001863990,MultiSensor AI Holdings Inc. Common Stock,5,3,False,True,True,False,False,False,10-Q,2026-08-13,3827,Optical Instruments & Lenses,recent_event_activity
 MSDL,0001782524,Morgan Stanley Direct Lending Fund Common Stock,4,4,False,True,True,False,False,False,8-K,2026-08-06,,,recent_event_activity
 MSS,0001892292,Maison Solutions Inc. Class A Common Stock,11,6,False,False,True,False,False,False,4,2026-08-18,5411,Retail-Grocery Stores,recent_event_activity
@@ -222,7 +223,6 @@ TACOW,0002033122,Berto Acquisition Corp. Warrant,1,1,False,True,False,False,Fals
 TAOX,0001571934,Tao Synergies Inc. Common Stock,1,1,False,True,False,False,False,False,10-Q,2026-08-13,6199,Finance Services,recent_periodic_reporting
 THEO,0002080216,BOA Acquisition Corp. II Class A Ordinary Shares,19,7,False,False,True,False,False,True,8-K,2026-08-13,6770,Blank Checks,financing_or_registration_activity
 THEOR,0002080216,BOA Acquisition Corp. II Rights,19,7,False,False,True,False,False,True,8-K,2026-08-13,6770,Blank Checks,financing_or_registration_activity
-THQ,0001604522,abrdn Healthcare Opportunities Fund Shares of Beneficial Interest,1,0,False,False,False,False,False,False,4,2026-07-20,,,recent_other_activity
 TMDE,0002009714,TMD Energy Limited Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-08-11,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
 TOVX,0000894158,Theriva Biologics Inc. Common Stock,5,5,False,True,True,False,False,False,10-Q,2026-08-11,2834,Pharmaceutical Preparations,recent_event_activity
 TPET,0001898766,Trio Petroleum Corp. Common Stock,2,1,False,False,True,False,False,False,8-K,2026-08-18,1311,Crude Petroleum & Natural Gas,recent_event_activity
