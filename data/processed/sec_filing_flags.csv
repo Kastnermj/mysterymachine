@@ -48,7 +48,7 @@ CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,19,3,False,Tru
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,6,2,False,True,True,False,False,False,8-K,2026-08-20,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 CDT,0001896212,CDT Equity Inc. Common Stock,15,9,False,True,True,False,False,False,SCHEDULE 13G,2026-08-21,2834,Pharmaceutical Preparations,recent_event_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,2,1,False,True,False,False,False,False,10-Q,2026-08-14,1700,Construction - Special Trade Contractors,recent_periodic_reporting
-CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-08-24,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
+CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-08-25,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
 CHSN,0001825349,Chanson International Holding Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-08-20,2000,Food and Kindred Products,recent_other_activity
 CHW,0001396277,Calamos Global Dynamic Income Fund Common Stock,1,0,False,False,False,False,False,False,N-23C-2,2026-07-24,,,recent_other_activity
 CIIT,0001557798,Tianci International Inc. Common Stock,8,5,False,False,True,False,False,False,8-K,2026-08-24,3576,Computer Communications Equipment,recent_event_activity
@@ -173,7 +173,7 @@ OLOX,0001023994,Olenox Industries Inc. Common Stock,9,8,False,True,True,False,Fa
 ONCO,0001782107,Onconetix Inc. Common Stock,5,3,False,True,True,True,False,False,10-Q,2026-08-13,2834,Pharmaceutical Preparations,financing_or_registration_activity
 ORKT,0001979407,Orangekloud Technology Inc. Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-08-24,7372,Services-Prepackaged Software,recent_other_activity
 OSPR,0002113481,Osprey Acquisition Corp. III Class A Ordinary Shares,2,2,False,True,True,False,False,False,8-K,2026-08-18,6770,Blank Checks,recent_event_activity
-OSRH,0001840425,OSR Health Inc. Common Stock,7,5,False,True,True,False,False,False,8-K,2026-08-19,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
+OSRH,0001840425,OSR Health Inc. Common Stock,8,6,False,True,True,False,False,False,8-K,2026-08-25,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 OTLK,0001649989,Outlook Therapeutics Inc. Common Stock,21,11,False,True,True,False,True,True,SCHEDULE 13G,2026-08-19,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 PASG,0001787297,Passage Bio Inc. Common Stock,4,1,False,True,False,False,False,False,SCHEDULE 13G/A,2026-08-14,2836,"Biological Products, (No Diagnostic Substances)",recent_periodic_reporting
 PAVS,0001751876,Paranovus Entertainment Technology Ltd. Class A Ordinary Shares,3,0,False,False,False,False,False,False,20-F,2026-08-14,7374,Services-Computer Processing & Data Preparation,recent_other_activity
