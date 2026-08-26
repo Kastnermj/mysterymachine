@@ -151,6 +151,7 @@ MBAI,0001610590,Check-Cap Ltd. Ordinary Share,9,3,False,False,False,False,False,
 MDCX,0001997296,Medicus Pharma Ltd. Common Stock  ,2,2,False,True,False,False,False,True,424B3,2026-08-13,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MGN,0001995075,Megan Holdings Limited Class A Ordinary Shares,7,0,False,False,False,False,False,False,6-K,2026-08-25,0200,Agricultural Prod-Livestock & Animal Specialties,recent_other_activity
 MI,0001958713,NFT Limited Class A Ordinary Share,5,2,False,False,False,False,False,True,SCHEDULE 13G,2026-08-24,6199,Finance Services,financing_or_registration_activity
+MIACW,0002136530,Meridian3 Industrials Acquisition Corp Warrant,2,2,False,True,True,False,False,False,8-K,2026-08-21,6770,Blank Checks,recent_event_activity
 MKLYR,0002067592,McKinley Acquisition Corporation Rights,9,2,False,True,True,False,False,False,425,2026-08-26,7372,Services-Prepackaged Software,recent_event_activity
 MNDR,0001976695,Mobile-health Network Solutions Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-08-18,7372,Services-Prepackaged Software,recent_other_activity
 MOBX,0001855467,Mobix Labs Inc. Class A Common Stock,14,6,False,True,True,False,False,True,4,2026-08-25,3674,Semiconductors & Related Devices,financing_or_registration_activity
@@ -160,7 +161,6 @@ MSS,0001892292,Maison Solutions Inc. Class A Common Stock,11,5,False,False,True,
 MTNB,0001582554,Matinas Biopharma Holdings Inc. Common Stock,14,3,False,True,True,False,False,False,425,2026-08-25,2834,Pharmaceutical Preparations,recent_event_activity
 MTVA,0001638287,MetaVia Inc. Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-08-06,2834,Pharmaceutical Preparations,recent_event_activity
 MXC,0000066418,Mexco Energy Corporation Common Stock,5,3,False,True,True,False,False,False,8-K,2026-08-12,1311,Crude Petroleum & Natural Gas,recent_event_activity
-NEA,0001195737,Nuveen AMT-Free Quality Municipal Income Fund Common Shares of Beneficial Interest Par Value $.01,2,0,False,False,False,False,False,False,N-PX,2026-08-17,,,recent_other_activity
 NEUP,0001191070,Neuphoria Therapeutics Inc. Common Stock,3,1,False,False,True,False,False,False,SCHEDULE 13G/A,2026-07-28,2834,Pharmaceutical Preparations,recent_event_activity
 NRXS,0001933567,Neuraxis Inc. Common Stock,15,5,False,True,True,False,True,True,8-K,2026-08-19,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
 NTWO,0002028027,Newbury Street II Acquisition Corp Class A Ordinary Shares,15,2,False,True,True,False,False,False,425,2026-08-24,6770,Blank Checks,recent_event_activity
@@ -186,7 +186,7 @@ PLRZ,0001893645,Polyrizon Ltd. Ordinary Shares,3,0,False,False,False,False,False
 POCI,0000867840,Precision Optics Corporation Inc. Common stock,1,0,False,False,False,False,False,False,4,2026-08-13,3845,Electromedical & Electrotherapeutic Apparatus,recent_other_activity
 PRSO,0000890394,Peraso Inc. Common Stock,10,6,False,True,True,False,False,True,8-K,2026-08-21,3674,Semiconductors & Related Devices,financing_or_registration_activity
 PTN,0000911216,Palatin Technologies Inc. Common Stock,7,1,False,False,True,False,False,False,SCHEDULE 13G/A,2026-08-14,2834,Pharmaceutical Preparations,recent_event_activity
-PTY,0001190935,Pimco Corporate & Income Opportunity Fund,1,0,False,False,False,False,False,False,40-17G,2026-08-24,,,recent_other_activity
+PTY,0001190935,Pimco Corporate & Income Opportunity Fund,2,0,False,False,False,False,False,False,N-PX,2026-08-26,,,recent_other_activity
 QH,0001781193,Quhuo Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-07-15,7389,"Services-Business Services, NEC",recent_other_activity
 QNTM,0001771885,Quantum Biopharma Ltd. Class B Subordinate Voting Shares,4,0,False,False,False,False,False,False,6-K,2026-08-14,2834,Pharmaceutical Preparations,recent_other_activity
 QSI,0001816431,Quantum-Si Incorporated Class A Common Stock,4,3,False,True,True,False,False,False,10-Q,2026-08-13,3829,"Measuring & Controlling Devices, NEC",recent_event_activity
@@ -230,7 +230,7 @@ TPTS,0001674356,Terra Property Trust Inc. 7.00% Senior Secured Notes due 2029,1,
 TRUG,0001857086,TruGolf Holdings Inc. Class A Common Stock,4,4,False,True,True,False,False,False,8-K,2026-08-24,3949,"Sporting & Athletic Goods, NEC",recent_event_activity
 TVGN,0001860871,Tevogen Inc. Common Stock,6,2,False,True,True,False,False,False,S-8,2026-08-24,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 TWAV,0000746210,TaoWeave Inc. Common Stock,1,1,False,True,False,False,False,False,10-Q,2026-08-07,7370,"Services-Computer Programming, Data Processing, Etc.",recent_periodic_reporting
-USA,0000799195,Liberty All-Star Equity Fund Common Stock,2,0,False,False,False,False,False,False,N-PX,2026-08-20,,,recent_other_activity
+USA,0000799195,Liberty All-Star Equity Fund Common Stock,3,0,False,False,False,False,False,False,NPORT-P,2026-08-26,,,recent_other_activity
 USDEW,0002080215,StablecoinX Inc. Warrants,3,3,False,True,True,False,False,False,8-K,2026-08-24,6199,Finance Services,recent_event_activity
 VACI,0002080023,Viking Acquisition Corp. I Class A Ordinary Shares,13,2,False,True,False,False,False,True,POS AM,2026-08-24,4899,"Communications Services, NEC",financing_or_registration_activity
 VBIO,0001787740,Valion Bio Inc. Common Stock,15,6,False,True,True,True,False,False,SCHEDULE 13D/A,2026-08-24,2834,Pharmaceutical Preparations,financing_or_registration_activity
