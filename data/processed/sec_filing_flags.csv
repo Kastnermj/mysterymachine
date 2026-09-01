@@ -232,7 +232,7 @@ USA,0000799195,Liberty All-Star Equity Fund Common Stock,3,0,False,False,False,F
 USDEW,0002080215,StablecoinX Inc. Warrants,4,4,False,True,True,True,False,False,S-1,2026-08-31,6199,Finance Services,financing_or_registration_activity
 VACI,0002080023,Viking Acquisition Corp. I Class A Ordinary Shares,14,2,False,True,False,False,False,True,EFFECT,2026-08-31,4899,"Communications Services, NEC",financing_or_registration_activity
 VBIO,0001787740,Valion Bio Inc. Common Stock,14,6,False,True,True,False,False,False,8-K,2026-09-01,2834,Pharmaceutical Preparations,recent_event_activity
-VMAR,0001813783,Vision Marine Technologies Inc. Common Shares,2,0,False,False,False,False,False,False,6-K,2026-08-26,3730,Ship & Boat Building & Repairing,recent_other_activity
+VMAR,0001813783,Vision Marine Technologies Inc. Common Shares,9,0,False,False,False,False,False,False,3,2026-09-01,3730,Ship & Boat Building & Repairing,recent_other_activity
 VNRX,0000093314,VolitionRX Limited Common Stock,8,6,False,True,True,False,True,False,S-3,2026-08-28,2835,In Vitro & In Vivo Diagnostic Substances,financing_or_registration_activity
 VRAX,0001885827,Virax Biolabs Group Limited Ordinary Shares,4,1,False,False,False,False,False,False,6-K,2026-08-26,2835,In Vitro & In Vivo Diagnostic Substances,recent_other_activity
 VTAK,0001716621,Catheter Precision Inc. Common Stock,8,4,False,True,True,False,False,True,DEF 14A,2026-08-31,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
