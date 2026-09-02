@@ -60,10 +60,10 @@ CNSP,0001729427,CNS Pharmaceuticals Inc. Common Stock,7,1,False,True,False,False
 COLAR,0002028201,Columbus Acquisition Corp Rights,15,6,False,True,True,False,False,False,DEFM14A,2026-08-19,6770,Blank Checks,recent_event_activity
 CRF,0000033934,Cornerstone Total Return Fund Inc. (The) Common Stock,5,0,False,False,False,False,False,False,4,2026-09-01,,,recent_other_activity
 CRMT,0000799850,America's Car-Mart Inc Common Stock,13,0,False,False,False,False,False,False,ARS,2026-08-14,5500,Retail-Auto Dealers & Gasoline Stations,recent_other_activity
-CSAI,0001709628,Cloudastructure Inc. Class A Common Stock,12,4,False,True,True,False,False,False,4,2026-08-31,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
+CSAI,0001709628,Cloudastructure Inc. Class A Common Stock,13,5,False,True,True,False,False,False,8-K,2026-09-02,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
 CSTE,0001504379,Caesarstone Ltd. Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-08-05,3281,Cut Stone & Stone Products,recent_other_activity
 CTNT,0001951667,Cheetah Net Supply Chain Service Inc Class A Common Stock,4,4,False,True,True,False,False,True,8-K,2026-08-26,5010,Wholesale-Motor Vehicles & Motor Vehicle Parts & Supplies,financing_or_registration_activity
-CTXR,0001506251,Citius Pharmaceuticals Inc. Common Stock,5,4,False,True,True,False,False,False,8-K,2026-08-21,2834,Pharmaceutical Preparations,recent_event_activity
+CTXR,0001506251,Citius Pharmaceuticals Inc. Common Stock,6,4,False,True,True,False,False,False,8-K,2026-08-21,2834,Pharmaceutical Preparations,recent_event_activity
 CUBWW,0002015955,Lionheart Holdings Warrant,11,3,False,True,True,False,False,False,8-K,2026-09-01,6770,Blank Checks,recent_event_activity
 CVKD,0001937993,Cadrenal Therapeutics Inc. Common Stock,11,5,False,True,True,False,False,True,8-K,2026-08-31,2834,Pharmaceutical Preparations,financing_or_registration_activity
 CVM,0000725363,Cel-Sci Corporation Common Stock,9,2,False,True,True,False,False,False,4,2026-08-26,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
@@ -139,7 +139,7 @@ LCTX,0000876343,Lineage Cell Therapeutics Inc.,3,2,False,True,True,False,False,F
 LHAI,0002017758,Linkhome Holdings Inc. Common stock,2,1,False,True,False,False,False,False,10-Q,2026-08-12,6531,Real Estate Agents & Managers (For Others),recent_periodic_reporting
 LNAI,0001527728,Lunai Bioworks Inc. Common Stock,0,0,False,False,False,False,False,False,SCHEDULE 13G,2026-07-17,2834,Pharmaceutical Preparations,quiet
 LNKS,0001972074,Linkers Industries Limited Class A Ordinary Shares,4,0,False,False,False,False,False,False,3,2026-08-26,3670,Electronic Components & Accessories,recent_other_activity
-LSF,0001650696,Laird Superfood Inc. Common Stock,10,3,False,True,True,False,False,False,4,2026-08-27,2000,Food and Kindred Products,recent_event_activity
+LSF,0001650696,Laird Superfood Inc. Common Stock,11,3,False,True,True,False,False,False,4,2026-09-02,2000,Food and Kindred Products,recent_event_activity
 LWACW,0002061379,LightWave Acquisition Corp. Warrants,1,1,False,True,False,False,False,False,10-Q,2026-08-14,6770,Blank Checks,recent_periodic_reporting
 MASK,0001993097,3 E Network Technology Group Ltd Class A Ordinary Shares,6,2,False,False,False,False,False,False,6-K,2026-09-02,7371,Services-Computer Programming Services,recent_other_activity
 MBAI,0001610590,MBody AI Ltd. Ordinary Share,11,4,False,False,False,False,False,True,6-K,2026-08-28,3844,X-Ray Apparatus & Tubes & Related Irradiation Apparatus,financing_or_registration_activity
