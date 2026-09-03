@@ -45,7 +45,7 @@ CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,16,2,False,Tru
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,5,2,False,True,True,False,False,False,8-K,2026-08-20,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 CDT,0001896212,CDT Equity Inc. Common Stock,18,9,False,True,True,False,False,False,SCHEDULE 13G,2026-09-02,2834,Pharmaceutical Preparations,recent_event_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,2,1,False,True,False,False,False,False,10-Q,2026-08-14,1700,Construction - Special Trade Contractors,recent_periodic_reporting
-CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-08-25,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
+CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-09-03,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
 CHSN,0001825349,Chanson International Holding Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-08-27,2000,Food and Kindred Products,recent_other_activity
 CHW,0001396277,Calamos Global Dynamic Income Fund Common Stock,6,0,False,False,False,False,False,False,3,2026-09-02,,,recent_other_activity
 CIIT,0001557798,Tianci International Inc. Common Stock,9,5,False,False,True,False,False,False,SCHEDULE 13G,2026-08-26,3576,Computer Communications Equipment,recent_event_activity
@@ -113,7 +113,7 @@ HPAI,0002001699,Helport AI Limited Ordinary Shares,0,0,False,False,False,False,F
 HUBC,0001905660,Hub Cyber Security Ltd. Ordinary Shares,6,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-08-07,3576,Computer Communications Equipment,recent_other_activity
 HUMA,0001818382,Humacyte Inc.,8,3,False,True,True,False,False,False,25-NSE,2026-08-25,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 HVIIR,0001846416,Hennessy Capital Investment Corp. VII Rights,17,6,False,True,True,False,False,True,425,2026-08-31,4911,Electric Services,financing_or_registration_activity
-HYT,0001222401,Blackrock Corporate High Yield Fund Inc. Common Stock,3,0,False,False,False,False,False,False,N-PX,2026-08-28,,,recent_other_activity
+HYT,0001222401,Blackrock Corporate High Yield Fund Inc. Common Stock,4,0,False,False,False,False,False,False,N-CSRS,2026-09-03,,,recent_other_activity
 IDAI,0001718939,T Stamp Inc. Class A Common Stock,14,3,False,True,True,False,False,False,4,2026-09-02,7372,Services-Prepackaged Software,recent_event_activity
 IGR,0001268884,CBRE Global Real Estate Income Fund Common Shares of Beneficial Interest,6,0,False,False,False,False,False,False,40-17G,2026-09-01,,,recent_other_activity
 IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,3,2,False,True,True,False,False,False,10-Q,2026-08-10,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
@@ -162,7 +162,7 @@ NSAIR,0002133719,NorthStrive Acquisition Corp I. Rights,16,6,False,False,True,Tr
 NTWO,0002028027,Newbury Street II Acquisition Corp Class A Ordinary Shares,15,2,False,True,True,False,False,False,425,2026-08-24,6770,Blank Checks,recent_event_activity
 NUWE,0001506492,Nuwellis Inc. Common Stock,13,8,False,True,True,False,True,True,EFFECT,2026-08-26,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
 NVNO,0001661053,enVVeno Medical Corporation Common Stock,3,2,False,True,False,False,True,False,S-3,2026-08-21,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
-NXL,0001527352,Nexalin Technology Inc. Common Stock,11,10,False,True,True,False,False,True,8-K,2026-09-02,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
+NXL,0001527352,Nexalin Technology Inc. Common Stock,12,10,False,True,True,False,False,True,SCHEDULE 13D,2026-09-03,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
 NXTC,0001661059,NextCure Inc. Common Stock,14,2,False,True,True,False,False,False,S-4,2026-08-18,2834,Pharmaceutical Preparations,recent_event_activity
 NXXT,0001817004,NextNRG Inc. Common Stock,9,5,False,True,True,True,False,False,D,2026-08-26,5500,Retail-Auto Dealers & Gasoline Stations,financing_or_registration_activity
 OBAWW,0002034313,Oxley Bridge Acquisition Limited Warrants,1,1,False,True,False,False,False,False,10-Q,2026-08-14,6770,Blank Checks,recent_periodic_reporting
