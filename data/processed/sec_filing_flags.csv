@@ -229,7 +229,7 @@ TPTS,0001674356,Terra Property Trust Inc. 7.00% Senior Secured Notes due 2029,1,
 TRUG,0001857086,TruGolf Holdings Inc. Class A Common Stock,5,5,False,True,True,False,False,False,8-K,2026-08-27,3949,"Sporting & Athletic Goods, NEC",recent_event_activity
 TVGN,0001860871,Tevogen Inc. Common Stock,6,3,False,True,True,False,False,False,8-K,2026-08-26,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 TWAV,0000746210,TaoWeave Inc. Common Stock,1,1,False,True,False,False,False,False,10-Q,2026-08-07,7370,"Services-Computer Programming, Data Processing, Etc.",recent_periodic_reporting
-USA,0000799195,Liberty All-Star Equity Fund Common Stock,3,0,False,False,False,False,False,False,NPORT-P,2026-08-26,,,recent_other_activity
+USA,0000799195,Liberty All-Star Equity Fund Common Stock,4,0,False,False,False,False,False,False,N-CSRS,2026-09-04,,,recent_other_activity
 USDEW,0002080215,StablecoinX Inc. Warrants,5,4,False,True,True,True,False,False,S-8,2026-09-03,6199,Finance Services,financing_or_registration_activity
 VACI,0002080023,Viking Acquisition Corp. I Class A Ordinary Shares,16,3,False,True,True,False,False,True,425,2026-09-02,4899,"Communications Services, NEC",financing_or_registration_activity
 VBIO,0001787740,Valion Bio Inc. Common Stock,16,6,False,True,True,False,False,False,SCHEDULE 13D/A,2026-09-03,2834,Pharmaceutical Preparations,recent_event_activity
