@@ -57,7 +57,7 @@ CMND,0001892500,Clearmind Medicine Inc. Common Shares,10,0,False,False,False,Fal
 CNSP,0001729427,CNS Pharmaceuticals Inc. Common Stock,7,1,False,True,False,False,False,False,DEFA14A,2026-08-25,2834,Pharmaceutical Preparations,recent_periodic_reporting
 COLAR,0002028201,Columbus Acquisition Corp Rights,15,6,False,True,True,False,False,False,DEFM14A,2026-08-19,6770,Blank Checks,recent_event_activity
 CRF,0000033934,Cornerstone Total Return Fund Inc. (The) Common Stock,5,0,False,False,False,False,False,False,4,2026-09-01,,,recent_other_activity
-CRMT,0000799850,America's Car-Mart Inc Common Stock,14,1,False,False,True,False,False,False,8-K,2026-09-04,5500,Retail-Auto Dealers & Gasoline Stations,recent_event_activity
+CRMT,0000799850,America's Car-Mart Inc Common Stock,15,2,False,False,True,False,False,False,8-K,2026-09-09,5500,Retail-Auto Dealers & Gasoline Stations,recent_event_activity
 CSAI,0001709628,Cloudastructure Inc. Class A Common Stock,20,5,False,True,True,False,False,False,4/A,2026-09-02,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
 CSTE,0001504379,Caesarstone Ltd. Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-08-05,3281,Cut Stone & Stone Products,recent_other_activity
 CTNT,0001951667,Cheetah Net Supply Chain Service Inc Class A Common Stock,4,4,False,True,True,False,False,True,8-K,2026-08-26,5010,Wholesale-Motor Vehicles & Motor Vehicle Parts & Supplies,financing_or_registration_activity
@@ -238,7 +238,7 @@ VMAR,0001813783,Vision Marine Technologies Inc. Common Shares,10,0,False,False,F
 VNRX,0000093314,VolitionRX Limited Common Stock,12,9,False,True,True,False,True,False,S-3/A,2026-09-09,2835,In Vitro & In Vivo Diagnostic Substances,financing_or_registration_activity
 VRAX,0001885827,Virax Biolabs Group Limited Ordinary Shares,7,2,False,False,False,False,False,True,6-K,2026-09-04,2835,In Vitro & In Vivo Diagnostic Substances,financing_or_registration_activity
 VTAK,0001716621,Catheter Precision Inc. Common Stock,7,4,False,True,True,False,False,True,DEF 14A,2026-08-31,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
-WFCF,0001360565,Where Food Comes From Inc. Common Stock,3,3,False,True,True,False,True,False,8-K,2026-08-10,7372,Services-Prepackaged Software,financing_or_registration_activity
+WFCF,0001360565,Where Food Comes From Inc. Common Stock,4,4,False,True,True,False,True,False,10-K/A,2026-09-09,7372,Services-Prepackaged Software,financing_or_registration_activity
 WIMI,0001770088,WiMi Hologram Cloud Inc. Class B Ordinary Shares,1,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-09-08,7372,Services-Prepackaged Software,recent_other_activity
 WLDS,0001887673,Wearable Devices Ltd. Ordinary Share,21,1,False,False,False,False,False,False,EFFECT,2026-09-04,3576,Computer Communications Equipment,recent_other_activity
 WNW,0001787803,Meiwu Technology Company Limited Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-08-26,2840,"Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics",recent_other_activity
