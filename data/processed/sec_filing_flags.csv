@@ -37,7 +37,7 @@ BIYA,0001944712,Baiya International Group Inc Class A Ordinary Shares,2,1,False,
 BPRE,0001551047,Bluerock Private Real Estate Fund Common Shares of Beneficial Interest,13,1,False,False,True,False,False,False,NPORT-P,2026-08-28,,,recent_event_activity
 BRN,0000010048,Barnwell Industries Inc. Common Stock,5,3,False,True,True,False,False,False,4,2026-09-10,1311,Crude Petroleum & Natural Gas,recent_event_activity
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-09-04,7371,Services-Computer Programming Services,recent_other_activity
-CAPS,0000887151,Capstone Holding Corp. Common Stock,16,8,False,True,True,False,False,False,8-K,2026-08-27,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
+CAPS,0000887151,Capstone Holding Corp. Common Stock,17,8,False,True,True,False,False,False,PRE 14C,2026-09-14,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
 CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,17,2,False,True,True,False,False,False,425,2026-09-10,3569,"General Industrial Machinery & Equipment, NEC",recent_event_activity
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,5,2,False,True,True,False,False,False,DEFA14A,2026-09-08,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 CDT,0001896212,CDT Equity Inc. Common Stock,18,9,False,True,True,True,False,False,SCHEDULE 13G,2026-09-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
@@ -120,6 +120,7 @@ INM,0001728328,InMed Pharmaceuticals Inc. Common Shares,4,1,True,False,False,Fal
 IPEXR,0002028355,Inflection Point Acquisition Corp. V Rights,17,7,False,True,True,False,False,False,SCHEDULE 13G/A,2026-09-04,6770,Blank Checks,recent_event_activity
 IPST,0001788230,IP Strategy Holdings Inc. Common Stock,5,1,False,False,True,False,False,False,8-K,2026-09-01,2080,Beverages,recent_event_activity
 IPW,0001830072,iPower Inc. Common Stock,5,3,False,False,True,False,False,False,S-1/A,2026-09-09,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_event_activity
+IPXGW,0002088805,Inflection Point Acquisition Corp. VII Warrant,13,2,False,True,True,False,False,False,425,2026-09-03,7373,Services-Computer Integrated Systems Design,recent_event_activity
 IRIX,0001006045,IRIDEX Corporation Common Stock,6,3,False,True,True,False,False,False,4,2026-09-14,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 ISPC,0001558569,iSpecimen Inc. Common Stock,9,8,False,True,True,False,False,True,8-K,2026-09-10,8731,Services-Commercial Physical & Biological Research,financing_or_registration_activity
 JCTC,0000885307,Jewett-Cameron Trading Company Common Shares,14,1,False,False,True,False,False,False,4,2026-09-08,5211,Retail-Lumber & Other Building Materials Dealers,recent_event_activity
@@ -128,7 +129,7 @@ JONER,0002129056,Jones Ventures INTL Acquisition1 Corp Rights,2,2,False,True,Tru
 JPC,0001216583,Nuveen Preferred & Income Opportunities Fund,3,1,False,False,False,False,False,True,3,2026-09-01,,,financing_or_registration_activity
 JTAI,0001861622,Jet.AI Inc. Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-08-14,4522,"Air Transportation, Nonscheduled",recent_event_activity
 JZXN,0001816172,Jiuzi Holdings Inc. Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-08-24,5500,Retail-Auto Dealers & Gasoline Stations,recent_other_activity
-KAPA,0001962011,Kairos Pharma Ltd. Common Stock,2,2,False,True,True,False,False,False,8-K,2026-08-21,2834,Pharmaceutical Preparations,recent_event_activity
+KAPA,0001962011,Kairos Pharma Ltd. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-09-14,2834,Pharmaceutical Preparations,recent_event_activity
 KGEI,0001477081,Kolibri Global Energy Inc. Common stock,1,0,False,False,False,False,False,False,6-K,2026-08-13,1311,Crude Petroleum & Natural Gas,recent_other_activity
 KITT,0001849820,Nauticus Robotics Inc. Common stock,5,4,False,True,True,False,False,True,8-K,2026-09-11,3569,"General Industrial Machinery & Equipment, NEC",financing_or_registration_activity
 KUST,0001342958,Kustom Entertainment Inc. Common Stock,10,4,False,True,True,False,False,False,PRE 14A,2026-09-08,3663,Radio & Tv Broadcasting & Communications Equipment,recent_event_activity
@@ -221,7 +222,6 @@ STEX,0001530766,Streamex Corp. Common Stock,4,3,False,True,True,False,False,Fals
 SUNE,0000022701,SUNation Energy Inc. Common Stock,8,4,False,True,True,False,False,False,425,2026-09-08,1700,Construction - Special Trade Contractors,recent_event_activity
 SVIVW,0002098242,Spring Valley Acquisition Corp. IV Warrants,2,1,False,True,False,False,False,False,SCHEDULE 13G,2026-08-07,6770,Blank Checks,recent_periodic_reporting
 TAOX,0001571934,Tao Synergies Inc. Common Stock,1,1,False,True,False,False,False,False,10-Q,2026-08-13,6199,Finance Services,recent_periodic_reporting
-THEO,0002080216,BOA Acquisition Corp. II Class A Ordinary Shares,18,5,False,True,True,False,False,True,10-Q,2026-08-26,6770,Blank Checks,financing_or_registration_activity
 TMDE,0002009714,TMD Energy Limited Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-09-10,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
 TOVX,0000894158,Theriva Biologics Inc. Common Stock,5,4,False,True,True,False,False,False,S-8,2026-08-24,2834,Pharmaceutical Preparations,recent_event_activity
 TPET,0001898766,Trio Petroleum Corp. Common Stock,3,2,False,True,True,False,False,False,10-Q,2026-09-09,1311,Crude Petroleum & Natural Gas,recent_event_activity
@@ -247,4 +247,4 @@ XAIR,0001641631,Beyond Air Inc. Common Stock,7,5,False,True,True,False,True,True
 XLABW,0002109869,Exascale Labs Holdings Inc. Warrant,9,2,False,False,True,False,False,False,3,2026-09-08,7372,Services-Prepackaged Software,recent_event_activity
 XTERW,0002134856,Karman Line Acquisition Corp. Warrants,14,5,False,False,True,False,False,True,8-K,2026-08-26,6770,Blank Checks,financing_or_registration_activity
 XXII,0001347858,22nd Century Group Inc. Common Stock,10,5,False,True,True,False,False,True,8-K,2026-09-01,2111,Cigarettes,financing_or_registration_activity
-YYAI,0001674440,AiRWA Inc. Common Stock,8,2,False,False,True,False,False,False,8-K,2026-08-28,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
+YYAI,0001674440,AiRWA Inc. Common Stock,9,2,False,False,True,False,False,False,NT 10-Q,2026-09-14,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
