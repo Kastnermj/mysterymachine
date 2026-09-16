@@ -28,7 +28,7 @@ AVAT,0002092446,Avalanche Treasury Corporation Class A Common Stock,14,6,False,T
 AXINR,0002057030,Axiom Intelligence Acquisition Corp 1 Right,5,1,False,True,False,False,False,False,425,2026-09-15,6770,Blank Checks,recent_periodic_reporting
 BANL,0001914805,CBL International Limited Class B Ordinary Shares,5,1,False,False,False,False,False,True,144,2026-09-04,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),financing_or_registration_activity
 BATL,0001282648,Battalion Oil Corporation Common Stock,10,3,False,True,True,False,False,False,4,2026-08-28,1311,Crude Petroleum & Natural Gas,recent_event_activity
-BBBYW,0001130713,Neighborhood Intelligence Inc. Warrants,29,12,False,True,True,False,True,True,3,2026-09-09,5961,Retail-Catalog & Mail-Order Houses,financing_or_registration_activity
+BBBYW,0001130713,Neighborhood Intelligence Inc. Warrants,31,12,False,True,True,False,True,True,3,2026-09-09,5961,Retail-Catalog & Mail-Order Houses,financing_or_registration_activity
 BCSS,0002064355,Bain Capital GSS Investment Corp. Class A Ordinary Shares,1,1,False,True,False,False,False,False,10-Q,2026-08-13,6770,Blank Checks,recent_periodic_reporting
 BESS,0001066764,Bimergen Energy Corporation Common Stock,1,1,False,True,False,False,False,False,10-Q,2026-08-14,4911,Electric Services,recent_periodic_reporting
 BGDE,0001218683,Big Digital Energy Inc. Common Stock,10,2,False,True,False,False,False,True,4,2026-09-15,6199,Finance Services,financing_or_registration_activity
@@ -193,7 +193,7 @@ QNTM,0001771885,Quantum Biopharma Ltd. Class B Subordinate Voting Shares,9,0,Fal
 QSI,0001816431,Quantum-Si Incorporated Class A Common Stock,3,2,False,True,True,False,False,False,SCHEDULE 13D/A,2026-08-28,3829,"Measuring & Controlling Devices, NEC",recent_event_activity
 QTI,0001844505,QT Imaging Holdings Inc. Common Stock,9,4,False,True,True,False,False,False,4,2026-08-31,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 QUCY,0001874252,Quantum Cyber N.V. Ordinary Shares,15,1,False,True,False,False,False,False,10-Q,2026-08-14,2834,Pharmaceutical Preparations,recent_periodic_reporting
-RACC,0002118032,Research Alliance Corporation III Class A Ordinary Shares,10,1,False,True,False,False,False,False,SCHEDULE 13G,2026-09-11,2834,Pharmaceutical Preparations,recent_periodic_reporting
+RACC,0002118032,Research Alliance Corporation III Class A Ordinary Shares,11,1,False,True,False,False,False,False,425,2026-09-16,2834,Pharmaceutical Preparations,recent_periodic_reporting
 RAIL,0001320854,FreightCar America Inc. Common Stock,4,3,False,True,True,False,False,False,8-A12B,2026-08-05,3743,Railroad Equipment,recent_event_activity
 RAIN,0002028293,Rain Enhancement Technologies Holdco Inc. Class A Common Stock,8,2,False,True,True,False,False,False,8-K,2026-08-21,3590,Misc Industrial & Commercial Machinery & Equipment,recent_event_activity
 RAVE,0000718332,Rave Restaurant Group Inc.,0,0,False,False,False,False,False,False,SCHEDULE 13D/A,2026-05-15,5140,Wholesale-Groceries & Related Products,quiet
