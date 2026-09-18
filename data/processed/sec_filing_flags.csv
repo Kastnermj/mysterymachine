@@ -40,6 +40,7 @@ BREZR,0002095443,Breeze Acquisition Corp. II Right,10,3,False,False,True,False,F
 BRN,0000010048,Barnwell Industries Inc. Common Stock,5,3,False,True,True,False,False,False,8-K,2026-09-16,1311,Crude Petroleum & Natural Gas,recent_event_activity
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-09-18,7371,Services-Computer Programming Services,recent_other_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,16,7,False,True,True,False,False,False,PRE 14C,2026-09-14,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
+CATLR,0002104391,Catalyst Acquisition Corp. Rights,5,2,False,True,True,False,False,False,8-K,2026-09-15,6770,Blank Checks,recent_event_activity
 CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,23,2,False,True,True,False,False,False,425,2026-09-17,3569,"General Industrial Machinery & Equipment, NEC",recent_event_activity
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,5,2,False,True,True,False,False,False,DEFA14A,2026-09-08,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 CDT,0001896212,CDT Equity Inc. Common Stock,18,8,False,True,True,True,False,False,EFFECT,2026-09-17,2834,Pharmaceutical Preparations,financing_or_registration_activity
@@ -94,6 +95,7 @@ FGI,0001864943,FGI Industries Ltd. Ordinary Shares,2,2,False,True,True,False,Fal
 FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,5,0,False,False,False,False,False,False,SCHEDULE 13G,2026-09-08,1090,Miscellaneous Metal Ores,recent_other_activity
 FVN,0002010653,Future Vision II Acquisition Corporation Ordinary shares,9,5,False,True,True,False,False,False,8-K,2026-09-14,7373,Services-Computer Integrated Systems Design,recent_event_activity
 GBR,0000105744,New Concept Energy Inc Common Stock,3,3,False,True,True,False,False,False,8-K,2026-08-24,1311,Crude Petroleum & Natural Gas,recent_event_activity
+GCGRW,0002108962,General Catalyst Global Resilience Merger Corp. Warrants,3,1,False,True,False,False,False,False,SCHEDULE 13G,2026-08-13,6770,Blank Checks,recent_periodic_reporting
 GCTK,0001506983,GlucoTrack Inc. Common Stock,15,11,False,True,True,True,False,False,S-1,2026-09-18,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
 GMEX,0001928581,GMEX ROBOTICS CORPORATION Class A Ordinary Shares,4,0,False,False,False,False,False,False,4,2026-09-10,3949,"Sporting & Athletic Goods, NEC",recent_other_activity
 GNPX,0001595248,Genprex Inc. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-08-18,2834,Pharmaceutical Preparations,recent_event_activity
@@ -132,7 +134,7 @@ JZXN,0001816172,Jiuzi Holdings Inc. Ordinary Shares,4,0,False,False,False,False,
 KAPA,0001962011,Kairos Pharma Ltd. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-09-14,2834,Pharmaceutical Preparations,recent_event_activity
 KGEI,0001477081,Kolibri Global Energy Inc. Common stock,1,0,False,False,False,False,False,False,6-K,2026-08-13,1311,Crude Petroleum & Natural Gas,recent_other_activity
 KITT,0001849820,Nauticus Robotics Inc. Common stock,6,5,False,True,True,False,False,True,8-K,2026-09-18,3569,"General Industrial Machinery & Equipment, NEC",financing_or_registration_activity
-KUST,0001342958,Kustom Entertainment Inc. Common Stock,8,3,False,True,True,False,False,False,PRER14A,2026-09-16,3663,Radio & Tv Broadcasting & Communications Equipment,recent_event_activity
+KUST,0001342958,Kustom Entertainment Inc. Common Stock,9,3,False,True,True,False,False,False,PRER14A,2026-09-18,3663,Radio & Tv Broadcasting & Communications Equipment,recent_event_activity
 LABT,0002079272,Lakewood-Amedex Biotherapeutics Inc. Common Stock,6,2,False,True,False,False,False,True,424B3,2026-08-17,2834,Pharmaceutical Preparations,financing_or_registration_activity
 LCTX,0000876343,Lineage Cell Therapeutics Inc.,2,2,False,True,True,False,False,False,10-Q,2026-08-06,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 LHAI,0002017758,Linkhome Holdings Inc. Common stock,5,3,False,True,True,False,False,False,S-8,2026-09-15,6531,Real Estate Agents & Managers (For Others),recent_event_activity
