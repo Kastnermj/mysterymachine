@@ -86,7 +86,7 @@ ENVB,0000890821,Enveric Biosciences Inc. Common Stock,5,2,False,True,True,False,
 EONR,0001842556,EON Resources Inc. Class A Common Stock,1,0,False,False,False,False,False,False,NT 10-Q,2026-08-17,1311,Crude Petroleum & Natural Gas,recent_other_activity
 EPM,0001006655,Evolution Petroleum Corporation Inc. Common Stock,11,7,True,False,True,False,False,True,10-K,2026-09-16,1311,Crude Petroleum & Natural Gas,financing_or_registration_activity
 ERNA,0000748592,Ernexa Therapeutics Inc. Common Stock,9,2,False,False,True,False,False,False,8-K,2026-09-16,2834,Pharmaceutical Preparations,recent_event_activity
-ETRA,0002088082,Electra Therapeutics Inc. Common stock,19,3,False,False,False,True,False,True,424B4,2026-09-18,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
+ETRA,0002088082,Electra Therapeutics Inc. Common stock,20,4,False,False,True,True,False,True,8-K,2026-09-21,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 EVGN,0001574565,Evogene Ltd Ordinary Shares,13,0,False,False,False,False,False,False,6-K,2026-09-15,2870,Agricultural Chemicals,recent_other_activity
 EZGO,0001806904,EZGO Technologies Ltd. Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-08-20,3751,"Motorcycles, Bicycles & Parts",recent_other_activity
 FABC,0001086745,Fabric.AI Inc. Common Stock,2,1,False,True,False,False,False,False,4,2026-08-14,4899,"Communications Services, NEC",recent_periodic_reporting
@@ -116,7 +116,7 @@ HVIIR,0001846416,Hennessy Capital Investment Corp. VII Rights,16,4,False,True,Tr
 HYT,0001222401,Blackrock Corporate High Yield Fund Inc. Common Stock,4,0,False,False,False,False,False,False,3,2026-09-17,,,recent_other_activity
 IDAI,0001718939,T Stamp Inc. Class A Common Stock,10,2,False,True,True,False,False,False,4,2026-09-02,7372,Services-Prepackaged Software,recent_event_activity
 IGR,0001268884,CBRE Global Real Estate Income Fund Common Shares of Beneficial Interest,7,1,False,False,True,False,False,False,8-K,2026-09-08,,,recent_event_activity
-IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-08-10,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
+IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-09-21,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 INDO,0001757840,Indonesia Energy Corporation Limited Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-09-02,1311,Crude Petroleum & Natural Gas,recent_other_activity
 INKT,0001840229,MiNK Therapeutics Inc. Common Stock,8,2,False,True,True,False,False,False,4,2026-09-02,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 INM,0001728328,InMed Pharmaceuticals Inc. Common Shares,6,2,True,False,True,False,False,False,8-K,2026-09-18,2834,Pharmaceutical Preparations,recent_event_activity
