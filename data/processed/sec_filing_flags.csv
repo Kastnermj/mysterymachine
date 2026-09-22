@@ -136,7 +136,7 @@ JZXN,0001816172,Jiuzi Holdings Inc. Ordinary Shares,4,0,False,False,False,False,
 KAPA,0001962011,Kairos Pharma Ltd. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-09-14,2834,Pharmaceutical Preparations,recent_event_activity
 KGEI,0001477081,Kolibri Global Energy Inc. Common stock,2,0,False,False,False,False,False,False,6-K,2026-09-21,1311,Crude Petroleum & Natural Gas,recent_other_activity
 KITT,0001849820,Nauticus Robotics Inc. Common stock,5,5,False,True,True,False,False,True,8-K,2026-09-18,3569,"General Industrial Machinery & Equipment, NEC",financing_or_registration_activity
-KUST,0001342958,Kustom Entertainment Inc. Common Stock,9,3,False,True,True,False,False,False,PRER14A,2026-09-18,3663,Radio & Tv Broadcasting & Communications Equipment,recent_event_activity
+KUST,0001342958,Kustom Entertainment Inc. Common Stock,11,3,False,True,True,False,False,False,ARS,2026-09-22,3663,Radio & Tv Broadcasting & Communications Equipment,recent_event_activity
 LABT,0002079272,Lakewood-Amedex Biotherapeutics Inc. Common Stock,7,3,False,True,False,True,False,True,S-1,2026-09-18,2834,Pharmaceutical Preparations,financing_or_registration_activity
 LCTX,0000876343,Lineage Cell Therapeutics Inc.,0,0,False,False,False,False,False,False,10-Q,2026-08-06,2836,"Biological Products, (No Diagnostic Substances)",quiet
 LHAI,0002017758,Linkhome Holdings Inc. Common stock,5,4,False,True,True,False,False,False,8-K,2026-09-21,6531,Real Estate Agents & Managers (For Others),recent_event_activity
