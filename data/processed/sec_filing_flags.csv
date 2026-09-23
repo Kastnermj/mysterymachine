@@ -57,11 +57,11 @@ CLM,0000814083,Cornerstone Strategic Investment Fund Inc. Common Shares,5,0,Fals
 CLRB,0001279704,Cellectar Biosciences Inc.  Common Stock,7,2,False,True,True,False,False,False,SCHEDULE 13G,2026-08-14,2834,Pharmaceutical Preparations,recent_event_activity
 CMND,0001892500,Clearmind Medicine Inc. Common Shares,11,0,False,False,False,False,False,False,6-K,2026-09-23,2834,Pharmaceutical Preparations,recent_other_activity
 CNSP,0001729427,CNS Pharmaceuticals Inc. Common Stock,7,1,False,True,False,False,False,False,DEFA14A,2026-08-25,2834,Pharmaceutical Preparations,recent_periodic_reporting
-COLAR,0002028201,Columbus Acquisition Corp Rights,5,1,False,False,True,False,False,False,DEFA14A,2026-09-11,6770,Blank Checks,recent_event_activity
+COLAR,0002028201,Columbus Acquisition Corp Rights,7,2,False,False,True,False,False,False,DEFA14A,2026-09-23,6770,Blank Checks,recent_event_activity
 CRF,0000033934,Cornerstone Total Return Fund Inc. (The) Common Stock,5,0,False,False,False,False,False,False,4,2026-09-01,,,recent_other_activity
 CRMT,0000799850,America's Car-Mart Inc Common Stock,15,5,False,True,True,False,False,False,4,2026-09-21,5500,Retail-Auto Dealers & Gasoline Stations,recent_event_activity
 CSAI,0001709628,Cloudastructure Inc. Class A Common Stock,19,4,False,True,True,False,False,False,4/A,2026-09-02,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
-CSTE,0001504379,Caesarstone Ltd. Ordinary Shares,0,0,False,False,False,False,False,False,6-K,2026-08-05,3281,Cut Stone & Stone Products,quiet
+CSTE,0001504379,Caesarstone Ltd. Ordinary Shares,1,0,False,False,False,False,False,False,SCHEDULE 13D/A,2026-09-23,3281,Cut Stone & Stone Products,recent_other_activity
 CTNT,0001951667,Cheetah Net Supply Chain Service Inc Class A Common Stock,8,6,False,True,True,False,False,True,8-K,2026-09-23,5010,Wholesale-Motor Vehicles & Motor Vehicle Parts & Supplies,financing_or_registration_activity
 CTXR,0001506251,Citius Pharmaceuticals Inc. Common Stock,5,3,False,True,True,False,False,False,8-K,2026-08-21,2834,Pharmaceutical Preparations,recent_event_activity
 CUBWW,0002015955,Lionheart Holdings Warrant,10,2,False,True,True,False,False,False,SCHEDULE 13G/A,2026-09-04,6770,Blank Checks,recent_event_activity
