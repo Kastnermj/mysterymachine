@@ -93,6 +93,7 @@ FABC,0001086745,Fabric.AI Inc. Common Stock,2,1,False,True,False,False,False,Fal
 FBLG,0001958777,FibroBiologics Inc. Common Stock,9,3,False,False,True,False,False,False,8-K,2026-09-18,2834,Pharmaceutical Preparations,recent_event_activity
 FCHL,0002023796,Fitness Champs Holdings Limited Common Stock,1,0,False,False,False,False,False,False,6-K,2026-08-27,7990,Services-Miscellaneous Amusement & Recreation,recent_other_activity
 FGI,0001864943,FGI Industries Ltd. Ordinary Shares,1,1,False,True,False,False,False,False,10-Q,2026-08-14,3430,"Heating Equip, Except Elec & Warm Air; & Plumbing Fixtures",recent_periodic_reporting
+FJDIR,0002094712,ARC Group Securities Acquisition I Rights,7,2,False,True,True,False,False,False,8-K,2026-09-24,6770,Blank Checks,recent_event_activity
 FNUC,0001769697,Frontier Nuclear and Minerals Inc. Common Shares,4,0,False,False,False,False,False,False,SCHEDULE 13G,2026-09-08,1090,Miscellaneous Metal Ores,recent_other_activity
 FVN,0002010653,Future Vision II Acquisition Corporation Ordinary shares,6,4,False,False,True,False,False,False,8-K,2026-09-14,7373,Services-Computer Integrated Systems Design,recent_event_activity
 GBR,0000105744,New Concept Energy Inc Common Stock,1,1,False,False,True,False,False,False,8-K,2026-08-24,1311,Crude Petroleum & Natural Gas,recent_event_activity
@@ -142,6 +143,7 @@ LCTX,0000876343,Lineage Cell Therapeutics Inc.,0,0,False,False,False,False,False
 LHAI,0002017758,Linkhome Holdings Inc. Common stock,4,3,False,False,True,False,False,False,8-K,2026-09-21,6531,Real Estate Agents & Managers (For Others),recent_event_activity
 LNAI,0001527728,Lunai Bioworks Inc. Common Stock,0,0,False,False,False,False,False,False,SCHEDULE 13G,2026-07-17,2834,Pharmaceutical Preparations,quiet
 LNKS,0001972074,Linkers Industries Limited Class A Ordinary Shares,3,0,False,False,False,False,False,False,3,2026-08-26,3670,Electronic Components & Accessories,recent_other_activity
+LOVIU,0002115191,Live Oak Acquisition Corp. VI Units,13,4,False,False,True,True,False,True,SCHEDULE 13G,2026-09-25,6770,Blank Checks,financing_or_registration_activity
 LSF,0001650696,Laird Superfood Inc. Common Stock,8,4,False,True,True,False,False,False,8-K,2026-09-08,2000,Food and Kindred Products,recent_event_activity
 LWACW,0002061379,LightWave Acquisition Corp. Warrants,1,1,False,True,False,False,False,False,10-Q,2026-08-14,6770,Blank Checks,recent_periodic_reporting
 MASK,0001993097,3 E Network Technology Group Ltd Class A Ordinary Shares,5,1,False,False,False,False,False,False,6-K,2026-09-25,7371,Services-Computer Programming Services,recent_other_activity
