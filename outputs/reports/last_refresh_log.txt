@@ -1,26 +1,26 @@
-2026-09-27 19:24:45,933 | INFO | contrarian_flow_engine | Starting Contrarian Flow Engine pipeline
+2026-09-28 00:18:42,343 | INFO | contrarian_flow_engine | Starting Contrarian Flow Engine pipeline
 [  5%] Starting research engine
 [ 10%] Building broad 10-bagger candidate universe
-2026-09-27 19:24:45,934 | INFO | contrarian_flow_engine | Building starting universe
-2026-09-27 19:24:45,939 | INFO | contrarian_flow_engine | Loaded seed universe from /home/runner/work/mysterymachine/mysterymachine/data/raw/seed_universe.csv
-2026-09-27 19:24:45,941 | INFO | contrarian_flow_engine | Loaded ticker metadata from /home/runner/work/mysterymachine/mysterymachine/data/raw/ticker_metadata.csv
-2026-09-27 19:24:45,942 | INFO | contrarian_flow_engine | Loaded 65 configured tickers
-2026-09-27 19:24:45,949 | INFO | contrarian_flow_engine | Combined starting universe has 66 unique tickers
-2026-09-27 19:24:52,653 | INFO | contrarian_flow_engine | Universe after broad public screener merge has 7033 unique tickers
-2026-09-27 19:24:52,664 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 7033 -> 3602 rows
-2026-09-27 19:24:52,822 | WARNING | contrarian_flow_engine | Yahoo quote enrichment failed without blocking universe build: [Errno 36] File name too long: '/home/runner/work/mysterymachine/mysterymachine/data/cache/yahoo_quote_ABEV_ADTX_AGRI_AMTX_AQMS_AREB_ASRT_ATOS_AULT_BBAI_BNGO_BTBT_CENN_CGTX_CLIR_CLNE_CRKN_CTMX_EOSE_FCEL_FFIE_FUBO_GERN_GOSS_GRAB_HITI_HIVE_HUMA_IDEX_INDI_INVZ_KULR_LAZR_LIDR_LUMN_MESA_MVIS_NKLA_NNDM_OPEN_OPTT_ORGN_PLUG_POWW_PSNY_REKR_RGTI_RKLB_SENS_SOUN_SPCE_TELL_TLRY_TOMZ_TRVG_VUZI_WATT_WULF_XELA_ZOM.json'
-2026-09-27 19:24:52,824 | INFO | contrarian_flow_engine | Stooq universe fallback disabled; leaving 60 missing-price rows for data-quality filters
-2026-09-27 19:24:52,828 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 3602 -> 3602 rows
-2026-09-27 19:24:52,857 | INFO | contrarian_flow_engine | Universe saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/universe.csv with 3602 rows
-2026-09-27 19:24:52,858 | INFO | contrarian_flow_engine | Universe stage complete with 3602 candidates
+2026-09-28 00:18:42,344 | INFO | contrarian_flow_engine | Building starting universe
+2026-09-28 00:18:42,349 | INFO | contrarian_flow_engine | Loaded seed universe from /home/runner/work/mysterymachine/mysterymachine/data/raw/seed_universe.csv
+2026-09-28 00:18:42,351 | INFO | contrarian_flow_engine | Loaded ticker metadata from /home/runner/work/mysterymachine/mysterymachine/data/raw/ticker_metadata.csv
+2026-09-28 00:18:42,352 | INFO | contrarian_flow_engine | Loaded 65 configured tickers
+2026-09-28 00:18:42,360 | INFO | contrarian_flow_engine | Combined starting universe has 66 unique tickers
+2026-09-28 00:18:49,651 | INFO | contrarian_flow_engine | Universe after broad public screener merge has 7033 unique tickers
+2026-09-28 00:18:49,661 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 7033 -> 3602 rows
+2026-09-28 00:18:49,847 | WARNING | contrarian_flow_engine | Yahoo quote enrichment failed without blocking universe build: [Errno 36] File name too long: '/home/runner/work/mysterymachine/mysterymachine/data/cache/yahoo_quote_ABEV_ADTX_AGRI_AMTX_AQMS_AREB_ASRT_ATOS_AULT_BBAI_BNGO_BTBT_CENN_CGTX_CLIR_CLNE_CRKN_CTMX_EOSE_FCEL_FFIE_FUBO_GERN_GOSS_GRAB_HITI_HIVE_HUMA_IDEX_INDI_INVZ_KULR_LAZR_LIDR_LUMN_MESA_MVIS_NKLA_NNDM_OPEN_OPTT_ORGN_PLUG_POWW_PSNY_REKR_RGTI_RKLB_SENS_SOUN_SPCE_TELL_TLRY_TOMZ_TRVG_VUZI_WATT_WULF_XELA_ZOM.json'
+2026-09-28 00:18:49,848 | INFO | contrarian_flow_engine | Stooq universe fallback disabled; leaving 60 missing-price rows for data-quality filters
+2026-09-28 00:18:49,853 | INFO | contrarian_flow_engine | Applied hard price/market-cap/exchange filters: 3602 -> 3602 rows
+2026-09-28 00:18:49,881 | INFO | contrarian_flow_engine | Universe saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/universe.csv with 3602 rows
+2026-09-28 00:18:49,882 | INFO | contrarian_flow_engine | Universe stage complete with 3602 candidates
 [ 30%] Universe built: 3602 candidates
 [ 32%] Pre-screening Top 250 10-bagger research batch
-2026-09-27 19:24:53,302 | INFO | contrarian_flow_engine | 10-bagger research batch selected with 250 tickers
+2026-09-28 00:18:50,520 | INFO | contrarian_flow_engine | 10-bagger research batch selected with 250 tickers
       Research batch: selected 250 best pre-screened 10-bagger candidates
-2026-09-27 19:24:53,306 | INFO | contrarian_flow_engine | 10-bagger research batch saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/research_batch.csv
+2026-09-28 00:18:50,524 | INFO | contrarian_flow_engine | 10-bagger research batch saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/research_batch.csv
 [ 34%] Research batch ready: 250 candidates
 [ 35%] Refreshing price and volume history for Top 250 batch
-2026-09-27 19:24:53,310 | INFO | contrarian_flow_engine | Selected 250 tickers for price-history refresh
+2026-09-28 00:18:50,531 | INFO | contrarian_flow_engine | Selected 250 tickers for price-history refresh
       Price history: 1/250 tickers checked
       Price history: 10/250 tickers checked
       Price history: 20/250 tickers checked
@@ -47,234 +47,92 @@
       Price history: 230/250 tickers checked
       Price history: 240/250 tickers checked
       Price history: 250/250 tickers checked
-2026-09-27 19:25:15,488 | INFO | contrarian_flow_engine | Price-history features saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/price_history_features.csv with 250 rows
-2026-09-27 19:25:15,490 | INFO | contrarian_flow_engine | Price-history stage complete with 250 rows
+2026-09-28 00:19:33,221 | INFO | contrarian_flow_engine | Price-history features saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/price_history_features.csv with 250 rows
+2026-09-28 00:19:33,222 | INFO | contrarian_flow_engine | Price-history stage complete with 250 rows
 [ 55%] Price-history features ready: 250 rows
 [ 60%] Checking SEC filing metadata and signals for Top 250 batch
       SEC metadata: 1/250 tickers checked
       SEC metadata: 25/250 tickers checked
-2026-09-27 19:25:18,798 | INFO | contrarian_flow_engine | No SEC CIK found for USEG
+2026-09-28 00:19:37,338 | INFO | contrarian_flow_engine | No SEC CIK found for USEG
       SEC metadata: 50/250 tickers checked
       SEC metadata: 75/250 tickers checked
-2026-09-27 19:25:21,108 | INFO | contrarian_flow_engine | SEC submissions skipped for QNTM after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001771885.json
-2026-09-27 19:25:21,143 | INFO | contrarian_flow_engine | SEC submissions skipped for BATL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001282648.json
-2026-09-27 19:25:21,180 | INFO | contrarian_flow_engine | SEC submissions skipped for ORKT after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001979407.json
-2026-09-27 19:25:21,213 | INFO | contrarian_flow_engine | SEC submissions skipped for RAVE after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000718332.json
-2026-09-27 19:25:21,245 | INFO | contrarian_flow_engine | SEC submissions skipped for ELAB after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001840563.json
-2026-09-27 19:25:21,282 | INFO | contrarian_flow_engine | SEC submissions skipped for CISS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001951067.json
-2026-09-27 19:25:21,335 | INFO | contrarian_flow_engine | SEC submissions skipped for NXTC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001661059.json
-2026-09-27 19:25:21,369 | INFO | contrarian_flow_engine | SEC submissions skipped for EONR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001842556.json
-2026-09-27 19:25:21,405 | INFO | contrarian_flow_engine | SEC submissions skipped for MNDR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001976695.json
-2026-09-27 19:25:21,441 | INFO | contrarian_flow_engine | SEC submissions skipped for GOVX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000832489.json
-2026-09-27 19:25:21,494 | INFO | contrarian_flow_engine | SEC submissions skipped for OLOX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001023994.json
-2026-09-27 19:25:21,529 | INFO | contrarian_flow_engine | SEC submissions skipped for ENVB after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000890821.json
-2026-09-27 19:25:21,579 | INFO | contrarian_flow_engine | SEC submissions skipped for RMTI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001041024.json
-2026-09-27 19:25:21,614 | INFO | contrarian_flow_engine | SEC submissions skipped for EDBL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001809750.json
-2026-09-27 19:25:21,647 | INFO | contrarian_flow_engine | SEC submissions skipped for WOK after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001929783.json
-2026-09-27 19:25:21,687 | INFO | contrarian_flow_engine | SEC submissions skipped for STAK after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002002453.json
-2026-09-27 19:25:21,722 | INFO | contrarian_flow_engine | SEC submissions skipped for LABT after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002079272.json
-2026-09-27 19:25:21,759 | INFO | contrarian_flow_engine | SEC submissions skipped for AIIO after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001932737.json
-2026-09-27 19:25:21,803 | INFO | contrarian_flow_engine | SEC submissions skipped for SNOA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001367083.json
-2026-09-27 19:25:21,836 | INFO | contrarian_flow_engine | SEC submissions skipped for SNAL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001886894.json
-2026-09-27 19:25:21,873 | INFO | contrarian_flow_engine | SEC submissions skipped for BTTC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002034400.json
-2026-09-27 19:25:21,909 | INFO | contrarian_flow_engine | SEC submissions skipped for MTVA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001638287.json
-2026-09-27 19:25:21,943 | INFO | contrarian_flow_engine | SEC submissions skipped for CMND after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001892500.json
-2026-09-27 19:25:21,977 | INFO | contrarian_flow_engine | SEC submissions skipped for NRXS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001933567.json
-2026-09-27 19:25:22,029 | INFO | contrarian_flow_engine | SEC submissions skipped for REVB after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001810560.json
       SEC metadata: 100/250 tickers checked
-2026-09-27 19:25:22,065 | INFO | contrarian_flow_engine | SEC submissions skipped for ELBM after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001907184.json
-2026-09-27 19:25:22,102 | INFO | contrarian_flow_engine | SEC submissions skipped for DXST after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001958133.json
-2026-09-27 19:25:22,136 | INFO | contrarian_flow_engine | SEC submissions skipped for CDIO after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001870144.json
-2026-09-27 19:25:22,171 | INFO | contrarian_flow_engine | SEC submissions skipped for SEGG after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001673481.json
-2026-09-27 19:25:22,207 | INFO | contrarian_flow_engine | SEC submissions skipped for LHAI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002017758.json
-2026-09-27 19:25:22,241 | INFO | contrarian_flow_engine | SEC submissions skipped for PDYN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001826681.json
-2026-09-27 19:25:22,275 | INFO | contrarian_flow_engine | SEC submissions skipped for VTAK after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001716621.json
-2026-09-27 19:25:22,312 | INFO | contrarian_flow_engine | SEC submissions skipped for SNGX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000812796.json
-2026-09-27 19:25:22,346 | INFO | contrarian_flow_engine | SEC submissions skipped for INDO after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001757840.json
-2026-09-27 19:25:22,385 | INFO | contrarian_flow_engine | SEC submissions skipped for AEMD after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000882291.json
-2026-09-27 19:25:22,437 | INFO | contrarian_flow_engine | SEC submissions skipped for AUUD after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001554818.json
-2026-09-27 19:25:22,474 | INFO | contrarian_flow_engine | SEC submissions skipped for EAF after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000931148.json
-2026-09-27 19:25:22,509 | INFO | contrarian_flow_engine | SEC submissions skipped for CIIT after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001557798.json
-2026-09-27 19:25:22,543 | INFO | contrarian_flow_engine | SEC submissions skipped for ENSC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001716947.json
-2026-09-27 19:25:22,580 | INFO | contrarian_flow_engine | SEC submissions skipped for AMIX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001617867.json
-2026-09-27 19:25:22,613 | INFO | contrarian_flow_engine | SEC submissions skipped for IRIX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001006045.json
-2026-09-27 19:25:22,646 | INFO | contrarian_flow_engine | SEC submissions skipped for JCTC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000885307.json
-2026-09-27 19:25:22,678 | INFO | contrarian_flow_engine | SEC submissions skipped for EVGN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001574565.json
-2026-09-27 19:25:22,712 | INFO | contrarian_flow_engine | SEC submissions skipped for INM after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001728328.json
-2026-09-27 19:25:22,748 | INFO | contrarian_flow_engine | SEC submissions skipped for TMDE after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002009714.json
-2026-09-27 19:25:22,782 | INFO | contrarian_flow_engine | SEC submissions skipped for AIOS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001603993.json
-2026-09-27 19:25:22,816 | INFO | contrarian_flow_engine | SEC submissions skipped for CSTE after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001504379.json
-2026-09-27 19:25:22,850 | INFO | contrarian_flow_engine | SEC submissions skipped for RVSN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001743905.json
-2026-09-27 19:25:22,883 | INFO | contrarian_flow_engine | SEC submissions skipped for ALGS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001799448.json
-2026-09-27 19:25:22,916 | INFO | contrarian_flow_engine | SEC submissions skipped for RBNE after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002039060.json
       SEC metadata: 125/250 tickers checked
-2026-09-27 19:25:22,953 | INFO | contrarian_flow_engine | SEC submissions skipped for WIMI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001770088.json
-2026-09-27 19:25:22,987 | INFO | contrarian_flow_engine | SEC submissions skipped for JTAI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001861622.json
-2026-09-27 19:25:23,020 | INFO | contrarian_flow_engine | SEC submissions skipped for PRSO after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000890394.json
-2026-09-27 19:25:23,061 | INFO | contrarian_flow_engine | SEC submissions skipped for CVM after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000725363.json
-2026-09-27 19:25:23,096 | INFO | contrarian_flow_engine | SEC submissions skipped for HUBC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001905660.json
-2026-09-27 19:25:23,137 | INFO | contrarian_flow_engine | SEC submissions skipped for ERNA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000748592.json
-2026-09-27 19:25:23,179 | INFO | contrarian_flow_engine | SEC submissions skipped for MSAI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001863990.json
-2026-09-27 19:25:23,213 | INFO | contrarian_flow_engine | SEC submissions skipped for MBAI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001610590.json
-2026-09-27 19:25:23,245 | INFO | contrarian_flow_engine | SEC submissions skipped for QUCY after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001874252.json
-2026-09-27 19:25:23,281 | INFO | contrarian_flow_engine | SEC submissions skipped for VRAX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001885827.json
-2026-09-27 19:25:23,317 | INFO | contrarian_flow_engine | SEC submissions skipped for HCAI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001958399.json
-2026-09-27 19:25:23,352 | INFO | contrarian_flow_engine | SEC submissions skipped for CTXR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001506251.json
-2026-09-27 19:25:23,388 | INFO | contrarian_flow_engine | SEC submissions skipped for PAVS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001751876.json
-2026-09-27 19:25:23,421 | INFO | contrarian_flow_engine | SEC submissions skipped for GRWG after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001604868.json
-2026-09-27 19:25:23,460 | INFO | contrarian_flow_engine | SEC submissions skipped for CLRB after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001279704.json
-2026-09-27 19:25:23,497 | INFO | contrarian_flow_engine | SEC submissions skipped for GBR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000105744.json
-2026-09-27 19:25:23,533 | INFO | contrarian_flow_engine | SEC submissions skipped for BESS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001066764.json
-2026-09-27 19:25:23,566 | INFO | contrarian_flow_engine | SEC submissions skipped for OTLK after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001649989.json
-2026-09-27 19:25:23,625 | INFO | contrarian_flow_engine | SEC submissions skipped for LNAI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001527728.json
-2026-09-27 19:25:23,661 | INFO | contrarian_flow_engine | SEC submissions skipped for BGDE after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001218683.json
-2026-09-27 19:25:23,714 | INFO | contrarian_flow_engine | SEC submissions skipped for TOVX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000894158.json
-2026-09-27 19:25:23,749 | INFO | contrarian_flow_engine | SEC submissions skipped for AVAT after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002092446.json
-2026-09-27 19:25:23,788 | INFO | contrarian_flow_engine | SEC submissions skipped for PTN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000911216.json
-2026-09-27 19:25:23,860 | INFO | contrarian_flow_engine | SEC submissions skipped for TWAV after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000746210.json
-2026-09-27 19:25:23,902 | INFO | contrarian_flow_engine | SEC submissions skipped for QTI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001844505.json
       SEC metadata: 150/250 tickers checked
-2026-09-27 19:25:23,938 | INFO | contrarian_flow_engine | SEC submissions skipped for AIRI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001009891.json
-2026-09-27 19:25:23,971 | INFO | contrarian_flow_engine | SEC submissions skipped for BANL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001914805.json
-2026-09-27 19:25:24,034 | INFO | contrarian_flow_engine | SEC submissions skipped for DERM after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001867066.json
-2026-09-27 19:25:24,070 | INFO | contrarian_flow_engine | SEC submissions skipped for RAIL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001320854.json
-2026-09-27 19:25:24,104 | INFO | contrarian_flow_engine | SEC submissions skipped for MASK after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001993097.json
-2026-09-27 19:25:24,136 | INFO | contrarian_flow_engine | SEC submissions skipped for CING after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001862150.json
-2026-09-27 19:25:24,169 | INFO | contrarian_flow_engine | SEC submissions skipped for EZGO after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001806904.json
-2026-09-27 19:25:24,213 | INFO | contrarian_flow_engine | SEC submissions skipped for FABC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001086745.json
-2026-09-27 19:25:24,249 | INFO | contrarian_flow_engine | SEC submissions skipped for FGI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001864943.json
-2026-09-27 19:25:24,296 | INFO | contrarian_flow_engine | SEC submissions skipped for JZXN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001816172.json
-2026-09-27 19:25:24,329 | INFO | contrarian_flow_engine | SEC submissions skipped for VMAR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001813783.json
-2026-09-27 19:25:24,366 | INFO | contrarian_flow_engine | SEC submissions skipped for RPGL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001912884.json
-2026-09-27 19:25:24,404 | INFO | contrarian_flow_engine | SEC submissions skipped for AGPU after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001446159.json
-2026-09-27 19:25:24,437 | INFO | contrarian_flow_engine | SEC submissions skipped for MTNB after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001582554.json
-2026-09-27 19:25:24,470 | INFO | contrarian_flow_engine | SEC submissions skipped for NXL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001527352.json
-2026-09-27 19:25:24,507 | INFO | contrarian_flow_engine | SEC submissions skipped for SOAR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001853070.json
-2026-09-27 19:25:24,540 | INFO | contrarian_flow_engine | SEC submissions skipped for ETRA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002088082.json
-2026-09-27 19:25:24,572 | INFO | contrarian_flow_engine | SEC submissions skipped for RNTX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001420565.json
-2026-09-27 19:25:24,608 | INFO | contrarian_flow_engine | SEC submissions skipped for INKT after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001840229.json
-2026-09-27 19:25:24,657 | INFO | contrarian_flow_engine | SEC submissions skipped for BRN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000010048.json
-2026-09-27 19:25:24,690 | INFO | contrarian_flow_engine | SEC submissions skipped for ATRA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001604464.json
-2026-09-27 19:25:24,723 | INFO | contrarian_flow_engine | SEC submissions skipped for BGMS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001130166.json
-2026-09-27 19:25:24,755 | INFO | contrarian_flow_engine | SEC submissions skipped for FNUC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001769697.json
-2026-09-27 19:25:24,792 | INFO | contrarian_flow_engine | SEC submissions skipped for PLRZ after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001893645.json
-2026-09-27 19:25:24,827 | INFO | contrarian_flow_engine | SEC submissions skipped for MXC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000066418.json
       SEC metadata: 175/250 tickers checked
-2026-09-27 19:25:24,859 | INFO | contrarian_flow_engine | SEC submissions skipped for NEUP after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001191070.json
-2026-09-27 19:25:24,896 | INFO | contrarian_flow_engine | SEC submissions skipped for HUMA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001818382.json
-2026-09-27 19:25:24,931 | INFO | contrarian_flow_engine | SEC submissions skipped for CNSP after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001729427.json
-2026-09-27 19:25:24,998 | INFO | contrarian_flow_engine | SEC submissions skipped for TVGN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001860871.json
-2026-09-27 19:25:25,032 | INFO | contrarian_flow_engine | SEC submissions skipped for MI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001958713.json
-2026-09-27 19:25:25,072 | INFO | contrarian_flow_engine | SEC submissions skipped for RNAZ after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001829635.json
-2026-09-27 19:25:25,108 | INFO | contrarian_flow_engine | SEC submissions skipped for MGN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001995075.json
-2026-09-27 19:25:25,145 | INFO | contrarian_flow_engine | SEC submissions skipped for ALP after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001095435.json
-2026-09-27 19:25:25,180 | INFO | contrarian_flow_engine | SEC submissions skipped for KGEI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001477081.json
-2026-09-27 19:25:25,216 | INFO | contrarian_flow_engine | SEC submissions skipped for PASG after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001787297.json
-2026-09-27 19:25:25,253 | INFO | contrarian_flow_engine | SEC submissions skipped for AMS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000744825.json
-2026-09-27 19:25:25,286 | INFO | contrarian_flow_engine | SEC submissions skipped for BIYA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001944712.json
-2026-09-27 19:25:25,321 | INFO | contrarian_flow_engine | SEC submissions skipped for TAOX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001571934.json
-2026-09-27 19:25:25,357 | INFO | contrarian_flow_engine | SEC submissions skipped for RDGT after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001856084.json
-2026-09-27 19:25:25,391 | INFO | contrarian_flow_engine | SEC submissions skipped for WNW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001787803.json
-2026-09-27 19:25:25,424 | INFO | contrarian_flow_engine | SEC submissions skipped for ADTX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001726711.json
-2026-09-27 19:25:25,457 | INFO | contrarian_flow_engine | SEC submissions skipped for WFCF after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001360565.json
-2026-09-27 19:25:25,491 | INFO | contrarian_flow_engine | SEC submissions skipped for BCSS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002064355.json
-2026-09-27 19:25:25,531 | INFO | contrarian_flow_engine | SEC submissions skipped for AEHL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001470683.json
-2026-09-27 19:25:25,576 | INFO | contrarian_flow_engine | SEC submissions skipped for GOSS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001728117.json
-2026-09-27 19:25:25,613 | INFO | contrarian_flow_engine | SEC submissions skipped for NVNO after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001661053.json
-2026-09-27 19:25:25,649 | INFO | contrarian_flow_engine | SEC submissions skipped for MSDL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001782524.json
-2026-09-27 19:25:25,682 | INFO | contrarian_flow_engine | SEC submissions skipped for FCHL after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002023796.json
-2026-09-27 19:25:25,717 | INFO | contrarian_flow_engine | SEC submissions skipped for LNKS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001972074.json
-2026-09-27 19:25:25,751 | INFO | contrarian_flow_engine | SEC submissions skipped for PTY after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001190935.json
       SEC metadata: 200/250 tickers checked
-2026-09-27 19:25:25,786 | INFO | contrarian_flow_engine | SEC submissions skipped for STEX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001530766.json
-2026-09-27 19:25:25,818 | INFO | contrarian_flow_engine | SEC submissions skipped for CRF after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000033934.json
-2026-09-27 19:25:25,854 | INFO | contrarian_flow_engine | SEC submissions skipped for QH after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001781193.json
-2026-09-27 19:25:25,886 | INFO | contrarian_flow_engine | SEC submissions skipped for CKX after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000352955.json
-2026-09-27 19:25:25,920 | INFO | contrarian_flow_engine | SEC submissions skipped for CLM after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000814083.json
-2026-09-27 19:25:25,954 | INFO | contrarian_flow_engine | SEC submissions skipped for HYT after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001222401.json
-2026-09-27 19:25:25,987 | INFO | contrarian_flow_engine | SEC submissions skipped for ACP after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001503290.json
-2026-09-27 19:25:26,021 | INFO | contrarian_flow_engine | SEC submissions skipped for USA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000799195.json
-2026-09-27 19:25:26,055 | INFO | contrarian_flow_engine | SEC submissions skipped for USDEW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002080215.json
-2026-09-27 19:25:26,090 | INFO | contrarian_flow_engine | SEC submissions skipped for BBBYW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001130713.json
-2026-09-27 19:25:26,125 | INFO | contrarian_flow_engine | SEC submissions skipped for FVN after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002010653.json
-2026-09-27 19:25:26,159 | INFO | contrarian_flow_engine | SEC submissions skipped for XLABW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002109869.json
-2026-09-27 19:25:26,196 | INFO | contrarian_flow_engine | SEC submissions skipped for NTWO after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002028027.json
-2026-09-27 19:25:26,230 | INFO | contrarian_flow_engine | SEC submissions skipped for CCXI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002074973.json
-2026-09-27 19:25:26,263 | INFO | contrarian_flow_engine | SEC submissions skipped for IGR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001268884.json
-2026-09-27 19:25:26,299 | INFO | contrarian_flow_engine | SEC submissions skipped for NAD after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001083839.json
-2026-09-27 19:25:26,334 | INFO | contrarian_flow_engine | SEC submissions skipped for BPRE after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001551047.json
-2026-09-27 19:25:26,373 | INFO | contrarian_flow_engine | SEC submissions skipped for NEA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001195737.json
-2026-09-27 19:25:26,410 | INFO | contrarian_flow_engine | SEC submissions skipped for NZF after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001137887.json
-2026-09-27 19:25:26,463 | INFO | contrarian_flow_engine | SEC submissions skipped for RDAC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002018145.json
-2026-09-27 19:25:26,497 | INFO | contrarian_flow_engine | SEC submissions skipped for PAXS after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001886878.json
-2026-09-27 19:25:26,531 | INFO | contrarian_flow_engine | SEC submissions skipped for GOF after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001380936.json
-2026-09-27 19:25:26,566 | INFO | contrarian_flow_engine | SEC submissions skipped for LOVIU after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002115191.json
-2026-09-27 19:25:26,599 | INFO | contrarian_flow_engine | SEC submissions skipped for CHW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001396277.json
-2026-09-27 19:25:26,633 | INFO | contrarian_flow_engine | SEC submissions skipped for FJDIR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002094712.json
       SEC metadata: 225/250 tickers checked
-2026-09-27 19:25:26,667 | INFO | contrarian_flow_engine | SEC submissions skipped for JPC after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001216583.json
-2026-09-27 19:25:26,701 | INFO | contrarian_flow_engine | SEC submissions skipped for NVG after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001090116.json
-2026-09-27 19:25:26,736 | INFO | contrarian_flow_engine | SEC submissions skipped for NUV after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000812801.json
-2026-09-27 19:25:26,770 | INFO | contrarian_flow_engine | SEC submissions skipped for RFAIR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002012807.json
-2026-09-27 19:25:26,802 | INFO | contrarian_flow_engine | SEC submissions skipped for JFR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0001276533.json
-2026-09-27 19:25:26,836 | INFO | contrarian_flow_engine | SEC submissions skipped for IPEXR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002028355.json
-2026-09-27 19:25:26,871 | INFO | contrarian_flow_engine | SEC submissions skipped for NSAIR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002133719.json
-2026-09-27 19:25:26,905 | INFO | contrarian_flow_engine | SEC submissions skipped for VACI after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002080023.json
-2026-09-27 19:25:26,940 | INFO | contrarian_flow_engine | SEC submissions skipped for DNP after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0000806628.json
-2026-09-27 19:25:26,987 | INFO | contrarian_flow_engine | SEC submissions skipped for BCCQW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002128045.json
-2026-09-27 19:25:27,034 | INFO | contrarian_flow_engine | SEC submissions skipped for CUBWW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002015955.json
-2026-09-27 19:25:27,068 | INFO | contrarian_flow_engine | SEC submissions skipped for LWACW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002061379.json
-2026-09-27 19:25:27,103 | INFO | contrarian_flow_engine | SEC submissions skipped for COLAR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002028201.json
-2026-09-27 19:25:27,144 | INFO | contrarian_flow_engine | SEC submissions skipped for JONER after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002129056.json
-2026-09-27 19:25:27,177 | INFO | contrarian_flow_engine | SEC submissions skipped for KFIIR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002029976.json
-2026-09-27 19:25:27,212 | INFO | contrarian_flow_engine | SEC submissions skipped for RTACW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002035173.json
-2026-09-27 19:25:27,245 | INFO | contrarian_flow_engine | SEC submissions skipped for MESHW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002081468.json
-2026-09-27 19:25:27,277 | INFO | contrarian_flow_engine | SEC submissions skipped for TVACW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002033991.json
-2026-09-27 19:25:27,316 | INFO | contrarian_flow_engine | SEC submissions skipped for BREZR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002095443.json
-2026-09-27 19:25:27,351 | INFO | contrarian_flow_engine | SEC submissions skipped for DMAAR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002028614.json
-2026-09-27 19:25:27,385 | INFO | contrarian_flow_engine | SEC submissions skipped for ALISR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002026767.json
-2026-09-27 19:25:27,419 | INFO | contrarian_flow_engine | SEC submissions skipped for HAVA after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002042460.json
-2026-09-27 19:25:27,454 | INFO | contrarian_flow_engine | SEC submissions skipped for PTACW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002099095.json
-2026-09-27 19:25:27,489 | INFO | contrarian_flow_engine | SEC submissions skipped for AXINR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002057030.json
-2026-09-27 19:25:27,522 | INFO | contrarian_flow_engine | SEC submissions skipped for GHXIW after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002086438.json
       SEC metadata: 250/250 tickers checked
-2026-09-27 19:25:27,557 | INFO | contrarian_flow_engine | SEC submissions skipped for MKLYR after provider error: 429 Client Error: Too Many Requests for url: https://data.sec.gov/submissions/CIK0002067592.json
-2026-09-27 19:25:27,980 | INFO | contrarian_flow_engine | SEC filing metadata saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filings.csv with 5802 rows
-2026-09-27 19:25:27,980 | INFO | contrarian_flow_engine | SEC filing flags saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_flags.csv with 73 rows
-2026-09-27 19:25:27,980 | INFO | contrarian_flow_engine | SEC filing signals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_signals.csv with 73 rows
-2026-09-27 19:25:27,983 | INFO | contrarian_flow_engine | SEC metadata stage complete with 5802 filings and 73 ticker flags
-[ 78%] SEC metadata ready: 5802 filings
+2026-09-28 00:20:07,196 | INFO | contrarian_flow_engine | SEC filing metadata saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filings.csv with 18775 rows
+2026-09-28 00:20:07,196 | INFO | contrarian_flow_engine | SEC filing flags saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_flags.csv with 249 rows
+2026-09-28 00:20:07,196 | INFO | contrarian_flow_engine | SEC filing signals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/sec_filing_signals.csv with 249 rows
+2026-09-28 00:20:07,202 | INFO | contrarian_flow_engine | SEC metadata stage complete with 18775 filings and 249 ticker flags
+[ 78%] SEC metadata ready: 18775 filings
 [ 80%] Scanning event-shock risk for Top 250 batch
-      Event shock scan: 1/73 tickers checked
-      Event shock scan: 10/73 tickers checked
-      Event shock scan: 20/73 tickers checked
-      Event shock scan: 30/73 tickers checked
-      Event shock scan: 40/73 tickers checked
-      Event shock scan: 50/73 tickers checked
-      Event shock scan: 60/73 tickers checked
-      Event shock scan: 70/73 tickers checked
-      Event shock scan: 73/73 tickers checked
-2026-09-27 19:26:05,213 | INFO | contrarian_flow_engine | Event shock output saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/event_shocks.csv with 73 rows
-2026-09-27 19:26:05,215 | INFO | contrarian_flow_engine | Event shock stage complete with 73 rows
-[ 81%] Event shock scan ready: 73 rows
+      Event shock scan: 1/249 tickers checked
+      Event shock scan: 10/249 tickers checked
+      Event shock scan: 20/249 tickers checked
+      Event shock scan: 30/249 tickers checked
+      Event shock scan: 40/249 tickers checked
+      Event shock scan: 50/249 tickers checked
+      Event shock scan: 60/249 tickers checked
+      Event shock scan: 70/249 tickers checked
+      Event shock scan: 80/249 tickers checked
+      Event shock scan: 90/249 tickers checked
+      Event shock scan: 100/249 tickers checked
+      Event shock scan: 110/249 tickers checked
+      Event shock scan: 120/249 tickers checked
+      Event shock scan: 130/249 tickers checked
+      Event shock scan: 140/249 tickers checked
+      Event shock scan: 150/249 tickers checked
+      Event shock scan: 160/249 tickers checked
+      Event shock scan: 170/249 tickers checked
+      Event shock scan: 180/249 tickers checked
+      Event shock scan: 190/249 tickers checked
+      Event shock scan: 200/249 tickers checked
+      Event shock scan: 210/249 tickers checked
+      Event shock scan: 220/249 tickers checked
+      Event shock scan: 230/249 tickers checked
+      Event shock scan: 240/249 tickers checked
+      Event shock scan: 249/249 tickers checked
+2026-09-28 00:22:04,941 | INFO | contrarian_flow_engine | Event shock output saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/event_shocks.csv with 249 rows
+2026-09-28 00:22:04,943 | INFO | contrarian_flow_engine | Event shock stage complete with 249 rows
+[ 81%] Event shock scan ready: 249 rows
 [ 82%] Extracting accounting fundamentals and ratios
-      Fundamentals: 1/73 tickers checked
-      Fundamentals: 10/73 tickers checked
-      Fundamentals: 20/73 tickers checked
-      Fundamentals: 30/73 tickers checked
-      Fundamentals: 40/73 tickers checked
-      Fundamentals: 50/73 tickers checked
-      Fundamentals: 60/73 tickers checked
-      Fundamentals: 70/73 tickers checked
-      Fundamentals: 73/73 tickers checked
-2026-09-27 19:26:08,028 | INFO | contrarian_flow_engine | Fundamentals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/fundamentals_stub.csv with 73 rows
-2026-09-27 19:26:08,030 | INFO | contrarian_flow_engine | Fundamentals stage complete with 73 rows
-[ 88%] Fundamentals ready: 73 rows
+      Fundamentals: 1/249 tickers checked
+      Fundamentals: 10/249 tickers checked
+      Fundamentals: 20/249 tickers checked
+      Fundamentals: 30/249 tickers checked
+      Fundamentals: 40/249 tickers checked
+      Fundamentals: 50/249 tickers checked
+      Fundamentals: 60/249 tickers checked
+      Fundamentals: 70/249 tickers checked
+      Fundamentals: 80/249 tickers checked
+      Fundamentals: 90/249 tickers checked
+      Fundamentals: 100/249 tickers checked
+      Fundamentals: 110/249 tickers checked
+      Fundamentals: 120/249 tickers checked
+      Fundamentals: 130/249 tickers checked
+      Fundamentals: 140/249 tickers checked
+      Fundamentals: 150/249 tickers checked
+      Fundamentals: 160/249 tickers checked
+      Fundamentals: 170/249 tickers checked
+      Fundamentals: 180/249 tickers checked
+      Fundamentals: 190/249 tickers checked
+      Fundamentals: 200/249 tickers checked
+      Fundamentals: 210/249 tickers checked
+      Fundamentals: 220/249 tickers checked
+      Fundamentals: 230/249 tickers checked
+      Fundamentals: 240/249 tickers checked
+      Fundamentals: 249/249 tickers checked
+2026-09-28 00:23:17,584 | INFO | contrarian_flow_engine | Fundamentals saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/fundamentals_stub.csv with 249 rows
+2026-09-28 00:23:17,587 | INFO | contrarian_flow_engine | Fundamentals stage complete with 249 rows
+[ 88%] Fundamentals ready: 249 rows
 [ 92%] Scoring final Top 250 post-prescreen research board
-2026-09-27 19:26:08,030 | INFO | contrarian_flow_engine | Scoring final dashboard board from research batch: data/processed/research_batch.csv
-2026-09-27 19:26:08,698 | INFO | contrarian_flow_engine | Theory scores saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/theory_scores.csv with 250 rows
-2026-09-27 19:26:08,698 | INFO | contrarian_flow_engine | Ranked repricing watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/repricing_sequence_watchlist.csv
-2026-09-27 19:26:08,698 | INFO | contrarian_flow_engine | Focused non-garbage watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/focused_research_watchlist.csv with 19 rows
-2026-09-27 19:26:08,700 | INFO | contrarian_flow_engine | Theory scoring stage complete with 250 rows
+2026-09-28 00:23:17,587 | INFO | contrarian_flow_engine | Scoring final dashboard board from research batch: data/processed/research_batch.csv
+2026-09-28 00:23:18,502 | INFO | contrarian_flow_engine | Theory scores saved to /home/runner/work/mysterymachine/mysterymachine/data/processed/theory_scores.csv with 250 rows
+2026-09-28 00:23:18,502 | INFO | contrarian_flow_engine | Ranked repricing watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/repricing_sequence_watchlist.csv
+2026-09-28 00:23:18,502 | INFO | contrarian_flow_engine | Focused non-garbage watchlist saved to /home/runner/work/mysterymachine/mysterymachine/outputs/watchlists/focused_research_watchlist.csv with 129 rows
+2026-09-28 00:23:18,504 | INFO | contrarian_flow_engine | Theory scoring stage complete with 250 rows
 [100%] Watchlist complete: 250 scored candidates
-2026-09-27 19:26:08,700 | INFO | contrarian_flow_engine | Pipeline complete
+2026-09-28 00:23:18,504 | INFO | contrarian_flow_engine | Pipeline complete
