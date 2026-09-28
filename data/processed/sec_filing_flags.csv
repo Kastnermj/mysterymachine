@@ -46,7 +46,7 @@ CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,3,2,False,False,Tr
 CDT,0001896212,CDT Equity Inc. Common Stock,17,10,False,False,True,True,False,True,8-K,2026-09-25,2834,Pharmaceutical Preparations,financing_or_registration_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,4,2,False,False,True,False,False,False,8-K,2026-09-18,1700,Construction - Special Trade Contractors,recent_event_activity
 CGTL,0001967822,Creative Global Technology Holdings Limited Class A Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-09-10,5045,Wholesale-Computers & Peripheral Equipment & Software,recent_other_activity
-CHSN,0001825349,Chanson International Holding Class A Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-09-18,2000,Food and Kindred Products,recent_other_activity
+CHSN,0001825349,Chanson International Holding Class A Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-09-28,2000,Food and Kindred Products,recent_other_activity
 CHW,0001396277,Calamos Global Dynamic Income Fund Common Stock,7,0,False,False,False,False,False,False,SCHEDULE 13G,2026-09-08,,,recent_other_activity
 CIIT,0001557798,Tianci International Inc. Common Stock,5,3,False,False,True,False,False,False,8-K,2026-09-15,3576,Computer Communications Equipment,recent_event_activity
 CING,0001862150,Cingulate Inc. Common Stock,0,0,False,False,False,False,False,False,10-Q,2026-08-13,2834,Pharmaceutical Preparations,quiet
@@ -88,7 +88,7 @@ EONR,0001842556,EON Resources Inc. Class A Common Stock,2,1,True,False,False,Fal
 EPM,0001006655,Evolution Petroleum Corporation Inc. Common Stock,15,7,True,False,True,False,False,True,4,2026-09-21,1311,Crude Petroleum & Natural Gas,financing_or_registration_activity
 ERNA,0000748592,Ernexa Therapeutics Inc. Common Stock,10,2,False,False,True,False,False,False,3,2026-09-22,2834,Pharmaceutical Preparations,recent_event_activity
 ETRA,0002088082,Electra Therapeutics Inc. Common stock,28,4,False,False,True,True,False,True,SCHEDULE 13D,2026-09-25,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
-EVGN,0001574565,Evogene Ltd Ordinary Shares,8,0,False,False,False,False,False,False,6-K,2026-09-15,2870,Agricultural Chemicals,recent_other_activity
+EVGN,0001574565,Evogene Ltd Ordinary Shares,10,0,False,False,False,False,False,False,6-K,2026-09-28,2870,Agricultural Chemicals,recent_other_activity
 EZGO,0001806904,EZGO Technologies Ltd. Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-08-20,3751,"Motorcycles, Bicycles & Parts",recent_other_activity
 FABC,0001086745,Fabric.AI Inc. Common Stock,0,0,False,False,False,False,False,False,4,2026-08-14,4899,"Communications Services, NEC",quiet
 FBGL,0001938534,FBS Global Limited Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-09-24,1520,General Bldg Contractors - Residential Bldgs,recent_other_activity
@@ -104,7 +104,7 @@ GHXIW,0002086438,Gores Holdings XI Inc. Warrant,1,0,False,False,False,False,Fals
 GMEX,0001928581,GMEX ROBOTICS CORPORATION Class A Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-09-23,3949,"Sporting & Athletic Goods, NEC",recent_other_activity
 GNPX,0001595248,Genprex Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-08-18,2834,Pharmaceutical Preparations,recent_event_activity
 GOF,0001380936,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,2,0,False,False,False,False,False,False,40-17G,2026-09-18,,,recent_other_activity
-GOSS,0001728117,Gossamer Bio Inc.,24,7,False,False,True,False,False,False,4,2026-09-25,2834,Pharmaceutical Preparations,recent_event_activity
+GOSS,0001728117,Gossamer Bio Inc.,25,8,False,False,True,False,False,False,8-K,2026-09-28,2834,Pharmaceutical Preparations,recent_event_activity
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,7,4,False,False,True,True,False,False,EFFECT,2026-09-23,2834,Pharmaceutical Preparations,financing_or_registration_activity
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,15,2,False,False,True,False,True,False,4,2026-09-23,2834,Pharmaceutical Preparations,financing_or_registration_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,3,0,False,False,False,False,False,False,4,2026-09-18,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_other_activity
@@ -114,7 +114,7 @@ HCAI,0001958399,Huachen AI Parking Management Technology Holding Co. Ltd. Class 
 HCWB,0001828673,HCW Biologics Inc. Common Stock,8,5,False,False,True,True,False,False,8-K,2026-09-24,2834,Pharmaceutical Preparations,financing_or_registration_activity
 HPAI,0002001699,Helport AI Limited Ordinary Shares,0,0,False,False,False,False,False,False,6-K,2026-07-10,7372,Services-Prepackaged Software,quiet
 HUBC,0001905660,Hub Cyber Security Ltd. Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-09-28,3576,Computer Communications Equipment,recent_other_activity
-HUMA,0001818382,Humacyte Inc.,5,0,False,False,False,False,False,False,4,2026-09-15,2836,"Biological Products, (No Diagnostic Substances)",recent_other_activity
+HUMA,0001818382,Humacyte Inc.,8,1,False,False,True,False,False,False,3,2026-09-28,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 HYT,0001222401,Blackrock Corporate High Yield Fund Inc. Common Stock,4,0,False,False,False,False,False,False,3,2026-09-17,,,recent_other_activity
 IDAI,0001718939,T Stamp Inc. Class A Common Stock,8,0,False,False,False,False,False,False,4,2026-09-02,7372,Services-Prepackaged Software,recent_other_activity
 IGR,0001268884,CBRE Global Real Estate Income Fund Common Shares of Beneficial Interest,6,1,False,False,True,False,False,False,8-K,2026-09-08,,,recent_event_activity
@@ -124,7 +124,7 @@ INKT,0001840229,MiNK Therapeutics Inc. Common Stock,5,0,False,False,False,False,
 INM,0001728328,InMed Pharmaceuticals Inc. Common Shares,5,2,True,False,True,False,False,False,8-K,2026-09-18,2834,Pharmaceutical Preparations,recent_event_activity
 IPFXW,0002102041,Inflection Point Acquisition Corp. VI Warrant,3,1,False,True,False,False,False,False,425,2026-09-09,6770,Blank Checks,recent_periodic_reporting
 IPST,0001788230,IP Strategy Holdings Inc. Common Stock,3,1,False,False,True,False,False,False,SCHEDULE 13G,2026-09-24,2080,Beverages,recent_event_activity
-IPW,0001830072,iPower Inc. Common Stock,8,5,False,False,True,False,False,True,8-K,2026-09-22,5200,"Retail-Building Materials, Hardware, Garden Supply",financing_or_registration_activity
+IPW,0001830072,iPower Inc. Common Stock,9,5,False,False,True,False,False,True,NT 10-K,2026-09-28,5200,"Retail-Building Materials, Hardware, Garden Supply",financing_or_registration_activity
 IRIX,0001006045,IRIDEX Corporation Common Stock,7,3,False,True,True,False,False,False,4,2026-09-16,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 ISPC,0001558569,iSpecimen Inc. Common Stock,5,3,False,False,True,False,False,False,DEF 14A,2026-09-14,8731,Services-Commercial Physical & Biological Research,recent_event_activity
 JCTC,0000885307,Jewett-Cameron Trading Company Common Shares,13,0,False,False,False,False,False,False,4/A,2026-09-25,5211,Retail-Lumber & Other Building Materials Dealers,recent_other_activity
@@ -141,7 +141,7 @@ KITT,0001849820,Nauticus Robotics Inc. Common stock,4,4,False,False,True,False,F
 KUST,0001342958,Kustom Entertainment Inc. Common Stock,8,1,False,False,True,False,False,False,DEFR14A,2026-09-23,3663,Radio & Tv Broadcasting & Communications Equipment,recent_event_activity
 LABT,0002079272,Lakewood-Amedex Biotherapeutics Inc. Common Stock,4,2,False,False,False,True,False,True,EFFECT,2026-09-24,2834,Pharmaceutical Preparations,financing_or_registration_activity
 LCTX,0000876343,Lineage Cell Therapeutics Inc.,0,0,False,False,False,False,False,False,10-Q,2026-08-06,2836,"Biological Products, (No Diagnostic Substances)",quiet
-LHAI,0002017758,Linkhome Holdings Inc. Common stock,4,3,False,False,True,False,False,False,8-K,2026-09-21,6531,Real Estate Agents & Managers (For Others),recent_event_activity
+LHAI,0002017758,Linkhome Holdings Inc. Common stock,5,3,False,False,True,False,False,False,4,2026-09-28,6531,Real Estate Agents & Managers (For Others),recent_event_activity
 LNAI,0001527728,Lunai Bioworks Inc. Common Stock,0,0,False,False,False,False,False,False,SCHEDULE 13G,2026-07-17,2834,Pharmaceutical Preparations,quiet
 LNKS,0001972074,Linkers Industries Limited Class A Ordinary Shares,2,0,False,False,False,False,False,False,3,2026-08-26,3670,Electronic Components & Accessories,recent_other_activity
 LOVIU,0002115191,Live Oak Acquisition Corp. VI Units,13,4,False,False,True,True,False,True,SCHEDULE 13G,2026-09-25,6770,Blank Checks,financing_or_registration_activity
@@ -167,12 +167,12 @@ NEA,0001195737,Nuveen AMT-Free Quality Municipal Income Fund Common Shares of Be
 NEUP,0001191070,Neuphoria Therapeutics Inc. Common Stock,4,1,True,False,False,False,False,False,DEFA14A,2026-09-18,2834,Pharmaceutical Preparations,recent_periodic_reporting
 NRXS,0001933567,Neuraxis Inc. Common Stock,12,1,False,False,True,False,False,False,4,2026-08-26,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 NSAIR,0002133719,NorthStrive Acquisition Corp I. Rights,15,5,False,False,True,False,False,True,8-K,2026-09-14,6770,Blank Checks,financing_or_registration_activity
-NTWO,0002028027,Newbury Street II Acquisition Corp Class A Ordinary Shares,13,1,False,False,True,False,False,False,425,2026-08-24,6770,Blank Checks,recent_event_activity
+NTWO,0002028027,Newbury Street II Acquisition Corp Class A Ordinary Shares,14,1,False,False,True,False,False,False,PRE 14A,2026-09-28,6770,Blank Checks,recent_event_activity
 NUV,0000812801,Nuveen Municipal Value Fund Inc. Common Stock,3,0,False,False,False,False,False,False,NPORT-P,2026-09-25,,,recent_other_activity
 NUWE,0001506492,Nuwellis Inc. Common Stock,5,3,False,False,True,False,True,True,SCHEDULE 13G/A,2026-09-18,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
 NVG,0001090116,Nuveen AMT-Free Municipal Credit Income Fund ,5,0,False,False,False,False,False,False,NPORT-P,2026-09-25,,,recent_other_activity
 NVNO,0001661053,enVVeno Medical Corporation Common Stock,4,1,False,False,False,False,True,False,SCHEDULE 13D/A,2026-09-15,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
-NXL,0001527352,Nexalin Technology Inc. Common Stock,10,7,False,False,True,True,False,True,S-8,2026-09-22,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
+NXL,0001527352,Nexalin Technology Inc. Common Stock,11,8,False,False,True,True,False,True,8-K,2026-09-28,3845,Electromedical & Electrotherapeutic Apparatus,financing_or_registration_activity
 NXTC,0001661059,NextCure Inc. Common Stock,4,2,False,False,True,False,False,False,425,2026-09-25,2834,Pharmaceutical Preparations,recent_event_activity
 NXXT,0001817004,NextNRG Inc. Common Stock,8,5,False,False,True,True,False,True,8-K,2026-09-18,5500,Retail-Auto Dealers & Gasoline Stations,financing_or_registration_activity
 NZF,0001137887,Nuveen Municipal Credit Income Fund ,8,0,False,False,False,False,False,False,NPORT-P,2026-09-25,,,recent_other_activity
@@ -186,10 +186,10 @@ PAXS,0001886878,PIMCO Access Income Fund Common Shares of Beneficial Interest,5,
 PBM,0001985062,Psyence Biomedical Ltd. Common Shares,6,1,False,False,False,False,False,False,6-K,2026-09-28,2834,Pharmaceutical Preparations,recent_other_activity
 PDYN,0001826681,Palladyne AI Corp. Common Stock,8,0,False,False,False,False,False,False,25-NSE,2026-09-28,7372,Services-Prepackaged Software,recent_other_activity
 PED,0001141197,Pedevco Corp. Common Stock,12,6,False,False,True,False,True,True,8-K,2026-09-21,1311,Crude Petroleum & Natural Gas,financing_or_registration_activity
-PLRZ,0001893645,Polyrizon Ltd. Ordinary Shares,6,2,False,False,False,False,False,True,F-1,2026-09-18,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
-POCI,0000867840,Precision Optics Corporation Inc. Common stock,5,0,False,False,False,False,False,False,4,2026-09-24,3845,Electromedical & Electrotherapeutic Apparatus,recent_other_activity
+PLRZ,0001893645,Polyrizon Ltd. Ordinary Shares,8,3,False,False,False,False,False,True,F-1/A,2026-09-28,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
+POCI,0000867840,Precision Optics Corporation Inc. Common stock,7,2,True,False,True,False,False,False,8-K,2026-09-28,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 PRSO,0000890394,Peraso Inc. Common Stock,2,2,False,False,True,False,False,False,8-K,2026-09-11,3674,Semiconductors & Related Devices,recent_event_activity
-PTN,0000911216,Palatin Technologies Inc. Common Stock,0,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-08-14,2834,Pharmaceutical Preparations,quiet
+PTN,0000911216,Palatin Technologies Inc. Common Stock,1,1,True,False,False,False,False,False,10-K,2026-09-28,2834,Pharmaceutical Preparations,recent_periodic_reporting
 PTY,0001190935,Pimco Corporate & Income Opportunity Fund,7,1,False,False,False,False,False,True,424B5,2026-09-25,,,financing_or_registration_activity
 QH,0001781193,Quhuo Limited Class A Ordinary Shares,0,0,False,False,False,False,False,False,6-K,2026-07-15,7389,"Services-Business Services, NEC",quiet
 QNTM,0001771885,Quantum Biopharma Ltd. Class B Subordinate Voting Shares,8,0,False,False,False,False,False,False,6-K,2026-09-24,2834,Pharmaceutical Preparations,recent_other_activity
@@ -229,7 +229,7 @@ TMDE,0002009714,TMD Energy Limited Ordinary Shares,1,0,False,False,False,False,F
 TOVX,0000894158,Theriva Biologics Inc. Common Stock,1,0,False,False,False,False,False,False,S-8,2026-08-24,2834,Pharmaceutical Preparations,recent_other_activity
 TPET,0001898766,Trio Petroleum Corp. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-09-21,1311,Crude Petroleum & Natural Gas,recent_event_activity
 TRUG,0001857086,TruGolf Holdings Inc. Class A Common Stock,6,6,False,False,True,False,False,False,8-K,2026-09-24,3949,"Sporting & Athletic Goods, NEC",recent_event_activity
-TVACW,0002033991,Texas Ventures Acquisition III Corp Warrants,7,2,False,False,True,False,False,False,PRE 14A,2026-09-18,6770,Blank Checks,recent_event_activity
+TVACW,0002033991,Texas Ventures Acquisition III Corp Warrants,8,2,False,False,True,False,False,False,DEF 14A,2026-09-28,6770,Blank Checks,recent_event_activity
 TVGN,0001860871,Tevogen Inc. Common Stock,13,3,False,False,True,False,False,False,SCHEDULE 13D/A,2026-09-16,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 TWAV,0000746210,TaoWeave Inc. Common Stock,0,0,False,False,False,False,False,False,10-Q,2026-08-07,7370,"Services-Computer Programming, Data Processing, Etc.",quiet
 USA,0000799195,Liberty All-Star Equity Fund Common Stock,3,0,False,False,False,False,False,False,N-CSRS,2026-09-04,,,recent_other_activity
@@ -245,6 +245,6 @@ WLDS,0001887673,Wearable Devices Ltd. Ordinary Share,19,1,False,False,False,Fals
 WNW,0001787803,Meiwu Technology Company Limited Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-09-23,2840,"Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics",recent_other_activity
 WOK,0001929783,WORK Medical Technology Group LTD Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-08-24,3841,Surgical & Medical Instruments & Apparatus,recent_other_activity
 XAIR,0001641631,Beyond Air Inc. Common Stock,5,4,False,False,True,False,True,True,8-K,2026-09-24,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
-XLABW,0002109869,Exascale Labs Holdings Inc. Warrant,11,4,True,False,True,False,False,False,8-K/A,2026-09-28,7372,Services-Prepackaged Software,recent_event_activity
+XLABW,0002109869,Exascale Labs Holdings Inc. Warrant,12,5,True,False,True,False,False,False,8-K,2026-09-28,7372,Services-Prepackaged Software,recent_event_activity
 XXII,0001347858,22nd Century Group Inc. Common Stock,4,1,False,False,True,False,False,False,8-K,2026-09-01,2111,Cigarettes,recent_event_activity
 YYAI,0001674440,AiRWA Inc. Common Stock,8,4,True,True,True,False,False,False,10-Q,2026-09-22,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
