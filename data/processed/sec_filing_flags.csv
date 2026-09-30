@@ -8,7 +8,7 @@ AGPU,0001446159,Axe Compute Inc. Common Stock,8,2,False,False,True,False,False,F
 AGRZ,0002009233,Agroz Inc. Class A Ordinary Shares,2,0,False,False,False,False,False,False,20-F,2026-09-28,0100,Agricultural Production-Crops,recent_other_activity
 AIFF,0000803578,Firefly Neuroscience Inc. Common Stock,5,1,False,False,True,False,False,False,4,2026-09-29,7372,Services-Prepackaged Software,recent_event_activity
 AIIO,0001932737,Robo.ai Inc. Class B Ordinary Shares,21,9,False,False,False,False,False,True,424B3,2026-09-22,3711,Motor Vehicles & Passenger Car Bodies,financing_or_registration_activity
-AIM,0000946644,AIM ImmunoTech Inc. Common Stock,7,3,False,False,True,False,False,False,4,2026-09-18,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
+AIM,0000946644,AIM ImmunoTech Inc. Common Stock,9,3,False,False,True,False,False,False,ARS,2026-09-30,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 AIOS,0001603993,AIOS Tech Inc. Class A Common Shares,1,0,False,False,False,False,False,False,6-K,2026-09-21,3490,Miscellaneous Fabricated Metal Products,recent_other_activity
 AIRI,0001009891,Air Industries Group Common Stock,2,1,False,False,True,False,False,False,4,2026-08-31,3728,"Aircraft Parts & Auxiliary Equipment, NEC",recent_event_activity
 AISP,0001842566,Airship AI Holdings Inc. Class A Common Stock,0,0,False,False,False,False,False,False,8-K,2026-08-06,7372,Services-Prepackaged Software,quiet
@@ -121,7 +121,7 @@ IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,1,1,False,False,
 INDO,0001757840,Indonesia Energy Corporation Limited Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-09-24,1311,Crude Petroleum & Natural Gas,recent_other_activity
 INKT,0001840229,MiNK Therapeutics Inc. Common Stock,5,0,False,False,False,False,False,False,4,2026-09-02,2836,"Biological Products, (No Diagnostic Substances)",recent_other_activity
 INM,0001728328,InMed Pharmaceuticals Inc. Common Shares,6,2,True,False,True,False,False,False,S-4/A,2026-09-29,2834,Pharmaceutical Preparations,recent_event_activity
-IPFXW,0002102041,Inflection Point Acquisition Corp. VI Warrant,3,1,False,True,False,False,False,False,425,2026-09-09,6770,Blank Checks,recent_periodic_reporting
+IPFXW,0002102041,Inflection Point Acquisition Corp. VI Warrant,4,1,False,True,False,False,False,False,425,2026-09-30,6770,Blank Checks,recent_periodic_reporting
 IPST,0001788230,IP Strategy Holdings Inc. Common Stock,3,1,False,False,True,False,False,False,SCHEDULE 13G,2026-09-24,2080,Beverages,recent_event_activity
 IPW,0001830072,iPower Inc. Common Stock,9,5,False,False,True,False,False,True,NT 10-K,2026-09-28,5200,"Retail-Building Materials, Hardware, Garden Supply",financing_or_registration_activity
 IRIX,0001006045,IRIDEX Corporation Common Stock,7,3,False,True,True,False,False,False,4,2026-09-16,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
@@ -145,12 +145,12 @@ LNKS,0001972074,Linkers Industries Limited Class A Ordinary Shares,2,0,False,Fal
 LOVIU,0002115191,Live Oak Acquisition Corp. VI Units,13,4,False,False,True,True,False,True,SCHEDULE 13G,2026-09-25,6770,Blank Checks,financing_or_registration_activity
 LSF,0001650696,Laird Superfood Inc. Common Stock,5,2,False,False,True,False,False,False,8-K,2026-09-08,2000,Food and Kindred Products,recent_event_activity
 LWACW,0002061379,LightWave Acquisition Corp. Warrants,0,0,False,False,False,False,False,False,10-Q,2026-08-14,6770,Blank Checks,quiet
-MASK,0001993097,3 E Network Technology Group Ltd Class A Ordinary Shares,5,1,False,False,False,False,False,False,6-K,2026-09-25,7371,Services-Computer Programming Services,recent_other_activity
+MASK,0001993097,3 E Network Technology Group Ltd Class A Ordinary Shares,6,1,False,False,False,False,False,False,SCHEDULE 13D,2026-09-30,7371,Services-Computer Programming Services,recent_other_activity
 MBAI,0001610590,MBody AI Ltd. Ordinary Share,19,3,False,False,False,False,False,True,EFFECT,2026-09-28,7373,Services-Computer Integrated Systems Design,financing_or_registration_activity
 MDCX,0001997296,Medicus Pharma Ltd. Common Stock  ,11,5,False,False,True,False,False,True,SCHEDULE 13D,2026-09-14,2834,Pharmaceutical Preparations,financing_or_registration_activity
 MESHW,0002081468,Meshflow Acquisition Corp. Warrants,2,1,False,False,True,False,False,False,425,2026-09-08,6770,Blank Checks,recent_event_activity
 MGN,0001995075,Megan Holdings Limited Class A Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-09-28,0200,Agricultural Prod-Livestock & Animal Specialties,recent_other_activity
-MI,0001958713,NFT Limited Class A Ordinary Share,10,2,False,False,False,False,False,True,SCHEDULE 13G/A,2026-09-29,6199,Finance Services,financing_or_registration_activity
+MI,0001958713,NFT Limited Class A Ordinary Share,12,2,False,False,False,False,False,True,6-K,2026-09-30,6199,Finance Services,financing_or_registration_activity
 MKLYR,0002067592,McKinley Acquisition Corporation Rights,2,0,False,False,False,False,False,False,425,2026-08-26,7372,Services-Prepackaged Software,recent_other_activity
 MNDR,0001976695,Mobile-health Network Solutions Class A Ordinary Shares,5,0,False,False,False,False,False,False,6-K,2026-09-25,7372,Services-Prepackaged Software,recent_other_activity
 MOBX,0001855467,Mobix Labs Inc. Class A Common Stock,19,6,False,True,True,True,False,True,4,2026-09-22,3674,Semiconductors & Related Devices,financing_or_registration_activity
