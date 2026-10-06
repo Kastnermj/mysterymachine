@@ -4,7 +4,7 @@ ADIL,0001513525,Adial Pharmaceuticals Inc Common Stock,12,5,False,False,True,Fal
 ADTX,0001726711,"Aditxt, Inc.",1,1,False,False,True,False,False,False,8-K,2026-09-23,2834,Pharmaceutical Preparations,recent_event_activity
 AEHL,0001470683,Antelope Enterprise Holdings Limited Class A Ordinary Shares,6,3,False,False,False,False,False,True,424B5,2026-10-01,4899,"Communications Services, NEC",financing_or_registration_activity
 AEMD,0000882291,Aethlon Medical Inc. Common Stock,8,5,False,False,True,False,False,False,8-K/A,2026-10-05,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
-AGPU,0001446159,Axe Compute Inc. Common Stock,8,2,False,False,True,False,False,False,8-K,2026-10-05,6199,Finance Services,recent_event_activity
+AGPU,0001446159,Axe Compute Inc. Common Stock,15,2,False,False,True,False,False,False,4,2026-10-05,6199,Finance Services,recent_event_activity
 AGRZ,0002009233,Agroz Inc. Class A Ordinary Shares,2,0,False,False,False,False,False,False,20-F,2026-09-28,0100,Agricultural Production-Crops,recent_other_activity
 AIFF,0000803578,Firefly Neuroscience Inc. Common Stock,5,1,False,False,True,False,False,False,4,2026-09-29,7372,Services-Prepackaged Software,recent_event_activity
 AIIO,0001932737,Robo.ai Inc. Class B Ordinary Shares,17,8,False,False,False,False,False,True,424B3,2026-09-22,3711,Motor Vehicles & Passenger Car Bodies,financing_or_registration_activity
@@ -14,7 +14,7 @@ AIRI,0001009891,Air Industries Group Common Stock,3,1,False,False,True,False,Fal
 AISP,0001842566,Airship AI Holdings Inc. Class A Common Stock,1,0,False,False,False,False,False,False,4/A,2026-10-01,7372,Services-Prepackaged Software,recent_other_activity
 ALGS,0001799448,Aligos Therapeutics Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-09-15,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 ALLR,0001860657,Allarity Therapeutics Inc. Common Stock,4,4,False,False,True,False,False,False,8-K,2026-10-01,2834,Pharmaceutical Preparations,recent_event_activity
-ALP,0001095435,Alpha Compute Corp Ordinary Shares,12,0,False,False,False,False,False,False,6-K,2026-09-25,6199,Finance Services,recent_other_activity
+ALP,0001095435,Alpha Compute Corp Ordinary Shares,14,0,False,False,False,False,False,False,4,2026-10-05,6199,Finance Services,recent_other_activity
 ALZN,0001677077,Alzamend Neuro Inc. Common Stock,6,2,False,True,True,False,False,False,8-K,2026-09-29,2834,Pharmaceutical Preparations,recent_event_activity
 AMIX,0001617867,Autonomix Medical Inc. Common Stock,13,5,False,False,True,False,True,True,4,2026-09-21,3841,Surgical & Medical Instruments & Apparatus,financing_or_registration_activity
 AMS,0000744825,American Shared Hospital Services Common Stock,0,0,False,False,False,False,False,False,10-Q,2026-08-13,8071,Services-Medical Laboratories,quiet
@@ -109,7 +109,7 @@ GNPX,0001595248,Genprex Inc. Common Stock,0,0,False,False,False,False,False,Fals
 GOF,0001380936,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,2,0,False,False,False,False,False,False,40-17G,2026-09-18,,,recent_other_activity
 GOSS,0001728117,Gossamer Bio Inc.,25,7,False,False,True,False,False,False,SCHEDULE 13D/A,2026-09-28,2834,Pharmaceutical Preparations,recent_event_activity
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,7,4,False,False,True,True,False,False,EFFECT,2026-09-23,2834,Pharmaceutical Preparations,financing_or_registration_activity
-GRCE,0001444192,Grace Therapeutics Inc. Common Stock,16,2,False,False,True,False,True,False,4,2026-10-01,2834,Pharmaceutical Preparations,financing_or_registration_activity
+GRCE,0001444192,Grace Therapeutics Inc. Common Stock,17,2,False,False,True,False,True,False,4,2026-10-05,2834,Pharmaceutical Preparations,financing_or_registration_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,3,0,False,False,False,False,False,False,4,2026-09-18,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_other_activity
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,4,3,False,False,True,False,True,True,8-K,2026-10-01,7372,Services-Prepackaged Software,financing_or_registration_activity
 HBIO,0001123494,Harvard Bioscience Inc. Common Stock,1,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-09-22,3826,Laboratory Analytical Instruments,recent_other_activity
@@ -126,7 +126,7 @@ INDO,0001757840,Indonesia Energy Corporation Limited Ordinary Shares,3,0,False,F
 INKT,0001840229,MiNK Therapeutics Inc. Common Stock,5,0,False,False,False,False,False,False,4,2026-09-02,2836,"Biological Products, (No Diagnostic Substances)",recent_other_activity
 INM,0001728328,InMed Pharmaceuticals Inc. Common Shares,9,3,True,False,True,False,False,True,4,2026-10-05,2834,Pharmaceutical Preparations,financing_or_registration_activity
 IPFXW,0002102041,Inflection Point Acquisition Corp. VI Warrant,2,0,False,False,False,False,False,False,425,2026-09-30,6770,Blank Checks,recent_other_activity
-IPST,0001788230,IP Strategy Holdings Inc. Common Stock,2,1,False,False,True,False,False,False,SCHEDULE 13G,2026-09-24,2080,Beverages,recent_event_activity
+IPST,0001788230,IP Strategy Holdings Inc. Common Stock,4,1,False,False,True,False,False,False,4,2026-10-05,2080,Beverages,recent_event_activity
 IPW,0001830072,iPower Inc. Common Stock,8,5,True,False,True,False,False,True,10-K,2026-10-02,5200,"Retail-Building Materials, Hardware, Garden Supply",financing_or_registration_activity
 IRIX,0001006045,IRIDEX Corporation Common Stock,6,1,False,False,True,False,False,False,4,2026-10-05,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 ISPC,0001558569,iSpecimen Inc. Common Stock,5,3,False,False,True,False,False,False,DEF 14A,2026-09-14,8731,Services-Commercial Physical & Biological Research,recent_event_activity
