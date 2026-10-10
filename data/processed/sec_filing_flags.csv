@@ -211,6 +211,7 @@ RNTX,0001420565,Rein Therapeutics Inc. Common Stock,2,2,False,False,True,False,F
 RTACW,0002035173,Renatus Tactical Acquisition Corp I Warrant,0,0,False,False,False,False,False,False,10-Q,2026-08-14,6770,Blank Checks,quiet
 RVSN,0001743905,Rail Vision Ltd. Ordinary Share,5,0,False,False,False,False,False,False,6-K,2026-09-17,3743,Railroad Equipment,recent_other_activity
 SBFM,0001402328,Sunshine Biopharma Inc. Common Stock,14,8,False,False,True,True,False,True,8-K,2026-10-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
+SCATR,0002133239,Southern Cross Acquisition II Corp. Rights,5,3,False,False,True,False,False,False,8-K,2026-10-06,6770,Blank Checks,recent_event_activity
 SEGG,0001673481,Sports Entertainment Gaming Global Corporation Common Stock,3,3,False,True,True,False,False,False,10-Q,2026-10-08,7372,Services-Prepackaged Software,recent_event_activity
 SKK,0001991261,SKK Holdings Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-09-25,1623,"Water, Sewer, Pipeline, Comm & Power Line Construction",recent_other_activity
 SKYQ,0001812447,Sky Quarry Inc. Common Stock,5,4,False,False,True,False,False,True,8-K,2026-10-09,4955,Hazardous Waste Management,financing_or_registration_activity
@@ -230,7 +231,7 @@ TMDE,0002009714,TMD Energy Limited Ordinary Shares,2,0,False,False,False,False,F
 TOVX,0000894158,Theriva Biologics Inc. Common Stock,1,0,False,False,False,False,False,False,PRE 14A,2026-10-09,2834,Pharmaceutical Preparations,recent_other_activity
 TPET,0001898766,Trio Petroleum Corp. Common Stock,3,3,False,True,True,False,False,False,8-K,2026-09-30,1311,Crude Petroleum & Natural Gas,recent_event_activity
 TRUG,0001857086,TruGolf Holdings Inc. Class A Common Stock,5,5,False,False,True,False,False,False,8-K,2026-10-09,3949,"Sporting & Athletic Goods, NEC",recent_event_activity
-TVACW,0002033991,Texas Ventures Acquisition III Corp Warrants,10,2,False,False,True,False,False,False,S-4,2026-10-09,6770,Blank Checks,recent_event_activity
+TVACW,0002033991,Texas Ventures Acquisition III Corp Warrants,10,2,False,False,True,False,False,False,DEFA14A,2026-10-09,6770,Blank Checks,recent_event_activity
 TVGN,0001860871,Tevogen Inc. Common Stock,12,3,False,False,True,False,False,False,8-K,2026-09-30,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 TWAV,0000746210,TaoWeave Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-10-07,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
 USA,0000799195,Liberty All-Star Equity Fund Common Stock,1,0,False,False,False,False,False,False,N-CSRS,2026-09-04,,,recent_other_activity
