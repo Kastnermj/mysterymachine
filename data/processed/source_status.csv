@@ -1,14 +1,14 @@
 timestamp_utc,stage,provider,status,rows,fallback_used,detail
-2026-10-10T19:38:23+00:00,startup,pipeline,started,,False,Full refresh started.
-2026-10-10T19:38:30+00:00,universe,seed_nasdaq_sec_quote_sources,ok,3652,True,Universe rows=3652; missing price rows=60.
-2026-10-10T19:38:30+00:00,universe,multi_source_universe,ok,3652,False,
-2026-10-10T19:38:30+00:00,research_batch,prescreen,ok,250,False,
-2026-10-10T19:39:14+00:00,prices,history_provider_mix,ok,250,False,"no_history=3, yahoo_chart=247"
-2026-10-10T19:39:14+00:00,prices,history_providers,ok,235,False,235/250 tickers with usable history.
-2026-10-10T19:39:50+00:00,sec,sec_submissions,ok,249,False,19021 filing metadata rows; 249 ticker flags.
-2026-10-10T19:39:50+00:00,sec,sec_submissions,ok,249,False,
-2026-10-10T19:43:31+00:00,event_shocks,sec_8k_text_with_metadata_fallback,ok,249,True,"8k_text=168, metadata_none=20, metadata_only=61"
-2026-10-10T19:43:31+00:00,event_shocks,sec_8k_text_or_metadata,ok,249,False,
-2026-10-10T19:44:43+00:00,fundamentals,sec_companyfacts,ok,249,True,"companyfacts_ok=215, companyfacts_sparse=30, companyfacts_unavailable=4"
-2026-10-10T19:44:43+00:00,fundamentals,sec_companyfacts,ok,249,False,
-2026-10-10T19:44:44+00:00,scoring,local_model,ok,250,False,
+2026-10-11T00:41:21+00:00,startup,pipeline,started,,False,Full refresh started.
+2026-10-11T00:41:28+00:00,universe,seed_nasdaq_sec_quote_sources,ok,3652,True,Universe rows=3652; missing price rows=60.
+2026-10-11T00:41:28+00:00,universe,multi_source_universe,ok,3652,False,
+2026-10-11T00:41:28+00:00,research_batch,prescreen,ok,250,False,
+2026-10-11T00:42:13+00:00,prices,history_provider_mix,ok,250,False,"no_history=3, yahoo_chart=247"
+2026-10-11T00:42:13+00:00,prices,history_providers,ok,235,False,235/250 tickers with usable history.
+2026-10-11T00:43:01+00:00,sec,sec_submissions,ok,249,False,19021 filing metadata rows; 249 ticker flags.
+2026-10-11T00:43:01+00:00,sec,sec_submissions,ok,249,False,
+2026-10-11T00:46:46+00:00,event_shocks,sec_8k_text_with_metadata_fallback,ok,249,True,"8k_text=168, metadata_none=20, metadata_only=61"
+2026-10-11T00:46:46+00:00,event_shocks,sec_8k_text_or_metadata,ok,249,False,
+2026-10-11T00:48:16+00:00,fundamentals,sec_companyfacts,ok,249,True,"companyfacts_ok=215, companyfacts_sparse=30, companyfacts_unavailable=4"
+2026-10-11T00:48:16+00:00,fundamentals,sec_companyfacts,ok,249,False,
+2026-10-11T00:48:17+00:00,scoring,local_model,ok,250,False,
