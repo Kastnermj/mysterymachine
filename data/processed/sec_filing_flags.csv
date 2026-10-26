@@ -43,7 +43,7 @@ BPRE,0001551047,Bluerock Private Real Estate Fund Common Shares of Beneficial In
 BRN,0000010048,Barnwell Industries Inc. Common Stock,4,4,False,False,True,False,False,False,8-K,2026-10-19,1311,Crude Petroleum & Natural Gas,recent_event_activity
 BTTC,0002034400,Black Titan Corporation Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-10-13,7371,Services-Computer Programming Services,recent_other_activity
 CAPS,0000887151,Capstone Holding Corp. Common Stock,6,4,False,False,True,False,False,False,8-K,2026-10-21,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
-CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,22,3,False,False,True,False,False,True,425,2026-10-22,3569,"General Industrial Machinery & Equipment, NEC",financing_or_registration_activity
+CCXI,0002074973,Churchill Capital Corp XI Class A Ordinary Shares,24,3,False,False,True,False,False,True,425,2026-10-26,3569,"General Industrial Machinery & Equipment, NEC",financing_or_registration_activity
 CDIO,0001870144,Cardio Diagnostics Holdings Inc. Common stock,5,1,False,False,True,False,False,False,4,2026-10-02,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
 CDT,0001896212,CDT Equity Inc. Common Stock,13,7,False,False,True,False,False,True,PRE 14A,2026-10-16,2834,Pharmaceutical Preparations,financing_or_registration_activity
 CETX,0001435064,Cemtrex Inc. Common Stock,4,3,False,False,True,False,False,False,8-K,2026-10-09,1700,Construction - Special Trade Contractors,recent_event_activity
@@ -64,7 +64,7 @@ CRMT,0000799850,America's Car-Mart Inc Common Stock,13,7,False,False,True,False,
 CSAI,0001709628,Cloudastructure Inc. Class A Common Stock,4,1,False,False,True,False,False,False,4,2026-10-22,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
 CSTE,0001504379,Caesarstone Ltd. Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-10-21,3281,Cut Stone & Stone Products,recent_other_activity
 CTNT,0001951667,Cheetah Net Supply Chain Service Inc Class A Common Stock,16,4,False,False,True,False,False,False,DEFC14A,2026-10-20,5010,Wholesale-Motor Vehicles & Motor Vehicle Parts & Supplies,recent_event_activity
-CTXR,0001506251,Citius Pharmaceuticals Inc. Common Stock,0,0,False,False,False,False,False,False,8-K,2026-08-21,2834,Pharmaceutical Preparations,quiet
+CTXR,0001506251,Citius Pharmaceuticals Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-10-26,2834,Pharmaceutical Preparations,recent_event_activity
 CVKD,0001937993,Cadrenal Therapeutics Inc. Common Stock,8,2,False,False,True,False,False,False,4,2026-10-13,2834,Pharmaceutical Preparations,recent_event_activity
 CVM,0000725363,Cel-Sci Corporation Common Stock,3,0,False,False,False,False,False,False,4,2026-10-01,2836,"Biological Products, (No Diagnostic Substances)",recent_other_activity
 CXAI,0001820875,CXApp Inc. Class A Common Stock,1,1,False,False,True,False,False,False,8-K,2026-10-22,7372,Services-Prepackaged Software,recent_event_activity
@@ -74,7 +74,7 @@ DERM,0001867066,Journey Medical Corporation Common Stock,1,0,False,False,False,F
 DFLI,0001847986,Dragonfly Energy Holdings Corp. Common Stock (NV),4,4,False,False,True,False,False,False,8-K,2026-10-23,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",recent_event_activity
 DLXY,0002025218,Delixy Holdings Limited Class A Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-10-14,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
 DXST,0001958133,Decent Holding Inc Class A Ordinary Shares,7,3,False,False,False,False,False,True,F-3,2026-10-23,4950,Sanitary Services,financing_or_registration_activity
-EAF,0000931148,GrafTech International Ltd. Common Stock,6,2,False,True,True,False,False,False,10-Q,2026-10-23,3620,Electrical Industrial Apparatus,recent_event_activity
+EAF,0000931148,GrafTech International Ltd. Common Stock,7,3,False,True,True,False,False,False,8-K/A,2026-10-26,3620,Electrical Industrial Apparatus,recent_event_activity
 EDBL,0001809750,Edible Garden AG Incorporated Common Stock,2,2,False,False,True,False,False,False,8-K,2026-10-22,0100,Agricultural Production-Crops,recent_event_activity
 ELAB,0001840563,PMGC Holdings Inc. Common Stock,4,1,False,False,True,False,False,False,SCHEDULE 13D/A,2026-10-22,2834,Pharmaceutical Preparations,recent_event_activity
 ELBM,0001907184,Electra Battery Materials Corporation Common Stock,6,0,False,False,False,False,False,False,6-K,2026-10-26,1400,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),recent_other_activity
@@ -91,7 +91,7 @@ EZGO,0001806904,EZGO Technologies Ltd. Ordinary Shares,0,0,False,False,False,Fal
 FABC,0001086745,Fabric.AI Inc. Common Stock,1,0,False,False,False,False,False,False,4,2026-10-16,4899,"Communications Services, NEC",recent_other_activity
 FBGL,0001938534,FBS Global Limited Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-10-13,1520,General Bldg Contractors - Residential Bldgs,recent_other_activity
 FBLG,0001958777,FibroBiologics Inc. Common Stock,11,3,False,False,True,False,False,False,EFFECT,2026-10-19,2834,Pharmaceutical Preparations,recent_event_activity
-FCHL,0002023796,Fitness Champs Holdings Limited Common Stock,0,0,False,False,False,False,False,False,6-K,2026-08-27,7990,Services-Miscellaneous Amusement & Recreation,quiet
+FCHL,0002023796,Fitness Champs Holdings Limited Common Stock,1,0,False,False,False,False,False,False,6-K/A,2026-10-26,7990,Services-Miscellaneous Amusement & Recreation,recent_other_activity
 FCRS,0002074697,FutureCrest Acquisition Corp. Class A Ordinary Shares,0,0,False,False,False,False,False,False,10-Q,2026-08-14,6770,Blank Checks,quiet
 FERA,0002025401,Fifth Era Acquisition Corp I Class A Ordinary Shares,1,1,False,False,True,False,False,False,8-K,2026-09-17,6770,Blank Checks,recent_event_activity
 FGI,0001864943,FGI Industries Ltd. Ordinary Shares,0,0,False,False,False,False,False,False,10-Q,2026-08-14,3430,"Heating Equip, Except Elec & Warm Air; & Plumbing Fixtures",quiet
