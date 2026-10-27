@@ -121,7 +121,7 @@ HYT,0001222401,Blackrock Corporate High Yield Fund Inc. Common Stock,1,0,False,F
 IDAI,0001718939,T Stamp Inc. Class A Common Stock,5,3,False,False,True,False,False,True,8-K,2026-10-27,7372,Services-Prepackaged Software,financing_or_registration_activity
 IGR,0001268884,CBRE Global Real Estate Income Fund Common Shares of Beneficial Interest,1,0,False,False,False,False,False,False,SCHEDULE 13G,2026-10-27,,,recent_other_activity
 IMDX,0001642380,Insight Molecular Diagnostics Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-09-21,2835,In Vitro & In Vivo Diagnostic Substances,recent_event_activity
-INDO,0001757840,Indonesia Energy Corporation Limited Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-10-06,1311,Crude Petroleum & Natural Gas,recent_other_activity
+INDO,0001757840,Indonesia Energy Corporation Limited Ordinary Shares,3,0,False,False,False,False,False,False,6-K,2026-10-27,1311,Crude Petroleum & Natural Gas,recent_other_activity
 INKT,0001840229,MiNK Therapeutics Inc. Common Stock,2,0,False,False,False,False,False,False,4,2026-10-14,2836,"Biological Products, (No Diagnostic Substances)",recent_other_activity
 INM,0001728328,InMed Pharmaceuticals Inc. Common Shares,12,2,False,False,True,False,False,True,4,2026-10-27,2834,Pharmaceutical Preparations,financing_or_registration_activity
 IPST,0001788230,IP Strategy Holdings Inc. Common Stock,6,2,False,True,True,False,False,False,8-K,2026-10-27,2080,Beverages,recent_event_activity
@@ -187,11 +187,11 @@ PDYN,0001826681,Palladyne AI Corp. Common Stock,2,0,False,False,False,False,Fals
 PED,0001141197,Pedevco Corp. Common Stock,5,2,False,False,True,False,False,False,SCHEDULE 13D/A,2026-10-13,1311,Crude Petroleum & Natural Gas,recent_event_activity
 PHK,0001219360,Pimco High Income Fund,3,0,False,False,False,False,False,False,40-17G/A,2026-10-26,,,recent_other_activity
 PLRZ,0001893645,Polyrizon Ltd. Ordinary Shares,7,2,False,False,False,False,False,False,6-K,2026-10-27,3841,Surgical & Medical Instruments & Apparatus,recent_other_activity
-POCI,0000867840,Precision Optics Corporation Inc. Common stock,7,2,True,False,True,False,False,False,4/A,2026-10-06,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
+POCI,0000867840,Precision Optics Corporation Inc. Common stock,9,2,True,False,True,False,False,False,DEFA14A,2026-10-27,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 PRSO,0000890394,Peraso Inc. Common Stock,2,1,False,False,True,False,False,False,8-K,2026-10-26,3674,Semiconductors & Related Devices,recent_event_activity
 PTN,0000911216,Palatin Technologies Inc. Common Stock,1,1,True,False,False,False,False,False,10-K,2026-09-28,2834,Pharmaceutical Preparations,recent_periodic_reporting
 PTY,0001190935,Pimco Corporate & Income Opportunity Fund,4,1,False,False,False,False,False,True,40-17G/A,2026-10-26,,,financing_or_registration_activity
-QH,0001781193,Quhuo Limited Class A Ordinary Shares,0,0,False,False,False,False,False,False,6-K,2026-07-15,7389,"Services-Business Services, NEC",quiet
+QH,0001781193,Quhuo Limited Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-10-27,7389,"Services-Business Services, NEC",recent_other_activity
 QNTM,0001771885,Quantum Biopharma Ltd. Class B Subordinate Voting Shares,7,0,False,False,False,False,False,False,6-K,2026-10-08,2834,Pharmaceutical Preparations,recent_other_activity
 QSI,0001816431,Quantum-Si Incorporated Class A Common Stock,9,3,False,False,True,False,False,False,8-K,2026-10-15,3829,"Measuring & Controlling Devices, NEC",recent_event_activity
 QTI,0001844505,QT Imaging Holdings Inc. Common Stock,1,0,False,False,False,False,False,False,S-8,2026-09-22,3845,Electromedical & Electrotherapeutic Apparatus,recent_other_activity
@@ -219,7 +219,7 @@ SNAL,0001886894,Snail Inc. Class A Common Stock,0,0,False,False,False,False,Fals
 SNGX,0000812796,Soligenix Inc. Common Stock,12,1,False,False,True,False,False,False,4,2026-10-13,2834,Pharmaceutical Preparations,recent_event_activity
 SNOA,0001367083,Sonoma Pharmaceuticals Inc. Common Stock,3,2,False,False,True,False,False,False,8-A12B/A,2026-10-06,3841,Surgical & Medical Instruments & Apparatus,recent_event_activity
 SOAR,0001853070,SOAR AI Inc. Class A Common Stock,7,4,False,False,True,False,False,False,PRE 14A,2026-10-23,4522,"Air Transportation, Nonscheduled",recent_event_activity
-SRTM,0001879403,Stratum Holdings Corp. Common Stock,13,6,False,False,True,False,False,False,8-K,2026-10-26,6531,Real Estate Agents & Managers (For Others),recent_event_activity
+SRTM,0001879403,Stratum Holdings Corp. Common Stock,15,6,False,False,True,False,False,False,DEFA14A,2026-10-27,6531,Real Estate Agents & Managers (For Others),recent_event_activity
 STAK,0002002453,STAK Inc. Class A Ordinary Shares,4,0,False,False,False,False,False,False,6-K,2026-10-21,3533,Oil & Gas Field Machinery & Equipment,recent_other_activity
 STEX,0001530766,Streamex Corp. Common Stock,4,2,False,False,True,False,False,False,8-K,2026-10-09,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services",recent_event_activity
 SUNE,0000022701,SUNation Energy Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-10-15,3674,Semiconductors & Related Devices,recent_event_activity
