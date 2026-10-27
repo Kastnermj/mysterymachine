@@ -32,7 +32,7 @@ BANL,0001914805,CBL International Limited Class B Ordinary Shares,2,0,False,Fals
 BATL,0001282648,Battalion Oil Corporation Common Stock,5,3,False,False,True,False,False,False,3,2026-10-09,1311,Crude Petroleum & Natural Gas,recent_event_activity
 BBN,0001493683,BlackRock Taxable Municipal Bond Trust Common Shares of Beneficial Interest,1,0,False,False,False,False,False,False,3,2026-09-17,,,recent_other_activity
 BCSS,0002064355,Bain Capital GSS Investment Corp. Class A Ordinary Shares,0,0,False,False,False,False,False,False,10-Q,2026-08-13,6770,Blank Checks,quiet
-BEAG,0001852207,Bold Eagle Acquisition Corp. Class A Ordinary Shares,12,2,False,False,True,False,False,False,425,2026-10-23,7372,Services-Prepackaged Software,recent_event_activity
+BEAG,0001852207,Bold Eagle Acquisition Corp. Class A Ordinary Shares,15,3,False,False,True,False,False,False,4,2026-10-26,7372,Services-Prepackaged Software,recent_event_activity
 BESS,0001066764,Bimergen Energy Corporation Common Stock,3,2,False,False,False,False,True,False,EFFECT,2026-10-09,4911,Electric Services,financing_or_registration_activity
 BGDE,0001218683,Big Digital Energy Inc. Common Stock,11,1,False,False,True,False,False,False,ARS,2026-10-23,6199,Finance Services,recent_event_activity
 BGM,0001779578,BGM Group Ltd. Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-09-24,2834,Pharmaceutical Preparations,recent_other_activity
@@ -107,7 +107,7 @@ GNPX,0001595248,Genprex Inc. Common Stock,1,1,False,False,True,False,False,False
 GOF,0001380936,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,1,0,False,False,False,False,False,False,40-17G,2026-09-18,,,recent_other_activity
 GOSS,0001728117,Gossamer Bio Inc.,14,3,False,False,True,False,False,False,SCHEDULE 13D/A,2026-10-08,2834,Pharmaceutical Preparations,recent_event_activity
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,2,1,False,False,False,True,False,False,EFFECT,2026-09-23,2834,Pharmaceutical Preparations,financing_or_registration_activity
-GRCE,0001444192,Grace Therapeutics Inc. Common Stock,12,1,False,False,True,False,False,False,4,2026-10-21,2834,Pharmaceutical Preparations,recent_event_activity
+GRCE,0001444192,Grace Therapeutics Inc. Common Stock,13,1,False,False,True,False,False,False,4,2026-10-26,2834,Pharmaceutical Preparations,recent_event_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,3,0,False,False,False,False,False,False,4,2026-09-18,5200,"Retail-Building Materials, Hardware, Garden Supply",recent_other_activity
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,3,2,False,False,True,False,False,True,8-K,2026-10-01,7372,Services-Prepackaged Software,financing_or_registration_activity
 HBIO,0001123494,Harvard Bioscience Inc. Common Stock,1,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-09-22,3826,Laboratory Analytical Instruments,recent_other_activity
@@ -175,7 +175,7 @@ NXTC,0001661059,NextCure Inc. Common Stock,4,1,False,False,True,False,False,Fals
 NXXT,0001817004,NextNRG Inc. Common Stock,5,5,False,False,True,False,False,False,8-K,2026-10-08,5500,Retail-Auto Dealers & Gasoline Stations,recent_event_activity
 NZF,0001137887,Nuveen Municipal Credit Income Fund ,6,1,False,False,False,False,False,True,4,2026-10-20,,,financing_or_registration_activity
 OLOX,0001023994,Olenox Industries Inc. Common Stock,2,2,False,False,True,False,False,False,8-K,2026-10-21,5030,Wholesale-Lumber & Other Construction Materials,recent_event_activity
-ONCO,0001782107,Onconetix Inc. Common Stock,9,2,False,False,True,False,False,False,DEFA14A,2026-10-23,2834,Pharmaceutical Preparations,recent_event_activity
+ONCO,0001782107,Onconetix Inc. Common Stock,10,3,False,False,True,False,False,False,8-K,2026-10-26,2834,Pharmaceutical Preparations,recent_event_activity
 ORKT,0001979407,Orangekloud Technology Inc. Class A Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-10-22,7372,Services-Prepackaged Software,recent_other_activity
 OTLK,0001649989,Outlook Therapeutics Inc. Common Stock,3,2,False,False,True,False,False,False,SCHEDULE 13G,2026-10-13,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 PAII,0002069238,Pyrophyte Acquisition Corp. II Class A Ordinary Shares,2,1,False,False,True,False,False,False,425,2026-10-15,6770,Blank Checks,recent_event_activity
