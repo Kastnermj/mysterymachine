@@ -103,7 +103,7 @@ GNPX,0001595248,Genprex Inc. Common Stock,4,4,False,False,True,False,False,False
 GOF,0001380936,Guggenheim Strategic Opportunities Fund Common Shares of Beneficial Interest,1,0,False,False,False,False,False,False,NPORT-P,2026-10-30,,,recent_other_activity
 GOSS,0001728117,Gossamer Bio Inc.,7,2,False,False,True,False,False,False,SCHEDULE 13G/A,2026-11-06,2834,Pharmaceutical Preparations,recent_event_activity
 GOVX,0000832489,GeoVax Labs Inc. Common Stock,8,5,False,False,True,True,False,False,8-K,2026-11-09,2834,Pharmaceutical Preparations,financing_or_registration_activity
-GPATW,0001834526,GP-Act III Acquisition Corp. Warrants,5,1,False,False,True,False,False,False,DEFA14A,2026-11-04,6770,Blank Checks,recent_event_activity
+GPATW,0001834526,GP-Act III Acquisition Corp. Warrants,6,1,False,False,True,False,False,False,SCHEDULE 13G,2026-11-09,6770,Blank Checks,recent_event_activity
 GRCE,0001444192,Grace Therapeutics Inc. Common Stock,8,0,False,False,False,False,False,False,4,2026-11-05,2834,Pharmaceutical Preparations,recent_other_activity
 GRWG,0001604868,GrowGeneration Corp. Common Stock,0,0,False,False,False,False,False,False,4,2026-09-18,5200,"Retail-Building Materials, Hardware, Garden Supply",quiet
 GXAI,0001895618,Gaxos.ai Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-10-01,7372,Services-Prepackaged Software,recent_event_activity
@@ -124,7 +124,7 @@ IPST,0001788230,IP Strategy Holdings Inc. Common Stock,9,2,False,True,True,False
 IPW,0001830072,iPower Inc. Common Stock,12,7,True,False,True,True,True,True,424B3,2026-11-05,5200,"Retail-Building Materials, Hardware, Garden Supply",financing_or_registration_activity
 IRIX,0001006045,IRIDEX Corporation Common Stock,5,0,False,False,False,False,False,False,4,2026-10-13,3845,Electromedical & Electrotherapeutic Apparatus,recent_other_activity
 ISPC,0001558569,iSpecimen Inc. Common Stock,7,4,False,False,True,False,False,False,8-K,2026-11-09,8731,Services-Commercial Physical & Biological Research,recent_event_activity
-JACS,0002039058,Jackson Acquisition Company II Class A Ordinary Shares,3,1,False,True,False,False,False,False,10-Q,2026-11-06,6770,Blank Checks,recent_periodic_reporting
+JACS,0002039058,Jackson Acquisition Company II Class A Ordinary Shares,4,1,False,True,False,False,False,False,SCHEDULE 13G,2026-11-09,6770,Blank Checks,recent_periodic_reporting
 JCTC,0000885307,Jewett-Cameron Trading Company Common Shares,24,1,False,False,True,False,False,False,4,2026-11-06,5211,Retail-Lumber & Other Building Materials Dealers,recent_event_activity
 JOB,0000040570,GEE Group Inc.,4,3,False,False,True,False,False,False,8-K,2026-10-09,7361,Services-Employment Agencies,recent_event_activity
 JPC,0001216583,Nuveen Preferred & Income Opportunities Fund,3,1,False,False,False,False,False,True,N-CEN,2026-10-14,,,financing_or_registration_activity
@@ -203,7 +203,7 @@ RDAC,0002018145,Rising Dragon Acquisition Corp. Ordinary Shares,4,3,False,False,
 RDGT,0001856084,Ridgetech Inc. Ordinary Shares,1,0,False,False,False,False,False,False,6-K,2026-11-06,5912,Retail-Drug Stores and Proprietary Stores,recent_other_activity
 RETO,0001687277,ReTo Eco-Solutions Inc. Class A Shares,0,0,False,False,False,False,False,False,6-K,2026-09-25,3290,"Abrasive, Asbestos & Misc Nonmetallic Mineral Prods",quiet
 REVB,0001810560,Revelation Biosciences Inc. Common Stock,2,2,False,True,True,False,False,False,8-K,2026-11-05,2834,Pharmaceutical Preparations,recent_event_activity
-RFAIR,0002012807,RF Acquisition Corp II Right,0,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-09-04,6770,Blank Checks,quiet
+RFAIR,0002012807,RF Acquisition Corp II Right,1,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-11-09,6770,Blank Checks,recent_other_activity
 RGNT,0001912966,Regentis Biomaterials Ltd. Ordinary Shares,2,0,False,False,False,False,False,False,6-K,2026-11-09,3842,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",recent_other_activity
 RMTI,0001041024,Rockwell Medical Inc. Common Stock,3,1,False,False,True,False,False,False,8-K,2026-11-03,2834,Pharmaceutical Preparations,recent_event_activity
 RNAZ,0001829635,TransCode Therapeutics Inc. Common Stock,3,3,False,False,True,False,False,False,8-K,2026-10-28,2834,Pharmaceutical Preparations,recent_event_activity
@@ -229,8 +229,8 @@ TMDE,0002009714,TMD Energy Limited Class A Ordinary Shares,6,0,False,False,False
 TOVX,0000894158,Theriva Biologics Inc. Common Stock,3,1,False,False,True,False,False,False,8-K,2026-11-02,2834,Pharmaceutical Preparations,recent_event_activity
 TPET,0001898766,Trio Petroleum Corp. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-09-30,1311,Crude Petroleum & Natural Gas,recent_event_activity
 TRUG,0001857086,TruGolf Holdings Inc. Class A Common Stock,9,5,False,False,True,False,False,False,8-K/A,2026-11-09,3949,"Sporting & Athletic Goods, NEC",recent_event_activity
-TVA,0002033991,Texas Ventures Acquisition III Corp Class A Ordinary Share,10,4,False,False,True,False,False,False,SCHEDULE 13G,2026-11-06,6770,Blank Checks,recent_event_activity
-TVACW,0002033991,Texas Ventures Acquisition III Corp Warrants,10,4,False,False,True,False,False,False,SCHEDULE 13G,2026-11-06,6770,Blank Checks,recent_event_activity
+TVA,0002033991,Texas Ventures Acquisition III Corp Class A Ordinary Share,11,4,False,False,True,False,False,False,SCHEDULE 13G,2026-11-09,6770,Blank Checks,recent_event_activity
+TVACW,0002033991,Texas Ventures Acquisition III Corp Warrants,11,4,False,False,True,False,False,False,SCHEDULE 13G,2026-11-09,6770,Blank Checks,recent_event_activity
 TVGN,0001860871,Tevogen Inc. Common Stock,5,3,False,False,True,False,False,False,SCHEDULE 13D/A,2026-11-04,2836,"Biological Products, (No Diagnostic Substances)",recent_event_activity
 TWAV,0000746210,TaoWeave Inc. Common Stock,4,1,False,False,True,False,False,False,ARS,2026-11-04,7370,"Services-Computer Programming, Data Processing, Etc.",recent_event_activity
 USA,0000799195,Liberty All-Star Equity Fund Common Stock,0,0,False,False,False,False,False,False,N-CSRS,2026-09-04,,,quiet
