@@ -162,8 +162,8 @@ NEA,0001195737,Nuveen AMT-Free Quality Municipal Income Fund Common Shares of Be
 NEUP,0001191070,Neuphoria Therapeutics Inc. Common Stock,2,1,False,False,True,False,False,False,8-K,2026-10-23,2834,Pharmaceutical Preparations,recent_event_activity
 NMZ,0001266585,Nuveen Municipal High Income Opportunity Fund Common Stock $0.01 par value per share,5,2,False,False,False,False,False,True,N-23C-2,2026-11-03,,,financing_or_registration_activity
 NRXS,0001933567,Neuraxis Inc. Common Stock,6,2,False,True,True,False,False,False,10-Q,2026-11-09,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
-NTWO,0002028027,Newbury Street II Acquisition Corp Class A Ordinary Shares,12,5,False,True,True,False,False,False,SCHEDULE 13G,2026-11-09,3620,Electrical Industrial Apparatus,recent_event_activity
-NTWOW,0002028027,Newbury Street II Acquisition Corp Warrant,12,5,False,True,True,False,False,False,SCHEDULE 13G,2026-11-09,3620,Electrical Industrial Apparatus,recent_event_activity
+NTWO,0002028027,Newbury Street II Acquisition Corp Class A Ordinary Shares,14,5,False,True,True,False,False,False,4,2026-11-09,3620,Electrical Industrial Apparatus,recent_event_activity
+NTWOW,0002028027,Newbury Street II Acquisition Corp Warrant,14,5,False,True,True,False,False,False,4,2026-11-09,3620,Electrical Industrial Apparatus,recent_event_activity
 NUV,0000812801,Nuveen Municipal Value Fund Inc. Common Stock,3,2,False,False,True,False,False,True,4,2026-10-27,,,financing_or_registration_activity
 NUWE,0001506492,Nuwellis Inc. Common Stock,1,1,False,False,True,False,False,False,8-K,2026-10-23,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 NVG,0001090116,Nuveen AMT-Free Municipal Credit Income Fund ,2,1,False,False,False,False,False,True,N-23C-2,2026-11-03,,,financing_or_registration_activity
