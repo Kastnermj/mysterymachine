@@ -22,7 +22,7 @@ APVO,0001671584,Aptevo Therapeutics Inc. Common Stock,13,10,False,True,True,Fals
 APXTW,0002079253,Apex Treasury Corporation Warrants,3,1,False,True,False,False,False,False,SCHEDULE 13G/A,2026-11-17,6770,Blank Checks,recent_periodic_reporting
 ARTL,0001621221,Artelo Biosciences Inc. Common Stock,2,2,False,True,True,False,False,False,10-Q,2026-11-12,2834,Pharmaceutical Preparations,recent_event_activity
 ASBP,0001847345,Aspire-Lakewood Holdings Inc. Common Stock,4,1,False,False,False,False,False,False,NT 10-Q,2026-11-16,2834,Pharmaceutical Preparations,recent_other_activity
-ATRA,0001604464,Atara Biotherapeutics Inc. Common Stock,4,3,False,True,True,False,True,False,144,2026-11-16,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
+ATRA,0001604464,Atara Biotherapeutics Inc. Common Stock,5,3,False,True,True,False,True,False,144,2026-11-17,2836,"Biological Products, (No Diagnostic Substances)",financing_or_registration_activity
 AUUD,0001554818,Auddia Inc. Common Stock,7,4,False,True,True,False,False,False,SCHEDULE 13G/A,2026-11-16,7374,Services-Computer Processing & Data Preparation,recent_event_activity
 AVAT,0002092446,Avalanche Treasury Corporation Class A Common Stock,6,4,False,True,True,False,False,True,424B3,2026-11-12,6199,Finance Services,financing_or_registration_activity
 BACC,0002059654,Blue Acquisition Corp. Class A Ordinary Shares,13,4,False,True,True,False,False,False,SCHEDULE 13G/A,2026-11-16,6770,Blank Checks,recent_event_activity
@@ -221,7 +221,7 @@ SRTM,0001879403,Stratum Holdings Corp. Common Stock,14,5,False,False,True,True,F
 STAK,0002002453,STAK Inc. Class A Ordinary Shares,6,0,False,False,False,False,False,False,3,2026-11-06,3533,Oil & Gas Field Machinery & Equipment,recent_other_activity
 STEX,0001530766,Streamex Corp. Common Stock,6,3,False,True,True,False,False,False,PRE 14A,2026-11-13,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services",recent_event_activity
 SUNE,0000022701,SUNation Energy Inc. Common Stock,6,2,False,False,True,False,False,False,NT 10-Q,2026-11-16,3674,Semiconductors & Related Devices,recent_event_activity
-TAOX,0001571934,Tao Synergies Inc. Common Stock,4,3,False,True,False,False,False,False,10-Q,2026-11-16,6199,Finance Services,recent_periodic_reporting
+TAOX,0001571934,Tao Synergies Inc. Common Stock,9,3,False,True,False,False,False,False,4,2026-11-17,6199,Finance Services,recent_periodic_reporting
 TCGX,0002137965,TCGX Acquisition Corp. Class A Ordinary Shares,10,2,False,True,True,False,False,False,SCHEDULE 13G,2026-11-16,6770,Blank Checks,recent_event_activity
 THEOR,0002080216,BOA Acquisition Corp. II Rights,7,1,False,True,False,False,False,False,SCHEDULE 13G/A,2026-11-17,6770,Blank Checks,recent_periodic_reporting
 TMDE,0002009714,TMD Energy Limited Class A Ordinary Shares,6,0,False,False,False,False,False,False,20-F,2026-10-29,5172,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),recent_other_activity
