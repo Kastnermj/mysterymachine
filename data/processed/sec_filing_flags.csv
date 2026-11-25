@@ -126,12 +126,12 @@ IPW,0001830072,iPower Inc. Common Stock,11,7,False,True,True,True,False,True,10-
 IRIX,0001006045,IRIDEX Corporation Common Stock,3,2,False,True,True,False,False,False,10-Q,2026-11-17,3845,Electromedical & Electrotherapeutic Apparatus,recent_event_activity
 ISPC,0001558569,iSpecimen Inc. Common Stock,9,6,False,True,True,False,False,False,8-K,2026-11-24,8731,Services-Commercial Physical & Biological Research,recent_event_activity
 JACS,0002039058,Jackson Acquisition Company II Class A Ordinary Shares,4,1,False,True,False,False,False,False,SCHEDULE 13G,2026-11-09,6770,Blank Checks,recent_periodic_reporting
-JCTC,0000885307,Jewett-Cameron Trading Company Common Shares,20,2,True,False,True,False,False,False,10-K,2026-11-19,5211,Retail-Lumber & Other Building Materials Dealers,recent_event_activity
+JCTC,0000885307,Jewett-Cameron Trading Company Common Shares,21,2,True,False,True,False,False,False,4,2026-11-24,5211,Retail-Lumber & Other Building Materials Dealers,recent_event_activity
 JOB,0000040570,GEE Group Inc.,0,0,False,False,False,False,False,False,8-K,2026-10-09,7361,Services-Employment Agencies,quiet
 JPC,0001216583,Nuveen Preferred & Income Opportunities Fund,1,0,False,False,False,False,False,False,N-CEN,2026-10-14,,,recent_other_activity
 JTAI,0001861622,Jet.AI Inc. Common Stock,3,1,False,True,False,False,False,False,PRE 14A,2026-11-19,4522,"Air Transportation, Nonscheduled",recent_periodic_reporting
 JZXN,0001816172,Jiuzi Holdings Inc. Ordinary Shares,1,0,False,False,False,False,False,False,SCHEDULE 13G/A,2026-11-06,5500,Retail-Auto Dealers & Gasoline Stations,recent_other_activity
-KAPA,0001962011,Kairos Pharma Ltd. Common Stock,5,4,False,True,True,False,False,False,8-K,2026-11-23,2834,Pharmaceutical Preparations,recent_event_activity
+KAPA,0001962011,Kairos Pharma Ltd. Common Stock,9,4,False,True,True,False,False,False,4,2026-11-24,2834,Pharmaceutical Preparations,recent_event_activity
 KFII,0002029976,K&F Growth Acquisition Corp. II Class A Ordinary shares,16,5,False,True,True,False,False,False,10-Q,2026-11-13,6770,Blank Checks,recent_event_activity
 KFIIR,0002029976,K&F Growth Acquisition Corp. II Rights,16,5,False,True,True,False,False,False,10-Q,2026-11-13,6770,Blank Checks,recent_event_activity
 KGEI,0001477081,Kolibri Global Energy Inc. Common stock,3,0,False,False,False,False,False,False,6-K,2026-11-13,1311,Crude Petroleum & Natural Gas,recent_other_activity
